@@ -17,22 +17,6 @@ public class BuyFrame extends JFrame {
 	private JPanel contentPane;
 
 	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					BuyFrame frame = new BuyFrame();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
 	 * Create the frame.
 	 */
 	public BuyFrame() {
@@ -174,67 +158,67 @@ public class BuyFrame extends JFrame {
 		JPanel choice_1 = new JPanel();
 		pnlChoice.add(choice_1);
 		
-		JLabel isAuto = new JLabel("수동");
-		choice_1.add(isAuto);
-		
-		JLabel number = new JLabel("13 25 26 28 32 35");
-		choice_1.add(number);
-		number.setFont(new Font("굴림", Font.PLAIN, 22));
-		
-		JButton btnReset = new JButton("초기화");
-		choice_1.add(btnReset);
-		
-		JPanel choice_1_1 = new JPanel();
-		pnlChoice.add(choice_1_1);
-		
 		JLabel isAuto_1 = new JLabel("수동");
-		choice_1_1.add(isAuto_1);
+		choice_1.add(isAuto_1);
 		
 		JLabel number_1 = new JLabel("13 25 26 28 32 35");
+		choice_1.add(number_1);
 		number_1.setFont(new Font("굴림", Font.PLAIN, 22));
-		choice_1_1.add(number_1);
 		
 		JButton btnReset_1 = new JButton("초기화");
-		choice_1_1.add(btnReset_1);
+		choice_1.add(btnReset_1);
 		
-		JPanel choice_1_2 = new JPanel();
-		pnlChoice.add(choice_1_2);
+		JPanel choice_2 = new JPanel();
+		pnlChoice.add(choice_2);
 		
 		JLabel isAuto_2 = new JLabel("수동");
-		choice_1_2.add(isAuto_2);
+		choice_2.add(isAuto_2);
 		
 		JLabel number_2 = new JLabel("13 25 26 28 32 35");
 		number_2.setFont(new Font("굴림", Font.PLAIN, 22));
-		choice_1_2.add(number_2);
+		choice_2.add(number_2);
 		
 		JButton btnReset_2 = new JButton("초기화");
-		choice_1_2.add(btnReset_2);
+		choice_2.add(btnReset_2);
 		
-		JPanel choice_1_3 = new JPanel();
-		pnlChoice.add(choice_1_3);
+		JPanel choice_3 = new JPanel();
+		pnlChoice.add(choice_3);
 		
 		JLabel isAuto_3 = new JLabel("수동");
-		choice_1_3.add(isAuto_3);
+		choice_3.add(isAuto_3);
 		
 		JLabel number_3 = new JLabel("13 25 26 28 32 35");
 		number_3.setFont(new Font("굴림", Font.PLAIN, 22));
-		choice_1_3.add(number_3);
+		choice_3.add(number_3);
 		
 		JButton btnReset_3 = new JButton("초기화");
-		choice_1_3.add(btnReset_3);
+		choice_3.add(btnReset_3);
 		
-		JPanel choice_1_4 = new JPanel();
-		pnlChoice.add(choice_1_4);
+		JPanel choice_4 = new JPanel();
+		pnlChoice.add(choice_4);
 		
 		JLabel isAuto_4 = new JLabel("수동");
-		choice_1_4.add(isAuto_4);
+		choice_4.add(isAuto_4);
 		
 		JLabel number_4 = new JLabel("13 25 26 28 32 35");
 		number_4.setFont(new Font("굴림", Font.PLAIN, 22));
-		choice_1_4.add(number_4);
+		choice_4.add(number_4);
 		
 		JButton btnReset_4 = new JButton("초기화");
-		choice_1_4.add(btnReset_4);
+		choice_4.add(btnReset_4);
+		
+		JPanel choice_5 = new JPanel();
+		pnlChoice.add(choice_5);
+		
+		JLabel isAuto_5 = new JLabel("수동");
+		choice_5.add(isAuto_5);
+		
+		JLabel number_5 = new JLabel("13 25 26 28 32 35");
+		number_5.setFont(new Font("굴림", Font.PLAIN, 22));
+		choice_5.add(number_5);
+		
+		JButton btnReset_5 = new JButton("초기화");
+		choice_5.add(btnReset_5);
 		
 		JPanel panel_1 = new JPanel();
 		pnlChoice.add(panel_1);
@@ -288,7 +272,7 @@ public class BuyFrame extends JFrame {
 		
 		JButton btnPlus = new JButton("등록");
 		panel.add(btnPlus);
-		btnReset.addActionListener(new ActionListener() {
+		btnPlus.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
