@@ -1,5 +1,11 @@
 package lottoProject;
 
+import java.awt.*;
+import java.awt.event.*;
+import java.util.*;
+
+import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
@@ -9,13 +15,22 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.Random;
+import java.util.Set;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
+import java.awt.GridLayout;
 
 public class BuyFrame extends JFrame {
 
 	private JPanel contentPane;
-
+	ArrayList<JButton> buttons;
+	
+	private int count;
+	Set<Integer> numbers;
+	int price;
+	//Ticket ticket = new Ticket(numbers, price);
 	/**
 	 * Create the frame.
 	 */
@@ -30,205 +45,55 @@ public class BuyFrame extends JFrame {
 		JPanel pnlLottoNum = new JPanel();
 		pnlLottoNum.setBounds(55, 78, 248, 249);
 		contentPane.add(pnlLottoNum);
-		
-		JButton btn1 = new JButton("1");
-		pnlLottoNum.add(btn1);
-		
-		JButton btn2 = new JButton("2");
-		pnlLottoNum.add(btn2);
-		
-		JButton btn3 = new JButton("3");
-		pnlLottoNum.add(btn3);
-		
-		JButton btn4 = new JButton("4");
-		pnlLottoNum.add(btn4);
-		
-		JButton btn5 = new JButton("5");
-		pnlLottoNum.add(btn5);
-		
-		JButton btn1_1 = new JButton("1");
-		pnlLottoNum.add(btn1_1);
-		
-		JButton btn2_1 = new JButton("2");
-		pnlLottoNum.add(btn2_1);
-		
-		JButton btn3_1 = new JButton("3");
-		pnlLottoNum.add(btn3_1);
-		
-		JButton btn4_1 = new JButton("4");
-		pnlLottoNum.add(btn4_1);
-		
-		JButton btn5_1 = new JButton("5");
-		pnlLottoNum.add(btn5_1);
-		
-		JButton btn1_2 = new JButton("1");
-		pnlLottoNum.add(btn1_2);
-		
-		JButton btn2_2 = new JButton("2");
-		pnlLottoNum.add(btn2_2);
-		
-		JButton btn3_2 = new JButton("3");
-		pnlLottoNum.add(btn3_2);
-		
-		JButton btn4_2 = new JButton("4");
-		pnlLottoNum.add(btn4_2);
-		
-		JButton btn5_2 = new JButton("5");
-		pnlLottoNum.add(btn5_2);
-		
-		JButton btn1_3 = new JButton("1");
-		pnlLottoNum.add(btn1_3);
-		
-		JButton btn2_3 = new JButton("2");
-		pnlLottoNum.add(btn2_3);
-		
-		JButton btn3_3 = new JButton("3");
-		pnlLottoNum.add(btn3_3);
-		
-		JButton btn4_3 = new JButton("4");
-		pnlLottoNum.add(btn4_3);
-		
-		JButton btn5_3 = new JButton("5");
-		pnlLottoNum.add(btn5_3);
-		
-		JButton btn1_4 = new JButton("1");
-		pnlLottoNum.add(btn1_4);
-		
-		JButton btn2_4 = new JButton("2");
-		pnlLottoNum.add(btn2_4);
-		
-		JButton btn3_4 = new JButton("3");
-		pnlLottoNum.add(btn3_4);
-		
-		JButton btn4_4 = new JButton("4");
-		pnlLottoNum.add(btn4_4);
-		
-		JButton btn5_4 = new JButton("5");
-		pnlLottoNum.add(btn5_4);
-		
-		JButton btn1_5 = new JButton("1");
-		pnlLottoNum.add(btn1_5);
-		
-		JButton btn2_5 = new JButton("2");
-		pnlLottoNum.add(btn2_5);
-		
-		JButton btn3_5 = new JButton("3");
-		pnlLottoNum.add(btn3_5);
-		
-		JButton btn4_5 = new JButton("4");
-		pnlLottoNum.add(btn4_5);
-		
-		JButton btn5_5 = new JButton("5");
-		pnlLottoNum.add(btn5_5);
-		
-		JButton btn1_6 = new JButton("1");
-		pnlLottoNum.add(btn1_6);
-		
-		JButton btn2_6 = new JButton("2");
-		pnlLottoNum.add(btn2_6);
-		
-		JButton btn3_6 = new JButton("3");
-		pnlLottoNum.add(btn3_6);
-		
-		JButton btn4_6 = new JButton("4");
-		pnlLottoNum.add(btn4_6);
-		
-		JButton btn5_6 = new JButton("5");
-		pnlLottoNum.add(btn5_6);
-		
-		JButton btn1_7 = new JButton("1");
-		pnlLottoNum.add(btn1_7);
-		
-		JButton btn2_7 = new JButton("2");
-		pnlLottoNum.add(btn2_7);
-		
-		JButton btn3_7 = new JButton("3");
-		pnlLottoNum.add(btn3_7);
-		
-		JButton btn4_7 = new JButton("4");
-		pnlLottoNum.add(btn4_7);
-		
-		JButton btn5_7 = new JButton("5");
-		pnlLottoNum.add(btn5_7);
-		
+		pnlLottoNum.setLayout(new GridLayout(9,5));
+
+		// 45개의 로또 번호 버튼배열입니다
+	    buttons = new ArrayList<>();
+	 
+        for (int i = 1; i <= 45; i++) {
+            JButton button = new JButton(Integer.toString(i));
+            button.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                	if(count < 6) {
+                	// 버튼 정보 보내줄 예정
+                	// numbers.add(Integer.parseInt(button.getText())); 
+                    button.setEnabled(false);
+                    	if(count == 6) {
+                    		button.setEnabled(true);
+                    	}
+                    count++;
+                	}
+                }
+            });
+            buttons.add(button);
+            pnlLottoNum.add(button);
+        }
+	    
 		JPanel pnlChoice = new JPanel();
 		pnlChoice.setBounds(339, 88, 327, 270);
 		contentPane.add(pnlChoice);
 		
-		JPanel choice_1 = new JPanel();
-		pnlChoice.add(choice_1);
+		for(int i = 0; i < 5; i++) {
+			JPanel choice = new JPanel();
+			pnlChoice.add(choice);
+			JLabel isAuto = new JLabel("자동여부");
+			choice.add(isAuto);
+			JLabel number = new JLabel("00 00 00 00 00 00");
+			choice.add(number);
+			number.setFont(new Font("굴림", Font.PLAIN, 22));
+			JButton btnReset = new JButton("초기화");
+			choice.add(btnReset);
+		} // 기본 값
 		
-		JLabel isAuto_1 = new JLabel("수동");
-		choice_1.add(isAuto_1);
-		
-		JLabel number_1 = new JLabel("13 25 26 28 32 35");
-		choice_1.add(number_1);
-		number_1.setFont(new Font("굴림", Font.PLAIN, 22));
-		
-		JButton btnReset_1 = new JButton("초기화");
-		choice_1.add(btnReset_1);
-		
-		JPanel choice_2 = new JPanel();
-		pnlChoice.add(choice_2);
-		
-		JLabel isAuto_2 = new JLabel("수동");
-		choice_2.add(isAuto_2);
-		
-		JLabel number_2 = new JLabel("13 25 26 28 32 35");
-		number_2.setFont(new Font("굴림", Font.PLAIN, 22));
-		choice_2.add(number_2);
-		
-		JButton btnReset_2 = new JButton("초기화");
-		choice_2.add(btnReset_2);
-		
-		JPanel choice_3 = new JPanel();
-		pnlChoice.add(choice_3);
-		
-		JLabel isAuto_3 = new JLabel("수동");
-		choice_3.add(isAuto_3);
-		
-		JLabel number_3 = new JLabel("13 25 26 28 32 35");
-		number_3.setFont(new Font("굴림", Font.PLAIN, 22));
-		choice_3.add(number_3);
-		
-		JButton btnReset_3 = new JButton("초기화");
-		choice_3.add(btnReset_3);
-		
-		JPanel choice_4 = new JPanel();
-		pnlChoice.add(choice_4);
-		
-		JLabel isAuto_4 = new JLabel("수동");
-		choice_4.add(isAuto_4);
-		
-		JLabel number_4 = new JLabel("13 25 26 28 32 35");
-		number_4.setFont(new Font("굴림", Font.PLAIN, 22));
-		choice_4.add(number_4);
-		
-		JButton btnReset_4 = new JButton("초기화");
-		choice_4.add(btnReset_4);
-		
-		JPanel choice_5 = new JPanel();
-		pnlChoice.add(choice_5);
-		
-		JLabel isAuto_5 = new JLabel("수동");
-		choice_5.add(isAuto_5);
-		
-		JLabel number_5 = new JLabel("13 25 26 28 32 35");
-		number_5.setFont(new Font("굴림", Font.PLAIN, 22));
-		choice_5.add(number_5);
-		
-		JButton btnReset_5 = new JButton("초기화");
-		choice_5.add(btnReset_5);
-		
-		JPanel panel_1 = new JPanel();
-		pnlChoice.add(panel_1);
+		JPanel pnlSouth = new JPanel();
+		pnlChoice.add(pnlSouth);
 		
 		JButton btnPayment = new JButton("결제하기");
-		panel_1.add(btnPayment);
+		pnlSouth.add(btnPayment);
 		btnPayment.setFont(new Font("굴림", Font.PLAIN, 20));
 		
 		JButton btnResetAll = new JButton("전체 초기화");
-		panel_1.add(btnResetAll);
+		pnlSouth.add(btnResetAll);
 		
 		JLabel lblTotal = new JLabel("***** 원");
 		lblTotal.setFont(new Font("굴림", Font.PLAIN, 22));
@@ -259,6 +124,14 @@ public class BuyFrame extends JFrame {
 		JButton btnAutoPlus = new JButton("자동버튼");
 		btnAutoPlus.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				  if (count < 6) {
+	                    // 선택하지 않은 번호 중에서 랜덤하게 선택
+	                    Random random = new Random();
+	                    int randomNum = random.nextInt(45)+1;
+	                    while (count < 6)
+	                    	//buttons(randomNum).setEnabled(false);
+	                        count++;
+				  }
 			}
 		});
 		panel.add(btnAutoPlus);
