@@ -54,8 +54,8 @@ public class MainFrame extends JFrame {
 		JButton btnNewButton = new JButton("구매하기");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				BuyFrame buy = new BuyFrame();
-				buy.setVisible(true);
+				BuyFrame buyFrame = new BuyFrame();
+				buyFrame.setVisible(true);
 				setVisible(false);
 			}
 		});
