@@ -27,12 +27,43 @@ public class BuyFrame extends JFrame {
 	int price;
 
 	RegiTiketManager rtm = new RegiTiketManager();
+	/*
+	 * private JButton btnReset1; private JButton btnReset2; private JButton
+	 * btnReset3; private JButton btnReset4; private JButton btnReset5;
+	 */
+	private JPanel[] choices;
+	private JLabel[] isAutos;
+	private JLabel[] numbers;
+	private JButton[] btnResets;
 
 	// Ticket ticket = new Ticket(numbers, price);
 	/**
 	 * Create the frame.
 	 */
+	private void 결제초기화액션리스너추가(ActionListener actionlistener) {
+		for (int i = 0; i < 5; i++) {
+			btnResets[i].addActionListener(actionlistener);
+		}
+	}
+	private ActionListener 결제초기화액션리스너() {
+		ActionListener actionlistener = new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				JButton btn1 = (JButton) e.getSource();
+				for (int i = 0; i < 5; i++) {
+					if (btn1.equals(btnResets[i])) {
+						isAutos[i].setText("자동여부");
+						numbers[i].setText("00 00 00 00 00 00");
+						System.out.println(i + 1 + "번째 초기화");
+					}
+				}
+			}
+		};
+		return actionlistener;
+	}
 	public BuyFrame() {
+
+
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 735, 461);
 		contentPane = new JPanel();
@@ -76,56 +107,26 @@ public class BuyFrame extends JFrame {
 		pnlChoice.setBounds(339, 88, 327, 270);
 		contentPane.add(pnlChoice);
 
-		// ticket 부분 ! 수정했습니다
-		JPanel choice1 = new JPanel();
-		pnlChoice.add(choice1);
-		JLabel isAuto1 = new JLabel("자동여부");
-		choice1.add(isAuto1);
-		JLabel number1 = new JLabel("00 00 00 00 00 00");
-		choice1.add(number1);
-		number1.setFont(new Font("굴림", Font.PLAIN, 22));
-		JButton btnReset1 = new JButton("초기화");
-		choice1.add(btnReset1);
+		choices = new JPanel[5];
+		isAutos = new JLabel[5];
+		numbers = new JLabel[5];
+		btnResets = new JButton[5];
 
-		JPanel choice2 = new JPanel();
-		pnlChoice.add(choice2);
-		JLabel isAuto2 = new JLabel("자동여부");
-		choice2.add(isAuto2);
-		JLabel number2 = new JLabel("00 00 00 00 00 00");
-		choice2.add(number2);
-		number2.setFont(new Font("굴림", Font.PLAIN, 22));
-		JButton btnReset2 = new JButton("초기화");
-		choice2.add(btnReset2);
+		for (int i = 0; i < 5; i++) {
+			choices[i] = new JPanel();
+			isAutos[i] = new JLabel("자동여부");
+			numbers[i] = new JLabel("00 00 00 00 00 00");
+			btnResets[i] = new JButton("초기화");
+		}
 
-		JPanel choice3 = new JPanel();
-		pnlChoice.add(choice3);
-		JLabel isAuto3 = new JLabel("자동여부");
-		choice3.add(isAuto3);
-		JLabel number3 = new JLabel("00 00 00 00 00 00");
-		choice3.add(number3);
-		number3.setFont(new Font("굴림", Font.PLAIN, 22));
-		JButton btnReset3 = new JButton("초기화");
-		choice3.add(btnReset3);
-
-		JPanel choice4 = new JPanel();
-		pnlChoice.add(choice4);
-		JLabel isAuto4 = new JLabel("자동여부");
-		choice4.add(isAuto4);
-		JLabel number4 = new JLabel("00 00 00 00 00 00");
-		choice4.add(number4);
-		number4.setFont(new Font("굴림", Font.PLAIN, 22));
-		JButton btnReset4 = new JButton("초기화");
-		choice4.add(btnReset4);
-
-		JPanel choice5 = new JPanel();
-		pnlChoice.add(choice5);
-		JLabel isAuto5 = new JLabel("자동여부");
-		choice5.add(isAuto5);
-		JLabel number5 = new JLabel("00 00 00 00 00 00");
-		choice5.add(number5);
-		number5.setFont(new Font("굴림", Font.PLAIN, 22));
-		JButton btnReset5 = new JButton("초기화");
-		choice5.add(btnReset5);
+		for (int i = 0; i < 5; i++) {
+			pnlChoice.add(choices[i]);
+			choices[i].add(isAutos[i]);
+			choices[i].add(numbers[i]);
+			numbers[i].setFont(new Font("굴림", Font.PLAIN, 22));
+			btnResets[i] = new JButton("초기화");
+			choices[i].add(btnResets[i]);
+		}
 
 		JPanel pnlSouth = new JPanel();
 		pnlChoice.add(pnlSouth);
@@ -203,7 +204,10 @@ public class BuyFrame extends JFrame {
 				// 여기서 맵을 보내줘야 함.
 			}
 		});
+		결제초기화액션리스너추가(결제초기화액션리스너());
 	}
+
+
 
 //	public static void main(String[] args) {
 //		EventQueue.invokeLater(new Runnable() {
