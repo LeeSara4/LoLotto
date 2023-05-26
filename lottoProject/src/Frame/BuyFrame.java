@@ -1,6 +1,5 @@
 package Frame;
 
-import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -25,20 +24,6 @@ public class BuyFrame extends JFrame {
 
 	PaymentTicketManager paymentTicketManager;
 
-<<<<<<< HEAD
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					BuyFrame frame = new BuyFrame();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-=======
 //	public static void main(String[] args) {
 //		EventQueue.invokeLater(new Runnable() {
 //			public void run() {
@@ -51,7 +36,6 @@ public class BuyFrame extends JFrame {
 //			}
 //		});
 //	}
->>>>>>> branch 'master' of https://github.com/YimFun9/IdeaRepository.git
 
 	private JPanel contentPane;
 	ArrayList<JButton> buttons;
@@ -247,7 +231,5 @@ public class BuyFrame extends JFrame {
 			}
 		});
 	}
-
-
 
 }
