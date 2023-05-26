@@ -1,4 +1,4 @@
-package lottoProject;
+package Frame;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;

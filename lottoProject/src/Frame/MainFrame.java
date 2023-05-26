@@ -1,4 +1,4 @@
-package lottoProject;
+package Frame;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;

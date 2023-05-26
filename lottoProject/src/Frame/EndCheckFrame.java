@@ -1,5 +1,5 @@
 // 종료 확인창
-package lottoProject;
+package Frame;
 
 import java.awt.EventQueue;
 

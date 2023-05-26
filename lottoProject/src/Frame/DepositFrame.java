@@ -1,6 +1,6 @@
 // 충전화면 프레임
 
-package lottoProject;
+package Frame;
 
 import java.awt.Color;
 import java.awt.Font;

@@ -1,25 +1,22 @@
-package lottoProject;
-// 결과창 종료 시
+// 결제 확인창
+package Frame;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JTextArea;
 import javax.swing.JFormattedTextField;
 import javax.swing.SwingConstants;
 import java.awt.Font;
 import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 
-public class ResultNextFrame extends JFrame {
+public class PaymentCheckFrame extends JFrame {
 
 	private JPanel contentPane;
 
-	public ResultNextFrame() {
+	public PaymentCheckFrame() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 334, 211);
+		setBounds(100, 100, 300, 240);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -27,26 +24,25 @@ public class ResultNextFrame extends JFrame {
 		contentPane.setLayout(null);
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(0, 0, 318, 172);
+		panel.setBounds(0, 0, 284, 201);
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
 		JFormattedTextField formattedTextField = new JFormattedTextField();
 		formattedTextField.setFont(new Font("굴림", Font.BOLD, 18));
+		formattedTextField.setText("\uACB0\uC81C\uD558\uC2DC\uACA0\uC2B5\uB2C8\uAE4C");
 		formattedTextField.setHorizontalAlignment(SwingConstants.CENTER);
-		formattedTextField.setText("\uCD95 \uB2F9 \uCCA8");
-		formattedTextField.setBounds(34, 26, 256, 66);
+		formattedTextField.setBounds(40, 31, 204, 76);
 		panel.add(formattedTextField);
 		
-		JButton btnNewButton = new JButton("\uD655\uC778");
-		// 그냥 확인 창이라서 한번 해봤습니다..  // 확인에 커서 올리면 참조 뜹니다!~
-		btnNewButton.setToolTipText("확인을 누르면 창이 닫힙니다.");
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
-		btnNewButton.setBounds(95, 111, 125, 40);
+		JButton btnNewButton = new JButton("\uC608");
+		btnNewButton.setFont(new Font("굴림", Font.BOLD, 12));
+		btnNewButton.setBounds(32, 136, 97, 44);
 		panel.add(btnNewButton);
+		
+		JButton btnNewButton_1 = new JButton("\uC544\uB2C8\uC624");
+		btnNewButton_1.setFont(new Font("굴림", Font.BOLD, 12));
+		btnNewButton_1.setBounds(157, 136, 97, 44);
+		panel.add(btnNewButton_1);
 	}
-
 }

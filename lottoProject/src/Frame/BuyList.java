@@ -1,4 +1,4 @@
-package lottoProject;
+package Frame;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

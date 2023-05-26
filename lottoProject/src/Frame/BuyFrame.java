@@ -1,4 +1,4 @@
-package lottoProject;
+package Frame;
 
 import java.awt.*;
 import java.awt.event.*;
