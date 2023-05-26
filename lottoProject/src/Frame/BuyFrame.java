@@ -76,17 +76,56 @@ public class BuyFrame extends JFrame {
 		pnlChoice.setBounds(339, 88, 327, 270);
 		contentPane.add(pnlChoice);
 
-		for (int i = 0; i < 5; i++) {
-			JPanel choice = new JPanel();
-			pnlChoice.add(choice);
-			JLabel isAuto = new JLabel("자동여부");
-			choice.add(isAuto);
-			JLabel number = new JLabel("00 00 00 00 00 00");
-			choice.add(number);
-			number.setFont(new Font("굴림", Font.PLAIN, 22));
-			JButton btnReset = new JButton("초기화");
-			choice.add(btnReset);
-		} // 기본 값
+		// ticket 부분 ! 수정했습니다
+		JPanel choice1 = new JPanel();
+		pnlChoice.add(choice1);
+		JLabel isAuto1 = new JLabel("자동여부");
+		choice1.add(isAuto1);
+		JLabel number1 = new JLabel("00 00 00 00 00 00");
+		choice1.add(number1);
+		number1.setFont(new Font("굴림", Font.PLAIN, 22));
+		JButton btnReset1 = new JButton("초기화");
+		choice1.add(btnReset1);
+
+		JPanel choice2 = new JPanel();
+		pnlChoice.add(choice2);
+		JLabel isAuto2 = new JLabel("자동여부");
+		choice2.add(isAuto2);
+		JLabel number2 = new JLabel("00 00 00 00 00 00");
+		choice2.add(number2);
+		number2.setFont(new Font("굴림", Font.PLAIN, 22));
+		JButton btnReset2 = new JButton("초기화");
+		choice2.add(btnReset2);
+
+		JPanel choice3 = new JPanel();
+		pnlChoice.add(choice3);
+		JLabel isAuto3 = new JLabel("자동여부");
+		choice3.add(isAuto3);
+		JLabel number3 = new JLabel("00 00 00 00 00 00");
+		choice3.add(number3);
+		number3.setFont(new Font("굴림", Font.PLAIN, 22));
+		JButton btnReset3 = new JButton("초기화");
+		choice3.add(btnReset3);
+
+		JPanel choice4 = new JPanel();
+		pnlChoice.add(choice4);
+		JLabel isAuto4 = new JLabel("자동여부");
+		choice4.add(isAuto4);
+		JLabel number4 = new JLabel("00 00 00 00 00 00");
+		choice4.add(number4);
+		number4.setFont(new Font("굴림", Font.PLAIN, 22));
+		JButton btnReset4 = new JButton("초기화");
+		choice4.add(btnReset4);
+
+		JPanel choice5 = new JPanel();
+		pnlChoice.add(choice5);
+		JLabel isAuto5 = new JLabel("자동여부");
+		choice5.add(isAuto5);
+		JLabel number5 = new JLabel("00 00 00 00 00 00");
+		choice5.add(number5);
+		number5.setFont(new Font("굴림", Font.PLAIN, 22));
+		JButton btnReset5 = new JButton("초기화");
+		choice5.add(btnReset5);
 
 		JPanel pnlSouth = new JPanel();
 		pnlChoice.add(pnlSouth);
