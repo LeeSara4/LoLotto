@@ -1,28 +1,37 @@
 package Frame;
 
-import java.awt.*;
-import java.awt.event.*;
-import java.util.*;
-
-import javax.swing.*;
-import javax.swing.border.EmptyBorder;
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JButton;
-import javax.swing.JLabel;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Set;
-import java.awt.event.ActionEvent;
-import java.awt.Font;
-import java.awt.GridLayout;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+
+import lottoProject.PaymentTicketManager;
 
 public class BuyFrame extends JFrame {
+
+	PaymentTicketManager paymentTicketManager;
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					BuyFrame frame = new BuyFrame();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
 
 	private JPanel contentPane;
 	ArrayList<JButton> buttons;
@@ -30,11 +39,33 @@ public class BuyFrame extends JFrame {
 	private int count;
 	Set<Integer> numbers;
 	int price;
-	//Ticket ticket = new Ticket(numbers, price);
-	/**
-	 * Create the frame.
-	 */
+	private JButton btnNewButton;
+	private JButton btnNewButton_1;
+	private JButton btnNewButton_2;
+	private JButton btnNewButton_3;
+	private JButton btnNewButton_4;
+	private JButton btnResetAll;
+
+	private void 결제초기화버튼액션리스너추가() {
+	}
+	private void 결제초기화버튼인덱스리턴() {
+	}
+
+	private void 결제초기화버튼액션리스너() {
+		ActionListener resetActionListener = new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+			}
+		};
+
+	}
 	public BuyFrame() {
+		paymentTicketManager = new PaymentTicketManager();
+		결제초기화버튼액션리스너추가();
+		결제초기화버튼인덱스리턴();
+		결제초기화버튼액션리스너();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 735, 461);
 		contentPane = new JPanel();
@@ -84,16 +115,44 @@ public class BuyFrame extends JFrame {
 			JButton btnReset = new JButton("초기화");
 			choice.add(btnReset);
 		} // 기본 값
+		pnlChoice.setLayout(null);
 		
 		JPanel pnlSouth = new JPanel();
+		pnlSouth.setBounds(51, 5, 225, 43);
 		pnlChoice.add(pnlSouth);
 		
 		JButton btnPayment = new JButton("결제하기");
 		pnlSouth.add(btnPayment);
 		btnPayment.setFont(new Font("굴림", Font.PLAIN, 20));
 		
-		JButton btnResetAll = new JButton("전체 초기화");
-		pnlSouth.add(btnResetAll);
+		btnNewButton = new JButton("초기화");
+		btnNewButton.setBounds(218, 58, 97, 23);
+		pnlChoice.add(btnNewButton);
+
+		btnNewButton_1 = new JButton("초기화");
+		btnNewButton_1.setBounds(218, 91, 97, 23);
+		pnlChoice.add(btnNewButton_1);
+
+		btnNewButton_2 = new JButton("초기화");
+		btnNewButton_2.setBounds(218, 124, 97, 23);
+		pnlChoice.add(btnNewButton_2);
+
+		btnNewButton_3 = new JButton("초기화");
+		btnNewButton_3.setBounds(218, 157, 97, 23);
+		pnlChoice.add(btnNewButton_3);
+
+		btnNewButton_4 = new JButton("초기화");
+		btnNewButton_4.setBounds(218, 190, 97, 23);
+		pnlChoice.add(btnNewButton_4);
+
+		btnResetAll = new JButton("전체 초기화");
+		btnResetAll.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+
+			}
+		});
+		btnResetAll.setBounds(218, 223, 97, 23);
+		pnlChoice.add(btnResetAll);
 		
 		JLabel lblTotal = new JLabel("***** 원");
 		lblTotal.setFont(new Font("굴림", Font.PLAIN, 22));
@@ -150,4 +209,7 @@ public class BuyFrame extends JFrame {
 			}
 		});
 	}
+
+
+
 }
