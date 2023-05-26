@@ -7,11 +7,11 @@ import javax.swing.JPanel;
 import javax.swing.SpringLayout;
 import javax.swing.border.EmptyBorder;
 
-public class winningDetails extends JFrame {
+public class WinningDetails extends JFrame {
 
 	private JPanel contentPane;
 
-	public winningDetails() {
+	public WinningDetails() {
 		setTitle("당첨 내역");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 350, 569);

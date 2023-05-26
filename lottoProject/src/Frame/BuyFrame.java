@@ -17,10 +17,15 @@ import javax.swing.border.EmptyBorder;
 
 import lottoProject.PaymentTicketManager;
 
+/**
+ * @author 이사라
+ * @Class 로또 구매 하기
+ */
 public class BuyFrame extends JFrame {
 
 	PaymentTicketManager paymentTicketManager;
 
+<<<<<<< HEAD
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -33,6 +38,20 @@ public class BuyFrame extends JFrame {
 			}
 		});
 	}
+=======
+//	public static void main(String[] args) {
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					BuyFrame frame = new BuyFrame();
+//					frame.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//	}
+>>>>>>> branch 'master' of https://github.com/YimFun9/IdeaRepository.git
 
 	private JPanel contentPane;
 	ArrayList<JButton> buttons;
@@ -125,6 +144,13 @@ public class BuyFrame extends JFrame {
 		pnlChoice.add(pnlSouth);
 
 		JButton btnPayment = new JButton("결제하기");
+		btnPayment.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				PaymentCheckFrame checkPay = new PaymentCheckFrame();
+				checkPay.setVisible(true);
+			}
+		});
 		pnlSouth.add(btnPayment);
 		btnPayment.setFont(new Font("굴림", Font.PLAIN, 20));
 
@@ -170,12 +196,21 @@ public class BuyFrame extends JFrame {
 		JButton btnReload = new JButton("충전");
 		btnReload.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				DepositFrame deposit = new DepositFrame();
+				deposit.setVisible(true);
 			}
 		});
 		btnReload.setBounds(248, 39, 62, 23);
 		contentPane.add(btnReload);
 
 		JButton btnMain = new JButton("메인으로");
+		btnMain.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+				dispose();
+			}
+		});
 		btnMain.setBounds(544, 42, 97, 23);
 		contentPane.add(btnMain);
 
