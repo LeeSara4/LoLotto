@@ -129,18 +129,15 @@ public class BuyFrame extends JFrame {
 
 			// 선택 화면에서 자동화를 담당하는 녀석
 			public void actionPerformed(ActionEvent click) {
-				while (count < 6) {
+				if (count < 6) {
 					// 선택하지 않은 번호 중에서 랜덤하게 선택
 					Random random = new Random();
-					int randomNum = random.nextInt(45) + 1;
-
-					JButton button = new JButton();
-
-					randomNum = Integer.parseInt(button.getText());
-
-					// button.setEnabled(false);
+					while (buttonZip.size() < 6) {
+						int randomNum = random.nextInt(45) + 1;
+						buttonZip.add(randomNum);
+					}
 				}
-
+				System.out.println(buttonZip);
 			}
 		});
 		panel.add(btnAutoPlus);

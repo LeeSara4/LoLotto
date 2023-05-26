@@ -3,8 +3,6 @@ package lottoProject;
 import java.util.Map;
 import java.util.Set;
 
-import lottoProject.LottoPaper;
-
 public class RegiTiketManager {
 	LottoPaper lottopaper = new LottoPaper();
 	Map<String, Set<Integer>> lotto;
@@ -20,12 +18,12 @@ public class RegiTiketManager {
 
 	// 얘로 자동인지 확인
 	public String 자동버튼(int count) {
-		if (count < 6) {
-			return "수동";
-		} else if (count == 6) {
-			return "자동";
-		} else {
+		if (count < 6 && count > 0) {
 			return "반자동";
+		} else if (count == 6) {
+			return "수동";
+		} else {
+			return "자동";
 		}
 	}
 
