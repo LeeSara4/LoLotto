@@ -10,11 +10,11 @@ import javax.swing.JPanel;
 import javax.swing.SpringLayout;
 import javax.swing.border.EmptyBorder;
 
-public class Frame3 extends JFrame {
+public class BuyList extends JFrame {
 
 	private JPanel contentPane;
 
-	public Frame3() {
+	public BuyList() {
 		setTitle("구매 내역");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 379, 455);
