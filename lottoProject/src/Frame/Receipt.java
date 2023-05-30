@@ -105,51 +105,51 @@ public class Receipt extends JFrame {
 		panel_2.setBackground(SystemColor.window);
 		panel.add(panel_2);
 
-		JLabel lblNewLabel_4 = new JLabel("New label");
-		panel_2.add(lblNewLabel_4);
+		JLabel isAuto1 = new JLabel("New label");
+		panel_2.add(isAuto1);
 
-		JLabel lblNewLabel_6 = new JLabel("New label");
-		panel_2.add(lblNewLabel_6);
+		JLabel numbers1 = new JLabel("New label");
+		panel_2.add(numbers1);
 
 		JPanel panel_3 = new JPanel();
 		panel_3.setBackground(SystemColor.window);
 		panel.add(panel_3);
 
-		JLabel lblNewLabel_7 = new JLabel("New label");
-		panel_3.add(lblNewLabel_7);
+		JLabel isAuto2 = new JLabel("New label");
+		panel_3.add(isAuto2);
 
-		JLabel lblNewLabel_8 = new JLabel("New label");
-		panel_3.add(lblNewLabel_8);
+		JLabel numbers2 = new JLabel("New label");
+		panel_3.add(numbers2);
 
 		JPanel panel_3_1 = new JPanel();
 		panel_3_1.setBackground(SystemColor.window);
 		panel.add(panel_3_1);
 
-		JLabel lblNewLabel_7_1 = new JLabel("New label");
-		panel_3_1.add(lblNewLabel_7_1);
+		JLabel isAuto3 = new JLabel("New label");
+		panel_3_1.add(isAuto3);
 
-		JLabel lblNewLabel_8_1 = new JLabel("New label");
-		panel_3_1.add(lblNewLabel_8_1);
+		JLabel numbers3 = new JLabel("New label");
+		panel_3_1.add(numbers3);
 
 		JPanel panel_3_2 = new JPanel();
 		panel_3_2.setBackground(SystemColor.window);
 		panel.add(panel_3_2);
 
-		JLabel lblNewLabel_7_2 = new JLabel("New label");
-		panel_3_2.add(lblNewLabel_7_2);
+		JLabel isAuto4 = new JLabel("New label");
+		panel_3_2.add(isAuto4);
 
-		JLabel lblNewLabel_8_2 = new JLabel("New label");
-		panel_3_2.add(lblNewLabel_8_2);
+		JLabel numbers4 = new JLabel("New label");
+		panel_3_2.add(numbers4);
 
 		JPanel panel_3_3 = new JPanel();
 		panel_3_3.setBackground(SystemColor.window);
 		panel.add(panel_3_3);
 
-		JLabel lblNewLabel_7_3 = new JLabel("New label");
-		panel_3_3.add(lblNewLabel_7_3);
+		JLabel isAuto5 = new JLabel("New label");
+		panel_3_3.add(isAuto5);
 
-		JLabel lblNewLabel_8_3 = new JLabel("New label");
-		panel_3_3.add(lblNewLabel_8_3);
+		JLabel numbers5 = new JLabel("New label");
+		panel_3_3.add(numbers5);
 
 		JLabel lblNewLabel_5_1 = new JLabel("2023 / 06 / 10 (토)");
 		lblNewLabel_5_1.setFont(new Font("맑은 고딕", Font.PLAIN, 14));
