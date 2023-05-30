@@ -35,6 +35,8 @@ public class Receipt extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
+		int size = lottoPaper.getCount().size();
+
 		JButton btnNewButton = new RoundButton("메인으로");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -81,6 +83,7 @@ public class Receipt extends JFrame {
 		contentPane.add(lblNewLabel_3_2);
 
 		JLabel lblNewLabel_3_2_1 = new JLabel("\\ 5,000");
+		lblNewLabel_3_2_1.setText("\\ " + size + ",000");
 		lblNewLabel_3_2_1.setFont(new Font("맑은 고딕", Font.BOLD, 18));
 		lblNewLabel_3_2_1.setBounds(277, 416, 83, 37);
 		contentPane.add(lblNewLabel_3_2_1);
@@ -107,11 +110,11 @@ public class Receipt extends JFrame {
 		panel.setBounds(67, 233, 267, 173);
 		contentPane.add(panel);
 
-		choices = new JPanel[5];
-		isAutos = new JLabel[5];
-		numbers = new JLabel[5];
+		choices = new JPanel[size];
+		isAutos = new JLabel[size];
+		numbers = new JLabel[size];
 
-		for (int i = 0; i < 5; i++) {
+		for (int i = 0; i < size; i++) {
 			choices[i] = new JPanel();
 			isAutos[i] = new JLabel("");
 			numbers[i] = new JLabel("");
@@ -119,7 +122,7 @@ public class Receipt extends JFrame {
 			choices[i].setBackground(Color.WHITE);
 		}
 
-		for (int i = 0; i < 5; i++) {
+		for (int i = 0; i < size; i++) {
 			choices[i].add(isAutos[i]);
 			choices[i].add(numbers[i]);
 			isAutos[i].setFont(new Font("맑은 고딕", Font.PLAIN, 13));
@@ -127,7 +130,7 @@ public class Receipt extends JFrame {
 			panel.add(choices[i]);
 		}
 
-		for (int i = 0; i < lottoPaper.getCount().size(); i++) {
+		for (int i = 0; i < size; i++) {
 			isAutos[i].setText(isAuto(lottoPaper.getCount().get(i)));
 			numbers[i].setText(lottoPaper.getLotto().get(i + 1).toString());
 		}
