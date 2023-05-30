@@ -59,19 +59,62 @@ public class BuyFrame extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				JButton btn1 = (JButton) e.getSource();
+				int j = 0;
 				for (int i = 0; i < 5; i++) {
 					if (btn1.equals(btnResets[i])) {
 						isAutos[i].setText("자동여부");
 						numbers[i].setText("00 00 00 00 00 00");
-						System.out.println(i + 1 + "번째 초기화");
+						System.out.println("i값 출력 : " + i);
+						Map<Integer, Set<Integer>> removeMap = lottopaper.getLotto();
+						removeMap.remove(i);
+						j = i;
+						countList--;
+						break;
 					}
 				}
+				lottoMap = lottopaper.getLotto();
+				for (int i = j; i < lottoMap.size(); i++) {
+					Map<Integer, Set<Integer>> replaceMap = lottopaper.getLotto();
+					Set<Integer> replaceSet = replaceMap.get(i + 1);
+					replaceMap.put(i, replaceSet);
+				}
+				resetBtnPrint();
 			}
 
 		};
 		return actionlistener;
 	}
 	
+	private void resetBtnPrint() {
+
+		for (int i = 0; i < 5; i++) {
+			isAutos[i].setText("자동여부");
+			numbers[i].setText("00 00 00 00 00 00");
+		}
+
+		String str = "";
+		int i;
+		for (i = 0; i < lottoMap.size() - 1; i++) {
+
+			Set<Integer> values = lottoMap.get(i);
+			for (Integer set : values) {
+				str += set + " ";
+				System.out.println("str : " + str);
+			}
+
+			numbers[i].setText(str);
+			isAutos[i].setText(rtm.자동버튼(autoCount.get(i)));
+			str = "";
+		}
+
+		System.out.println("i : " + i);
+		/*
+		 * for (int j = i; j < 5; j++) { isAutos[j].setText("자동여부");
+		 * numbers[j].setText("00 00 00 00 00 00"); }
+		 */
+
+	}
+
 	private void selectNumPrint(Map<Integer, Set<Integer>> map, int count, int countList) {
 		String str = "";
 
@@ -124,7 +167,7 @@ public class BuyFrame extends JFrame {
 						// 버튼 정보 보내줄 예정
 						int bts = Integer.parseInt(button.getText());
 						buttonZip.add(bts);
-						System.out.println(buttonZip);
+						// System.out.println(buttonZip);
 						button.setEnabled(false);
 						if (count == 6) {
 							button.setEnabled(true);
@@ -224,7 +267,7 @@ public class BuyFrame extends JFrame {
 						count = 6;
 					}
 				} else {
-					System.out.println("test2");
+					// System.out.println("test2");
 					if (count == 1) {
 						autoCount.add(count);
 					} else if (count < 6) {
@@ -247,7 +290,7 @@ public class BuyFrame extends JFrame {
 					}
 				}
 				// System.out.println(autoCount);
-				System.out.println(buttonZip);
+				// System.out.println(buttonZip);
 
 			}
 		});
