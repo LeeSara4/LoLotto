@@ -1,6 +1,5 @@
-// 충전화면 프레임
-
 package Frame;
+// 충전화면 프레임
 
 import java.awt.Color;
 import java.awt.Font;
@@ -69,5 +68,8 @@ public class DepositFrame extends JFrame {
 		JButton btnNewButton_1 = new JButton("\uCDE8 \uC18C");
 		btnNewButton_1.setBounds(175, 132, 118, 43);
 		panel.add(btnNewButton_1);
+
+		setDefaultCloseOperation(HIDE_ON_CLOSE);
+		setVisible(true);
 	}
 }
