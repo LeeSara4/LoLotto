@@ -44,7 +44,11 @@ public class Receipt extends JFrame {
 
 		JButton btnNewButton = new RoundButton("메인으로");
 		btnNewButton.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
+				dispose();
+				MainFrame frame = new MainFrame();
+				frame.setVisible(true);
 			}
 		});
 		btnNewButton.setBounds(275, 10, 97, 23);
