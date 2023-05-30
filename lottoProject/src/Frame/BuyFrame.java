@@ -50,8 +50,8 @@ public class BuyFrame extends JFrame {
 		for (int i = 0; i < 5; i++) {
 			btnResets[i].addActionListener(actionlistener);
 		}
-		// lottopaper.setLotto(lottoMap);
-		// lottopaper.setCount(autoCount);
+		lottopaper.setLotto(lottoMap);
+		lottopaper.setCount(autoCount);
 	}
 
 	private ActionListener 결제초기화액션리스너() {
@@ -71,6 +71,17 @@ public class BuyFrame extends JFrame {
 		return actionlistener;
 	}
 	
+	private void selectNumPrint(Map<Integer, Set<Integer>> map, int count, int countList) {
+		String str = "";
+
+		Set<Integer> values = map.get(countList);
+		for (Integer set : values) {
+			str += set + " ";
+		}
+		numbers[countList].setText(str);
+		isAutos[countList].setText(rtm.자동버튼(autoCount.get(countList)));
+	}
+
 	// 
 	public Map<Integer, Set<Integer>> returnMap() {
 		return lottoMap;
@@ -79,6 +90,7 @@ public class BuyFrame extends JFrame {
 	public LottoPaper returnPaper() {
 		return lottopaper;
 	}
+
 
 	public BuyFrame() {
 		setBackground(SystemColor.window);
@@ -298,10 +310,11 @@ public class BuyFrame extends JFrame {
 		btnPlus.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent click) {
 
-				if (countList < 6) {
+				if (countList < 5) {
 					if (rtm.티켓등록(buttonZip.size())) {
 						// 이러한 조건에서 등록되야함.
 						lottoMap.put(countList, buttonZip); // 현재 0번째이기 때문에 숫자 0의 키를 가지는 맵
+						selectNumPrint(lottoMap, count, countList);
 						buttonZip = new TreeSet();
 						count = 0;
 						countList++;
@@ -309,8 +322,9 @@ public class BuyFrame extends JFrame {
 						for (int i = 0; i < buttons.size(); i++) {
 							buttons.get(i).setEnabled(true);
 						}
-						lottopaper.setLotto(lottoMap);
-						lottopaper.setCount(autoCount);
+
+						// lottopaper.setLotto(lottoMap);
+						// lottopaper.setCount(autoCount);
 					} else if (buttonZip.size() < 6) {
 						System.out.println("선택한 수가 부족하다.");
 						buttonZip = new TreeSet();
@@ -371,11 +385,9 @@ public class BuyFrame extends JFrame {
 		lblMyMoney.setForeground(Color.DARK_GRAY);
 		panel_5.add(lblMyMoney);
 		lblMyMoney.setFont(new Font("맑은 고딕", Font.BOLD, 19));
-
-		if (countList < 5) {
-			countList++; // 카운트 맥여서 한 장에 최대 5번까지만 돌게끔
-		} else {
-			countList = 0;
-		}
+		/*
+		 * if (countList < 5) { countList++; // 카운트 맥여서 한 장에 최대 5번까지만 돌게끔 } else {
+		 * countList = 0; }
+		 */
 	}
 }
