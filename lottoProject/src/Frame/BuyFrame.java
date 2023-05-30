@@ -33,6 +33,7 @@ public class BuyFrame extends JFrame {
 	LottoPaper lottopaper = new LottoPaper();
 	RegiTiketManager rtm = new RegiTiketManager();
 	private int countList = 0;
+//	private List<Integer> buttonZipList = new ArrayList<>();
 
 	private JPanel[] choices;
 	private JLabel[] isAutos;
@@ -102,6 +103,7 @@ public class BuyFrame extends JFrame {
 						int bts = Integer.parseInt(button.getText());
 						buttonZip.add(bts);
 						System.out.println(buttonZip);
+						System.out.println("버튼집 사이즈" + buttonZip.size());
 						button.setEnabled(false);
 						if (count == 6) {
 							button.setEnabled(true);
@@ -225,6 +227,7 @@ public class BuyFrame extends JFrame {
 		panel.add(btnPlus);
 
 		RoundButton btnPayment = new RoundButton("결제하기");
+//		LottoPaper lottopaper = new LottoPaper(lottoMap, buttonZipList);
 		btnPayment.setForeground(SystemColor.window);
 		btnPayment.setBackground(SystemColor.activeCaption);
 		btnPayment.setBounds(408, 362, 170, 35);
@@ -253,6 +256,7 @@ public class BuyFrame extends JFrame {
 					if (rtm.티켓등록(buttonZip.size())) {
 						// 이러한 조건에서 등록되야함.
 						lottoMap.put(countList, buttonZip); // 현재 0번째이기 때문에 숫자 0의 키를 가지는 맵
+//						buttonZipList.add(buttonZip.size()); // 버튼집사이즈를 저장해서 수동,자동,반자동 체크
 						System.out.println(count);
 						buttonZip = new TreeSet();
 						count = 0;
