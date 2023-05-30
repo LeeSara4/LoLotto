@@ -210,7 +210,7 @@ public class BuyFrame extends JFrame {
 					buttons.get(i).setEnabled(true);
 
 				}
-				buttonZip = new TreeSet();
+				buttonZip = new TreeSet<>();
 				count = 0;
 
 			}
