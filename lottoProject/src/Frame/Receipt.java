@@ -24,7 +24,7 @@ public class Receipt extends JFrame {
 			@Override
 			protected void paintComponent(Graphics g) {
 				super.paintComponent(g);
-				ImageIcon imageIcon = new ImageIcon("loottoo.PNG");
+				ImageIcon imageIcon = new ImageIcon("loottoo2.PNG");
 				imageIcon.paintIcon(this, g, 0, 0);
 			}
 		};
