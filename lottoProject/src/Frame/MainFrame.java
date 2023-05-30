@@ -1,6 +1,7 @@
 package Frame;
 
 import java.awt.EventQueue;
+import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -46,12 +47,13 @@ public class MainFrame extends JFrame {
 		panel.setBounds(0, 0, 434, 261);
 		contentPane.add(panel);
 		panel.setLayout(null);
+		panel.setBackground(SystemColor.window);
 
 		JLabel lblNewLabel = new JLabel("New label");
 		lblNewLabel.setBounds(12, 10, 410, 129);
 		panel.add(lblNewLabel);
 
-		JButton btnNewButton = new JButton("구매하기");
+		JButton btnNewButton = new RoundButton("구매하기");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				BuyFrame buyFrame = new BuyFrame();
@@ -62,7 +64,7 @@ public class MainFrame extends JFrame {
 		btnNewButton.setBounds(90, 149, 97, 33);
 		panel.add(btnNewButton);
 
-		JButton btnNewButton_1 = new JButton("구매내역");
+		JButton btnNewButton_1 = new RoundButton("구매내역");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				BuyList buyList = new BuyList();
@@ -73,7 +75,7 @@ public class MainFrame extends JFrame {
 		btnNewButton_1.setBounds(249, 149, 97, 33);
 		panel.add(btnNewButton_1);
 
-		JButton btnNewButton_2 = new JButton("추첨");
+		JButton btnNewButton_2 = new RoundButton("추첨");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ShootNumImage shootNumImage = new ShootNumImage();
@@ -84,7 +86,7 @@ public class MainFrame extends JFrame {
 		btnNewButton_2.setBounds(90, 204, 97, 33);
 		panel.add(btnNewButton_2);
 
-		JButton btnNewButton_3 = new JButton("당첨 확인");
+		JButton btnNewButton_3 = new RoundButton("당첨 확인");
 		btnNewButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				WinningDetails winningDetails = new WinningDetails();
