@@ -58,5 +58,4 @@ public class LottoBuyingList {
 	public String toString() {
 		return "LottoUser [buyList=" + buyList + ", money=" + money + "]";
 	}
-
 }
