@@ -23,6 +23,8 @@ public class Receipt extends JFrame {
 
 	public Receipt(LottoPaper lottoPaper) {
 
+		System.out.println(lottoPaper.getCount().size()); // 카운트의 사이즈;
+
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 400, 10);
 		contentPane = new JPanel();
