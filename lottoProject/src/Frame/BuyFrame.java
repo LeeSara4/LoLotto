@@ -67,6 +67,7 @@ public class BuyFrame extends JFrame {
 					}
 				}
 			}
+
 		};
 		return actionlistener;
 	}
