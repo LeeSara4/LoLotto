@@ -282,6 +282,10 @@ public class BuyFrame extends JFrame {
 		btnPayment.setBounds(408, 362, 170, 35);
 		btnPayment.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				lottopaper.setLotto(lottoMap);
+				lottopaper.setCount(autoCount);
+				System.out.println(autoCount);
+				System.out.println(lottoMap);
 				new PaymentCheckFrame();
 			}
 		});
@@ -316,8 +320,7 @@ public class BuyFrame extends JFrame {
 						for (int i = 0; i < buttons.size(); i++) {
 							buttons.get(i).setEnabled(true);
 						}
-						lottopaper.setLotto(lottoMap);
-						lottopaper.setCount(autoCount);
+
 					} else if (buttonZip.size() < 6) {
 						System.out.println("선택한 수가 부족하다.");
 						buttonZip = new TreeSet();
