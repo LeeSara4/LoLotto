@@ -87,7 +87,7 @@ public class BuyFrame extends JFrame {
 		isAutos[countList].setText(rtm.자동버튼(autoCount.get(countList)));
 	}
 
-	public Map<Integer, Set<Integer>> returnMap() { // 로또 한줄
+	public Map<Integer, Set<Integer>> returnMap() {
 		return lottoMap;
 	}
 
@@ -295,7 +295,6 @@ public class BuyFrame extends JFrame {
 
 				new PaymentCheckFrame(lottopaper); // checkFrame에 보내기
 				lottopaper = new LottoPaper(); // 초기화
-				dispose();
 
 			}
 		});
