@@ -6,7 +6,8 @@ import java.util.Set;
 public class RegiTiketManager {
 	LottoPaper lottopaper = new LottoPaper();
 	Map<String, Set<Integer>> lotto;
-	String lineKey;
+	
+	
 
 	// 리턴 해줘서 불륜값에 따라 등록하기
 	public boolean 티켓등록(int numbers) {
@@ -16,7 +17,7 @@ public class RegiTiketManager {
 		return true;
 	}
 
-	// 얘로 자동인지 확인
+	// 얘로 선택 방식 확인 및 리턴
 	public String 자동버튼(int count) {
 		if (count < 6 && count > 0) {
 			return "반자동";
@@ -26,6 +27,14 @@ public class RegiTiketManager {
 			return "자동";
 		}
 	}
+	
+	
+//	public int 맵KEY(int KEY) {
+		
+		
+		
+//	}
+	
 
 	/*
 	 * // lottoPaper 넘겨주기 public 구매내역반환(맵타입 받기) { lotto = new HashMap<>();
