@@ -29,19 +29,4 @@ public class RegiTiketManager {
 	}
 	
 	
-//	public int 맵KEY(int KEY) {
-		
-		
-		
-//	}
-	
-
-	/*
-	 * // lottoPaper 넘겨주기 public 구매내역반환(맵타입 받기) { lotto = new HashMap<>();
-	 * Set<Integer> numbers = new TreeSet<>(); numbers.add(getValue); // 정령되면서 리스트
-	 * 입력
-	 * 
-	 * return 맵타입 구매내역반환 } public void 초기화() { }
-	 * 
-	 */
 }
