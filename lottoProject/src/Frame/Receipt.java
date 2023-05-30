@@ -115,8 +115,8 @@ public class Receipt extends JFrame {
 
 		for (int i = 0; i < 5; i++) {
 			choices[i] = new JPanel();
-			isAutos[i] = new JLabel(" ");
-			numbers[i] = new JLabel(" ");
+			isAutos[i] = new JLabel("");
+			numbers[i] = new JLabel("");
 
 			choices[i].setBackground(Color.WHITE);
 		}
