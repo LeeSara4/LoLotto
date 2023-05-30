@@ -72,12 +72,11 @@ public class BuyFrame extends JFrame {
 	public Map<Integer, Set<Integer>> returnMap() {
 		return lottoMap;
 	}
-	
+
 	public LottoPaper returnPaper() {
 		return lottopaper;
 	}
-	
-	
+
 	public BuyFrame() {
 		setBackground(SystemColor.window);
 		lottoMap = lottopaper.getLotto();
@@ -191,21 +190,13 @@ public class BuyFrame extends JFrame {
 
 			// 선택 화면에서 자동화를 담당하는 녀석
 			public void actionPerformed(ActionEvent click) {
-				//System.out.println(count);
+				// System.out.println(count);
 				if (count == 6) {
 					for (int i = 0; i < buttons.size(); i++) {
 						buttons.get(i).setEnabled(true);
 					}
-					// buttonZip = new TreeSet<>();
-					//Random random = new Random();
-					//Integer randomNum = random.nextInt(45) + 1;
-					// System.out.println("test1");
-					//count = 0 ;
-					//buttonZip.clear();
-					System.out.println(buttonZip.size());
-					int i=0;
-					while (i<6) {
-					//	System.out.println("와일문안돔");
+					buttonZip = new TreeSet();
+					while (buttonZip.size() < 6) {
 						Random random = new Random();
 						Integer randomNum = random.nextInt(45) + 1;
 						buttonZip.add(randomNum);
@@ -215,7 +206,6 @@ public class BuyFrame extends JFrame {
 							}
 						}
 						count = 6;
-						i++;
 					}
 				} else {
 					System.out.println("test2");
