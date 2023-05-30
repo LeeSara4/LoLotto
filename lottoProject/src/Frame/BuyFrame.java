@@ -39,16 +39,8 @@ public class BuyFrame extends JFrame {
 	private LottoPaper lottopaper = new LottoPaper(); // 생성자
 	private LottoBuyingList lbl = new LottoBuyingList();
 	private int count = 0; // 선택된 번호의 개수
-	private int countList = 0; // 자동 반자동 확인용 카운트
+	private int countList = 1; // 자동 반자동 확인용 카운트
 	private int price;
-	/*ArrayList<JButton> buttons;
-	private int count = 0;
-	Set<Integer> buttonZip = new TreeSet<>();
-	int price;
-	Map<Integer, Set<Integer>> lottoMap;
-	LottoPaper lottopaper = new LottoPaper();
-	RegiTiketManager rtm = new RegiTiketManager();
-	private int countList = 1;*/
 	private JPanel[] choices;
 	private JLabel[] isAutos;
 	private JLabel[] numbers;
@@ -75,8 +67,20 @@ public class BuyFrame extends JFrame {
 					}
 				}
 			}
+
 		};
 		return actionlistener;
+	}
+
+	private void selectNumPrint(Map<Integer, Set<Integer>> map, int count, int countList) {
+		String str = "";
+
+		Set<Integer> values = map.get(countList);
+		for (Integer set : values) {
+			str += set + " ";
+		}
+		numbers[countList].setText(str);
+		isAutos[countList].setText(rtm.자동버튼(autoCount.get(countList)));
 	}
 
 	public Map<Integer, Set<Integer>> returnMap() { // 로또 한줄
@@ -287,8 +291,6 @@ public class BuyFrame extends JFrame {
 				// 한장에 입력받은 값을 담기
 				lottopaper.setLotto(lottoMap);
 				lottopaper.setCount(autoCount);
-				System.out.println(lottoMap);
-				System.out.println(autoCount);
 				new PaymentCheckFrame(lottopaper); // checkFrame에 보내기
 				lottopaper = new LottoPaper(); // 초기화
 				dispose();
@@ -316,6 +318,7 @@ public class BuyFrame extends JFrame {
 					if (rtm.티켓등록(buttonZip.size())) {
 						// 이러한 조건에서 등록되야함.
 						lottoMap.put(countList, buttonZip); // 현재 0번째이기 때문에 숫자 0의 키를 가지는 맵
+						selectNumPrint(lottoMap, count, countList);
 						buttonZip = new TreeSet();
 						count = 0;
 						countList++;
@@ -325,7 +328,6 @@ public class BuyFrame extends JFrame {
 						}
 
 						lbl.setBuyList(lottoMapList);
-
 						// lottopaper.setLotto(lottoMap);
 						// lottopaper.setCount(autoCount);
 					} else if (buttonZip.size() < 6) {
@@ -389,6 +391,5 @@ public class BuyFrame extends JFrame {
 		lblMyMoney.setForeground(Color.DARK_GRAY);
 		panel_5.add(lblMyMoney);
 		lblMyMoney.setFont(new Font("맑은 고딕", Font.BOLD, 19));
-
 	}
 }
