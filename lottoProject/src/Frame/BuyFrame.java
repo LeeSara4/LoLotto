@@ -202,10 +202,6 @@ public class BuyFrame extends JFrame {
 					buttons.get(i).setEnabled(true);
 					
 				}
-				/*for (JButton elem : buttons) {
-					elem.setEnabled(true);
-				}*/
-				//buttons.clear();
 				buttonZip = new TreeSet();
 				count = 0;
 				
@@ -245,7 +241,7 @@ public class BuyFrame extends JFrame {
 
 		btnPlus.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent click) {
-				
+				if(countList < 6) {
 				if (rtm.티켓등록(buttonZip.size())) {
 					// 이러한 조건에서 등록되야함.
 					lottoMap.put(countList, buttonZip); // 현재 0번째이기 때문에 숫자 0의 키를 가지는 맵
@@ -268,6 +264,9 @@ public class BuyFrame extends JFrame {
 					
 					
 					
+				} 
+				} else {
+					System.out.println("한장이 가득 찹니다.");
 				}
 				// 여기서 맵을 보내줘야 함.
 				for (JButton elem : buttons) { // 선택화면 불 켜기
