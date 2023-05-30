@@ -7,6 +7,7 @@ import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Map;
 import java.util.Random;
 import java.util.Set;
 import java.util.TreeSet;
@@ -18,6 +19,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
+import lottoProject.LottoPaper;
 import lottoProject.RegiTiketManager;
 
 public class BuyFrame extends JFrame {
@@ -27,8 +29,11 @@ public class BuyFrame extends JFrame {
 	private int count;
 	Set<Integer> buttonZip = new TreeSet<>();
 	int price;
-
+	Map<Integer, Set<Integer>> lottoMap;
+	LottoPaper lottopaper = new LottoPaper();
 	RegiTiketManager rtm = new RegiTiketManager();
+	private int countList = 0;
+
 	private JPanel[] choices;
 	private JLabel[] isAutos;
 	private JLabel[] numbers;
@@ -61,8 +66,13 @@ public class BuyFrame extends JFrame {
 		return actionlistener;
 	}
 
+	public Map<Integer, Set<Integer>> returnMap() {
+		return lottoMap;
+	}
+
 	public BuyFrame() {
 		setBackground(SystemColor.window);
+		lottoMap = lottopaper.getLotto();
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 799, 483);
@@ -194,12 +204,17 @@ public class BuyFrame extends JFrame {
 		btnResetList.setForeground(Color.PINK);
 		btnResetList.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				for (JButton elem : buttons) {
-					elem.setEnabled(true);
+				System.out.println("선택초기화 실행");
+
+				for(int i=0;i<buttons.size();i++) {
+					buttons.get(i).setEnabled(true);
+					
 				}
-				buttonZip.clear();
+				buttonZip = new TreeSet();
 				count = 0;
+				
 			}
+			
 		});
 		panel.add(btnResetList);
 
@@ -234,18 +249,42 @@ public class BuyFrame extends JFrame {
 
 		btnPlus.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent click) {
+				if(countList < 6) {
 				if (rtm.티켓등록(buttonZip.size())) {
 					// 이러한 조건에서 등록되야함.
+					lottoMap.put(countList, buttonZip); // 현재 0번째이기 때문에 숫자 0의 키를 가지는 맵
+					System.out.println(count);
+					buttonZip = new TreeSet();
+					count = 0;
+					countList++;
+					System.out.println("작동");
+					for(int i=0;i<buttons.size();i++) {
+						buttons.get(i).setEnabled(true);
+					}
+
 				} else if (buttonZip.size() < 6) {
 					System.out.println("선택한 수가 부족하다.");
+					buttonZip = new TreeSet();
+					count = 0;
+					for(int i=0;i<buttons.size();i++) {
+						buttons.get(i).setEnabled(true);
+					}
+					
+					
+					
+				} 
+				} else {
+					System.out.println("한장이 가득 찹니다.");
 				}
 				// 여기서 맵을 보내줘야 함.
-				for (JButton elem : buttons) {
+				for (JButton elem : buttons) { // 선택화면 불 켜기
 					elem.setEnabled(true);
 				}
-				buttonZip.clear();
+				count = 0;
+				System.out.println(lottoMap);
 			}
 		});
+
 		결제초기화액션리스너추가(결제초기화액션리스너());
 
 		JPanel panel_1 = new JPanel();
@@ -286,5 +325,10 @@ public class BuyFrame extends JFrame {
 		panel_5.add(lblMyMoney);
 		lblMyMoney.setFont(new Font("맑은 고딕", Font.BOLD, 19));
 
+		if (countList < 5) {
+			countList++; // 카운트 맥여서 한 장에 최대 5번까지만 돌게끔
+		} else {
+			countList = 0;
+		}
 	}
 }

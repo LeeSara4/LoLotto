@@ -24,25 +24,4 @@ public class PaymentTicketManager {
 	 * 
 	 * }
 	 */
-
-	public static void main(String[] args) {
-		PaymentTicketManager a = new PaymentTicketManager();
-		a.lotto = new HashMap<>();
-		HashSet<Integer> test = new HashSet<>();
-		test.add(1);
-		test.add(3);
-		test.add(5);
-		test.add(6);
-		test.add(20);
-		test.add(30);
-
-		a.lotto.put("1", test);
-		System.out.println(a.lotto.get("1"));
-		/*
-		 * Iterator<Entry<String, Set<Integer>>> entries =
-		 * a.lotto.entrySet().iterator(); while (entries.hasNext()) {
-		 * System.out.println(entries.next().getValue() + " " +
-		 * entries.next().getKey()); }
-		 */
-	}
 }
