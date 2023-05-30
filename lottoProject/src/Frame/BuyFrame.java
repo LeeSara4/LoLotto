@@ -206,15 +206,15 @@ public class BuyFrame extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("선택초기화 실행");
 
-				for(int i=0;i<buttons.size();i++) {
+				for (int i = 0; i < buttons.size(); i++) {
 					buttons.get(i).setEnabled(true);
-					
+
 				}
-				buttonZip = new TreeSet();
+				buttonZip = new TreeSet<>();
 				count = 0;
-				
+
 			}
-			
+
 		});
 		panel.add(btnResetList);
 
@@ -249,30 +249,28 @@ public class BuyFrame extends JFrame {
 
 		btnPlus.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent click) {
-				if(countList < 6) {
-				if (rtm.티켓등록(buttonZip.size())) {
-					// 이러한 조건에서 등록되야함.
-					lottoMap.put(countList, buttonZip); // 현재 0번째이기 때문에 숫자 0의 키를 가지는 맵
-					System.out.println(count);
-					buttonZip = new TreeSet();
-					count = 0;
-					countList++;
-					System.out.println("작동");
-					for(int i=0;i<buttons.size();i++) {
-						buttons.get(i).setEnabled(true);
-					}
+				if (countList < 6) {
+					if (rtm.티켓등록(buttonZip.size())) {
+						// 이러한 조건에서 등록되야함.
+						lottoMap.put(countList, buttonZip); // 현재 0번째이기 때문에 숫자 0의 키를 가지는 맵
+						System.out.println(count);
+						buttonZip = new TreeSet();
+						count = 0;
+						countList++;
+						System.out.println("작동");
+						for (int i = 0; i < buttons.size(); i++) {
+							buttons.get(i).setEnabled(true);
+						}
 
-				} else if (buttonZip.size() < 6) {
-					System.out.println("선택한 수가 부족하다.");
-					buttonZip = new TreeSet();
-					count = 0;
-					for(int i=0;i<buttons.size();i++) {
-						buttons.get(i).setEnabled(true);
+					} else if (buttonZip.size() < 6) {
+						System.out.println("선택한 수가 부족하다.");
+						buttonZip = new TreeSet();
+						count = 0;
+						for (int i = 0; i < buttons.size(); i++) {
+							buttons.get(i).setEnabled(true);
+						}
+
 					}
-					
-					
-					
-				} 
 				} else {
 					System.out.println("한장이 가득 찹니다.");
 				}
