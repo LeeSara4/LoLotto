@@ -12,11 +12,12 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
-public class PaymentCheckFrame extends JFrame {
+import lottoProject.LottoPaper;
 
+public class PaymentCheckFrame extends JFrame {
 	private JPanel contentPane;
 
-	public PaymentCheckFrame() {
+	public PaymentCheckFrame(LottoPaper lottoPaper) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 300, 240);
 		contentPane = new JPanel();
@@ -41,7 +42,7 @@ public class PaymentCheckFrame extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new Receipt();
+				new Receipt(lottoPaper);
 				dispose();
 			}
 		});
