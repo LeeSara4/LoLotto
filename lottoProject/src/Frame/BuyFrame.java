@@ -147,6 +147,14 @@ public class BuyFrame extends JFrame {
 
 		RoundButton btnMain = new RoundButton("메인으로");
 		btnMain.setBounds(655, 10, 97, 23);
+		btnMain.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				MainFrame frame = new MainFrame();
+				frame.setVisible(true);
+			}
+		});
 		contentPane.add(btnMain);
 
 		JPanel panel = new JPanel();
