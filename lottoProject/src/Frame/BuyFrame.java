@@ -36,8 +36,6 @@ public class BuyFrame extends JFrame {
 	LottoPaper lottopaper = new LottoPaper();
 	RegiTiketManager rtm = new RegiTiketManager();
 	private int countList = 0;
-//	private List<Integer> buttonZipList = new ArrayList<>();
-
 	private JPanel[] choices;
 	private JLabel[] isAutos;
 	private JLabel[] numbers;
@@ -197,16 +195,8 @@ public class BuyFrame extends JFrame {
 					for (int i = 0; i < buttons.size(); i++) {
 						buttons.get(i).setEnabled(true);
 					}
-					// buttonZip = new TreeSet<>();
-					// Random random = new Random();
-					// Integer randomNum = random.nextInt(45) + 1;
-					// System.out.println("test1");
-					// count = 0 ;
-					// buttonZip.clear();
-					System.out.println(buttonZip.size());
-					int i = 0;
-					while (i < 6) {
-						// System.out.println("와일문안돔");
+					buttonZip = new TreeSet();
+					while (buttonZip.size() < 6) {
 						Random random = new Random();
 						Integer randomNum = random.nextInt(45) + 1;
 						buttonZip.add(randomNum);
@@ -216,7 +206,6 @@ public class BuyFrame extends JFrame {
 							}
 						}
 						count = 6;
-						i++;
 					}
 				} else {
 					System.out.println("test2");
@@ -275,7 +264,6 @@ public class BuyFrame extends JFrame {
 		panel.add(btnPlus);
 
 		RoundButton btnPayment = new RoundButton("결제하기");
-//		LottoPaper lottopaper = new LottoPaper(lottoMap, buttonZipList);
 		btnPayment.setForeground(SystemColor.window);
 		btnPayment.setBackground(SystemColor.activeCaption);
 		btnPayment.setBounds(408, 362, 170, 35);
@@ -287,6 +275,7 @@ public class BuyFrame extends JFrame {
 				new PaymentCheckFrame(lottopaper); // checkFrame에 보내기
 				lottopaper = new LottoPaper(); // 초기화
 				dispose();
+
 			}
 		});
 		contentPane.add(btnPayment);
@@ -310,9 +299,6 @@ public class BuyFrame extends JFrame {
 					if (rtm.티켓등록(buttonZip.size())) {
 						// 이러한 조건에서 등록되야함.
 						lottoMap.put(countList, buttonZip); // 현재 0번째이기 때문에 숫자 0의 키를 가지는 맵
-
-						System.out.println(count);
-
 						buttonZip = new TreeSet();
 						count = 0;
 						countList++;
@@ -320,7 +306,8 @@ public class BuyFrame extends JFrame {
 						for (int i = 0; i < buttons.size(); i++) {
 							buttons.get(i).setEnabled(true);
 						}
-
+						lottopaper.setLotto(lottoMap);
+						lottopaper.setCount(autoCount);
 					} else if (buttonZip.size() < 6) {
 						System.out.println("선택한 수가 부족하다.");
 						buttonZip = new TreeSet();
