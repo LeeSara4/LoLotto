@@ -46,9 +46,6 @@ public class BuyFrame extends JFrame {
 	private JLabel[] numbers;
 	private RoundButton[] btnResets;
 
-	public List<LottoPaper> returnMapList() { // 로터페이퍼 묶음
-		return lottoMapList;
-	}
 
 	private void 결제초기화액션리스너추가(ActionListener actionlistener) {
 		for (int i = 0; i < 5; i++) {
@@ -75,6 +72,7 @@ public class BuyFrame extends JFrame {
 		return actionlistener;
 	}
 
+
 	public Map<Integer, Set<Integer>> returnMap() { // 로또 한줄
 		return lottoMap;
 	}
@@ -83,10 +81,15 @@ public class BuyFrame extends JFrame {
 		return lottopaper;
 	}
 
+	public LottoBuyingList returnMapList() { // 로또 페이퍼 묶음
+		return lbl;
+	}
+
 	public BuyFrame() {
 		setBackground(SystemColor.window);
 		lottoMap = lottopaper.getLotto();
-
+		lottoMapList = lbl.getBuyList();
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 799, 483);
 		contentPane = new JPanel();
@@ -314,6 +317,11 @@ public class BuyFrame extends JFrame {
 						for (int i = 0; i < buttons.size(); i++) {
 							buttons.get(i).setEnabled(true);
 						}
+						
+						
+						lbl.setBuyList(lottoMapList);
+						
+						
 						// lottopaper.setLotto(lottoMap);
 						// lottopaper.setCount(autoCount);
 					} else if (buttonZip.size() < 6) {
@@ -327,7 +335,7 @@ public class BuyFrame extends JFrame {
 					}
 				} else {
 					System.out.println("한장이 가득 찹니다.");
-					lottoMapList.add(lottopaper);  // 로또를 여러장 가지기 위해 추가중 여기서 추가
+					lottoMapList.add(lottopaper);// 로또를 여러장 가지기 위해 추가중 여기서 추가
 				}
 				// 여기서 맵을 보내줘야 함.
 				for (JButton elem : buttons) { // 선택화면 불 켜기
