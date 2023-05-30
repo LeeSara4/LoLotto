@@ -1,14 +1,17 @@
 // 임태경
 package lottoProject;
 
-import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
 public class PaymentTicketManager {
 	PaymentLottoPaper pmLottoPaper = new PaymentLottoPaper();
 	Map<String, Set<Integer>> lotto;
+	private LottoBuyingList lottoList;
+
+	public void addLotto(LottoPaper lotto) {
+		lottoList.getBuyList().add(lotto);
+	}
 
 	// 등록한 티켓 정보 가져오기
 	public void setRegiTicket(Map<String, Set<Integer>> lotto) {
