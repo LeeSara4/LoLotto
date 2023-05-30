@@ -279,19 +279,4 @@ public class BuyFrame extends JFrame {
 		lblMyMoney.setFont(new Font("맑은 고딕", Font.BOLD, 19));
 
 	}
-	/**
-	 * Launch the application.
-	 */
-//	public static void main(String[] args) {
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					Buy frame = new Buy();
-//					frame.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-//	}
 }
