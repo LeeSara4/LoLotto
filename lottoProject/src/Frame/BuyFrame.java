@@ -37,9 +37,10 @@ public class BuyFrame extends JFrame {
 	private List<LottoPaper> lottoMapList = new ArrayList<>();
 	RegiTiketManager rtm = new RegiTiketManager(); // 생성자
 	LottoPaper lottopaper = new LottoPaper(); // 생성자
-	private LottoBuyingList lbl = new LottoBuyingList();
+	private LottoBuyingList lbl = new LottoBuyingList(); // 생성자
 	private int count = 0; // 선택된 번호의 개수
-	private int countList = 0; // 자동 반자동 확인용 카운트
+	private int countList = 0; // 맵의 키 값
+	int countNum = 0; // 자동 유무 확인하는 수치 임시저장 공간
 	int price;
 	private JPanel[] choices;
 	private JLabel[] isAutos;
@@ -47,6 +48,7 @@ public class BuyFrame extends JFrame {
 	private RoundButton[] btnResets;
 
 	private void 결제초기화액션리스너추가(ActionListener actionlistener) {
+
 		for (int i = 0; i < 5; i++) {
 			btnResets[i].addActionListener(actionlistener);
 		}
@@ -63,7 +65,9 @@ public class BuyFrame extends JFrame {
 					if (btn1.equals(btnResets[i])) {
 						isAutos[i].setText("자동여부");
 						numbers[i].setText("00 00 00 00 00 00");
-						System.out.println(i + 1 + "번째 초기화");
+						Map<Integer, Set<Integer>> removeMap = lottopaper.getLotto();
+						removeMap.remove(i);
+
 					}
 				}
 			}
@@ -227,11 +231,10 @@ public class BuyFrame extends JFrame {
 						count = 6;
 					}
 				} else {
-					System.out.println("test2");
 					if (count == 1) {
-						autoCount.add(count);
+						countNum = count;
 					} else if (count < 6) {
-						autoCount.add(count);
+						countNum = count;
 					}
 
 					if (count < 6 && count >= 0) {
@@ -289,6 +292,7 @@ public class BuyFrame extends JFrame {
 				// 한장에 입력받은 값을 담기
 				lottopaper.setLotto(lottoMap);
 				lottopaper.setCount(autoCount);
+
 				new PaymentCheckFrame(lottopaper); // checkFrame에 보내기
 				lottopaper = new LottoPaper(); // 초기화
 				dispose();
@@ -311,6 +315,7 @@ public class BuyFrame extends JFrame {
 
 		btnPlus.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent click) {
+				autoCount.add(countNum);
 
 				if (countList < 5) {
 					if (rtm.티켓등록(buttonZip.size())) {
@@ -337,15 +342,18 @@ public class BuyFrame extends JFrame {
 						}
 
 					}
+
 				} else {
 					System.out.println("한장이 가득 찹니다.");
-					lottoMapList.add(lottopaper);// 로또를 여러장 가지기 위해 추가중 여기서 추가
+					System.out.println(lottoMap);
 				}
 				// 여기서 맵을 보내줘야 함.
 				for (JButton elem : buttons) { // 선택화면 불 켜기
 					elem.setEnabled(true);
 				}
 				count = 0;
+//				lottoMapList.add(lottopaper);// 로또를 여러장 가지기 위해 추가중 여기서 추가
+//				System.out.println(lottoMapList.indexOf(1));  // 여러장 추가할때 사용예정
 				System.out.println(lottoMap);
 			}
 		});
