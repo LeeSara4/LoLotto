@@ -30,17 +30,17 @@ import lottoProject.RegiTiketManager;
 public class BuyFrame extends JFrame {
 
 	private JPanel contentPane;
-	private ArrayList<JButton> buttons; // 버튼 45개
-	private Set<Integer> buttonZip = new TreeSet<>(); // 로또 한줄
-	private Map<Integer, Set<Integer>> lottoMap; // 로또 5개 짜리 한장
+	ArrayList<JButton> buttons; // 버튼 45개
+	Set<Integer> buttonZip = new TreeSet<>(); // 로또 한줄
+	Map<Integer, Set<Integer>> lottoMap; // 로또 5개 짜리 한장
 	private List<Integer> autoCount = new ArrayList<>(); // 자동 반자동 리스트
 	private List<LottoPaper> lottoMapList = new ArrayList<>();
-	private RegiTiketManager rtm = new RegiTiketManager(); // 생성자
-	private LottoPaper lottopaper = new LottoPaper(); // 생성자
+	RegiTiketManager rtm = new RegiTiketManager(); // 생성자
+	LottoPaper lottopaper = new LottoPaper(); // 생성자
 	private LottoBuyingList lbl = new LottoBuyingList();
 	private int count = 0; // 선택된 번호의 개수
-	private int countList = 1; // 자동 반자동 확인용 카운트
-	private int price;
+	private int countList = 0; // 자동 반자동 확인용 카운트
+	int price;
 	private JPanel[] choices;
 	private JLabel[] isAutos;
 	private JLabel[] numbers;
@@ -270,9 +270,7 @@ public class BuyFrame extends JFrame {
 				}
 				buttonZip = new TreeSet();
 				count = 0;
-
 			}
-
 		});
 		panel.add(btnResetList);
 
