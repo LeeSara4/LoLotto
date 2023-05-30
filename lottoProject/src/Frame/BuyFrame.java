@@ -71,7 +71,7 @@ public class BuyFrame extends JFrame {
 		};
 		return actionlistener;
 	}
-	
+
 	private void selectNumPrint(Map<Integer, Set<Integer>> map, int count, int countList) {
 		String str = "";
 
@@ -83,7 +83,7 @@ public class BuyFrame extends JFrame {
 		isAutos[countList].setText(rtm.자동버튼(autoCount.get(countList)));
 	}
 
-	// 
+	//
 	public Map<Integer, Set<Integer>> returnMap() {
 		return lottoMap;
 	}
@@ -91,7 +91,6 @@ public class BuyFrame extends JFrame {
 	public LottoPaper returnPaper() {
 		return lottopaper;
 	}
-
 
 	public BuyFrame() {
 		setBackground(SystemColor.window);
@@ -290,7 +289,6 @@ public class BuyFrame extends JFrame {
 				lottopaper.setCount(autoCount);
 				new PaymentCheckFrame(lottopaper); // checkFrame에 보내기
 				lottopaper = new LottoPaper(); // 초기화
-				dispose();
 
 			}
 		});

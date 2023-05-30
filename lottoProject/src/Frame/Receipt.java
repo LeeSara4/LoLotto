@@ -10,7 +10,7 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
 import javax.swing.JButton;
-import javax.swing.JFrame;
+import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.Timer;
@@ -18,7 +18,7 @@ import javax.swing.border.EmptyBorder;
 
 import lottoProject.LottoPaper;
 
-public class Receipt extends JFrame {
+public class Receipt extends JDialog {
 	private JPanel contentPane;
 	private Timer timer;
 	private int windowHeight;
@@ -30,9 +30,9 @@ public class Receipt extends JFrame {
 
 	public Receipt(LottoPaper lottoPaper) {
 
-		System.out.println(lottoPaper.getCount().size()); // 카운트의 사이즈;
+		setModal(true);
 
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		System.out.println(lottoPaper.getCount().size()); // 카운트의 사이즈;
 		setBounds(100, 100, 400, 10);
 		contentPane = new JPanel();
 		contentPane.setBackground(SystemColor.window);
