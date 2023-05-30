@@ -20,6 +20,8 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
+import lottoProject.LottoBuyingList;
+
 //import com.sun.xml.internal.bind.v2.schemagen.xmlschema.List;
 
 import lottoProject.LottoPaper;
@@ -28,28 +30,32 @@ import lottoProject.RegiTiketManager;
 public class BuyFrame extends JFrame {
 
 	private JPanel contentPane;
-	ArrayList<JButton> buttons;
-	private int count = 0;
-	Set<Integer> buttonZip = new TreeSet<>();
-	int price;
-	Map<Integer, Set<Integer>> lottoMap;
-	LottoPaper lottopaper = new LottoPaper();
-	RegiTiketManager rtm = new RegiTiketManager();
-	private int countList = 0;
+	private ArrayList<JButton> buttons; // 버튼 45개
+	private Set<Integer> buttonZip = new TreeSet<>(); // 로또 한줄
+	private Map<Integer, Set<Integer>> lottoMap; // 로또 5개 짜리 한장
+	private List<Integer> autoCount = new ArrayList<>(); // 자동 반자동 리스트
+	private List<LottoPaper> lottoMapList = new ArrayList<>();
+	private RegiTiketManager rtm = new RegiTiketManager(); // 생성자
+	private LottoPaper lottopaper = new LottoPaper(); // 생성자
+	private LottoBuyingList lbl = new LottoBuyingList();
+	private int count = 0; // 선택된 번호의 개수
+	private int countList = 0; // 자동 반자동 확인용 카운트
+	private int price;
 	private JPanel[] choices;
 	private JLabel[] isAutos;
 	private JLabel[] numbers;
 	private RoundButton[] btnResets;
-	private List<Integer> autoCount = new ArrayList<>();
 
-	// Ticket ticket = new Ticket(numbers, price);
-	/**
-	 * Create the frame.
-	 */
+	public List<LottoPaper> returnMapList() { // 로터페이퍼 묶음
+		return lottoMapList;
+	}
+
 	private void 결제초기화액션리스너추가(ActionListener actionlistener) {
 		for (int i = 0; i < 5; i++) {
 			btnResets[i].addActionListener(actionlistener);
 		}
+		lottopaper.setLotto(lottoMap);
+		lottopaper.setCount(autoCount);
 	}
 
 	private ActionListener 결제초기화액션리스너() {
@@ -69,11 +75,11 @@ public class BuyFrame extends JFrame {
 		return actionlistener;
 	}
 
-	public Map<Integer, Set<Integer>> returnMap() {
+	public Map<Integer, Set<Integer>> returnMap() { // 로또 한줄
 		return lottoMap;
 	}
 
-	public LottoPaper returnPaper() {
+	public LottoPaper returnPaper() { // 로또 다섯줄
 		return lottopaper;
 	}
 
@@ -289,7 +295,7 @@ public class BuyFrame extends JFrame {
 		btnPlus.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent click) {
 
-				if (countList < 6) {
+				if (countList < 5) {
 					if (rtm.티켓등록(buttonZip.size())) {
 						// 이러한 조건에서 등록되야함.
 						lottoMap.put(countList, buttonZip); // 현재 0번째이기 때문에 숫자 0의 키를 가지는 맵
@@ -300,8 +306,8 @@ public class BuyFrame extends JFrame {
 						for (int i = 0; i < buttons.size(); i++) {
 							buttons.get(i).setEnabled(true);
 						}
-						lottopaper.setLotto(lottoMap);
-						lottopaper.setCount(autoCount);
+						// lottopaper.setLotto(lottoMap);
+						// lottopaper.setCount(autoCount);
 					} else if (buttonZip.size() < 6) {
 						System.out.println("선택한 수가 부족하다.");
 						buttonZip = new TreeSet();
@@ -313,6 +319,7 @@ public class BuyFrame extends JFrame {
 					}
 				} else {
 					System.out.println("한장이 가득 찹니다.");
+					lottoMapList.add(lottopaper);  // 로또를 여러장 가지기 위해 추가중 여기서 추가
 				}
 				// 여기서 맵을 보내줘야 함.
 				for (JButton elem : buttons) { // 선택화면 불 켜기
@@ -363,10 +370,5 @@ public class BuyFrame extends JFrame {
 		panel_5.add(lblMyMoney);
 		lblMyMoney.setFont(new Font("맑은 고딕", Font.BOLD, 19));
 
-		if (countList < 5) {
-			countList++; // 카운트 맥여서 한 장에 최대 5번까지만 돌게끔
-		} else {
-			countList = 0;
-		}
 	}
 }
