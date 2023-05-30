@@ -115,6 +115,11 @@ public class Receipt extends JFrame {
 		lblNewLabel_5.setBounds(114, 162, 160, 15);
 		contentPane.add(lblNewLabel_5);
 
+		JLabel lblNewLabel_5_1 = new JLabel("2023-06-10 21:00:00");
+		lblNewLabel_5_1.setFont(new Font("맑은 고딕", Font.PLAIN, 14));
+		lblNewLabel_5_1.setBounds(114, 185, 160, 15);
+		contentPane.add(lblNewLabel_5_1);
+
 		JPanel panel = new JPanel();
 		panel.setBackground(SystemColor.window);
 		panel.setBounds(67, 233, 267, 173);
@@ -135,14 +140,17 @@ public class Receipt extends JFrame {
 		for (int i = 0; i < size; i++) {
 			choices[i].add(isAutos[i]);
 			choices[i].add(numbers[i]);
-			isAutos[i].setFont(new Font("맑은 고딕", Font.PLAIN, 13));
-			numbers[i].setFont(new Font("맑은 고딕", Font.PLAIN, 13));
+			isAutos[i].setFont(new Font("맑은 고딕", Font.PLAIN, 15));
+			numbers[i].setFont(new Font("맑은 고딕", Font.PLAIN, 15));
 			panel.add(choices[i]);
 		}
 
 		for (int i = 0; i < size; i++) {
 			isAutos[i].setText(isAuto(lottoPaper.getCount().get(i)));
-			numbers[i].setText(lottoPaper.getLotto().get(i + 1).toString());
+			String number = lottoPaper.getLotto().get(i + 1).toString();
+			String text = number.replace(",", " ");
+			String text2 = text.replace("[", "").replace("]", "");
+			numbers[i].setText(text2);
 		}
 
 		JPanel panel_1 = new JPanel();
