@@ -5,6 +5,9 @@ import java.awt.Font;
 import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -103,8 +106,13 @@ public class Receipt extends JFrame {
 		contentPane.add(lblNewLabel_2_1_1);
 
 		JLabel lblNewLabel_5 = new JLabel("2023 / 06 / 07 (수)");
+		LocalDate nowDate = LocalDate.now();
+		LocalTime nowTime = LocalTime.now();
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+		String formattedTime = nowTime.format(formatter);
+		lblNewLabel_5.setText(nowDate.toString() + " " + formattedTime);
 		lblNewLabel_5.setFont(new Font("맑은 고딕", Font.PLAIN, 14));
-		lblNewLabel_5.setBounds(114, 162, 123, 15);
+		lblNewLabel_5.setBounds(114, 162, 160, 15);
 		contentPane.add(lblNewLabel_5);
 
 		JPanel panel = new JPanel();
