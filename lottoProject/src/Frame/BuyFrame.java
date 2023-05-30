@@ -41,14 +41,14 @@ public class BuyFrame extends JFrame {
 	private int count = 0; // 선택된 번호의 개수
 	private int countList = 0; // 자동 반자동 확인용 카운트
 	private int price;
-	ArrayList<JButton> buttons;
+	/*ArrayList<JButton> buttons;
 	private int count = 0;
 	Set<Integer> buttonZip = new TreeSet<>();
 	int price;
 	Map<Integer, Set<Integer>> lottoMap;
 	LottoPaper lottopaper = new LottoPaper();
 	RegiTiketManager rtm = new RegiTiketManager();
-	private int countList = 1;
+	private int countList = 1;*/
 	private JPanel[] choices;
 	private JLabel[] isAutos;
 	private JLabel[] numbers;
