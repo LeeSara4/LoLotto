@@ -5,6 +5,9 @@ import java.awt.Font;
 import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -27,6 +30,8 @@ public class Receipt extends JFrame {
 
 	public Receipt(LottoPaper lottoPaper) {
 
+		System.out.println(lottoPaper.getCount().size()); // 카운트의 사이즈;
+
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 400, 10);
 		contentPane = new JPanel();
@@ -34,6 +39,8 @@ public class Receipt extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+
+		int size = lottoPaper.getCount().size();
 
 		JButton btnNewButton = new RoundButton("메인으로");
 		btnNewButton.addActionListener(new ActionListener() {
@@ -81,6 +88,7 @@ public class Receipt extends JFrame {
 		contentPane.add(lblNewLabel_3_2);
 
 		JLabel lblNewLabel_3_2_1 = new JLabel("\\ 5,000");
+		lblNewLabel_3_2_1.setText("\\ " + size + ",000");
 		lblNewLabel_3_2_1.setFont(new Font("맑은 고딕", Font.BOLD, 18));
 		lblNewLabel_3_2_1.setBounds(277, 416, 83, 37);
 		contentPane.add(lblNewLabel_3_2_1);
@@ -98,8 +106,13 @@ public class Receipt extends JFrame {
 		contentPane.add(lblNewLabel_2_1_1);
 
 		JLabel lblNewLabel_5 = new JLabel("2023 / 06 / 07 (수)");
+		LocalDate nowDate = LocalDate.now();
+		LocalTime nowTime = LocalTime.now();
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+		String formattedTime = nowTime.format(formatter);
+		lblNewLabel_5.setText(nowDate.toString() + " " + formattedTime);
 		lblNewLabel_5.setFont(new Font("맑은 고딕", Font.PLAIN, 14));
-		lblNewLabel_5.setBounds(114, 162, 123, 15);
+		lblNewLabel_5.setBounds(114, 162, 160, 15);
 		contentPane.add(lblNewLabel_5);
 
 		JPanel panel = new JPanel();
@@ -107,11 +120,11 @@ public class Receipt extends JFrame {
 		panel.setBounds(67, 233, 267, 173);
 		contentPane.add(panel);
 
-		choices = new JPanel[5];
-		isAutos = new JLabel[5];
-		numbers = new JLabel[5];
+		choices = new JPanel[size];
+		isAutos = new JLabel[size];
+		numbers = new JLabel[size];
 
-		for (int i = 0; i < 5; i++) {
+		for (int i = 0; i < size; i++) {
 			choices[i] = new JPanel();
 			isAutos[i] = new JLabel("");
 			numbers[i] = new JLabel("");
@@ -119,7 +132,7 @@ public class Receipt extends JFrame {
 			choices[i].setBackground(Color.WHITE);
 		}
 
-		for (int i = 0; i < 5; i++) {
+		for (int i = 0; i < size; i++) {
 			choices[i].add(isAutos[i]);
 			choices[i].add(numbers[i]);
 			isAutos[i].setFont(new Font("맑은 고딕", Font.PLAIN, 13));
@@ -127,7 +140,7 @@ public class Receipt extends JFrame {
 			panel.add(choices[i]);
 		}
 
-		for (int i = 0; i < lottoPaper.getCount().size(); i++) {
+		for (int i = 0; i < size; i++) {
 			isAutos[i].setText(isAuto(lottoPaper.getCount().get(i)));
 			numbers[i].setText(lottoPaper.getLotto().get(i + 1).toString());
 		}

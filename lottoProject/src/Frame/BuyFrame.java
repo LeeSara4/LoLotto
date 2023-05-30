@@ -41,11 +41,18 @@ public class BuyFrame extends JFrame {
 	private int count = 0; // 선택된 번호의 개수
 	private int countList = 0; // 자동 반자동 확인용 카운트
 	private int price;
+	ArrayList<JButton> buttons;
+	private int count = 0;
+	Set<Integer> buttonZip = new TreeSet<>();
+	int price;
+	Map<Integer, Set<Integer>> lottoMap;
+	LottoPaper lottopaper = new LottoPaper();
+	RegiTiketManager rtm = new RegiTiketManager();
+	private int countList = 1;
 	private JPanel[] choices;
 	private JLabel[] isAutos;
 	private JLabel[] numbers;
 	private RoundButton[] btnResets;
-
 
 	private void 결제초기화액션리스너추가(ActionListener actionlistener) {
 		for (int i = 0; i < 5; i++) {
@@ -72,7 +79,6 @@ public class BuyFrame extends JFrame {
 		return actionlistener;
 	}
 
-
 	public Map<Integer, Set<Integer>> returnMap() { // 로또 한줄
 		return lottoMap;
 	}
@@ -89,7 +95,7 @@ public class BuyFrame extends JFrame {
 		setBackground(SystemColor.window);
 		lottoMap = lottopaper.getLotto();
 		lottoMapList = lbl.getBuyList();
-		
+
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 799, 483);
 		contentPane = new JPanel();
@@ -317,11 +323,9 @@ public class BuyFrame extends JFrame {
 						for (int i = 0; i < buttons.size(); i++) {
 							buttons.get(i).setEnabled(true);
 						}
-						
-						
+
 						lbl.setBuyList(lottoMapList);
-						
-						
+
 						// lottopaper.setLotto(lottoMap);
 						// lottopaper.setCount(autoCount);
 					} else if (buttonZip.size() < 6) {
