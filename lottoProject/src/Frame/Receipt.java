@@ -126,7 +126,7 @@ public class Receipt extends JFrame {
 
 		JPanel panel = new JPanel();
 		panel.setBackground(SystemColor.window);
-		panel.setBounds(67, 233, 267, 173);
+		panel.setBounds(67, 224, 267, 173);
 		contentPane.add(panel);
 
 		choices = new JPanel[size];
