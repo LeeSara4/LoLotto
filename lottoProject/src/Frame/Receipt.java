@@ -151,7 +151,7 @@ public class Receipt extends JFrame {
 
 		for (int i = 0; i < size; i++) {
 			isAutos[i].setText(isAuto(lottoPaper.getCount().get(i)));
-			String number = lottoPaper.getLotto().get(i + 1).toString();
+			String number = lottoPaper.getLotto().get(i).toString();
 			String text = number.replace(",", " ");
 			String text2 = text.replace("[", "").replace("]", "");
 			numbers[i].setText(text2);
