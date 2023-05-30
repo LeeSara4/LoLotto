@@ -111,7 +111,6 @@ public class BuyFrame extends JFrame {
 						int bts = Integer.parseInt(button.getText());
 						buttonZip.add(bts);
 						System.out.println(buttonZip);
-						System.out.println("버튼집 사이즈" + buttonZip.size());
 						button.setEnabled(false);
 						if (count == 6) {
 							button.setEnabled(true);
@@ -282,11 +281,12 @@ public class BuyFrame extends JFrame {
 		btnPayment.setBounds(408, 362, 170, 35);
 		btnPayment.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				// 한장에 입력받은 값을 담기
 				lottopaper.setLotto(lottoMap);
 				lottopaper.setCount(autoCount);
-				System.out.println(autoCount);
-				System.out.println(lottoMap);
-				new PaymentCheckFrame();
+				new PaymentCheckFrame(lottopaper); // checkFrame에 보내기
+				lottopaper = new LottoPaper(); // 초기화
+				dispose();
 			}
 		});
 		contentPane.add(btnPayment);

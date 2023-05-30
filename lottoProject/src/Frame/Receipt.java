@@ -13,13 +13,15 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 import javax.swing.border.EmptyBorder;
 
+import lottoProject.LottoPaper;
+
 public class Receipt extends JFrame {
 	private JPanel contentPane;
 	private Timer timer;
 	private int windowHeight;
 	private int animationSpeed;
 
-	public Receipt() {
+	public Receipt(LottoPaper lottoPaper) {
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 400, 10);
@@ -105,50 +107,50 @@ public class Receipt extends JFrame {
 		panel_2.setBackground(SystemColor.window);
 		panel.add(panel_2);
 
-		JLabel isAuto1 = new JLabel("New label");
+		JLabel isAuto1 = new JLabel(isAuto(lottoPaper.getCount().get(0)));
 		panel_2.add(isAuto1);
 
-		JLabel numbers1 = new JLabel("New label");
+		JLabel numbers1 = new JLabel(lottoPaper.getLotto().get(1).toString());
 		panel_2.add(numbers1);
 
 		JPanel panel_3 = new JPanel();
 		panel_3.setBackground(SystemColor.window);
 		panel.add(panel_3);
 
-		JLabel isAuto2 = new JLabel("New label");
+		JLabel isAuto2 = new JLabel(isAuto(lottoPaper.getCount().get(1)));
 		panel_3.add(isAuto2);
 
-		JLabel numbers2 = new JLabel("New label");
+		JLabel numbers2 = new JLabel(lottoPaper.getLotto().get(2).toString());
 		panel_3.add(numbers2);
 
 		JPanel panel_3_1 = new JPanel();
 		panel_3_1.setBackground(SystemColor.window);
 		panel.add(panel_3_1);
 
-		JLabel isAuto3 = new JLabel("New label");
+		JLabel isAuto3 = new JLabel(isAuto(lottoPaper.getCount().get(2)));
 		panel_3_1.add(isAuto3);
 
-		JLabel numbers3 = new JLabel("New label");
+		JLabel numbers3 = new JLabel(lottoPaper.getLotto().get(3).toString());
 		panel_3_1.add(numbers3);
 
 		JPanel panel_3_2 = new JPanel();
 		panel_3_2.setBackground(SystemColor.window);
 		panel.add(panel_3_2);
 
-		JLabel isAuto4 = new JLabel("New label");
+		JLabel isAuto4 = new JLabel(isAuto(lottoPaper.getCount().get(3)));
 		panel_3_2.add(isAuto4);
 
-		JLabel numbers4 = new JLabel("New label");
+		JLabel numbers4 = new JLabel(lottoPaper.getLotto().get(4).toString());
 		panel_3_2.add(numbers4);
 
 		JPanel panel_3_3 = new JPanel();
 		panel_3_3.setBackground(SystemColor.window);
 		panel.add(panel_3_3);
 
-		JLabel isAuto5 = new JLabel("New label");
+		JLabel isAuto5 = new JLabel(isAuto(lottoPaper.getCount().get(4)));
 		panel_3_3.add(isAuto5);
 
-		JLabel numbers5 = new JLabel("New label");
+		JLabel numbers5 = new JLabel(lottoPaper.getLotto().get(5).toString());
 		panel_3_3.add(numbers5);
 
 		JLabel lblNewLabel_5_1 = new JLabel("2023 / 06 / 10 (토)");
@@ -191,5 +193,15 @@ public class Receipt extends JFrame {
 		timer.start();
 		setDefaultCloseOperation(HIDE_ON_CLOSE);
 		setVisible(true);
+	}
+
+	public String isAuto(int target) {
+		if (target == 0) {
+			return "자동";
+		} else if (target == 6) {
+			return "수동";
+		} else {
+			return "반자동";
+		}
 	}
 }
