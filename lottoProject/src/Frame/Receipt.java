@@ -1,14 +1,19 @@
 package Frame;
 
-import java.awt.BorderLayout;
-import java.awt.Graphics;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.Timer;
+import javax.swing.border.EmptyBorder;
+
+import lottoProject.LottoPaper;
 
 public class Receipt extends JFrame {
 	private JPanel contentPane;
@@ -16,20 +21,152 @@ public class Receipt extends JFrame {
 	private int windowHeight;
 	private int animationSpeed;
 
-	public Receipt() {
+	public Receipt(LottoPaper lottoPaper) {
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 400, 10);
-		contentPane = new JPanel() {
-			@Override
-			protected void paintComponent(Graphics g) {
-				super.paintComponent(g);
-				ImageIcon imageIcon = new ImageIcon("loottoo2.png");
-				imageIcon.paintIcon(this, g, 0, 0);
-			}
-		};
+		contentPane = new JPanel();
+		contentPane.setBackground(SystemColor.window);
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		contentPane.setLayout(new BorderLayout());
+		contentPane.setLayout(null);
+
+		JButton btnNewButton = new RoundButton("메인으로");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnNewButton.setBounds(275, 10, 97, 23);
+		contentPane.add(btnNewButton);
+
+		JLabel lblNewLabel = new JLabel("LOTTO");
+		lblNewLabel.setFont(new Font("맑은 고딕", Font.BOLD, 31));
+		lblNewLabel.setBounds(77, 51, 111, 85);
+		contentPane.add(lblNewLabel);
+
+		JLabel lblNewLabel_1 = new JLabel("LOTTO");
+		lblNewLabel_1.setForeground(Color.PINK);
+		lblNewLabel_1.setFont(new Font("맑은 고딕", Font.BOLD, 30));
+		lblNewLabel_1.setBounds(37, 10, 97, 76);
+		contentPane.add(lblNewLabel_1);
+
+		JLabel lblNewLabel_2 = new JLabel("6 / 45");
+		lblNewLabel_2.setFont(new Font("맑은 고딕", Font.BOLD, 18));
+		lblNewLabel_2.setBounds(194, 91, 57, 15);
+		contentPane.add(lblNewLabel_2);
+
+		JLabel lblNewLabel_2_1 = new JLabel("6 / 45");
+		lblNewLabel_2_1.setForeground(Color.PINK);
+		lblNewLabel_2_1.setFont(new Font("맑은 고딕", Font.BOLD, 18));
+		lblNewLabel_2_1.setBounds(146, 49, 57, 15);
+		contentPane.add(lblNewLabel_2_1);
+
+		JLabel lblNewLabel_3 = new JLabel("발 행 일 :");
+		lblNewLabel_3.setFont(new Font("맑은 고딕", Font.BOLD, 15));
+		lblNewLabel_3.setBounds(37, 160, 83, 15);
+		contentPane.add(lblNewLabel_3);
+
+		JLabel lblNewLabel_3_1 = new JLabel("추 첨 일 :");
+		lblNewLabel_3_1.setFont(new Font("맑은 고딕", Font.BOLD, 15));
+		lblNewLabel_3_1.setBounds(37, 185, 74, 15);
+		contentPane.add(lblNewLabel_3_1);
+
+		JLabel lblNewLabel_3_2 = new JLabel("금액");
+		lblNewLabel_3_2.setFont(new Font("맑은 고딕", Font.BOLD, 18));
+		lblNewLabel_3_2.setBounds(51, 416, 83, 37);
+		contentPane.add(lblNewLabel_3_2);
+
+		JLabel lblNewLabel_3_2_1 = new JLabel("\\ 5,000");
+		lblNewLabel_3_2_1.setFont(new Font("맑은 고딕", Font.BOLD, 18));
+		lblNewLabel_3_2_1.setBounds(277, 416, 83, 37);
+		contentPane.add(lblNewLabel_3_2_1);
+
+		JLabel lblNewLabel_1_1 = new JLabel("LOTTO");
+		lblNewLabel_1_1.setForeground(Color.LIGHT_GRAY);
+		lblNewLabel_1_1.setFont(new Font("맑은 고딕", Font.BOLD, 30));
+		lblNewLabel_1_1.setBounds(37, 433, 97, 76);
+		contentPane.add(lblNewLabel_1_1);
+
+		JLabel lblNewLabel_2_1_1 = new JLabel("6 / 45");
+		lblNewLabel_2_1_1.setForeground(Color.LIGHT_GRAY);
+		lblNewLabel_2_1_1.setFont(new Font("맑은 고딕", Font.BOLD, 18));
+		lblNewLabel_2_1_1.setBounds(146, 472, 57, 15);
+		contentPane.add(lblNewLabel_2_1_1);
+
+		JLabel lblNewLabel_5 = new JLabel("2023 / 06 / 07 (수)");
+		lblNewLabel_5.setFont(new Font("맑은 고딕", Font.PLAIN, 14));
+		lblNewLabel_5.setBounds(114, 162, 123, 15);
+		contentPane.add(lblNewLabel_5);
+
+		JPanel panel = new JPanel();
+		panel.setBackground(SystemColor.window);
+		panel.setBounds(67, 233, 267, 173);
+		contentPane.add(panel);
+
+		JPanel panel_2 = new JPanel();
+		panel_2.setBackground(SystemColor.window);
+		panel.add(panel_2);
+
+		JLabel isAuto1 = new JLabel(isAuto(lottoPaper.getCount().get(0)));
+		panel_2.add(isAuto1);
+
+		JLabel numbers1 = new JLabel(lottoPaper.getLotto().get(1).toString());
+		panel_2.add(numbers1);
+
+		JPanel panel_3 = new JPanel();
+		panel_3.setBackground(SystemColor.window);
+		panel.add(panel_3);
+
+		JLabel isAuto2 = new JLabel(isAuto(lottoPaper.getCount().get(1)));
+		panel_3.add(isAuto2);
+
+		JLabel numbers2 = new JLabel(lottoPaper.getLotto().get(2).toString());
+		panel_3.add(numbers2);
+
+		JPanel panel_3_1 = new JPanel();
+		panel_3_1.setBackground(SystemColor.window);
+		panel.add(panel_3_1);
+
+		JLabel isAuto3 = new JLabel(isAuto(lottoPaper.getCount().get(2)));
+		panel_3_1.add(isAuto3);
+
+		JLabel numbers3 = new JLabel(lottoPaper.getLotto().get(3).toString());
+		panel_3_1.add(numbers3);
+
+		JPanel panel_3_2 = new JPanel();
+		panel_3_2.setBackground(SystemColor.window);
+		panel.add(panel_3_2);
+
+		JLabel isAuto4 = new JLabel(isAuto(lottoPaper.getCount().get(3)));
+		panel_3_2.add(isAuto4);
+
+		JLabel numbers4 = new JLabel(lottoPaper.getLotto().get(4).toString());
+		panel_3_2.add(numbers4);
+
+		JPanel panel_3_3 = new JPanel();
+		panel_3_3.setBackground(SystemColor.window);
+		panel.add(panel_3_3);
+
+		JLabel isAuto5 = new JLabel(isAuto(lottoPaper.getCount().get(4)));
+		panel_3_3.add(isAuto5);
+
+		JLabel numbers5 = new JLabel(lottoPaper.getLotto().get(5).toString());
+		panel_3_3.add(numbers5);
+
+		JLabel lblNewLabel_5_1 = new JLabel("2023 / 06 / 10 (토)");
+		lblNewLabel_5_1.setFont(new Font("맑은 고딕", Font.PLAIN, 14));
+		lblNewLabel_5_1.setBounds(114, 185, 123, 15);
+		contentPane.add(lblNewLabel_5_1);
+
+		JPanel panel_1 = new JPanel();
+		panel_1.setBackground(SystemColor.activeCaption);
+		panel_1.setBounds(37, 219, 323, 4);
+		contentPane.add(panel_1);
+
+		JPanel panel_1_1 = new JPanel();
+		panel_1_1.setBackground(SystemColor.activeCaption);
+		panel_1_1.setBounds(37, 413, 323, 4);
+		contentPane.add(panel_1_1);
 
 		// 아래로 내려가는 애니메이션 속도 설정 (밀리초 단위)
 		animationSpeed = 10;
@@ -56,5 +193,15 @@ public class Receipt extends JFrame {
 		timer.start();
 		setDefaultCloseOperation(HIDE_ON_CLOSE);
 		setVisible(true);
+	}
+
+	public String isAuto(int target) {
+		if (target == 0) {
+			return "자동";
+		} else if (target == 6) {
+			return "수동";
+		} else {
+			return "반자동";
+		}
 	}
 }

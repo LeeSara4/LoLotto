@@ -1,4 +1,5 @@
 package lottoProject;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -8,8 +9,6 @@ import java.util.Set;
 public class LottoPaper {
 	private Map<Integer, Set<Integer>> lotto;
 	private List<Integer> count; // 생성된 로또 번호의 수동,자동,반자동 확인용
-	
-	
 
 	public LottoPaper() {
 		// 생성시 초기화
@@ -36,6 +35,6 @@ public class LottoPaper {
 	@Override
 	public String toString() {
 		return "LottoPaper [lotto=" + lotto + ", count=" + count + "]";
-		
+
 	}
 }

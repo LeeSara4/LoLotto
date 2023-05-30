@@ -13,7 +13,13 @@ import javax.swing.border.EmptyBorder;
 public class BuyList extends JFrame {
 
 	private JPanel contentPane;
-
+	BuyFrame buyFrame = new BuyFrame();
+	
+	
+	
+	
+	
+	
 	public BuyList() {
 		setTitle("구매 내역");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

@@ -7,6 +7,7 @@ import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import java.util.Set;
@@ -19,6 +20,8 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
+//import com.sun.xml.internal.bind.v2.schemagen.xmlschema.List;
+
 import lottoProject.LottoPaper;
 import lottoProject.RegiTiketManager;
 
@@ -26,18 +29,18 @@ public class BuyFrame extends JFrame {
 
 	private JPanel contentPane;
 	ArrayList<JButton> buttons;
-	private int count;
+	private int count = 0;
 	Set<Integer> buttonZip = new TreeSet<>();
 	int price;
 	Map<Integer, Set<Integer>> lottoMap;
 	LottoPaper lottopaper = new LottoPaper();
 	RegiTiketManager rtm = new RegiTiketManager();
 	private int countList = 0;
-
 	private JPanel[] choices;
 	private JLabel[] isAutos;
 	private JLabel[] numbers;
 	private RoundButton[] btnResets;
+	private List<Integer> autoCount = new ArrayList<>();
 
 	// Ticket ticket = new Ticket(numbers, price);
 	/**
@@ -115,7 +118,11 @@ public class BuyFrame extends JFrame {
 						}
 						count++;
 					}
+					if (count == 6) {
+						autoCount.add(count);
+					}
 				}
+
 			});
 			buttons.add(button);
 			pnlLottoNum.add(button);
@@ -186,10 +193,14 @@ public class BuyFrame extends JFrame {
 
 			// 선택 화면에서 자동화를 담당하는 녀석
 			public void actionPerformed(ActionEvent click) {
-				if (count < 6 && count >= 0) {
-					// 선택하지 않은 번호 중에서 랜덤하게 선택
-					Random random = new Random();
+				// System.out.println(count);
+				if (count == 6) {
+					for (int i = 0; i < buttons.size(); i++) {
+						buttons.get(i).setEnabled(true);
+					}
+					buttonZip = new TreeSet();
 					while (buttonZip.size() < 6) {
+						Random random = new Random();
 						Integer randomNum = random.nextInt(45) + 1;
 						buttonZip.add(randomNum);
 						for (JButton elem : buttons) {
@@ -199,8 +210,32 @@ public class BuyFrame extends JFrame {
 						}
 						count = 6;
 					}
+				} else {
+					System.out.println("test2");
+					if (count == 1) {
+						autoCount.add(count);
+					} else if (count < 6) {
+						autoCount.add(count);
+					}
+
+					if (count < 6 && count >= 0) {
+						// 선택하지 않은 번호 중에서 랜덤하게 선택
+						Random random = new Random();
+						while (buttonZip.size() < 6) {
+							Integer randomNum = random.nextInt(45) + 1;
+							buttonZip.add(randomNum);
+							for (JButton elem : buttons) {
+								if (elem.getText().equals(randomNum.toString())) {
+									elem.setEnabled(false);
+								}
+							}
+							count = 6;
+						}
+					}
 				}
+				// System.out.println(autoCount);
 				System.out.println(buttonZip);
+
 			}
 		});
 		panel.add(btnAutoPlus);
@@ -213,15 +248,15 @@ public class BuyFrame extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("선택초기화 실행");
 
-				for(int i=0;i<buttons.size();i++) {
+				for (int i = 0; i < buttons.size(); i++) {
 					buttons.get(i).setEnabled(true);
-					
+
 				}
 				buttonZip = new TreeSet();
 				count = 0;
-				
+
 			}
-			
+
 		});
 		panel.add(btnResetList);
 
@@ -237,7 +272,13 @@ public class BuyFrame extends JFrame {
 		btnPayment.setBounds(408, 362, 170, 35);
 		btnPayment.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				new PaymentCheckFrame();
+				// 한장에 입력받은 값을 담기
+				lottopaper.setLotto(lottoMap);
+				lottopaper.setCount(autoCount);
+				new PaymentCheckFrame(lottopaper); // checkFrame에 보내기
+				lottopaper = new LottoPaper(); // 초기화
+				dispose();
+
 			}
 		});
 		contentPane.add(btnPayment);
@@ -256,30 +297,29 @@ public class BuyFrame extends JFrame {
 
 		btnPlus.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent click) {
-				if(countList < 6) {
-				if (rtm.티켓등록(buttonZip.size())) {
-					// 이러한 조건에서 등록되야함.
-					lottoMap.put(countList, buttonZip); // 현재 0번째이기 때문에 숫자 0의 키를 가지는 맵
-					System.out.println(count);
-					buttonZip = new TreeSet();
-					count = 0;
-					countList++;
-					System.out.println("작동");
-					for(int i=0;i<buttons.size();i++) {
-						buttons.get(i).setEnabled(true);
-					}
 
-				} else if (buttonZip.size() < 6) {
-					System.out.println("선택한 수가 부족하다.");
-					buttonZip = new TreeSet();
-					count = 0;
-					for(int i=0;i<buttons.size();i++) {
-						buttons.get(i).setEnabled(true);
+				if (countList < 6) {
+					if (rtm.티켓등록(buttonZip.size())) {
+						// 이러한 조건에서 등록되야함.
+						lottoMap.put(countList, buttonZip); // 현재 0번째이기 때문에 숫자 0의 키를 가지는 맵
+						buttonZip = new TreeSet();
+						count = 0;
+						countList++;
+						System.out.println(autoCount);
+						for (int i = 0; i < buttons.size(); i++) {
+							buttons.get(i).setEnabled(true);
+						}
+						lottopaper.setLotto(lottoMap);
+						lottopaper.setCount(autoCount);
+					} else if (buttonZip.size() < 6) {
+						System.out.println("선택한 수가 부족하다.");
+						buttonZip = new TreeSet();
+						count = 0;
+						for (int i = 0; i < buttons.size(); i++) {
+							buttons.get(i).setEnabled(true);
+						}
+
 					}
-					
-					
-					
-				} 
 				} else {
 					System.out.println("한장이 가득 찹니다.");
 				}
