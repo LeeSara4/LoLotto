@@ -272,6 +272,8 @@ public class BuyFrame extends JFrame {
 				// 한장에 입력받은 값을 담기
 				lottopaper.setLotto(lottoMap);
 				lottopaper.setCount(autoCount);
+				System.out.println(lottoMap);
+				System.out.println(autoCount);
 				new PaymentCheckFrame(lottopaper); // checkFrame에 보내기
 				lottopaper = new LottoPaper(); // 초기화
 				dispose();
