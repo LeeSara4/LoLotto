@@ -47,6 +47,8 @@ public class BuyFrame extends JFrame {
 		for (int i = 0; i < 5; i++) {
 			btnResets[i].addActionListener(actionlistener);
 		}
+		// lottopaper.setLotto(lottoMap);
+		// lottopaper.setCount(autoCount);
 	}
 
 	private ActionListener 결제초기화액션리스너() {
@@ -65,9 +67,14 @@ public class BuyFrame extends JFrame {
 		};
 		return actionlistener;
 	}
-
+	
+	// 
 	public Map<Integer, Set<Integer>> returnMap() {
 		return lottoMap;
+	}
+
+	public LottoPaper returnPaper() {
+		return lottopaper;
 	}
 
 	public BuyFrame() {
