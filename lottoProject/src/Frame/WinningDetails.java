@@ -4,12 +4,15 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import lottoProject.LottoPaper;
 
 /**
  * 당첨화면 초안입니다!!
@@ -18,13 +21,22 @@ import javax.swing.border.EmptyBorder;
 public class WinningDetails extends JFrame {
 
 	private JPanel contentPane;
+	private int currentSelect = 0;
+	private List<LottoPaper> tempList;
+	private JLabel lbl_temp;
+	private JPanel[] choices;
+	private JLabel[] isAutos;
+	private JLabel[] numbers;
+	private JPanel panel;
+	private JPanel pnl1;
 
 	/**
 	 * Create the frame.
 	 */
-	public WinningDetails(MainFrame main, ShootNumImage shootNumImage) {
-		System.out.println(shootNumImage.getNumbers());
-		System.out.println(shootNumImage.getBonusNumber());
+	public WinningDetails(MainFrame main, ShootNumImage shootNumImage, List<LottoPaper> buyList) {
+		// 추첨이되어있고, 로또를 구매한 시점에 동작되어야 하고 그전에는 디폴트값을 가져야함
+		tempList = buyList;
+
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 673, 561);
 		contentPane = new JPanel();
@@ -59,7 +71,7 @@ public class WinningDetails extends JFrame {
 		panel.setBounds(116, 216, 418, 216);
 		contentPane.add(panel);
 
-		JPanel pnl1 = new JPanel();
+		pnl1 = new JPanel();
 		panel.add(pnl1);
 
 		JLabel isAuto_1_4 = new JLabel("0등");
@@ -308,5 +320,63 @@ public class WinningDetails extends JFrame {
 		});
 		btn.setBounds(548, 6, 97, 23);
 		contentPane.add(btn);
+
+		lblNewLabel = new JLabel("< " + (currentSelect + 1) + " >");
+		lblNewLabel.setBounds(183, 523, 40, 15);
+		contentPane.add(lblNewLabel);
+
+		System.out.println(tempList.size());
+		if (tempList.size() > 0) {
+			printLottoPaper(0);
+		} else {
+			lbl_temp = new JLabel("저장된 로또용지가 없습니다.");
+			pnl1.add(lbl_temp);
+		}
 	}
+
+	public void printLottoPaper(int index) {
+		if (tempList.get(index).getCount().size() != 0) {
+			int size = tempList.get(index).getCount().size(); // 0번째 카운트 사이즈;
+
+			choices = new JPanel[size];
+			isAutos = new JLabel[size];
+			numbers = new JLabel[size];
+
+			for (int i = 0; i < size; i++) {
+				choices[i] = new JPanel();
+				isAutos[i] = new JLabel("");
+				numbers[i] = new JLabel("");
+
+				choices[i].setBackground(Color.WHITE);
+			}
+
+			for (int i = 0; i < size; i++) {
+				choices[i].add(isAutos[i]);
+				choices[i].add(numbers[i]);
+				isAutos[i].setFont(new Font("맑은 고딕", Font.PLAIN, 15));
+				numbers[i].setFont(new Font("맑은 고딕", Font.PLAIN, 15));
+				pnl1.add(choices[i]);
+			}
+
+			for (int i = 0; i < size; i++) {
+				isAutos[i].setText(isAuto(tempList.get(index).getCount().get(i)));
+				String number = tempList.get(index).getLotto().get(i).toString();
+				String text = number.replace(",", " ");
+				String text2 = text.replace("[", "").replace("]", "");
+				numbers[i].setText(text2);
+			}
+		}
+		pnl1.setVisible(true);
+	}
+
+	public String isAuto(int target) {
+		if (target == 0) {
+			return "자동";
+		} else if (target == 6) {
+			return "수동";
+		} else {
+			return "반자동";
+		}
+	}
+
 }
