@@ -7,6 +7,7 @@ import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
@@ -21,9 +22,6 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
 import lottoProject.LottoBuyingList;
-
-//import com.sun.xml.internal.bind.v2.schemagen.xmlschema.List;
-
 import lottoProject.LottoPaper;
 import lottoProject.RegiTiketManager;
 
@@ -52,8 +50,6 @@ public class BuyFrame extends JFrame {
 		for (int i = 0; i < 5; i++) {
 			btnResets[i].addActionListener(actionlistener);
 		}
-		lottopaper.setLotto(lottoMap);
-		lottopaper.setCount(autoCount);
 	}
 
 	private ActionListener 결제초기화액션리스너() {
@@ -68,16 +64,16 @@ public class BuyFrame extends JFrame {
 						numbers[i].setText("00 00 00 00 00 00");
 
 						System.out.println("i값 출력 : " + i);
-						Map<Integer, Set<Integer>> removeMap = lottopaper.getLotto();
-						removeMap.remove(i);
+						lottoMap.remove(i);
 						j = i;
 						countList--;
+						autoCount.remove(i); // 해당 인덱스의 autoCount 삭제
 						break;
 					}
 				}
-				lottoMap = lottopaper.getLotto();
+				System.out.println("가져온 로또맵" + lottoMap);
 				for (int i = j; i < lottoMap.size(); i++) {
-					Map<Integer, Set<Integer>> replaceMap = lottopaper.getLotto();
+					Map<Integer, Set<Integer>> replaceMap = lottoMap;
 					Set<Integer> replaceSet = replaceMap.get(i + 1);
 					replaceMap.put(i, replaceSet);
 				}
@@ -88,7 +84,6 @@ public class BuyFrame extends JFrame {
 		return actionlistener;
 	}
 
-	
 	private void resetBtnPrint() {
 
 		for (int i = 0; i < 5; i++) {
@@ -98,12 +93,12 @@ public class BuyFrame extends JFrame {
 
 		String str = "";
 		int i;
-		for (i = 0; i < lottoMap.size() - 1; i++) {
-
+		for (i = 0; i < autoCount.size(); i++) {
 			Set<Integer> values = lottoMap.get(i);
 			for (Integer set : values) {
 				str += set + " ";
 				System.out.println("str : " + str);
+
 			}
 
 			numbers[i].setText(str);
@@ -112,13 +107,7 @@ public class BuyFrame extends JFrame {
 		}
 
 		System.out.println("i : " + i);
-		/*
-		 * for (int j = i; j < 5; j++) { isAutos[j].setText("자동여부");
-		 * numbers[j].setText("00 00 00 00 00 00"); }
-		 */
-
 	}
-
 
 	private void selectNumPrint(Map<Integer, Set<Integer>> map, int count, int countList) {
 		String str = "";
@@ -175,19 +164,15 @@ public class BuyFrame extends JFrame {
 						// 버튼 정보 보내줄 예정
 						int bts = Integer.parseInt(button.getText());
 						buttonZip.add(bts);
-						// System.out.println(buttonZip);
 						button.setEnabled(false);
 						if (count == 6) {
 							button.setEnabled(true);
 						}
 						count++;
 					}
-					if (count == 6) {
-						autoCount.add(count);
-					}
 				}
-
 			});
+
 			buttons.add(button);
 			pnlLottoNum.add(button);
 		}
@@ -209,7 +194,6 @@ public class BuyFrame extends JFrame {
 			btnResets[i] = new RoundButton("초기화");
 
 			choices[i].setBackground(Color.WHITE);
-//            choices[i].setBorder(new LineBorder(Color.LIGHT_GRAY));
 		}
 
 		for (int i = 0; i < 5; i++) {
@@ -297,9 +281,6 @@ public class BuyFrame extends JFrame {
 						}
 					}
 				}
-				// System.out.println(autoCount);
-				// System.out.println(buttonZip);
-
 			}
 		});
 		panel.add(btnAutoPlus);
@@ -336,11 +317,22 @@ public class BuyFrame extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				// 한장에 입력받은 값을 담기
 				lottopaper.setLotto(lottoMap);
+				System.out.println("넣을 로또맵" + lottoMap);
 				lottopaper.setCount(autoCount);
+				lottoMapList.add(lottopaper); // 로또를 여러장 가지기 위해 추가중 여기서 추가
 
+				System.out.println("로또여러장" + lottoMapList.toString());
 				new PaymentCheckFrame(lottopaper); // checkFrame에 보내기
 				lottopaper = new LottoPaper(); // 초기화
-
+				// 결제하러갈때 전체적인 초기화필요;
+				lottoMap = new HashMap<>();
+				autoCount = new ArrayList<>();
+				count = 0;
+				countList = 0;
+				for (int i = 0; i < 5; i++) {
+					isAutos[i].setText("자동여부");
+					numbers[i].setText("00 00 00 00 00 00");
+				}
 			}
 		});
 		contentPane.add(btnPayment);
@@ -359,12 +351,14 @@ public class BuyFrame extends JFrame {
 
 		btnPlus.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent click) {
-				autoCount.add(countNum);
 
 				if (countList < 5) {
 					if (rtm.티켓등록(buttonZip.size())) {
 						// 이러한 조건에서 등록되야함.
-						lottoMap.put(countList, buttonZip); // 현재 0번째이기 때문에 숫자 0의 키를 가지는 맵
+						autoCount.add(countNum);
+						lottoMap.put(countList, buttonZip);// 현재 0번째이기 때문에 숫자 0의 키를 가지는 맵
+						System.out.println("현재 게임로또배열" + lottoMap.get(0));
+						System.out.println("현재 게임" + countList);
 						selectNumPrint(lottoMap, count, countList);
 						buttonZip = new TreeSet();
 						count = 0;
@@ -375,8 +369,6 @@ public class BuyFrame extends JFrame {
 						}
 
 						lbl.setBuyList(lottoMapList);
-						// lottopaper.setLotto(lottoMap);
-						// lottopaper.setCount(autoCount);
 					} else if (buttonZip.size() < 6) {
 						System.out.println("선택한 수가 부족하다.");
 						buttonZip = new TreeSet();
@@ -396,8 +388,6 @@ public class BuyFrame extends JFrame {
 					elem.setEnabled(true);
 				}
 				count = 0;
-//				lottoMapList.add(lottopaper);// 로또를 여러장 가지기 위해 추가중 여기서 추가
-//				System.out.println(lottoMapList.indexOf(1));  // 여러장 추가할때 사용예정
 				System.out.println(lottoMap);
 			}
 		});
