@@ -22,7 +22,9 @@ public class WinningDetails extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public WinningDetails(MainFrame main) {
+	public WinningDetails(MainFrame main, ShootNumImage shootNumImage) {
+		System.out.println(shootNumImage.getNumbers());
+		System.out.println(shootNumImage.getBonusNumber());
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 673, 561);
 		contentPane = new JPanel();

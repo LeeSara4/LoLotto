@@ -144,17 +144,19 @@ public class BuyList extends JFrame {
 		btnBack.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				currentSelect--;
-				LocalDate date = buyList.get(currentSelect).getNowDate();
-				LocalTime time = buyList.get(currentSelect).getNowTime();
-				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
-				String formattedTime = time.format(formatter);
-				lblNewLabel_5.setText(date.toString() + " " + formattedTime);
-				lblNewLabel_5.setFont(new Font("맑은 고딕", Font.PLAIN, 14));
-				lblNewLabel_3_2_1.setText("\\ " + tempList.get(currentSelect).getCount().size() + ",000");
-				lblNewLabel_4.setText("< " + (currentSelect + 1) + " >");
-				resetLottoPaper();
-				printLottoPaper(currentSelect);
+				if (currentSelect - 1 >= 0) {
+					currentSelect--;
+					LocalDate date = buyList.get(currentSelect).getNowDate();
+					LocalTime time = buyList.get(currentSelect).getNowTime();
+					DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+					String formattedTime = time.format(formatter);
+					lblNewLabel_5.setText(date.toString() + " " + formattedTime);
+					lblNewLabel_5.setFont(new Font("맑은 고딕", Font.PLAIN, 14));
+					lblNewLabel_3_2_1.setText("\\ " + tempList.get(currentSelect).getCount().size() + ",000");
+					lblNewLabel_4.setText("< " + (currentSelect + 1) + " >");
+					resetLottoPaper();
+					printLottoPaper(currentSelect);
+				}
 			}
 		});
 
@@ -164,17 +166,19 @@ public class BuyList extends JFrame {
 		btnFront.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				currentSelect++;
-				LocalDate date = buyList.get(currentSelect).getNowDate();
-				LocalTime time = buyList.get(currentSelect).getNowTime();
-				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
-				String formattedTime = time.format(formatter);
-				lblNewLabel_5.setText(date.toString() + " " + formattedTime);
-				lblNewLabel_5.setFont(new Font("맑은 고딕", Font.PLAIN, 14));
-				lblNewLabel_3_2_1.setText("\\ " + tempList.get(currentSelect).getCount().size() + ",000");
-				lblNewLabel_4.setText("< " + (currentSelect + 1) + " >");
-				resetLottoPaper();
-				printLottoPaper(currentSelect);
+				if (currentSelect + 1 < buyList.size()) {
+					currentSelect++;
+					LocalDate date = buyList.get(currentSelect).getNowDate();
+					LocalTime time = buyList.get(currentSelect).getNowTime();
+					DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+					String formattedTime = time.format(formatter);
+					lblNewLabel_5.setText(date.toString() + " " + formattedTime);
+					lblNewLabel_5.setFont(new Font("맑은 고딕", Font.PLAIN, 14));
+					lblNewLabel_3_2_1.setText("\\ " + tempList.get(currentSelect).getCount().size() + ",000");
+					lblNewLabel_4.setText("< " + (currentSelect + 1) + " >");
+					resetLottoPaper();
+					printLottoPaper(currentSelect);
+				}
 			}
 		});
 

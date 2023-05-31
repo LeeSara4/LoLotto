@@ -15,7 +15,7 @@ public class MainFrame extends JFrame {
 
 	private JPanel contentPane;
 	BuyFrame buyFrame = new BuyFrame(this);
-	ShootNumImage shootNumImage = new ShootNumImage(this);
+	ShootNumImage shootNumImage;
 
 	/**
 	 * Launch the application.
@@ -80,6 +80,7 @@ public class MainFrame extends JFrame {
 		JButton btnNewButton_2 = new RoundButton("추첨");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				shootNumImage = new ShootNumImage(MainFrame.this);
 				shootNumImage.setVisible(true);
 				setVisible(false);
 			}
@@ -90,7 +91,7 @@ public class MainFrame extends JFrame {
 		JButton btnNewButton_3 = new RoundButton("당첨 확인");
 		btnNewButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				WinningDetails winningDetails = new WinningDetails(MainFrame.this);
+				WinningDetails winningDetails = new WinningDetails(MainFrame.this, shootNumImage);
 				winningDetails.setVisible(true);
 				setVisible(false);
 			}
