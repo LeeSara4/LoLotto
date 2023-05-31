@@ -24,6 +24,14 @@ public class ShootNumImage extends JFrame {
 	private JPanel contentPane;
 	private List<Integer> nums;
 
+	public Set<Integer> getNumbers() {
+		return numbers;
+	}
+
+	public int getBonusNumber() {
+		return bonusNumber;
+	}
+
 	public void setNumbers(Set<Integer> numbers) {
 		this.numbers = numbers;
 	}
