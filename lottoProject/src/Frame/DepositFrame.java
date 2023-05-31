@@ -53,7 +53,6 @@ public class DepositFrame extends JFrame {
 // 찾았다 요놈  //comboBox.getSelectedItem().toString()) 선택한 항목의 스트링 값 반환
 				String str = comboBox.getSelectedItem().toString();
 				if (str == "직접 입력") {
-					comboBox.set
 					comboBox.setEditable(true); // // 콤보창에 입력 여부를 판단 하는 녀석
 
 				} else {

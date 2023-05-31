@@ -9,7 +9,6 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
-import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -41,18 +40,6 @@ public class Receipt extends JDialog {
 		contentPane.setLayout(null);
 
 		int size = lottoPaper.getCount().size();
-
-		JButton btnNewButton = new RoundButton("메인으로");
-		btnNewButton.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				dispose();
-				MainFrame frame = new MainFrame();
-				frame.setVisible(true);
-			}
-		});
-		btnNewButton.setBounds(275, 10, 97, 23);
-		contentPane.add(btnNewButton);
 
 		JLabel lblNewLabel = new JLabel("LOTTO");
 		lblNewLabel.setFont(new Font("맑은 고딕", Font.BOLD, 31));
