@@ -88,6 +88,15 @@ public class BuyFrame extends JFrame {
 		return actionlistener;
 	}
 
+	private void resetBtnPrint2(int i) {
+		Set<Integer> values = lottoMap.get(i);
+		String str = "";
+		for (Integer set : values) {
+			str += set + " ";
+		}
+		numbers[i].setText(str);
+		isAutos[i].setText(rtm.자동버튼(autoCount.get(countList)));
+	}
 	
 	private void resetBtnPrint() {
 
@@ -96,30 +105,11 @@ public class BuyFrame extends JFrame {
 			numbers[i].setText("00 00 00 00 00 00");
 		}
 
-		String str = "";
-		int i;
-		for (i = 0; i < lottoMap.size() - 1; i++) {
-
-			Set<Integer> values = lottoMap.get(i);
-			for (Integer set : values) {
-				str += set + " ";
-				System.out.println("str : " + str);
-			}
-
-			numbers[i].setText(str);
-			isAutos[i].setText(rtm.자동버튼(autoCount.get(i)));
-			str = "";
+		for (int i = 0; i < lottoMap.size() - 1; i++) {
+			resetBtnPrint2(i);
 		}
 
-		System.out.println("i : " + i);
-		/*
-		 * for (int j = i; j < 5; j++) { isAutos[j].setText("자동여부");
-		 * numbers[j].setText("00 00 00 00 00 00"); }
-		 */
-
 	}
-
-
 	private void selectNumPrint(Map<Integer, Set<Integer>> map, int count, int countList) {
 		String str = "";
 
