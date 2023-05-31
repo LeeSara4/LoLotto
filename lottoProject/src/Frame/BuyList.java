@@ -28,6 +28,7 @@ public class BuyList extends JFrame {
 	private JLabel lbl_temp;
 	private int currentSelect = 0;
 	private JLabel lblNewLabel_4;
+	private JLabel lblNewLabel_5;
 
 	public BuyList(List<LottoPaper> buyList, MainFrame main) {
 		tempList = buyList;
@@ -105,12 +106,12 @@ public class BuyList extends JFrame {
 		lblNewLabel_2_1_1.setBounds(146, 472, 57, 15);
 		contentPane.add(lblNewLabel_2_1_1);
 
-		JLabel lblNewLabel_5 = new JLabel("2023 / 06 / 07 (수)");
-		LocalDate nowDate = LocalDate.now();
-		LocalTime nowTime = LocalTime.now();
+		lblNewLabel_5 = new JLabel("2023 / 06 / 07 (수)");
+		LocalDate date = buyList.get(currentSelect).getNowDate();
+		LocalTime time = buyList.get(currentSelect).getNowTime();
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
-		String formattedTime = nowTime.format(formatter);
-		lblNewLabel_5.setText(nowDate.toString() + " " + formattedTime);
+		String formattedTime = time.format(formatter);
+		lblNewLabel_5.setText(date.toString() + " " + formattedTime);
 		lblNewLabel_5.setFont(new Font("맑은 고딕", Font.PLAIN, 14));
 		lblNewLabel_5.setBounds(114, 162, 160, 15);
 		contentPane.add(lblNewLabel_5);
@@ -142,6 +143,12 @@ public class BuyList extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				currentSelect--;
+				LocalDate date = buyList.get(currentSelect).getNowDate();
+				LocalTime time = buyList.get(currentSelect).getNowTime();
+				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+				String formattedTime = time.format(formatter);
+				lblNewLabel_5.setText(date.toString() + " " + formattedTime);
+				lblNewLabel_5.setFont(new Font("맑은 고딕", Font.PLAIN, 14));
 				lblNewLabel_3_2_1.setText("\\ " + tempList.get(currentSelect).getCount().size() + ",000");
 				lblNewLabel_4.setText("< " + (currentSelect + 1) + " >");
 				resetLottoPaper();
@@ -156,6 +163,12 @@ public class BuyList extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				currentSelect++;
+				LocalDate date = buyList.get(currentSelect).getNowDate();
+				LocalTime time = buyList.get(currentSelect).getNowTime();
+				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+				String formattedTime = time.format(formatter);
+				lblNewLabel_5.setText(date.toString() + " " + formattedTime);
+				lblNewLabel_5.setFont(new Font("맑은 고딕", Font.PLAIN, 14));
 				lblNewLabel_3_2_1.setText("\\ " + tempList.get(currentSelect).getCount().size() + ",000");
 				lblNewLabel_4.setText("< " + (currentSelect + 1) + " >");
 				resetLottoPaper();
