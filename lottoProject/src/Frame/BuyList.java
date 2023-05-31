@@ -20,12 +20,17 @@ import lottoProject.LottoPaper;
 
 public class BuyList extends JFrame {
 	private JPanel contentPane;
-
+	private List<LottoPaper> tempList;
 	private JPanel[] choices;
 	private JLabel[] isAutos;
 	private JLabel[] numbers;
+	private JPanel panel;
+	private JLabel lbl_temp;
+	private int currentSelect = 0;
+	private JLabel lblNewLabel_4;
 
 	public BuyList(List<LottoPaper> buyList, MainFrame main) {
+		tempList = buyList;
 
 		setBounds(100, 100, 400, 600);
 		contentPane = new JPanel();
@@ -82,7 +87,7 @@ public class BuyList extends JFrame {
 		lblNewLabel_3_2.setBounds(51, 416, 83, 37);
 		contentPane.add(lblNewLabel_3_2);
 
-		JLabel lblNewLabel_3_2_1 = new JLabel("\\ 5,000");
+		JLabel lblNewLabel_3_2_1 = new JLabel();
 		lblNewLabel_3_2_1.setText("\\ " + ",000");
 		lblNewLabel_3_2_1.setFont(new Font("맑은 고딕", Font.BOLD, 18));
 		lblNewLabel_3_2_1.setBounds(277, 416, 83, 37);
@@ -115,7 +120,7 @@ public class BuyList extends JFrame {
 		lblNewLabel_5_1.setBounds(114, 185, 160, 15);
 		contentPane.add(lblNewLabel_5_1);
 
-		JPanel panel = new JPanel();
+		panel = new JPanel();
 		panel.setBackground(SystemColor.window);
 		panel.setBounds(67, 224, 267, 173);
 		contentPane.add(panel);
@@ -133,15 +138,94 @@ public class BuyList extends JFrame {
 		JButton btnBack = new RoundButton("이전");
 		btnBack.setBounds(88, 519, 62, 23);
 		contentPane.add(btnBack);
+		btnBack.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				currentSelect--;
+				lblNewLabel_3_2_1.setText("\\ " + tempList.get(currentSelect).getCount().size() + ",000");
+				lblNewLabel_4.setText("< " + (currentSelect + 1) + " >");
+				resetLottoPaper();
+				printLottoPaper(currentSelect);
+			}
+		});
 
 		JButton btnFront = new RoundButton("다음");
 		btnFront.setBounds(244, 519, 62, 23);
 		contentPane.add(btnFront);
+		btnFront.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				currentSelect++;
+				lblNewLabel_3_2_1.setText("\\ " + tempList.get(currentSelect).getCount().size() + ",000");
+				lblNewLabel_4.setText("< " + (currentSelect + 1) + " >");
+				resetLottoPaper();
+				printLottoPaper(currentSelect);
+			}
+		});
 
-		JLabel lblNewLabel_4 = new JLabel("< 1 >");
-		lblNewLabel_4.setBounds(183, 523, 30, 15);
+		lblNewLabel_4 = new JLabel("< " + (currentSelect + 1) + " >");
+		lblNewLabel_4.setBounds(183, 523, 40, 15);
 		contentPane.add(lblNewLabel_4);
 
+		System.out.println(tempList.size());
+		if (tempList.size() > 0) {
+			printLottoPaper(0);
+			lblNewLabel_3_2_1.setText("\\ " + tempList.get(currentSelect).getCount().size() + ",000");
+		} else {
+			lbl_temp = new JLabel("저장된 로또용지가 없습니다.");
+			panel.add(lbl_temp);
+		}
+	}
+
+	public void resetLottoPaper() {
+		panel.removeAll(); // 해도 화면에서는 지워지지 않고 컴포넌트만 사라짐
+		panel.invalidate();
+		panel.setVisible(false);
+	}
+
+	public void printLottoPaper(int index) {
+		if (tempList.get(index).getCount().size() != 0) {
+			int size = tempList.get(index).getCount().size(); // 0번째 카운트 사이즈;
+
+			choices = new JPanel[size];
+			isAutos = new JLabel[size];
+			numbers = new JLabel[size];
+
+			for (int i = 0; i < size; i++) {
+				choices[i] = new JPanel();
+				isAutos[i] = new JLabel("");
+				numbers[i] = new JLabel("");
+
+				choices[i].setBackground(Color.WHITE);
+			}
+
+			for (int i = 0; i < size; i++) {
+				choices[i].add(isAutos[i]);
+				choices[i].add(numbers[i]);
+				isAutos[i].setFont(new Font("맑은 고딕", Font.PLAIN, 15));
+				numbers[i].setFont(new Font("맑은 고딕", Font.PLAIN, 15));
+				panel.add(choices[i]);
+			}
+
+			for (int i = 0; i < size; i++) {
+				isAutos[i].setText(isAuto(tempList.get(index).getCount().get(i)));
+				String number = tempList.get(index).getLotto().get(i).toString();
+				String text = number.replace(",", " ");
+				String text2 = text.replace("[", "").replace("]", "");
+				numbers[i].setText(text2);
+			}
+		}
+		panel.setVisible(true);
+	}
+
+	public String isAuto(int target) {
+		if (target == 0) {
+			return "자동";
+		} else if (target == 6) {
+			return "수동";
+		} else {
+			return "반자동";
+		}
 	}
 
 }
