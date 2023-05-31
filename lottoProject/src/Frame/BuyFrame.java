@@ -7,6 +7,7 @@ import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
@@ -52,10 +53,6 @@ public class BuyFrame extends JFrame {
 		for (int i = 0; i < 5; i++) {
 			btnResets[i].addActionListener(actionlistener);
 		}
-		lottopaper.setLotto(lottoMap);
-		System.out.println("lottoMap" + lottoMap);
-		lottopaper.setCount(autoCount);
-		System.out.println("autoCount" + autoCount);
 	}
 
 	private ActionListener 결제초기화액션리스너() {
@@ -70,8 +67,7 @@ public class BuyFrame extends JFrame {
 						numbers[i].setText("00 00 00 00 00 00");
 
 						System.out.println("i값 출력 : " + i);
-						Map<Integer, Set<Integer>> removeMap = lottopaper.getLotto();
-						removeMap.remove(i);
+						lottoMap.remove(i);
 						// 자동도 지워줘서 위로 올렸어요..!!
 						autoCount.remove(i);
 						j = i;
@@ -79,9 +75,8 @@ public class BuyFrame extends JFrame {
 						break;
 					}
 				}
-				lottoMap = lottopaper.getLotto();
 				for (int i = j; i < lottoMap.size(); i++) {
-					Map<Integer, Set<Integer>> replaceMap = lottopaper.getLotto();
+					Map<Integer, Set<Integer>> replaceMap = lottoMap;
 					Set<Integer> replaceSet = replaceMap.get(i + 1);
 					replaceMap.put(i, replaceSet);
 				}
@@ -96,7 +91,7 @@ public class BuyFrame extends JFrame {
 
 		String str = "";
 		int i;
-		for (i = 0; i < lottoMap.size() - 1; i++) {
+		for (i = 0; i < autoCount.size(); i++) {
 			Set<Integer> values = lottoMap.get(i);
 
 			// key에 null값이 들어가요..!
@@ -186,9 +181,6 @@ public class BuyFrame extends JFrame {
 							button.setEnabled(true);
 						}
 						count++;
-					}
-					if (count == 6) {
-						autoCount.add(count);
 					}
 				}
 
@@ -330,10 +322,23 @@ public class BuyFrame extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				// 한장에 입력받은 값을 담기
 				lottopaper.setLotto(lottoMap);
+				System.out.println("넣을 로또맵" + lottoMap);
 				lottopaper.setCount(autoCount);
-
+				lottoMapList.add(lottopaper);
 				new PaymentCheckFrame(lottopaper); // checkFrame에 보내기
 				lottopaper = new LottoPaper(); // 초기화
+				// 결제하러갈때 전체적인 초기화필요;
+				lottoMap = new HashMap<>();
+				autoCount = new ArrayList<>();
+				count = 0;
+				countList = 0;
+				for (int i = 0; i < 5; i++) {
+					isAutos[i].setText("자동여부");
+					numbers[i].setText("00 00 00 00 00 00");
+				}
+				// 이렇게 다 해줘야 새로운거 받을수있음;
+				// 1개 선택하고 등록시 autoCount에 등록되지않게 해야함; - 처리함 등록처리부분에서 if문 안에 넣음
+				// 자동4개 수동전부 1개 하면 0 0 0 0 6 0 이렇게 6개가 되버림
 
 			}
 		});
