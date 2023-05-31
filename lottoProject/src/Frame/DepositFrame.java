@@ -24,6 +24,10 @@ public class DepositFrame extends JFrame {
 	int money = 0;// 예치금 입금 예정 , 결제시 여기에 입금 됨
 	private JTextField txtT;
 
+	public void setTotalCost(int totalCost) {
+		this.totalCost = totalCost;
+	}
+
 	public int getTotalCost() {
 		return totalCost;
 	}
