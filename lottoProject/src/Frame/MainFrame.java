@@ -14,6 +14,8 @@ import javax.swing.border.EmptyBorder;
 public class MainFrame extends JFrame {
 
 	private JPanel contentPane;
+	BuyFrame buyFrame = new BuyFrame(this);
+	ShootNumImage shootNumImage;
 
 	/**
 	 * Launch the application.
@@ -35,6 +37,7 @@ public class MainFrame extends JFrame {
 	 * Create the frame.
 	 */
 	public MainFrame() {
+
 		setTitle("4조 대박당첨");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -56,7 +59,6 @@ public class MainFrame extends JFrame {
 		JButton btnNewButton = new RoundButton("구매하기");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				BuyFrame buyFrame = new BuyFrame();
 				buyFrame.setVisible(true);
 				setVisible(false);
 			}
@@ -67,7 +69,7 @@ public class MainFrame extends JFrame {
 		JButton btnNewButton_1 = new RoundButton("구매내역");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				BuyList buyList = new BuyList();
+				BuyList buyList = new BuyList(buyFrame.returnMapList(), MainFrame.this);
 				buyList.setVisible(true);
 				setVisible(false);
 			}
@@ -78,7 +80,7 @@ public class MainFrame extends JFrame {
 		JButton btnNewButton_2 = new RoundButton("추첨");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ShootNumImage shootNumImage = new ShootNumImage();
+				shootNumImage = new ShootNumImage(MainFrame.this);
 				shootNumImage.setVisible(true);
 				setVisible(false);
 			}
@@ -89,7 +91,7 @@ public class MainFrame extends JFrame {
 		JButton btnNewButton_3 = new RoundButton("당첨 확인");
 		btnNewButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				WinningDetails winningDetails = new WinningDetails();
+				WinningDetails winningDetails = new WinningDetails(MainFrame.this, shootNumImage);
 				winningDetails.setVisible(true);
 				setVisible(false);
 			}

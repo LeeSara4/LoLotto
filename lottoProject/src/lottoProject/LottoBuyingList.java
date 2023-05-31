@@ -1,6 +1,9 @@
 package lottoProject;
+
 import java.util.ArrayList;
 import java.util.List;
+
+import Frame.DepositFrame;
 
 public class LottoBuyingList {
 	private List<LottoPaper> buyList; // 로또 용지
@@ -58,4 +61,5 @@ public class LottoBuyingList {
 	public String toString() {
 		return "LottoUser [buyList=" + buyList + ", money=" + money + "]";
 	}
+
 }

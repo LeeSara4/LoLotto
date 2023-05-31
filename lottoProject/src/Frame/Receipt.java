@@ -9,7 +9,6 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
-import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -41,18 +40,6 @@ public class Receipt extends JDialog {
 		contentPane.setLayout(null);
 
 		int size = lottoPaper.getCount().size();
-
-		JButton btnNewButton = new RoundButton("메인으로");
-		btnNewButton.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				dispose();
-				MainFrame frame = new MainFrame();
-				frame.setVisible(true);
-			}
-		});
-		btnNewButton.setBounds(275, 10, 97, 23);
-		contentPane.add(btnNewButton);
 
 		JLabel lblNewLabel = new JLabel("LOTTO");
 		lblNewLabel.setFont(new Font("맑은 고딕", Font.BOLD, 31));
@@ -110,11 +97,13 @@ public class Receipt extends JDialog {
 		contentPane.add(lblNewLabel_2_1_1);
 
 		JLabel lblNewLabel_5 = new JLabel("2023 / 06 / 07 (수)");
-		LocalDate nowDate = LocalDate.now();
-		LocalTime nowTime = LocalTime.now();
+		LocalDate date = LocalDate.now();
+		LocalTime time = LocalTime.now();
+		lottoPaper.setNowDate(LocalDate.now());
+		lottoPaper.setNowTime(LocalTime.now());
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
-		String formattedTime = nowTime.format(formatter);
-		lblNewLabel_5.setText(nowDate.toString() + " " + formattedTime);
+		String formattedTime = time.format(formatter);
+		lblNewLabel_5.setText(date.toString() + " " + formattedTime);
 		lblNewLabel_5.setFont(new Font("맑은 고딕", Font.PLAIN, 14));
 		lblNewLabel_5.setBounds(114, 162, 160, 15);
 		contentPane.add(lblNewLabel_5);
