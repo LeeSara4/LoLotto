@@ -15,6 +15,8 @@ public class MainFrame extends JFrame {
 
 	private JPanel contentPane;
 	BuyFrame buyFrame = new BuyFrame(this);
+	ShootNumImage shootNumImage = new ShootNumImage(this);
+	BuyList buyList = new BuyList(buyFrame.returnMapList(), this);
 
 	/**
 	 * Launch the application.
@@ -68,8 +70,6 @@ public class MainFrame extends JFrame {
 		JButton btnNewButton_1 = new RoundButton("구매내역");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.out.println(buyFrame.returnMapList().toString());
-				BuyList buyList = new BuyList();
 				buyList.setVisible(true);
 				setVisible(false);
 			}
@@ -80,7 +80,6 @@ public class MainFrame extends JFrame {
 		JButton btnNewButton_2 = new RoundButton("추첨");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ShootNumImage shootNumImage = new ShootNumImage();
 				shootNumImage.setVisible(true);
 				setVisible(false);
 			}

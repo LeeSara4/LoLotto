@@ -8,12 +8,15 @@ import java.awt.event.ActionListener;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import lottoProject.LottoPaper;
 
 public class BuyList extends JFrame {
 	private JPanel contentPane;
@@ -22,7 +25,7 @@ public class BuyList extends JFrame {
 	private JLabel[] isAutos;
 	private JLabel[] numbers;
 
-	public BuyList() {
+	public BuyList(List<LottoPaper> buyList, MainFrame main) {
 
 		setBounds(100, 100, 400, 600);
 		contentPane = new JPanel();
@@ -36,8 +39,7 @@ public class BuyList extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				MainFrame frame = new MainFrame();
-				frame.setVisible(true);
+				main.setVisible(true);
 			}
 		});
 		btnNewButton.setBounds(275, 10, 97, 23);
@@ -117,34 +119,6 @@ public class BuyList extends JFrame {
 		panel.setBackground(SystemColor.window);
 		panel.setBounds(67, 224, 267, 173);
 		contentPane.add(panel);
-
-		choices = new JPanel[5];
-		isAutos = new JLabel[5];
-		numbers = new JLabel[5];
-
-		for (int i = 0; i < 5; i++) {
-			choices[i] = new JPanel();
-			isAutos[i] = new JLabel("");
-			numbers[i] = new JLabel("");
-
-			choices[i].setBackground(Color.WHITE);
-		}
-
-		for (int i = 0; i < 5; i++) {
-			choices[i].add(isAutos[i]);
-			choices[i].add(numbers[i]);
-			isAutos[i].setFont(new Font("맑은 고딕", Font.PLAIN, 15));
-			numbers[i].setFont(new Font("맑은 고딕", Font.PLAIN, 15));
-			panel.add(choices[i]);
-		}
-
-//		for (int i = 0; i < 사이즈; i++) {
-//			isAutos[i].setText(isAuto(lottoPaper.getCount().get(i)));
-//			String number = lottoPaper.getLotto().get(i).toString();
-//			String text = number.replace(",", " ");
-//			String text2 = text.replace("[", "").replace("]", "");
-//			numbers[i].setText(text2);
-//		}
 
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(SystemColor.activeCaption);
