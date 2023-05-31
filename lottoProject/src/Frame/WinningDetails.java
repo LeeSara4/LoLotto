@@ -84,22 +84,18 @@ public class WinningDetails extends JFrame {
 		panel.setBounds(116, 216, 418, 216);
 		contentPane.add(panel);
 
-		JPanel pnl1_3_2 = new JPanel();
-		pnl1_3_2.setBounds(116, 152, 418, 54);
-		contentPane.add(pnl1_3_2);
+		JPanel pnl2 = new JPanel();
+		pnl2.setBounds(116, 152, 418, 54);
+		contentPane.add(pnl2);
 
-		JLabel isAuto_1_3_2_1_1 = new JLabel("총 9,000,000 원 당첨!");
-		isAuto_1_3_2_1_1.setFont(new Font("맑은 고딕", Font.BOLD, 26));
-		pnl1_3_2.add(isAuto_1_3_2_1_1);
+		JLabel winMoney = new JLabel("총 9,000,000 원 당첨!");
+		winMoney.setFont(new Font("맑은 고딕", Font.BOLD, 26));
+		pnl2.add(winMoney);
 
-		JLabel isAuto_1_3_2 = new JLabel("");
-		isAuto_1_3_2.setFont(new Font("맑은 고딕", Font.BOLD, 20));
-		pnl1_3_2.add(isAuto_1_3_2);
-
-		JButton btnNewButton = new JButton("이전");
-		btnNewButton.setBounds(181, 458, 97, 23);
-		contentPane.add(btnNewButton);
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton btnBack = new RoundButton("이전");
+		btnBack.setBounds(181, 458, 97, 23);
+		contentPane.add(btnBack);
+		btnBack.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (currentSelect - 1 >= 0) {
@@ -111,10 +107,10 @@ public class WinningDetails extends JFrame {
 			}
 		});
 
-		JButton btnNewButton_1 = new JButton("다음");
-		btnNewButton_1.setBounds(367, 458, 97, 23);
-		contentPane.add(btnNewButton_1);
-		btnNewButton_1.addActionListener(new ActionListener() {
+		JButton btnFront = new RoundButton("다음");
+		btnFront.setBounds(367, 458, 97, 23);
+		contentPane.add(btnFront);
+		btnFront.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (currentSelect + 1 < buyList.size()) {
@@ -170,37 +166,19 @@ public class WinningDetails extends JFrame {
 
 	public void printWinningNumbers() {
 		if (shootNumImage != null) {
-			JLabel lbl_Winning_Num1 = new JLabel(winning_Numbers.get(0).toString());
-			lbl_Winning_Num1.setFont(new Font("맑은 고딕", Font.BOLD, 28));
-			pnl_Winning.add(lbl_Winning_Num1);
-
-			JLabel lbl_Winning_Num2 = new JLabel(winning_Numbers.get(1).toString());
-			lbl_Winning_Num2.setFont(new Font("맑은 고딕", Font.BOLD, 28));
-			pnl_Winning.add(lbl_Winning_Num2);
-
-			JLabel lbl_Winning_Num3 = new JLabel(winning_Numbers.get(2).toString());
-			lbl_Winning_Num3.setFont(new Font("맑은 고딕", Font.BOLD, 28));
-			pnl_Winning.add(lbl_Winning_Num3);
-
-			JLabel lbl_Winning_Num4 = new JLabel(winning_Numbers.get(3).toString());
-			lbl_Winning_Num4.setFont(new Font("맑은 고딕", Font.BOLD, 28));
-			pnl_Winning.add(lbl_Winning_Num4);
-
-			JLabel lbl_Winning_Num5 = new JLabel(winning_Numbers.get(4).toString());
-			lbl_Winning_Num5.setFont(new Font("맑은 고딕", Font.BOLD, 28));
-			pnl_Winning.add(lbl_Winning_Num5);
-
-			JLabel lbl_Winning_Num6 = new JLabel(winning_Numbers.get(5).toString());
-			lbl_Winning_Num6.setFont(new Font("맑은 고딕", Font.BOLD, 28));
-			pnl_Winning.add(lbl_Winning_Num6);
+			for (int i = 0; i < 6; i++) {
+				JLabel number = new JLabel(winning_Numbers.get(i).toString());
+				number.setFont(new Font("맑은 고딕", Font.BOLD, 20));
+				pnl_Winning.add(number);
+			}
 
 			JLabel lbl_Winning_Plus = new JLabel("+");
 			lbl_Winning_Plus.setFont(new Font("맑은 고딕", Font.BOLD, 28));
 			pnl_Winning.add(lbl_Winning_Plus);
 
-			JLabel lbl_Winning_Bouns = new JLabel(String.valueOf(bonusNumber));
-			lbl_Winning_Bouns.setFont(new Font("맑은 고딕", Font.BOLD, 28));
-			pnl_Winning.add(lbl_Winning_Bouns);
+			JLabel lbl_Winning_Bonus = new JLabel(String.valueOf(bonusNumber));
+			lbl_Winning_Bonus.setFont(new Font("맑은 고딕", Font.BOLD, 28));
+			pnl_Winning.add(lbl_Winning_Bonus);
 		}
 	}
 

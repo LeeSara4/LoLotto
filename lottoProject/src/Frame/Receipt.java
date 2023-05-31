@@ -5,6 +5,8 @@ import java.awt.Font;
 import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -17,7 +19,7 @@ import javax.swing.border.EmptyBorder;
 
 import lottoProject.LottoPaper;
 
-public class Receipt extends JDialog {
+public class Receipt extends JDialog implements MouseListener {
 	private JPanel contentPane;
 	private Timer timer;
 	private int windowHeight;
@@ -38,7 +40,9 @@ public class Receipt extends JDialog {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-
+		
+		addMouseListener(this);
+		
 		int size = lottoPaper.getCount().size();
 
 		JLabel lblNewLabel = new JLabel("LOTTO");
@@ -192,4 +196,17 @@ public class Receipt extends JDialog {
 			return "반자동";
 		}
 	}
+
+	@Override
+	public void mouseClicked(MouseEvent arg0) {
+		windowHeight = 560;
+	}
+	@Override
+	public void mouseEntered(MouseEvent arg0) {	}
+	@Override
+	public void mouseExited(MouseEvent arg0) { }
+	@Override
+	public void mousePressed(MouseEvent arg0) {	}
+	@Override
+	public void mouseReleased(MouseEvent arg0) { }
 }
