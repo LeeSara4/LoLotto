@@ -88,13 +88,7 @@ public class BuyFrame extends JFrame {
 		return actionlistener;
 	}
 
-	
 	private void resetBtnPrint() {
-
-		for (int i = 0; i < 5; i++) {
-			isAutos[i].setText("자동여부");
-			numbers[i].setText("00 00 00 00 00 00");
-		}
 
 		String str = "";
 		int i;
@@ -111,14 +105,12 @@ public class BuyFrame extends JFrame {
 			str = "";
 		}
 
-		System.out.println("i : " + i);
-		/*
-		 * for (int j = i; j < 5; j++) { isAutos[j].setText("자동여부");
-		 * numbers[j].setText("00 00 00 00 00 00"); }
-		 */
+		for (int j = i; j < 5; j++) {
+			isAutos[j].setText("자동여부");
+			numbers[j].setText("00 00 00 00 00 00");
+		}
 
 	}
-
 
 	private void selectNumPrint(Map<Integer, Set<Integer>> map, int count, int countList) {
 		String str = "";
