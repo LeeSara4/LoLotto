@@ -3,11 +3,9 @@ package Frame;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.ComboBoxEditor;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -15,21 +13,18 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
-
-import javafx.scene.control.TextField;
-import javax.swing.SwingConstants;
 
 public class DepositFrame extends JFrame {
 
 	private JPanel contentPane;
 	int totalCost = 0;
 	int money = 0;// 예치금 입금 예정 , 결제시 여기에 입금 됨
-	String strMoney;
 	private JTextField txtT;
 
-	public int returnBullet() {
+	public int getTotalCost() {
 		return totalCost;
 	}
 
@@ -79,9 +74,7 @@ public class DepositFrame extends JFrame {
 					txtT.setText("50000");
 				} else if (str == "직접 입력") {
 					txtT.setText("");
-
 				}
-
 			}
 		});
 
@@ -110,19 +103,14 @@ public class DepositFrame extends JFrame {
 				if (money == 0) {
 					money = 1000;
 				}
-
-				
 				Integer tempMoney = Integer.valueOf(txtT.getText());
 				System.out.println(tempMoney);
 				money = tempMoney;
-				
 				// 결제 버튼 누르기
-				
 				totalCost = totalCost + money;
 				buyFrame.setMyMoney(totalCost);
 
 			}
-
 		});
 		btnNewButton.setBounds(33, 149, 118, 43);
 		panel.add(btnNewButton);

@@ -44,13 +44,14 @@ public class BuyFrame extends JFrame {
 	private int countList = 0; // 맵의 키 값
 	int countNum = 0; // 자동 유무 확인하는 수치 임시저장 공간
 	int price;
+
 	private JPanel[] choices;
 	private JLabel[] isAutos;
 	private JLabel[] numbers;
 	private RoundButton[] btnResets;
 
-	private JLabel lblMyMoney;
-	private JLabel lblTotal;
+	private JLabel lblMyMoney; // 예치금 표시 프레임
+	private JLabel lblTotal; // 로또 개수에 따르는 지불받는 금액
 
 	private void 결제초기화액션리스너추가(ActionListener actionlistener) {
 
@@ -368,6 +369,7 @@ public class BuyFrame extends JFrame {
 //				lottoMapList.add(lottopaper);// 로또를 여러장 가지기 위해 추가중 여기서 추가
 //				System.out.println(lottoMapList.indexOf(1));  // 여러장 추가할때 사용예정
 				System.out.println(lottoMap);
+				lblTotal.setText("총" + (countList * 1000) + "원"); // 로또 추가된 수만큼 가격 책정
 			}
 		});
 
@@ -382,13 +384,22 @@ public class BuyFrame extends JFrame {
 				System.out.println("넣을 로또맵" + lottoMap);
 				lottopaper.setCount(autoCount);
 				lottoMapList.add(lottopaper);
+
 				new PaymentCheckFrame(lottopaper); // checkFrame에 보내기
-				lottopaper = new LottoPaper(); // 초기화
+
 				// 결제하러갈때 전체적인 초기화필요;
+				lottopaper = new LottoPaper(); // 초기화
 				lottoMap = new HashMap<>();
 				autoCount = new ArrayList<>();
 				count = 0;
+				int totalCost = depositFrame.getTotalCost();	// 결제를 위한 토탈코스트 변수
+				System.out.println("현시점의 예치금: " + totalCost);	
+				System.out.println("현시점의 결제금액: " + countList * 1000);
+				System.out.println("현시점의 카운트: " + countList);
+				lblMyMoney.setText("예치금: " + (totalCost - (countList * 1000)) + "원"); // 결제한 만큼 차감된 값이 출력
 				countList = 0;
+				lblTotal.setText("총" + (countList * 1000) + "원"); // 로또 추가된 수만큼 가격 책정
+
 				for (int i = 0; i < 5; i++) {
 					isAutos[i].setText("자동여부");
 					numbers[i].setText("00 00 00 00 00 00");
@@ -412,52 +423,6 @@ public class BuyFrame extends JFrame {
 		btnReset.setFont(new Font("맑은 고딕", Font.BOLD, 17));
 		btnReset.setBounds(590, 362, 113, 35);
 		contentPane.add(btnReset);
-
-		btnPlus.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent click) {
-				autoCount.add(countNum);
-
-				if (countList < 5) {
-					if (rtm.티켓등록(buttonZip.size())) {
-
-						// 이러한 조건에서 등록되야함.
-						lottoMap.put(countList, buttonZip); // 현재 0번째이기 때문에 숫자 0의 키를 가지는 맵
-						selectNumPrint(lottoMap, count, countList);
-						buttonZip = new TreeSet();
-						count = 0;
-						countList++;
-						System.out.println(autoCount);
-						for (int i = 0; i < buttons.size(); i++) {
-							buttons.get(i).setEnabled(true);
-						}
-						lbl.setBuyList(lottoMapList);
-						// lottopaper.setLotto(lottoMap);
-						// lottopaper.setCount(autoCount);
-					} else if (buttonZip.size() < 6) {
-						System.out.println("선택한 수가 부족하다.");
-						buttonZip = new TreeSet();
-						count = 0;
-						for (int i = 0; i < buttons.size(); i++) {
-							buttons.get(i).setEnabled(true);
-						}
-
-					}
-
-				} else {
-					System.out.println("한장이 가득 찹니다.");
-					System.out.println(lottoMap);
-				}
-				// 여기서 맵을 보내줘야 함.
-				for (JButton elem : buttons) { // 선택화면 불 켜기
-					elem.setEnabled(true);
-				}
-				count = 0;
-//				lottoMapList.add(lottopaper);// 로또를 여러장 가지기 위해 추가중 여기서 추가
-//				System.out.println(lottoMapList.indexOf(1));  // 여러장 추가할때 사용예정
-				System.out.println(lottoMap);
-				lblTotal.setText("총" + (countList * 1000) + "원");
-			}
-		});
 
 		결제초기화액션리스너추가(결제초기화액션리스너());
 
