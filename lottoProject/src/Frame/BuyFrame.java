@@ -6,6 +6,8 @@ import java.awt.GridLayout;
 import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -44,19 +46,62 @@ public class BuyFrame extends JFrame {
 	private JLabel[] isAutos;
 	private JLabel[] numbers;
 	private RoundButton[] btnResets;
+	private RoundedButton button;
+	private int labelClickindex = 0;
+	private boolean isLabelClick = false;
 
 	// 태경
 	private void panelResetSetting(int i) {
 		isAutos[i].setText("자동여부");
 		numbers[i].setText("00 00 00 00 00 00");
-		btnResets[i].setEnabled(false);
-	}
-	private void 결제초기화액션리스너추가(ActionListener actionlistener) {
+		btnResets[i].setEnabled(true);
+		RoundedButton btn = (RoundedButton) buttons.get(i);
+		btn.decorate2();
 
+	}
+
+	private void 라벨클릭액션리스너추가(MouseAdapter mouseAdapter) {
+		for (int i = 0; i < 5; i++) {
+			numbers[i].addMouseListener(mouseAdapter);
+		}
+	}
+
+	private MouseAdapter 라벨클릭액션리스너() {
+		MouseAdapter mouseAdapter = new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent me) {
+				isLabelClick = true;
+				System.out.println("라벨클릭됐음");
+				int index = 0;
+				JLabel lbl = (JLabel) me.getSource();
+				for (int i = 0; i < 5; i++) {
+					if (lbl.equals(numbers[i])) {
+						index = i;
+						break;
+					}
+				}
+				// 선택한 라벨 숫자값 버튼올리기
+				Set<Integer> mouseSet = lottopaper.getLotto().get(index);
+				System.out.println(mouseSet);
+				if (!(mouseSet == null)) {
+					for (Integer set : mouseSet) {
+						RoundedButton btn = (RoundedButton) buttons.get(set - 1);
+						btn.decorate2();
+					}
+					labelClickindex = index;
+				}
+
+			} //
+		};
+		return mouseAdapter;
+	}
+
+	private void 결제초기화액션리스너추가(ActionListener actionlistener) {
 		for (int i = 0; i < 5; i++) {
 			btnResets[i].addActionListener(actionlistener);
 		}
 	}
+
 	private ActionListener 결제초기화액션리스너() {
 		ActionListener actionlistener = new ActionListener() {
 			@Override
@@ -83,7 +128,6 @@ public class BuyFrame extends JFrame {
 				}
 				resetBtnPrint();
 			}
-
 		};
 		return actionlistener;
 	}
@@ -95,24 +139,27 @@ public class BuyFrame extends JFrame {
 		for (i = 0; i < autoCount.size(); i++) {
 			Set<Integer> values = lottoMap.get(i);
 			for (Integer set : values) {
+				if (set < 10) {
+					str += "0";
+				}
 				str += set + " ";
 				System.out.println("str : " + str);
-
 			}
-
 			numbers[i].setText(str);
 			isAutos[i].setText(rtm.자동버튼(autoCount.get(i)));
 			btnResets[i].setEnabled(true);
+			// btnResets[i].decorate();
 			str = "";
-
 		}
 
 		for (int j = i; j < 5; j++) {
 			panelResetSetting(j);
 		}
-
 		System.out.println("i : " + i);
-
+		for (int k = 1; k <= 45; k++) {
+			RoundedButton resetBtn = (RoundedButton) buttons.get(k - 1);
+			resetBtn.decorate();
+		}
 	}
 
 	private void selectNumPrint(Map<Integer, Set<Integer>> map, int count, int countList) {
@@ -120,11 +167,15 @@ public class BuyFrame extends JFrame {
 
 		Set<Integer> values = map.get(countList);
 		for (Integer set : values) {
+			if (set < 10) {
+				str += "0";
+			}
 			str += set + " ";
 		}
 		numbers[countList].setText(str);
 		isAutos[countList].setText(rtm.자동버튼(autoCount.get(countList)));
 		btnResets[countList].setEnabled(true);
+		// btnResets[countList].decorate();
 	}
 
 	public Map<Integer, Set<Integer>> returnMap() {
@@ -140,6 +191,7 @@ public class BuyFrame extends JFrame {
 	}
 
 	public BuyFrame() {
+
 		setBackground(SystemColor.window);
 		lottoMap = lottopaper.getLotto();
 		lottoMapList = lbl.getBuyList();
@@ -164,19 +216,41 @@ public class BuyFrame extends JFrame {
 		// 선택한 번호들을 입력하는 공간
 
 		for (int i = 1; i <= 45; i++) {
-			RoundedButton button = new RoundedButton(Integer.toString(i));
+			button = new RoundedButton(Integer.toString(i));
 			button.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					if (count < 6) {
-						// 버튼 정보 보내줄 예정
-						int bts = Integer.parseInt(button.getText());
-						buttonZip.add(bts);
-						button.setEnabled(false);
-						if (count == 6) {
-							button.setEnabled(true);
+					RoundedButton btn = (RoundedButton) e.getSource();
+
+					for (int j = 1; j <= 45; j++) {
+						RoundedButton pushBtn = (RoundedButton) buttons.get(j - 1);
+						if (!pushBtn.isPossible()) {
+							buttonZip.add(Integer.parseInt(pushBtn.getText()));
 						}
-						count++;
 					}
+					int cnt = buttonZip.size();
+
+					if (btn.isPossible()) { // 분홍색
+						if (cnt <= 5) {
+							// 버튼 정보 보내줄 예정
+							int bts = Integer.parseInt(btn.getText());
+							buttonZip.add(bts);
+							System.out.println(buttonZip);
+							btn.decorate2();
+							cnt++;
+						}
+					}
+					else { // 회색
+
+						System.out.println("나한테왜이래" + buttonZip);
+
+						int bts = Integer.parseInt(btn.getText());
+							buttonZip.remove(bts);
+							btn.decorate();
+						cnt--;
+					}
+
+
+					count = cnt;
 				}
 			});
 
@@ -199,8 +273,6 @@ public class BuyFrame extends JFrame {
 			isAutos[i] = new JLabel("자동여부");
 			numbers[i] = new JLabel("00 00 00 00 00 00");
 			btnResets[i] = new RoundButton("초기화");
-
-
 			choices[i].setBackground(Color.WHITE);
 		}
 
@@ -339,8 +411,9 @@ public class BuyFrame extends JFrame {
 				count = 0;
 				countList = 0;
 				for (int i = 0; i < 5; i++) {
-					isAutos[i].setText("자동여부");
-					numbers[i].setText("00 00 00 00 00 00");
+					panelResetSetting(i);
+//					isAutos[i].setText("자동여부");
+//					numbers[i].setText("00 00 00 00 00 00");
 				}
 			}
 		});
@@ -352,38 +425,74 @@ public class BuyFrame extends JFrame {
 		btnReset.setBackground(SystemColor.menu);
 		btnReset.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				for (int i = 0; i < countList; i++) {
+					panelResetSetting(i);
+					lottoMap.remove(i);
+					autoCount = new ArrayList<>();
+				}
+				countList = 0;
 			}
 		});
 		btnReset.setFont(new Font("맑은 고딕", Font.BOLD, 17));
 		btnReset.setBounds(590, 362, 113, 35);
 		contentPane.add(btnReset);
 
-		btnPlus.addActionListener(new ActionListener() {
+		btnPlus.addActionListener(new ActionListener() { // 등록버튼 액션리스너
 			public void actionPerformed(ActionEvent click) {
-
-				if (countList < 5) {
+				System.out.println("진짜 나한테" + countList);
+				if (countList < 5 || isLabelClick) {
 					if (rtm.티켓등록(buttonZip.size())) {
-						// 이러한 조건에서 등록되야함.
-						autoCount.add(countNum);
-						lottoMap.put(countList, buttonZip);// 현재 0번째이기 때문에 숫자 0의 키를 가지는 맵
-						System.out.println("현재 게임로또배열" + lottoMap.get(0));
-						System.out.println("현재 게임" + countList);
-						selectNumPrint(lottoMap, count, countList);
-						buttonZip = new TreeSet();
-						count = 0;
-						countList++;
-						System.out.println(autoCount);
-						for (int i = 0; i < buttons.size(); i++) {
-							buttons.get(i).setEnabled(true);
+
+						if (!isLabelClick) { // 라벨을 클릭하지않았을때
+							System.out.println("라벨을 클릭하지 않았을때 -> 등록");
+							// 이러한 조건에서 등록되야함.
+							autoCount.add(countNum);
+							lottoMap.put(countList, buttonZip);// 현재 0번째이기 때문에 숫자 0의 키를 가지는 맵
+							System.out.println("현재 게임로또배열" + lottoMap.get(0));
+							System.out.println("현재 게임" + countList);
+							selectNumPrint(lottoMap, count, countList);
+							buttonZip = new TreeSet();
+							count = 0;
+							countList++;
+							System.out.println(autoCount);
+							for (int i = 0; i < buttons.size(); i++) {
+								// buttons.get(i).setEnabled(true);
+								RoundedButton btn = (RoundedButton) buttons.get(i);
+								btn.decorate();
+							}
+
+							lbl.setBuyList(lottoMapList);
+						} else if (isLabelClick) { // 라벨을 클릭했을때
+
+							System.out.println("라벨을 클릭하지 않았을때 -> 등록");
+							// 이러한 조건에서 등록되야함.
+							autoCount.add(labelClickindex, 6);
+							lottoMap.put(labelClickindex, buttonZip);// 현재 0번째이기 때문에 숫자 0의 키를 가지는 맵
+							System.out.println("현재 게임로또배열" + lottoMap.get(0));
+							System.out.println("현재 게임" + labelClickindex);
+							selectNumPrint(lottoMap, count, labelClickindex);
+							buttonZip = new TreeSet();
+							count = 0;
+							// countList++;
+							System.out.println(autoCount);
+							for (int i = 0; i < buttons.size(); i++) {
+								// buttons.get(i).setEnabled(true);
+								RoundedButton btn = (RoundedButton) buttons.get(i);
+								btn.decorate();
+							}
+
+							lbl.setBuyList(lottoMapList);
 						}
 
-						lbl.setBuyList(lottoMapList);
+						isLabelClick = false;
 					} else if (buttonZip.size() < 6) {
 						System.out.println("선택한 수가 부족하다.");
 						buttonZip = new TreeSet();
 						count = 0;
 						for (int i = 0; i < buttons.size(); i++) {
-							buttons.get(i).setEnabled(true);
+//							buttons.get(i).setEnabled(true);
+							RoundedButton btn = (RoundedButton) buttons.get(i);
+							btn.decorate();
 						}
 
 					}
@@ -402,6 +511,7 @@ public class BuyFrame extends JFrame {
 		});
 
 		결제초기화액션리스너추가(결제초기화액션리스너());
+		라벨클릭액션리스너추가(라벨클릭액션리스너());
 
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(Color.PINK);
@@ -441,4 +551,5 @@ public class BuyFrame extends JFrame {
 		panel_5.add(lblMyMoney);
 		lblMyMoney.setFont(new Font("맑은 고딕", Font.BOLD, 19));
 	}
+
 }
