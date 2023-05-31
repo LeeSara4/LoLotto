@@ -189,11 +189,9 @@ public class BuyFrame extends JFrame {
 						count++;
 						System.out.println(count);
 					}
-
 					if (count == 6) {
 						countNum = count;
 					}
-
 				}
 			});
 			buttons.add(button);
@@ -392,12 +390,12 @@ public class BuyFrame extends JFrame {
 				lottoMap = new HashMap<>();
 				autoCount = new ArrayList<>();
 				count = 0;
-				int totalCost = depositFrame.getTotalCost();	// 결제를 위한 토탈코스트 변수
-				System.out.println("현시점의 예치금: " + totalCost);	
+				int totalCost = depositFrame.getTotalCost(); // 결제를 위한 토탈코스트 변수
+				System.out.println("현시점의 예치금: " + totalCost);
 				System.out.println("현시점의 결제금액: " + countList * 1000);
 				System.out.println("현시점의 카운트: " + countList);
 				lblMyMoney.setText("예치금: " + (totalCost - (countList * 1000)) + "원"); // 결제한 만큼 차감된 값이 출력
-				totalCost -= countList*1000;
+				totalCost -= countList * 1000;
 				depositFrame.setTotalCost(totalCost);
 				countList = 0;
 				lblTotal.setText("총" + (countList * 1000) + "원"); // 로또 추가된 수만큼 가격 책정

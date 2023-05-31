@@ -63,10 +63,11 @@ public class DepositFrame extends JFrame {
 
 // 콤보박스 선택		
 				String str = comboBox.getSelectedItem().toString();
-
+				txtT.setEnabled(false);
 				if (str == "1000 원") {
 					money = 1000;
 					txtT.setText("1000");
+					
 				} else if (str == "5000 원") {
 					money = 5000;
 					txtT.setText("5000");
@@ -77,6 +78,7 @@ public class DepositFrame extends JFrame {
 					money = 50000;
 					txtT.setText("50000");
 				} else if (str == "직접 입력") {
+					txtT.setEnabled(true);
 					txtT.setText("");
 				}
 			}
@@ -89,7 +91,7 @@ public class DepositFrame extends JFrame {
 // 값을 출력하고 내보내는 텍스트 필드
 		txtT = new JTextField();
 		txtT.setText("1000");
-
+		txtT.setEnabled(false);
 		txtT.setFont(new Font("굴림", Font.PLAIN, 20));
 		txtT.setHorizontalAlignment(SwingConstants.RIGHT);
 
