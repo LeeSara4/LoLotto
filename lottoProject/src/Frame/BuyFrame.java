@@ -422,7 +422,6 @@ public class BuyFrame extends JFrame {
 
 		RoundButton btnReload = new RoundButton("충전");
 		panel_3.add(btnReload);
-		btnReload.setSize(30, 10);
 		btnReload.setForeground(Color.PINK);
 		btnReload.setBackground(SystemColor.menu);
 		btnReload.addActionListener(new ActionListener() {
