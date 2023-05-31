@@ -15,11 +15,16 @@ import javax.swing.JTextArea;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 
+import lottoProject.LottoBuyingList;
+
 public class DepositFrame extends JFrame {
 
 	private JPanel contentPane;
+	private LottoBuyingList lbl = new LottoBuyingList();
 
 	public DepositFrame() {
+		int money = lbl.getMoney();
+
 		setBackground(new Color(255, 255, 255));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 350, 241);
@@ -46,12 +51,14 @@ public class DepositFrame extends JFrame {
 		comboBox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 // 찾았다 요놈  //comboBox.getSelectedItem().toString()) 선택한 항목의 스트링 값 반환
-				// 지역변수로 쓰고 버릴검당
 				String str = comboBox.getSelectedItem().toString();
 				if (str == "직접 입력") {
+					comboBox.set
 					comboBox.setEditable(true); // // 콤보창에 입력 여부를 판단 하는 녀석
 
-				} // 버그 발생 버그 발생!
+				} else {
+					comboBox.setEditable(false);
+				}
 
 			}
 		});
