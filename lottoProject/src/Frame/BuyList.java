@@ -107,11 +107,13 @@ public class BuyList extends JFrame {
 		contentPane.add(lblNewLabel_2_1_1);
 
 		lblNewLabel_5 = new JLabel("2023 / 06 / 07 (수)");
-		LocalDate date = buyList.get(currentSelect).getNowDate();
-		LocalTime time = buyList.get(currentSelect).getNowTime();
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
-		String formattedTime = time.format(formatter);
-		lblNewLabel_5.setText(date.toString() + " " + formattedTime);
+		if (buyList.size() > 0) {
+			LocalDate date = buyList.get(currentSelect).getNowDate();
+			LocalTime time = buyList.get(currentSelect).getNowTime();
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+			String formattedTime = time.format(formatter);
+			lblNewLabel_5.setText(date.toString() + " " + formattedTime);
+		}
 		lblNewLabel_5.setFont(new Font("맑은 고딕", Font.PLAIN, 14));
 		lblNewLabel_5.setBounds(114, 162, 160, 15);
 		contentPane.add(lblNewLabel_5);
