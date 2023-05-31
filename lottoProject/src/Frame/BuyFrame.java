@@ -29,6 +29,7 @@ import lottoProject.LottoPaper;
 import lottoProject.RegiTiketManager;
 
 public class BuyFrame extends JFrame {
+	DepositFrame depositFrame = new DepositFrame(this);
 
 	private JPanel contentPane;
 	ArrayList<JButton> buttons; // 버튼 45개
@@ -47,6 +48,9 @@ public class BuyFrame extends JFrame {
 	private JLabel[] isAutos;
 	private JLabel[] numbers;
 	private RoundButton[] btnResets;
+
+	private JLabel lblMyMoney;
+	private JLabel lblTotal;
 
 	private void 결제초기화액션리스너추가(ActionListener actionlistener) {
 
@@ -72,6 +76,7 @@ public class BuyFrame extends JFrame {
 						autoCount.remove(i);
 						j = i;
 						countList--;
+						lblTotal.setText("총"+(countList*1000)+"원");
 						break;
 					}
 				}
@@ -177,9 +182,9 @@ public class BuyFrame extends JFrame {
 						buttonZip.add(bts);
 						// System.out.println(buttonZip);
 						button.setEnabled(false);
-						if (count == 6) {
-							button.setEnabled(true);
-						}
+//						if (count == 6) {
+//							button.setEnabled(true);
+//						}
 						count++;
 					}
 				}
@@ -313,7 +318,11 @@ public class BuyFrame extends JFrame {
 		btnPlus.setForeground(SystemColor.window);
 		btnPlus.setBackground(Color.PINK);
 		panel.add(btnPlus);
-
+		
+		
+		
+		
+		
 		RoundButton btnPayment = new RoundButton("결제하기");
 		btnPayment.setForeground(SystemColor.window);
 		btnPayment.setBackground(SystemColor.activeCaption);
@@ -359,9 +368,10 @@ public class BuyFrame extends JFrame {
 		btnPlus.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent click) {
 				autoCount.add(countNum);
-
+				
 				if (countList < 5) {
 					if (rtm.티켓등록(buttonZip.size())) {
+						
 						// 이러한 조건에서 등록되야함.
 						lottoMap.put(countList, buttonZip); // 현재 0번째이기 때문에 숫자 0의 키를 가지는 맵
 						selectNumPrint(lottoMap, count, countList);
@@ -372,7 +382,6 @@ public class BuyFrame extends JFrame {
 						for (int i = 0; i < buttons.size(); i++) {
 							buttons.get(i).setEnabled(true);
 						}
-
 						lbl.setBuyList(lottoMapList);
 						// lottopaper.setLotto(lottoMap);
 						// lottopaper.setCount(autoCount);
@@ -398,9 +407,10 @@ public class BuyFrame extends JFrame {
 //				lottoMapList.add(lottopaper);// 로또를 여러장 가지기 위해 추가중 여기서 추가
 //				System.out.println(lottoMapList.indexOf(1));  // 여러장 추가할때 사용예정
 				System.out.println(lottoMap);
+				lblTotal.setText("총"+(countList*1000)+"원");
 			}
 		});
-
+		
 		결제초기화액션리스너추가(결제초기화액션리스너());
 
 		JPanel panel_1 = new JPanel();
@@ -408,7 +418,8 @@ public class BuyFrame extends JFrame {
 		panel_1.setBounds(122, 10, 212, 37);
 		contentPane.add(panel_1);
 
-		JLabel lblMyMoney = new JLabel("예치금 : 0원");
+		lblMyMoney = new JLabel("예치금 : " + "원");
+
 		panel_1.add(lblMyMoney);
 		lblMyMoney.setForeground(Color.WHITE);
 		lblMyMoney.setFont(new Font("맑은 고딕", Font.BOLD, 19));
@@ -431,7 +442,7 @@ public class BuyFrame extends JFrame {
 		btnReload.setBackground(SystemColor.menu);
 		btnReload.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new DepositFrame();
+				depositFrame.setVisible(true);
 			}
 		});
 
@@ -446,9 +457,14 @@ public class BuyFrame extends JFrame {
 		panel_5.setBounds(374, 43, 202, 37);
 		contentPane.add(panel_5);
 
-		JLabel lblTotal = new JLabel("총 1000원");
+		lblTotal = new JLabel("총 0원");
 		panel_5.add(lblTotal);
 		lblTotal.setForeground(Color.WHITE);
 		lblTotal.setFont(new Font("맑은 고딕", Font.BOLD, 20));
 	}
+
+	public void setMyMoney(int totalCost) {
+		lblMyMoney.setText("예치금 : " + totalCost + "원");
+	}
+
 }

@@ -3,27 +3,37 @@ package Frame;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ComboBoxEditor;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 
-import lottoProject.LottoBuyingList;
+import javafx.scene.control.TextField;
+import javax.swing.SwingConstants;
 
 public class DepositFrame extends JFrame {
 
 	private JPanel contentPane;
-	private LottoBuyingList lbl = new LottoBuyingList();
+	int totalCost = 0;
+	int money = 0;// 예치금 입금 예정 , 결제시 여기에 입금 됨
+	String strMoney;
+	private JTextField txtT;
 
-	public DepositFrame() {
-		int money = lbl.getMoney();
+	public int returnBullet() {
+		return totalCost;
+	}
+
+	public DepositFrame(BuyFrame buyFrame) {
 
 		setBackground(new Color(255, 255, 255));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -47,35 +57,84 @@ public class DepositFrame extends JFrame {
 		textArea.setBounds(33, 27, 107, 32);
 		panel.add(textArea);
 
-		JComboBox comboBox = new JComboBox();
+		JComboBox<String> comboBox = new JComboBox();
+		String[] price = { "1000 원", "5000 원", "10000 원", "50000 원", "직접 입력" };
 		comboBox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-// 찾았다 요놈  //comboBox.getSelectedItem().toString()) 선택한 항목의 스트링 값 반환
-				String str = comboBox.getSelectedItem().toString();
-				if (str == "직접 입력") {
-					comboBox.setEditable(true); // // 콤보창에 입력 여부를 판단 하는 녀석
 
-				} else {
-					comboBox.setEditable(false);
+// 콤보박스 선택		
+				String str = comboBox.getSelectedItem().toString();
+
+				if (str == "1000 원") {
+					money = 1000;
+					txtT.setText("1000");
+				} else if (str == "5000 원") {
+					money = 5000;
+					txtT.setText("5000");
+				} else if (str == "10000 원") {
+					money = 10000;
+					txtT.setText("10000");
+				} else if (str == "50000 원") {
+					money = 50000;
+					txtT.setText("50000");
+				} else if (str == "직접 입력") {
+					txtT.setText("");
+
 				}
 
 			}
 		});
-		comboBox.setModel(new DefaultComboBoxModel(new String[] { "1000\uC6D0", "5000\uC6D0", "10000\uC6D0",
-				"50000\uC6D0", "\uC9C1\uC811 \uC785\uB825" }));
+
+		comboBox.setModel(new DefaultComboBoxModel<String>(price));
 		comboBox.setBackground(UIManager.getColor("Button.background"));
-		comboBox.setBounds(43, 71, 220, 51);
+		comboBox.setBounds(214, 79, 91, 48);
 		panel.add(comboBox);
+// 값을 출력하고 내보내는 텍스트 필드
+		txtT = new JTextField();
+		txtT.setText("1000");
 
-		JButton btnNewButton = new JButton("\uACB0 \uC81C");
-		btnNewButton.setBounds(22, 132, 118, 43);
-		panel.add(btnNewButton);
+		txtT.setFont(new Font("굴림", Font.PLAIN, 20));
+		txtT.setHorizontalAlignment(SwingConstants.RIGHT);
 
-		JButton btnNewButton_1 = new JButton("\uCDE8 \uC18C");
-		btnNewButton_1.setBounds(175, 132, 118, 43);
-		panel.add(btnNewButton_1);
+		txtT.setBounds(12, 80, 190, 48);
+		panel.add(txtT);
+		txtT.setColumns(10);
 
 		setDefaultCloseOperation(HIDE_ON_CLOSE);
-		setVisible(true);
+
+// 충전화면에서 결제 버튼 영역		
+		JButton btnNewButton = new JButton("\uACB0 \uC81C");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				buyFrame.setVisible(true);
+				if (money == 0) {
+					money = 1000;
+				}
+
+				
+				Integer tempMoney = Integer.valueOf(txtT.getText());
+				System.out.println(tempMoney);
+				money = tempMoney;
+				
+				// 결제 버튼 누르기
+				
+				totalCost = totalCost + money;
+				buyFrame.setMyMoney(totalCost);
+
+			}
+
+		});
+		btnNewButton.setBounds(33, 149, 118, 43);
+		panel.add(btnNewButton);
+// 충전화면에서 취소 버튼 영역
+		JButton btnNewButton_1 = new JButton("\uCDE8 \uC18C");
+		btnNewButton_1.addActionListener(new ActionListener() { // 충전 화면에서 취소 누를시 창만 닫힘
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+			}
+		});
+		btnNewButton_1.setBounds(187, 149, 118, 43);
+		panel.add(btnNewButton_1);
+
 	}
 }
