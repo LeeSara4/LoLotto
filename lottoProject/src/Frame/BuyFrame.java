@@ -139,11 +139,11 @@ public class BuyFrame extends JFrame {
 		return lottopaper;
 	}
 
-	public LottoBuyingList returnMapList() { // 로또 페이퍼 묶음
-		return lbl;
+	public List<LottoPaper> returnMapList() { // 로또 페이퍼 묶음
+		return lottoMapList;
 	}
 
-	public BuyFrame() {
+	public BuyFrame(MainFrame main) {
 		setBackground(SystemColor.window);
 		lottoMap = lottopaper.getLotto();
 		lottoMapList = lbl.getBuyList();
@@ -225,8 +225,7 @@ public class BuyFrame extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				MainFrame frame = new MainFrame();
-				frame.setVisible(true);
+				main.setVisible(true);
 			}
 		});
 		contentPane.add(btnMain);

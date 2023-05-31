@@ -22,8 +22,6 @@ public class BuyList extends JFrame {
 	private JLabel[] isAutos;
 	private JLabel[] numbers;
 
-	BuyFrame buyFrame = new BuyFrame();
-
 	public BuyList() {
 
 		setBounds(100, 100, 400, 600);
