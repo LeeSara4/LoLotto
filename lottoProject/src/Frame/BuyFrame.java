@@ -432,6 +432,12 @@ public class BuyFrame extends JFrame {
 		btnReset.setBackground(SystemColor.menu);
 		btnReset.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				for(int i = 0 ; i < 5 ; i++) {
+					
+						
+					
+				}
+				lblTotal.setText("총" + (countList * 1000) + "원"); // 로또 추가된 수만큼 가격 책정
 			}
 		});
 		btnReset.setFont(new Font("맑은 고딕", Font.BOLD, 17));
@@ -493,3 +499,4 @@ public class BuyFrame extends JFrame {
 		lblMyMoney.setText("예치금 : " + totalCost + "원");
 	}
 }
+
