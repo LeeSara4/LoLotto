@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -78,6 +79,12 @@ public class BuyFrame extends JFrame {
 		MouseAdapter mouseAdapter = new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent me) {
+
+				for (int i = 0; i < 45; i++) {
+					RoundedButton btn = (RoundedButton) buttons.get(i);
+					btn.decorate();
+				}
+
 				isLabelClick = true;
 				// System.out.println("라벨클릭됐음");
 				int index = 0;
@@ -170,13 +177,6 @@ public class BuyFrame extends JFrame {
 			str = "";
 
 		}
-		/*
-		 * for (int j = i; j < 5; j++) { isAutos[j].setText("자동여부");
-		 * numbers[j].setText("00 00 00 00 00 00");
-		 * 
-		 * }
-		 */
-
 		for (int j = i; j < 5; j++) {
 			panelResetSetting(j);
 		}
@@ -188,10 +188,6 @@ public class BuyFrame extends JFrame {
 		}
 	}
 
-	/*
-	 * for (int j = i; j < 5; j++) { isAutos[j].setText("자동여부");
-	 * numbers[j].setText("00 00 00 00 00 00"); }
-	 */
 
 	private void selectNumPrint(Map<Integer, Set<Integer>> map, int count, int countList) {
 		String str = "";
@@ -222,6 +218,8 @@ public class BuyFrame extends JFrame {
 	}
 
 	public BuyFrame(MainFrame main) {
+
+
 
 		setBackground(SystemColor.window);
 		lottoMap = lottopaper.getLotto();
@@ -324,15 +322,34 @@ public class BuyFrame extends JFrame {
 			choices[i].add(btnResets[i]);
 			btnResets[i].setEnabled(false);
 		}
-		/*
-		 * RoundButton btnReload = new RoundButton("충전");
-		 * btnReload.setForeground(SystemColor.window);
-		 * btnReload.setBackground(SystemColor.activeCaption);
-		 * btnReload.addActionListener(new ActionListener() { public void
-		 * actionPerformed(ActionEvent e) { new DepositFrame(); } });
-		 */
-//		btnReload.setBounds(579, 50, 62, 23);
-//		contentPane.add(btnReload);
+		for (int i = 0; i < 5; i++) { // 라벨 포커스 마우스리스너 정의
+			numbers[i].addMouseListener(new MouseListener() {
+				@Override
+				public void mouseReleased(MouseEvent e) {
+				}
+
+				@Override
+				public void mousePressed(MouseEvent e) {
+				}
+				@Override
+				public void mouseExited(MouseEvent e) {
+					LineBorder bb = new LineBorder(Color.WHITE, 2, true);
+					JLabel lbl = (JLabel) e.getSource();
+					lbl.setBorder(bb);
+					lbl.setFont(new Font("맑은 고딕", Font.PLAIN, 18));
+				}
+				@Override
+				public void mouseEntered(MouseEvent e) {
+					LineBorder bb = new LineBorder(new Color(255, 207, 65), 2, true);
+					JLabel lbl = (JLabel) e.getSource();
+					lbl.setBorder(bb);
+					lbl.setFont(new Font("맑은 고딕", Font.PLAIN, 22));
+				}
+				@Override
+				public void mouseClicked(MouseEvent e) {
+				}
+			});
+		}
 
 		RoundButton btnMain = new RoundButton("메인으로");
 		btnMain.setBounds(655, 10, 97, 23);
@@ -373,6 +390,7 @@ public class BuyFrame extends JFrame {
 						buttons.get(i).setEnabled(true);
 						RoundedButton btn = (RoundedButton) buttons.get(i);
 						btn.decorate();
+						// System.out.println("오토카운트 : " + autoCount.get(i));
 					}
 
 					buttonZip = new TreeSet();
@@ -382,7 +400,6 @@ public class BuyFrame extends JFrame {
 						buttonZip.add(randomNum);
 						for (JButton elem : buttons) {
 							if (elem.getText().equals(randomNum.toString())) {
-								// elem.setEnabled(false); // 얘가 자동을 선택한 버튼을 비활성화 하는것같음
 								RoundedButton btn = (RoundedButton) elem;
 								btn.decorate2();
 							}
@@ -416,8 +433,7 @@ public class BuyFrame extends JFrame {
 					}
 					isLabelClick = false;
 				}
-				// System.out.println(autoCount);
-				// System.out.println(buttonZip);
+
 				count = cnt;
 			}
 		});
@@ -431,10 +447,6 @@ public class BuyFrame extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("선택초기화 실행");
 
-//				for (int i = 0; i < buttons.size(); i++) {
-//					buttons.get(i).setEnabled(true);
-//
-//				}
 				for (int i = 1; i <= buttons.size(); i++) {
 					RoundedButton btn = (RoundedButton) buttons.get(i - 1);
 					btn.decorate();
