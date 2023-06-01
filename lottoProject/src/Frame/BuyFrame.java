@@ -14,6 +14,7 @@ import java.util.Random;
 import java.util.Set;
 import java.util.TreeSet;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -44,6 +45,7 @@ public class BuyFrame extends JFrame {
 	private int count = 0; // 선택된 번호의 개수
 	private int countList = 0; // 맵의 키 값
 	int countNum = 0; // 자동 유무 확인하는 수치 임시저장 공간
+	int 도박중독방지용 = 0;
 	int price;
 
 	private JPanel[] choices;
@@ -379,42 +381,48 @@ public class BuyFrame extends JFrame {
 		btnPayment.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				int totalCost = depositFrame.getTotalCost(); // 결제를 위한 토탈코스트 변수
-				if (totalCost > countList * 1000) {
-					// 한장에 입력받은 값을 담기
-					lottopaper.setLotto(lottoMap);
-					System.out.println("넣을 로또맵" + lottoMap);
-					lottopaper.setCount(autoCount);
-					lottoMapList.add(lottopaper);
 
-					new PaymentCheckFrame(lottopaper); // checkFrame에 보내기
+				if (도박중독방지용 <= 100) {
+					if (totalCost >= countList * 1000) {
+						// 한장에 입력받은 값을 담기
+						lottopaper.setLotto(lottoMap);
+						System.out.println("넣을 로또맵" + lottoMap);
+						lottopaper.setCount(autoCount);
+						lottoMapList.add(lottopaper);
 
-					// 결제하러갈때 전체적인 초기화필요;
-					lottopaper = new LottoPaper(); // 초기화
-					lottoMap = new HashMap<>();
-					autoCount = new ArrayList<>();
-					count = 0;
-					System.out.println("현시점의 예치금: " + totalCost);
-					System.out.println("현시점의 결제금액: " + countList * 1000);
-					System.out.println("현시점의 카운트: " + countList);
-					lblMyMoney.setText("예치금: " + (totalCost - (countList * 1000)) + "원"); // 결제한 만큼 차감된 값이 출력
-					totalCost -= countList * 1000;
-					depositFrame.setTotalCost(totalCost);
-					countList = 0;
-					lblTotal.setText("총" + (countList * 1000) + "원"); // 로또 추가된 수만큼 가격 책정
+						new PaymentCheckFrame(lottopaper); // checkFrame에 보내기
+						도박중독방지용 += autoCount.size();
+						// 결제하러갈때 전체적인 초기화필요;
+						lottopaper = new LottoPaper(); // 초기화
+						lottoMap = new HashMap<>();
+						autoCount = new ArrayList<>();
+						count = 0;
+						System.out.println("현시점의 예치금: " + totalCost);
+						System.out.println("현시점의 결제금액: " + countList * 1000);
+						System.out.println("현시점의 카운트: " + countList);
+						lblMyMoney.setText("예치금: " + (totalCost - (countList * 1000)) + "원"); // 결제한 만큼 차감된 값이 출력
+						totalCost -= countList * 1000;
+						depositFrame.setTotalCost(totalCost);
+						countList = 0;
+						lblTotal.setText("총" + (countList * 1000) + "원"); // 로또 추가된 수만큼 가격 책정
 
-					for (int i = 0; i < 5; i++) {
-						isAutos[i].setText("자동여부");
-						numbers[i].setText("00 00 00 00 00 00");
+						for (int i = 0; i < 5; i++) {
+							isAutos[i].setText("자동여부");
+							numbers[i].setText("00 00 00 00 00 00");
+						}
+						// 이렇게 다 해줘야 새로운거 받을수있음;
+						// 1개 선택하고 등록시 autoCount에 등록되지않게 해야함; - 처리함 등록처리부분에서 if문 안에 넣음
+						// 자동4개 수동전부 1개 하면 0 0 0 0 6 0 이렇게 6개가 되버림
+					} else {
+						JOptionPane.showMessageDialog(null, "\t예치금을 확인하세요(확인 클릭시 창이 닫힙니다.)", "금액확인",
+								JOptionPane.WARNING_MESSAGE);
 					}
-					// 이렇게 다 해줘야 새로운거 받을수있음;
-					// 1개 선택하고 등록시 autoCount에 등록되지않게 해야함; - 처리함 등록처리부분에서 if문 안에 넣음
-					// 자동4개 수동전부 1개 하면 0 0 0 0 6 0 이렇게 6개가 되버림
-				} else {
-					JOptionPane.showMessageDialog(null, "\t예치금을 확인하세요(확인 클릭시 창이 닫힙니다.)", "금액확인",
-							JOptionPane.WARNING_MESSAGE);
-				}
 
+				} else {
+					JOptionPane.showMessageDialog(null, "더이상 구매가 불가합니다.", "구매 한도 초과", JOptionPane.WARNING_MESSAGE);
+				}
 			}
+
 		});
 		contentPane.add(btnPayment);
 		btnPayment.setFont(new Font("맑은 고딕", Font.BOLD, 17));
