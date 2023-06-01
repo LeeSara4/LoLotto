@@ -37,6 +37,9 @@ public class WinningDetails extends JFrame {
 	private JPanel pnl_Winning;
 	private JPanel panel;
 	private JLabel lblNewLabel;
+	private JLabel lblMoney;
+	private int winMoney = 0;
+	private List<Integer> winMoneyList = new ArrayList<>();
 
 	/**
 	 * Create the frame.
@@ -49,7 +52,6 @@ public class WinningDetails extends JFrame {
 			winning_Numbers = new ArrayList<>(shootNumImage.getNumbers()); // 당첨번호 리스트
 			bonusNumber = shootNumImage.getBonusNumber(); // 보너스번호
 		}
-
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 673, 561);
 		contentPane = new JPanel();
@@ -88,10 +90,11 @@ public class WinningDetails extends JFrame {
 		pnl2.setBounds(116, 152, 418, 54);
 		contentPane.add(pnl2);
 
-		JLabel winMoney = new JLabel("총 9,000,000 원 당첨!");
-		winMoney.setFont(new Font("맑은 고딕", Font.BOLD, 26));
-		pnl2.add(winMoney);
+		lblMoney = new JLabel("당첨여부");
+		lblMoney.setFont(new Font("맑은 고딕", Font.BOLD, 26));
+		pnl2.add(lblMoney);
 
+		calcWinningMoney();
 		JButton btnBack = new RoundButton("이전");
 		btnBack.setBounds(181, 458, 97, 23);
 		contentPane.add(btnBack);
@@ -100,7 +103,7 @@ public class WinningDetails extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if (currentSelect - 1 >= 0) {
 					currentSelect--;
-					lblNewLabel.setText("< " + (currentSelect + 1) + " >");
+					lblNewLabel.setText("< " + (currentSelect + 1) + " / " + buyList.size() + " >");
 					resetLottoPaper();
 					printLottoPaper(currentSelect);
 				}
@@ -115,14 +118,14 @@ public class WinningDetails extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if (currentSelect + 1 < buyList.size()) {
 					currentSelect++;
-					lblNewLabel.setText("< " + (currentSelect + 1) + " >");
+					lblNewLabel.setText("< " + (currentSelect + 1) + " / " + buyList.size() + " >");
 					resetLottoPaper();
 					printLottoPaper(currentSelect);
 				}
 			}
 		});
 
-		lblNewLabel = new JLabel("< " + (currentSelect + 1) + " >");
+		lblNewLabel = new JLabel("< " + (currentSelect + 1) + " / " + buyList.size() + " >");
 		lblNewLabel.setBounds(314, 462, 30, 15);
 		contentPane.add(lblNewLabel);
 
@@ -151,6 +154,7 @@ public class WinningDetails extends JFrame {
 
 		System.out.println(tempList.size());
 		if (tempList.size() > 0) {
+			resetLottoPaper();
 			printLottoPaper(0);
 		} else {
 			lbl_temp = new JLabel("저장된 로또용지가 없습니다.");
@@ -200,14 +204,8 @@ public class WinningDetails extends JFrame {
 					String target = String.valueOf(tempLottoList.get(j));
 					JLabel lbl = new JLabel(target);
 					tempLabelList.add(lbl);
-					// 디버그용
-//					System.out.println("here" + " target의 " + j + "번째 " + lbl.getText());
 				}
 				numbers.add(tempLabelList);
-				// 디버그용
-//				for (int j = 0; j < 6; j++) {
-//					System.out.println("잘들어있니" + numbers.get(i).get(j).getText());
-//				}
 			}
 
 			for (int i = 0; i < size; i++) {
@@ -222,7 +220,7 @@ public class WinningDetails extends JFrame {
 				choices[i].add(ranks[i]);
 				isAutos[i].setFont(new Font("맑은 고딕", Font.PLAIN, 18));
 				choices[i].add(isAutos[i]);
-//				choices[i].add(numbers.get(i));
+
 				for (int j = 0; j < 6; j++) {
 					numbers.get(i).get(j).setFont(new Font("맑은 고딕", Font.PLAIN, 18));
 					choices[i].add(numbers.get(i).get(j));
@@ -254,6 +252,7 @@ public class WinningDetails extends JFrame {
 				System.out.println("당첨번호랑 맞는 개수" + count);
 				System.out.println("2등번호가 있는지" + isBonus);
 				ranks[i].setText(isRank(count, isBonus));
+				winMoneyList.add(isInWinningMoney(count, isBonus));
 				isAutos[i].setText(isAuto(tempList.get(index).getCount().get(i)));
 			}
 		}
@@ -303,4 +302,31 @@ public class WinningDetails extends JFrame {
 		return false;
 	}
 
+	public int isInWinningMoney(int target, boolean isBonus) {
+		if (target == 3) {
+			return 5000;
+		} else if (target == 4) {
+			return 50000;
+		} else if (target == 5 && isBonus) {
+			return 1446277;
+		} else if (target == 5) {
+			return 55031743;
+		} else if (target == 6) {
+			return 1863217554;
+		}
+		return 0;
+	}
+
+	public void calcWinningMoney() {
+		// 로또 리스트랑 비교해서 당첨확인.
+		for (int i = 0; i < tempList.size(); i++) {
+			printLottoPaper(i);
+		}
+		// 당첨된 녀석은 금액추가
+		for (int i = 0; i < winMoneyList.size(); i++) {
+			winMoney += winMoneyList.get(i);
+		}
+		lblMoney.setText("총 " + String.valueOf(winMoney) + "원");
+		// 총 금액 계산후 setText
+	}
 }

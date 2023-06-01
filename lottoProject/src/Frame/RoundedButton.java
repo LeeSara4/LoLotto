@@ -54,7 +54,7 @@ public class RoundedButton extends JButton {
 	protected void decorate() {
 		setBorderPainted(false);
 		setOpaque(false);
-		setBackground(new Color(242, 151, 133)); // 배경색 설정 // 버튼색
+		setBackground(Color.decode("#dcc375")); // 배경색 설정 // 버튼색
 		setForeground(Color.WHITE); // 전경색 설정
 		isPossible = true; // 아직클릭안된 boolean값
 	}
@@ -62,7 +62,7 @@ public class RoundedButton extends JButton {
 	protected void decorate2() {
 		setBorderPainted(false);
 		setOpaque(false);
-		setBackground(Color.GRAY); // 배경색 설정 // 버튼색
+		setBackground(Color.decode("#8a6436")); // 배경색 설정 // 버튼색
 		setForeground(Color.WHITE); // 전경색 설정
 		isPossible = false; // 클릭된 boolean값
 	}
@@ -77,11 +77,11 @@ public class RoundedButton extends JButton {
 		graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
 		if (!isEnabled()) { // 버튼이 비활성화된 상태일 때
-			graphics.setColor(Color.GRAY); // 원하는 비활성화 배경색 설정
+			graphics.setColor(Color.decode("#8a6436")); // 원하는 비활성화 배경색 설정
 		} else if (getModel().isArmed()) {
-			graphics.setColor(getBackground().darker());
-		} else if (getModel().isRollover()) {
 			graphics.setColor(getBackground().brighter());
+		} else if (getModel().isRollover()) {
+			graphics.setColor(getBackground().darker());
 		} else {
 			graphics.setColor(getBackground());
 		}
@@ -136,9 +136,9 @@ class RoundButton extends JButton {
 	protected void decorate() {
 		setBorderPainted(false);
 		setOpaque(false);
-		setBackground(Color.decode("#f0f0f0")); // 배경색 설정
+		setBackground(Color.decode("#0bc4e2")); // 배경색 설정
 		setFont(new Font("맑은 고딕", Font.BOLD, 13));
-		setForeground(Color.decode("#99b4d1"));
+		setForeground(Color.BLACK);
 	}
 
 	@Override
@@ -151,9 +151,9 @@ class RoundButton extends JButton {
 		graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
 		if (getModel().isArmed()) {
-			graphics.setColor(getBackground().darker());
-		} else if (getModel().isRollover()) {
 			graphics.setColor(getBackground().brighter());
+		} else if (getModel().isRollover()) {
+			graphics.setColor(getBackground().darker());
 		} else {
 			graphics.setColor(getBackground());
 		}

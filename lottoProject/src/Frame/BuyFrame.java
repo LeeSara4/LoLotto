@@ -226,7 +226,7 @@ public class BuyFrame extends JFrame {
 		lottoMapList = lbl.getBuyList();
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 799, 483);
+		setBounds(100, 100, 1000, 600);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -257,35 +257,35 @@ public class BuyFrame extends JFrame {
 						}
 						// System.out.println("범인이누구냐 " + buttonZip);
 					}
-						int cnt = buttonZip.size();
-						if (btn.isPossible()) { // 분홍색
-							if (cnt <= 5) {
-								// 버튼 정보 보내줄 예정
-								int bts = Integer.parseInt(btn.getText());
-								buttonZip.add(bts);
-								System.out.println(buttonZip);
-								btn.decorate2();
-								cnt++;
-							}
-						} else { // 회색
-
-							// System.out.println("나한테왜이래" + buttonZip);
-
+					int cnt = buttonZip.size();
+					if (btn.isPossible()) { // 분홍색
+						if (cnt <= 5) {
+							// 버튼 정보 보내줄 예정
 							int bts = Integer.parseInt(btn.getText());
-							buttonZip.remove(bts);
-							btn.decorate();
-							cnt--;
+							buttonZip.add(bts);
+							System.out.println(buttonZip);
+							btn.decorate2();
+							cnt++;
 						}
+					} else { // 회색
 
-						count = cnt;
+						// System.out.println("나한테왜이래" + buttonZip);
+
+						int bts = Integer.parseInt(btn.getText());
+						buttonZip.remove(bts);
+						btn.decorate();
+						cnt--;
+					}
+
+					count = cnt;
 
 					System.out.println("여기맞아? " + buttonZip.size());
 
-						if (count == 6) {
-							countNum = count;
+					if (count == 6) {
+						countNum = count;
 					}
 
-					} // 함수
+				} // 함수
 
 			}); // 액션리스너
 			buttons.add(button);
@@ -463,7 +463,6 @@ public class BuyFrame extends JFrame {
 		btnPlus.setBackground(Color.PINK);
 		panel.add(btnPlus);
 
-
 		btnPlus.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent click) {
@@ -576,7 +575,6 @@ public class BuyFrame extends JFrame {
 						countList = 0;
 						lblTotal.setText("총" + (countList * 1000) + "원"); // 로또 추가된 수만큼 가격 책정
 
-
 						for (int i = 0; i < 5; i++) {
 							isAutos[i].setText("자동여부");
 							numbers[i].setText("00 00 00 00 00 00");
@@ -604,9 +602,12 @@ public class BuyFrame extends JFrame {
 		btnReset.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				for (int i = 0; i < 5; i++) {
+
 					btnResets[0].doClick();
 				}
+				lblTotal.setText("총" + (countList * 1000) + "원"); // 로또 추가된 수만큼 가격 책정
 			}
+
 		});
 		btnReset.setFont(new Font("맑은 고딕", Font.BOLD, 17));
 		btnReset.setBounds(590, 362, 113, 35);
@@ -647,7 +648,7 @@ public class BuyFrame extends JFrame {
 				depositFrame.setVisible(true);
 			}
 		});
-		
+
 		JPanel panel_4 = new JPanel();
 		panel_4.setBorder(new LineBorder(SystemColor.activeCaption, 2));
 		panel_4.setBackground(Color.WHITE);
@@ -664,7 +665,6 @@ public class BuyFrame extends JFrame {
 		lblTotal.setForeground(Color.WHITE);
 		lblTotal.setFont(new Font("맑은 고딕", Font.BOLD, 20));
 	}
-
 
 	public void setMyMoney(int totalCost) {
 		lblMyMoney.setText("예치금 : " + totalCost + "원");
