@@ -91,7 +91,8 @@ public class MainFrame extends JFrame {
 		JButton btnNewButton_3 = new RoundButton("당첨 확인");
 		btnNewButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				WinningDetails winningDetails = new WinningDetails(MainFrame.this, shootNumImage);
+				WinningDetails winningDetails = new WinningDetails(MainFrame.this, shootNumImage,
+						buyFrame.returnMapList());
 				winningDetails.setVisible(true);
 				setVisible(false);
 			}

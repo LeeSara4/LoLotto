@@ -7,9 +7,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -63,10 +65,11 @@ public class DepositFrame extends JFrame {
 
 // 콤보박스 선택		
 				String str = comboBox.getSelectedItem().toString();
-
+				txtT.setEnabled(false);
 				if (str == "1000 원") {
 					money = 1000;
 					txtT.setText("1000");
+
 				} else if (str == "5000 원") {
 					money = 5000;
 					txtT.setText("5000");
@@ -77,6 +80,7 @@ public class DepositFrame extends JFrame {
 					money = 50000;
 					txtT.setText("50000");
 				} else if (str == "직접 입력") {
+					txtT.setEnabled(true);
 					txtT.setText("");
 				}
 			}
@@ -89,7 +93,7 @@ public class DepositFrame extends JFrame {
 // 값을 출력하고 내보내는 텍스트 필드
 		txtT = new JTextField();
 		txtT.setText("1000");
-
+		txtT.setEnabled(false);
 		txtT.setFont(new Font("굴림", Font.PLAIN, 20));
 		txtT.setHorizontalAlignment(SwingConstants.RIGHT);
 
@@ -104,16 +108,24 @@ public class DepositFrame extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				buyFrame.setVisible(true);
-				if (money == 0) {
+				if (money == 0) { // 아무런 입력이 없을 때 기본 가격을 1000원이 되게끔 설정
 					money = 1000;
 				}
+
 				Integer tempMoney = Integer.valueOf(txtT.getText());
-				System.out.println(tempMoney);
+
+				if (tempMoney < 0) {
+					JOptionPane.showMessageDialog(null, "마이너스 금액은 입금 할 수 없습니다.", "입력 오류", JOptionPane.ERROR_MESSAGE);
+				} else if ( tempMoney > 100000) {
+					JOptionPane.showMessageDialog(null, "10만원 이상의 금액은 추가할 수 없습니다.", "입력 오류", JOptionPane.ERROR_MESSAGE);
+				} else {
+
 				money = tempMoney;
 				// 결제 버튼 누르기
 				totalCost = totalCost + money;
 				buyFrame.setMyMoney(totalCost);
-
+				setVisible(false);
+				}
 			}
 		});
 		btnNewButton.setBounds(33, 149, 118, 43);
