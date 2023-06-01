@@ -153,7 +153,7 @@ public class BuyList extends JFrame {
 					lblNewLabel_5.setText(date.toString() + " " + formattedTime);
 					lblNewLabel_5.setFont(new Font("맑은 고딕", Font.PLAIN, 14));
 					lblNewLabel_3_2_1.setText("\\ " + tempList.get(currentSelect).getCount().size() + ",000");
-					lblNewLabel_4.setText("< " + (currentSelect + 1) + " >");
+					lblNewLabel_4.setText("< " + (currentSelect + 1) + " / " + buyList.size() + " >");
 					resetLottoPaper();
 					printLottoPaper(currentSelect);
 				}
@@ -175,14 +175,14 @@ public class BuyList extends JFrame {
 					lblNewLabel_5.setText(date.toString() + " " + formattedTime);
 					lblNewLabel_5.setFont(new Font("맑은 고딕", Font.PLAIN, 14));
 					lblNewLabel_3_2_1.setText("\\ " + tempList.get(currentSelect).getCount().size() + ",000");
-					lblNewLabel_4.setText("< " + (currentSelect + 1) + " >");
+					lblNewLabel_4.setText("< " + (currentSelect + 1) + " / " + buyList.size() + " >");
 					resetLottoPaper();
 					printLottoPaper(currentSelect);
 				}
 			}
 		});
 
-		lblNewLabel_4 = new JLabel("< " + (currentSelect + 1) + " >");
+		lblNewLabel_4 = new JLabel("< " + (currentSelect + 1) + " / " + buyList.size() + " >");
 		lblNewLabel_4.setBounds(183, 523, 40, 15);
 		contentPane.add(lblNewLabel_4);
 
