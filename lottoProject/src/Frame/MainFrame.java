@@ -63,7 +63,7 @@ public class MainFrame extends JFrame {
 //		panel.setLayout(null);
 //		panel.setBackground(Color.decode("#111111"));
 
-		JLabel modeLabel = new JLabel(new ImageIcon("back1.png"));
+		JLabel modeLabel = new JLabel(new ImageIcon(getClass().getResource("/imagepackage/back1.png")));
 		modeLabel.setBounds(0, 0, 1000, 600);
 		contentPane.add(modeLabel);
 
