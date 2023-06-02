@@ -16,6 +16,7 @@ import java.util.Random;
 import java.util.Set;
 import java.util.TreeSet;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -48,6 +49,7 @@ public class BuyFrame extends JFrame {
 	int countNum = 0; // 자동 유무 확인하는 수치 임시저장 공간
 	int 도박중독방지용 = 0;
 	int price;
+	int totalCost = 0;
 
 	private JPanel[] choices;
 	private JLabel[] isAutos;
@@ -66,6 +68,10 @@ public class BuyFrame extends JFrame {
 		RoundedButton btn = (RoundedButton) buttons.get(i);
 		btn.decorate2();
 
+	}
+
+	public LottoPaper returnLottoPaper() {
+		return lottopaper;
 	}
 
 	private void 라벨클릭액션리스너추가(MouseAdapter mouseAdapter) {
@@ -235,11 +241,15 @@ public class BuyFrame extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
+		JLabel backLabel = new JLabel(new ImageIcon("back1.png"));
+		backLabel.setBounds(0, 0, 1000, 600);
+		contentPane.add(backLabel);
+
 		JPanel pnlLottoNum = new JPanel();
 		pnlLottoNum.setForeground(Color.BLACK);
 		pnlLottoNum.setBackground(Color.WHITE);
 		pnlLottoNum.setBounds(71, 62, 248, 282);
-		contentPane.add(pnlLottoNum);
+		backLabel.add(pnlLottoNum);
 		pnlLottoNum.setLayout(new GridLayout(9, 5));
 
 		// 45개의 로또 번호 버튼배열입니다
@@ -299,7 +309,7 @@ public class BuyFrame extends JFrame {
 		JPanel pnlChoice = new JPanel();
 		pnlChoice.setBackground(Color.WHITE);
 		pnlChoice.setBounds(389, 98, 327, 235);
-		contentPane.add(pnlChoice);
+		backLabel.add(pnlChoice);
 
 		choices = new JPanel[5];
 		isAutos = new JLabel[5];
@@ -344,12 +354,12 @@ public class BuyFrame extends JFrame {
 				main.setVisible(true);
 			}
 		});
-		contentPane.add(btnMain);
+		backLabel.add(btnMain);
 
 		JPanel panel = new JPanel();
 		panel.setBackground(Color.WHITE);
 		panel.setBounds(43, 362, 309, 37);
-		contentPane.add(panel);
+		backLabel.add(panel);
 
 		RoundButton btnAutoPlus = new RoundButton("자동버튼");
 		btnAutoPlus.setBackground(SystemColor.menu);
@@ -537,39 +547,13 @@ public class BuyFrame extends JFrame {
 		btnPayment.setBounds(408, 362, 170, 35);
 		btnPayment.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				int totalCost = depositFrame.getTotalCost(); // 결제를 위한 토탈코스트 변수
+				totalCost = depositFrame.getTotalCost(); // 결제를 위한 토탈코스트 변수
 
+				// if ( 선택된 게임수가 0이면 결제 버튼 못쓰게 )
 				if (도박중독방지용 <= 100) {
 					if (totalCost >= countList * 1000) {
-						// 한장에 입력받은 값을 담기
-						lottopaper.setLotto(lottoMap);
-						System.out.println("넣을 로또맵" + lottoMap);
-						lottopaper.setCount(autoCount);
-						lottoMapList.add(lottopaper);
+						new PaymentCheckFrame(BuyFrame.this); // checkFrame에 보내기
 
-						new PaymentCheckFrame(lottopaper); // checkFrame에 보내기
-						도박중독방지용 += autoCount.size();
-						// 결제하러갈때 전체적인 초기화필요;
-						lottopaper = new LottoPaper(); // 초기화
-						lottoMap = new HashMap<>();
-						autoCount = new ArrayList<>();
-						count = 0;
-						System.out.println("현시점의 예치금: " + totalCost);
-						System.out.println("현시점의 결제금액: " + countList * 1000);
-						System.out.println("현시점의 카운트: " + countList);
-						lblMyMoney.setText("예치금: " + (totalCost - (countList * 1000)) + "원"); // 결제한 만큼 차감된 값이 출력
-						totalCost -= countList * 1000;
-						depositFrame.setTotalCost(totalCost);
-						countList = 0;
-						lblTotal.setText("총" + (countList * 1000) + "원"); // 로또 추가된 수만큼 가격 책정
-
-						for (int i = 0; i < 5; i++) {
-							isAutos[i].setText("자동여부");
-							numbers[i].setText("00 00 00 00 00 00");
-						}
-						// 이렇게 다 해줘야 새로운거 받을수있음;
-						// 1개 선택하고 등록시 autoCount에 등록되지않게 해야함; - 처리함 등록처리부분에서 if문 안에 넣음
-						// 자동4개 수동전부 1개 하면 0 0 0 0 6 0 이렇게 6개가 되버림
 					} else {
 						JOptionPane.showMessageDialog(null, "\t예치금을 확인하세요(확인 클릭시 창이 닫힙니다.)", "금액확인",
 								JOptionPane.WARNING_MESSAGE);
@@ -581,7 +565,7 @@ public class BuyFrame extends JFrame {
 			}
 
 		});
-		contentPane.add(btnPayment);
+		backLabel.add(btnPayment);
 		btnPayment.setFont(new Font("맑은 고딕", Font.BOLD, 17));
 
 		RoundButton btnReset = new RoundButton("모두 초기화");
@@ -599,7 +583,7 @@ public class BuyFrame extends JFrame {
 		});
 		btnReset.setFont(new Font("맑은 고딕", Font.BOLD, 17));
 		btnReset.setBounds(590, 362, 113, 35);
-		contentPane.add(btnReset);
+		backLabel.add(btnReset);
 
 		결제초기화액션리스너추가(결제초기화액션리스너());
 		라벨클릭액션리스너추가(라벨클릭액션리스너());
@@ -607,7 +591,7 @@ public class BuyFrame extends JFrame {
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(Color.PINK);
 		panel_1.setBounds(122, 10, 212, 37);
-		contentPane.add(panel_1);
+		backLabel.add(panel_1);
 
 		lblMyMoney = new JLabel("예치금 : " + "원");
 
@@ -619,13 +603,13 @@ public class BuyFrame extends JFrame {
 		panel_2.setBorder(new LineBorder(Color.PINK, 2));
 		panel_2.setBackground(Color.WHITE);
 		panel_2.setBounds(56, 45, 278, 313);
-		contentPane.add(panel_2);
+		backLabel.add(panel_2);
 
 		JPanel panel_3 = new JPanel();
 		panel_3.setBorder(new LineBorder(Color.PINK, 2));
 		panel_3.setBackground(Color.WHITE);
 		panel_3.setBounds(56, 10, 69, 37);
-		contentPane.add(panel_3);
+		backLabel.add(panel_3);
 
 		RoundButton btnReload = new RoundButton("충전");
 		panel_3.add(btnReload);
@@ -641,12 +625,12 @@ public class BuyFrame extends JFrame {
 		panel_4.setBorder(new LineBorder(SystemColor.activeCaption, 2));
 		panel_4.setBackground(Color.WHITE);
 		panel_4.setBounds(374, 78, 356, 274);
-		contentPane.add(panel_4);
+		backLabel.add(panel_4);
 
 		JPanel panel_5 = new JPanel();
 		panel_5.setBackground(SystemColor.activeCaption);
 		panel_5.setBounds(374, 43, 202, 37);
-		contentPane.add(panel_5);
+		backLabel.add(panel_5);
 
 		lblTotal = new JLabel("총 0원");
 		panel_5.add(lblTotal);
@@ -656,5 +640,47 @@ public class BuyFrame extends JFrame {
 
 	public void setMyMoney(int totalCost) {
 		lblMyMoney.setText("예치금 : " + totalCost + "원");
+	}
+
+	public void payCheckMentYes() {
+		// lottopaper 초기화?
+
+		// 한장에 입력받은 값을 담기
+		lottopaper.setLotto(lottoMap);
+		System.out.println("넣을 로또맵" + lottoMap);
+		lottopaper.setCount(autoCount);
+
+		lottoMapList.add(lottopaper);
+
+		도박중독방지용 += autoCount.size();
+
+		// 결제하러갈때 전체적인 초기화필요; '예'일 경우 필요한 동작 모으기
+		// set 필요한 부분을 메소드로 만들기
+		// 메소드로 만들면 payCheckMent프레임에서 메소드호출만 하면된다.
+		lottopaper = new LottoPaper(); // 초기화
+		lottoMap = new HashMap<>();
+		autoCount = new ArrayList<>();
+		count = 0;
+
+		// get 필요한 부분
+		System.out.println("현시점의 예치금: " + totalCost);
+		System.out.println("현시점의 결제금액: " + countList * 1000);
+		System.out.println("현시점의 카운트: " + countList);
+		lblMyMoney.setText("예치금: " + (totalCost - (countList * 1000)) + "원"); // 결제한 만큼 차감된 값이 출력
+		totalCost -= countList * 1000;
+		depositFrame.setTotalCost(totalCost);
+
+		countList = 0;
+
+		lblTotal.setText("총" + (countList * 1000) + "원"); // 로또 추가된 수만큼 가격 책정
+
+		for (int i = 0; i < 5; i++) {
+			isAutos[i].setText("자동여부");
+			numbers[i].setText("00 00 00 00 00 00");
+		}
+
+		// 이렇게 다 해줘야 새로운거 받을수있음;
+		// 1개 선택하고 등록시 autoCount에 등록되지않게 해야함; - 처리함 등록처리부분에서 if문 안에 넣음
+		// 자동4개 수동전부 1개 하면 0 0 0 0 6 0 이렇게 6개가 되버림
 	}
 }
