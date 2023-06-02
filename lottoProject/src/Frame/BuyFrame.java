@@ -619,12 +619,12 @@ public class BuyFrame extends JFrame {
 		btnReset.setForeground(SystemColor.activeCaption);
 		btnReset.setBackground(SystemColor.menu);
 		btnReset.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				for (int i = 0; i < 5; i++) {
-
-					btnResets[0].doClick();
-				}
-				lblTotal.setText("총" + (countList * 1000) + "원"); // 로또 추가된 수만큼 가격 책정
+			public void actionPerformed(ActionEvent aa) {
+				
+					for (int i = 0; i < 5; i++) {
+						btnResets[0].doClick();
+					}
+					lblTotal.setText("총" + (countList * 1000) + "원"); // 로또 추가된 수만큼 가격 책정
 			}
 
 		});
