@@ -2,11 +2,9 @@ package Frame;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.Color;
 import java.awt.EventQueue;
-import java.awt.SystemColor;
-import java.awt.Toolkit;
 import java.awt.Font;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -58,18 +56,17 @@ public class MainFrame extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
-		ImageIcon image = new ImageIcon("img.png");
-		JPanel panel = new JPanel();
-		panel.setBounds(0, 0, 984, 561);
-		contentPane.add(panel);
-		panel.setLayout(null);
-		panel.setBackground(Color.decode("#111111"));
+//		ImageIcon image = new ImageIcon("img.png");
+//		JPanel panel = new JPanel();
+//		panel.setBounds(0, 0, 984, 561);
+//		contentPane.add(panel);
+//		panel.setLayout(null);
+//		panel.setBackground(Color.decode("#111111"));
 
 		JLabel modeLabel = new JLabel(new ImageIcon("back1.png"));
 		modeLabel.setBounds(0, -20, 1000, 600);
-		panel.add(modeLabel);
-
-		JLabel lblNewLabel = new JLabel(new ImageIcon("/imagepackage/img.png"));
+		contentPane.add(modeLabel);
+		JLabel lblNewLabel = new JLabel(new ImageIcon(getClass().getResource("/imagepackage/img.png")));
 		lblNewLabel.setBounds(292, 28, 359, 262);
 		modeLabel.add(lblNewLabel);
 
