@@ -11,12 +11,12 @@ import java.util.Random;
 import java.util.Set;
 import java.util.TreeSet;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.ImageIcon;
 
 public class ShootNumImage extends JFrame {
 	private Set<Integer> numbers = new TreeSet<>(); // 당첨 번호
@@ -70,42 +70,44 @@ public class ShootNumImage extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+		setLocationRelativeTo(null);
+		setUndecorated(true);
+
 		JLabel lblNewLabel_2_2 = new JLabel("New label");
 		lblNewLabel_2_2.setIcon(new ImageIcon("C:\\Users\\GGG\\Desktop\\팀4이미지\\카드 기본 연출.gif"));
 		lblNewLabel_2_2.setBounds(567, 80, 127, 233);
 		contentPane.add(lblNewLabel_2_2);
-		
+
 		JLabel lblNewLabel_2_4 = new JLabel("New label");
 		lblNewLabel_2_4.setIcon(new ImageIcon("C:\\Users\\GGG\\Desktop\\팀4이미지\\카드 액션.gif"));
 		lblNewLabel_2_4.setBounds(845, 80, 127, 233);
 		contentPane.add(lblNewLabel_2_4);
-		
+
 		JLabel lblNewLabel_2_1 = new JLabel("New label");
 		lblNewLabel_2_1.setIcon(new ImageIcon("C:\\Users\\GGG\\Desktop\\팀4이미지\\카드 기본 연출.gif"));
 		lblNewLabel_2_1.setBounds(429, 80, 127, 233);
 		contentPane.add(lblNewLabel_2_1);
-		
+
 		JLabel lblNewLabel = new JLabel("New label");
 		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\GGG\\Desktop\\1.gif"));
 		lblNewLabel.setBounds(12, 80, 127, 233);
 		contentPane.add(lblNewLabel);
-		
+
 		JLabel lblNewLabel_2 = new JLabel("New label");
 		lblNewLabel_2.setIcon(new ImageIcon("C:\\Users\\GGG\\Desktop\\팀4이미지\\카드 액션.gif"));
 		lblNewLabel_2.setBounds(290, 80, 127, 233);
 		contentPane.add(lblNewLabel_2);
-		
+
 		JLabel lblNewLabel_1 = new JLabel("New label");
 		lblNewLabel_1.setIcon(new ImageIcon("C:\\Users\\GGG\\Desktop\\카드 기본 연출.gif"));
 		lblNewLabel_1.setBounds(151, 80, 127, 233);
 		contentPane.add(lblNewLabel_1);
-		
+
 		JLabel lblNewLabel_2_3 = new JLabel("New label");
 		lblNewLabel_2_3.setIcon(new ImageIcon("C:\\Users\\GGG\\Desktop\\1.gif"));
 		lblNewLabel_2_3.setBounds(706, 80, 127, 233);
 		contentPane.add(lblNewLabel_2_3);
-		
+
 		JButton btnNewButton_1 = new JButton("");
 		btnNewButton_1.setIcon(new ImageIcon("C:\\Users\\GGG\\Desktop\\팀4이미지\\KakaoTalk_20230601_214306061.png"));
 		btnNewButton_1.setBounds(379, 374, 177, 36);
@@ -132,10 +134,10 @@ public class ShootNumImage extends JFrame {
 		JLabel num5 = new JLabel(nums.get(4).toString());
 		num5.setFont(new Font("맑은 고딕", Font.BOLD, 30));
 		panel.add(num5);
-		
-				JLabel num2 = new JLabel(nums.get(1).toString());
-				num2.setFont(new Font("맑은 고딕", Font.BOLD, 30));
-				panel.add(num2);
+
+		JLabel num2 = new JLabel(nums.get(1).toString());
+		num2.setFont(new Font("맑은 고딕", Font.BOLD, 30));
+		panel.add(num2);
 
 		JLabel num6 = new JLabel(nums.get(5).toString());
 		num6.setFont(new Font("맑은 고딕", Font.BOLD, 30));

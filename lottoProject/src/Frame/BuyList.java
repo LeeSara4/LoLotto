@@ -34,7 +34,6 @@ public class BuyList extends JFrame {
 
 	public BuyList(List<LottoPaper> buyList, MainFrame main) {
 
-
 		tempList = buyList;
 
 		setBounds(100, 100, 1000, 600);
@@ -43,6 +42,8 @@ public class BuyList extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		setLocationRelativeTo(null);
+		setUndecorated(true);
 
 		JButton btnNewButton = new RoundButton("메인으로");
 		btnNewButton.addActionListener(new ActionListener() {
@@ -185,7 +186,7 @@ public class BuyList extends JFrame {
 		Image updateImage = img.getScaledInstance(logoLabel.getWidth(), logoLabel.getHeight(), Image.SCALE_SMOOTH);
 		ImageIcon updateLogoIcon = new ImageIcon(updateImage);
 		logoLabel.setIcon(updateLogoIcon);
-		
+
 		JLabel lblNewLabel_7 = new JLabel("New label");
 		lblNewLabel_7.setIcon(new ImageIcon(BuyList.class.getResource("/imagepackage/배경라벨이미지.png")));
 		lblNewLabel_7.setBounds(-5, 0, 989, 561);

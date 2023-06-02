@@ -252,6 +252,8 @@ public class BuyFrame extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		setLocationRelativeTo(null);
+		setUndecorated(true);
 
 		JLabel backLabel = new JLabel(new ImageIcon("back1.png"));
 		backLabel.setBounds(0, 0, 1000, 600);
@@ -497,7 +499,6 @@ public class BuyFrame extends JFrame {
 				for (int i = 0; i < autoCount.size(); i++) {
 					btnResets[i].setEnabled(true);
 				}
-
 
 				if (countList < 5 || isLabelClick) {
 					if (rtm.티켓등록(buttonZip.size())) {
