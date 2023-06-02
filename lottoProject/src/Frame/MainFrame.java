@@ -2,12 +2,15 @@ package Frame;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.SystemColor;
 import java.awt.Toolkit;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -49,33 +52,36 @@ public class MainFrame extends JFrame {
 
 		setTitle("4조 대박당첨");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 1000, 600);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
+		ImageIcon image = new ImageIcon("img.png");
 		JPanel panel = new JPanel();
-		panel.setBounds(0, 0, 434, 261);
+		panel.setBounds(0, 0, 984, 561);
 		contentPane.add(panel);
 		panel.setLayout(null);
-		panel.setBackground(SystemColor.window);
+		panel.setBackground(Color.decode("#111111"));
 
-		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setBounds(12, 10, 410, 129);
+		JLabel lblNewLabel = new JLabel(new ImageIcon("C:\\Users\\GGG\\Desktop\\img.png"));
+		lblNewLabel.setBounds(292, 28, 359, 262);
 		panel.add(lblNewLabel);
 
 		JButton btnNewButton = new RoundButton("구매하기");
+		btnNewButton.setFont(new Font("맑은 고딕", Font.BOLD, 18));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				buyFrame.setVisible(true);
 				setVisible(false);
 			}
 		});
-		btnNewButton.setBounds(90, 149, 97, 33);
+		btnNewButton.setBounds(112, 399, 143, 44);
 		panel.add(btnNewButton);
 
 		JButton btnNewButton_1 = new RoundButton("구매내역");
+		btnNewButton_1.setFont(new Font("맑은 고딕", Font.BOLD, 18));
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				BuyList buyList = new BuyList(buyFrame.returnMapList(), MainFrame.this);
@@ -83,10 +89,11 @@ public class MainFrame extends JFrame {
 				setVisible(false);
 			}
 		});
-		btnNewButton_1.setBounds(249, 149, 97, 33);
+		btnNewButton_1.setBounds(508, 400, 143, 44);
 		panel.add(btnNewButton_1);
 
 		JButton btnNewButton_2 = new RoundButton("추첨");
+		btnNewButton_2.setFont(new Font("맑은 고딕", Font.BOLD, 18));
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				shootNumImage = new ShootNumImage(MainFrame.this);
@@ -94,10 +101,11 @@ public class MainFrame extends JFrame {
 				setVisible(false);
 			}
 		});
-		btnNewButton_2.setBounds(90, 204, 97, 33);
+		btnNewButton_2.setBounds(308, 399, 143, 44);
 		panel.add(btnNewButton_2);
 
 		JButton btnNewButton_3 = new RoundButton("당첨 확인");
+		btnNewButton_3.setFont(new Font("맑은 고딕", Font.BOLD, 18));
 		btnNewButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				WinningDetails winningDetails = new WinningDetails(MainFrame.this, shootNumImage,
@@ -106,7 +114,7 @@ public class MainFrame extends JFrame {
 				setVisible(false);
 			}
 		});
-		btnNewButton_3.setBounds(249, 204, 97, 33);
+		btnNewButton_3.setBounds(713, 400, 143, 44);
 		panel.add(btnNewButton_3);
 //		EndCheckFrame
 	}
