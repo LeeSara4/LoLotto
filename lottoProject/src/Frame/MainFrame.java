@@ -1,7 +1,11 @@
 package Frame;
 
+import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.SystemColor;
+import java.awt.Toolkit;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -26,7 +30,13 @@ public class MainFrame extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MainFrame frame = new MainFrame();
+					MainFrame frame = new MainFrame(); // 메인 프레임
+					Dimension frameSize = frame.getSize(); // 프레임 사이즈
+					Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+					frame.setLocation((screenSize.width - frameSize.width) / 2,
+							(screenSize.height - frameSize.height) / 2);
+					JLabel label = new JLabel("그냥 해봤쓤", JLabel.CENTER);
+					frame.add(label, BorderLayout.CENTER);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -55,9 +65,13 @@ public class MainFrame extends JFrame {
 		panel.setLayout(null);
 		panel.setBackground(Color.decode("#111111"));
 
+		JLabel modeLabel = new JLabel(new ImageIcon("back1.png"));
+		modeLabel.setBounds(0, -20, 1000, 600);
+		panel.add(modeLabel);
+
 		JLabel lblNewLabel = new JLabel(new ImageIcon("C:\\Users\\GGG\\Desktop\\img.png"));
 		lblNewLabel.setBounds(292, 28, 359, 262);
-		panel.add(lblNewLabel);
+		modeLabel.add(lblNewLabel);
 
 		JButton btnNewButton = new RoundButton("구매하기");
 		btnNewButton.setFont(new Font("맑은 고딕", Font.BOLD, 18));
@@ -68,7 +82,7 @@ public class MainFrame extends JFrame {
 			}
 		});
 		btnNewButton.setBounds(112, 399, 143, 44);
-		panel.add(btnNewButton);
+		modeLabel.add(btnNewButton);
 
 		JButton btnNewButton_1 = new RoundButton("구매내역");
 		btnNewButton_1.setFont(new Font("맑은 고딕", Font.BOLD, 18));
@@ -80,7 +94,7 @@ public class MainFrame extends JFrame {
 			}
 		});
 		btnNewButton_1.setBounds(508, 400, 143, 44);
-		panel.add(btnNewButton_1);
+		modeLabel.add(btnNewButton_1);
 
 		JButton btnNewButton_2 = new RoundButton("추첨");
 		btnNewButton_2.setFont(new Font("맑은 고딕", Font.BOLD, 18));
@@ -92,7 +106,7 @@ public class MainFrame extends JFrame {
 			}
 		});
 		btnNewButton_2.setBounds(308, 399, 143, 44);
-		panel.add(btnNewButton_2);
+		modeLabel.add(btnNewButton_2);
 
 		JButton btnNewButton_3 = new RoundButton("당첨 확인");
 		btnNewButton_3.setFont(new Font("맑은 고딕", Font.BOLD, 18));
@@ -105,7 +119,7 @@ public class MainFrame extends JFrame {
 			}
 		});
 		btnNewButton_3.setBounds(713, 400, 143, 44);
-		panel.add(btnNewButton_3);
+		modeLabel.add(btnNewButton_3);
 //		EndCheckFrame
 	}
 }
