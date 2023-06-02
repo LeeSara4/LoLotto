@@ -1,7 +1,10 @@
 package Frame;
 
+import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.SystemColor;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -24,7 +27,13 @@ public class MainFrame extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MainFrame frame = new MainFrame();
+					MainFrame frame = new MainFrame(); // 메인 프레임
+					Dimension frameSize = frame.getSize(); // 프레임 사이즈
+					Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+					frame.setLocation((screenSize.width - frameSize.width) / 2,
+							(screenSize.height - frameSize.height) / 2);
+					JLabel label = new JLabel("그냥 해봤쓤", JLabel.CENTER);
+					frame.add(label, BorderLayout.CENTER);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
