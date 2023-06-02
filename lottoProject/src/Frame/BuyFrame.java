@@ -194,7 +194,6 @@ public class BuyFrame extends JFrame {
 		}
 	}
 
-
 	private void selectNumPrint(Map<Integer, Set<Integer>> map, int count, int countList) {
 		String str = "";
 
@@ -224,8 +223,6 @@ public class BuyFrame extends JFrame {
 	}
 
 	public BuyFrame(MainFrame main) {
-
-
 
 		setBackground(SystemColor.window);
 		lottoMap = lottopaper.getLotto();
@@ -341,6 +338,7 @@ public class BuyFrame extends JFrame {
 				@Override
 				public void mousePressed(MouseEvent e) {
 				}
+
 				@Override
 				public void mouseExited(MouseEvent e) {
 					LineBorder bb = new LineBorder(Color.WHITE, 2, true);
@@ -348,6 +346,7 @@ public class BuyFrame extends JFrame {
 					lbl.setBorder(bb);
 					lbl.setFont(new Font("맑은 고딕", Font.PLAIN, 18));
 				}
+
 				@Override
 				public void mouseEntered(MouseEvent e) {
 					LineBorder bb = new LineBorder(new Color(255, 207, 65), 2, true);
@@ -355,6 +354,7 @@ public class BuyFrame extends JFrame {
 					lbl.setBorder(bb);
 					lbl.setFont(new Font("맑은 고딕", Font.PLAIN, 22));
 				}
+
 				@Override
 				public void mouseClicked(MouseEvent e) {
 				}
@@ -564,8 +564,9 @@ public class BuyFrame extends JFrame {
 				// if ( 선택된 게임수가 0이면 결제 버튼 못쓰게 )
 				if (도박중독방지용 <= 100) {
 					if (totalCost >= countList * 1000) {
-						new PaymentCheckFrame(BuyFrame.this); // checkFrame에 보내기
-
+						if (autoCount.size() != 0) {
+							new PaymentCheckFrame(BuyFrame.this); // checkFrame에 보내기
+						}
 					} else {
 						JOptionPane.showMessageDialog(null, "\t예치금을 확인하세요(확인 클릭시 창이 닫힙니다.)", "금액확인",
 								JOptionPane.WARNING_MESSAGE);
