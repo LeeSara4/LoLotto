@@ -55,6 +55,7 @@ public class MainFrame extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		setLocationRelativeTo(null);
 
 //		ImageIcon image = new ImageIcon("img.png");
 //		JPanel panel = new JPanel();

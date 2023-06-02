@@ -130,9 +130,9 @@ class RoundButton extends JButton {
 		graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
 		if (getModel().isArmed()) {
-			graphics.setColor(getBackground().brighter());
-		} else if (getModel().isRollover()) {
 			graphics.setColor(getBackground().darker());
+		} else if (getModel().isRollover()) {
+			graphics.setColor(getBackground().brighter());
 		} else {
 			graphics.setColor(getBackground());
 		}
@@ -173,8 +173,8 @@ class RoundBorderButton extends JButton {
 		setBorderPainted(false);
 		setOpaque(false);
 		setFont(new Font("맑은 고딕", Font.BOLD, 13));
-		setForeground(Color.YELLOW);
-		borderColor = Color.YELLOW; // 보더 색상 설정
+		setForeground(new Color(250, 250, 210));
+		borderColor = new Color(250, 250, 210); // 보더 색상 설정
 		hoverColor = Color.decode("#fdffb5");
 		addMouseListener(new MouseAdapter() {
 			@Override
@@ -186,8 +186,8 @@ class RoundBorderButton extends JButton {
 
 			@Override
 			public void mouseExited(MouseEvent e) {
-				borderColor = Color.YELLOW;
-				setForeground(Color.YELLOW);
+				borderColor = new Color(250, 250, 210);
+				setForeground(new Color(250, 250, 210));
 				repaint();
 			}
 		});
