@@ -34,7 +34,7 @@ public class MainFrame extends JFrame {
 					frame.setLocation((screenSize.width - frameSize.width) / 2,
 							(screenSize.height - frameSize.height) / 2);
 					JLabel label = new JLabel("그냥 해봤쓤", JLabel.CENTER);
-					frame.add(label, BorderLayout.CENTER);
+					frame.getContentPane().add(label, BorderLayout.CENTER);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -64,38 +64,14 @@ public class MainFrame extends JFrame {
 //		panel.setBackground(Color.decode("#111111"));
 
 		JLabel modeLabel = new JLabel(new ImageIcon("back1.png"));
-		modeLabel.setBounds(0, -20, 1000, 600);
+		modeLabel.setBounds(0, 0, 1000, 600);
 		contentPane.add(modeLabel);
 
-		JLabel lblNewLabel = new JLabel(new ImageIcon(getClass().getResource("/imagepackage/img.png")));
-		lblNewLabel.setBounds(292, 28, 359, 262);
-		modeLabel.add(lblNewLabel);
-
-		JButton btnNewButton = new RoundButton("구매하기");
-		btnNewButton.setFont(new Font("맑은 고딕", Font.BOLD, 18));
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				buyFrame.setVisible(true);
-				setVisible(false);
-			}
-		});
-		btnNewButton.setBounds(112, 399, 143, 44);
-		modeLabel.add(btnNewButton);
-
-		JButton btnNewButton_1 = new RoundButton("구매내역");
-		btnNewButton_1.setFont(new Font("맑은 고딕", Font.BOLD, 18));
-		btnNewButton_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				BuyList buyList = new BuyList(buyFrame.returnMapList(), MainFrame.this);
-				buyList.setVisible(true);
-				setVisible(false);
-			}
-		});
-		btnNewButton_1.setBounds(508, 400, 143, 44);
-		modeLabel.add(btnNewButton_1);
-
-		JButton btnNewButton_2 = new RoundButton("추첨");
+		JButton btnNewButton_2 = new JButton(new ImageIcon(getClass().getResource("/imagepackage/Main_button2.png")));
+		modeLabel.add(btnNewButton_2);
 		btnNewButton_2.setFont(new Font("맑은 고딕", Font.BOLD, 18));
+		btnNewButton_2.setRolloverIcon(new ImageIcon(getClass().getResource("/imagepackage/Main_button2_1.png")));
+		btnNewButton_2.setBorderPainted(false);
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				shootNumImage = new ShootNumImage(MainFrame.this);
@@ -103,11 +79,30 @@ public class MainFrame extends JFrame {
 				setVisible(false);
 			}
 		});
-		btnNewButton_2.setBounds(308, 399, 143, 44);
-		modeLabel.add(btnNewButton_2);
+		btnNewButton_2.setBounds(400, 420, 180, 61);
 
-		JButton btnNewButton_3 = new RoundButton("당첨 확인");
+		// bt_img.setRolloverIcon(img2); // 버튼에 마우스가 올라갈떄 이미지 변환
+		// bt_img.setBorderPainted(false); // 버튼 테두리 설정해제
+
+		JButton btnNewButton_1 = new JButton(new ImageIcon(getClass().getResource("/imagepackage/Main_button1.png")));
+		modeLabel.add(btnNewButton_1);
+		btnNewButton_1.setFont(new Font("맑은 고딕", Font.BOLD, 18));
+		btnNewButton_1.setRolloverIcon(new ImageIcon(getClass().getResource("/imagepackage/Main_button1_1.png")));
+		btnNewButton_1.setBorderPainted(false);
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				BuyList buyList = new BuyList(buyFrame.returnMapList(), MainFrame.this);
+				buyList.setVisible(true);
+				setVisible(false);
+			}
+		});
+		btnNewButton_1.setBounds(100, 420, 180, 61);
+
+		JButton btnNewButton_3 = new JButton(new ImageIcon(getClass().getResource("/imagepackage/Main_button3.png")));
+		modeLabel.add(btnNewButton_3);
 		btnNewButton_3.setFont(new Font("맑은 고딕", Font.BOLD, 18));
+		btnNewButton_3.setRolloverIcon(new ImageIcon(getClass().getResource("/imagepackage/Main_button3_1.png")));
+		btnNewButton_3.setBorderPainted(false);
 		btnNewButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				WinningDetails winningDetails = new WinningDetails(MainFrame.this, shootNumImage,
@@ -116,8 +111,26 @@ public class MainFrame extends JFrame {
 				setVisible(false);
 			}
 		});
-		btnNewButton_3.setBounds(713, 400, 143, 44);
-		modeLabel.add(btnNewButton_3);
+		btnNewButton_3.setBounds(700, 420, 180, 61);
+
+		JLabel Main_Logo = new JLabel(new ImageIcon(getClass().getResource("/imagepackage/img.png")));
+		modeLabel.add(Main_Logo);
+		Main_Logo.setBounds(30, 30, 300, 250);
+
+		JLabel Main_Logo2 = new JLabel(new ImageIcon(getClass().getResource("/imagepackage/리그오브로또.png")));
+		modeLabel.add(Main_Logo2);
+		Main_Logo2.setBounds(200, 50, 800, 250);
+
+		JButton btnNewButton = new RoundButton("구매하기");
+		modeLabel.add(btnNewButton);
+		btnNewButton.setFont(new Font("맑은 고딕", Font.BOLD, 18));
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				buyFrame.setVisible(true);
+				setVisible(false);
+			}
+		});
+		btnNewButton.setBounds(108, 293, 143, 44);
 //		EndCheckFrame
 	}
 }
