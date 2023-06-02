@@ -188,7 +188,6 @@ public class BuyFrame extends JFrame {
 		}
 	}
 
-
 	private void selectNumPrint(Map<Integer, Set<Integer>> map, int count, int countList) {
 		String str = "";
 
@@ -218,8 +217,6 @@ public class BuyFrame extends JFrame {
 	}
 
 	public BuyFrame(MainFrame main) {
-
-
 
 		setBackground(SystemColor.window);
 		lottoMap = lottopaper.getLotto();
@@ -331,6 +328,7 @@ public class BuyFrame extends JFrame {
 				@Override
 				public void mousePressed(MouseEvent e) {
 				}
+
 				@Override
 				public void mouseExited(MouseEvent e) {
 					LineBorder bb = new LineBorder(Color.WHITE, 2, true);
@@ -338,6 +336,7 @@ public class BuyFrame extends JFrame {
 					lbl.setBorder(bb);
 					lbl.setFont(new Font("맑은 고딕", Font.PLAIN, 18));
 				}
+
 				@Override
 				public void mouseEntered(MouseEvent e) {
 					LineBorder bb = new LineBorder(new Color(255, 207, 65), 2, true);
@@ -345,6 +344,7 @@ public class BuyFrame extends JFrame {
 					lbl.setBorder(bb);
 					lbl.setFont(new Font("맑은 고딕", Font.PLAIN, 22));
 				}
+
 				@Override
 				public void mouseClicked(MouseEvent e) {
 				}
@@ -464,9 +464,7 @@ public class BuyFrame extends JFrame {
 		panel.add(btnPlus);
 
 		btnPlus.addActionListener(new ActionListener() {
-
 			public void actionPerformed(ActionEvent click) {
-				System.out.println("진짜 나한테" + countList);
 				if (countList < 5 || isLabelClick) {
 					if (rtm.티켓등록(buttonZip.size())) {
 
@@ -475,8 +473,6 @@ public class BuyFrame extends JFrame {
 							// 이러한 조건에서 등록되야함.
 							autoCount.add(countNum);
 							lottoMap.put(countList, buttonZip);// 현재 0번째이기 때문에 숫자 0의 키를 가지는 맵
-							System.out.println("현재 게임로또배열" + lottoMap.get(0));
-							System.out.println("현재 게임" + countList);
 							selectNumPrint(lottoMap, count, countList);
 							buttonZip = new TreeSet();
 							count = 0;
@@ -491,12 +487,9 @@ public class BuyFrame extends JFrame {
 							lbl.setBuyList(lottoMapList);
 						} else if (isLabelClick) { // 라벨을 클릭했을때
 							autoCount.remove(labelClickindex);
-							System.out.println("라벨을 클릭하지 않았을때 -> 등록");
 							// 이러한 조건에서 등록되야함.
 							autoCount.add(labelClickindex, 6);
 							lottoMap.put(labelClickindex, buttonZip);// 현재 0번째이기 때문에 숫자 0의 키를 가지는 맵
-							System.out.println("현재 게임로또배열" + lottoMap.get(0));
-							System.out.println("현재 게임" + labelClickindex);
 							selectNumPrint(lottoMap, count, labelClickindex);
 							buttonZip = new TreeSet();
 							count = 0;
@@ -515,13 +508,15 @@ public class BuyFrame extends JFrame {
 						lbl.setBuyList(lottoMapList);
 
 					} else if (buttonZip.size() < 6) {
-						System.out.println("선택한 수가 부족하다.");
-						buttonZip = new TreeSet();
-						count = 0;
-						for (int i = 0; i < buttons.size(); i++) {
-							RoundedButton btn = (RoundedButton) buttons.get(i);
-							btn.decorate();
-						}
+						JOptionPane.showMessageDialog(null, "선택한 번호의 수가 부족합니다.", "선택한 번호 개수 확인",
+								JOptionPane.WARNING_MESSAGE);
+//						buttonZip = new TreeSet();
+//						count = 0;
+//						for (int i = 0; i < buttons.size(); i++) {s
+//							RoundedButton btn = (RoundedButton) buttons.get(i);
+//							btn.decorate();
+//						} 
+						// 작동 안하는거 같은데 확인 필요;
 
 					}
 
@@ -530,16 +525,19 @@ public class BuyFrame extends JFrame {
 					System.out.println(lottoMap);
 				}
 				// 여기서 맵을 보내줘야 함.
+				if(buttonZip.size() == 6) {
 				for (JButton elem : buttons) { // 선택화면 불 켜기
 					// elem.setEnabled(true);
 					RoundedButton btn = (RoundedButton) elem;
 					btn.decorate();
+				}
 				}
 //				count = 0;
 //				lottoMapList.add(lottopaper);// 로또를 여러장 가지기 위해 추가중 여기서 추가
 //				System.out.println(lottoMapList.indexOf(1));  // 여러장 추가할때 사용예정
 				System.out.println(lottoMap);
 				lblTotal.setText("총" + (countList * 1000) + "원"); // 로또 추가된 수만큼 가격 책정
+
 			}
 		});
 
@@ -549,8 +547,10 @@ public class BuyFrame extends JFrame {
 		btnPayment.setBounds(408, 362, 170, 35);
 		btnPayment.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+
 				int totalCost = depositFrame.getTotalCost(); // 결제를 위한 토탈코스트 변수
 
+//				if()
 				if (도박중독방지용 <= 100) {
 					if (totalCost >= countList * 1000) {
 						// 한장에 입력받은 값을 담기
