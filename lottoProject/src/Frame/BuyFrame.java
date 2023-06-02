@@ -85,6 +85,13 @@ public class BuyFrame extends JFrame {
 		MouseAdapter mouseAdapter = new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent me) {
+				JLabel lbl2 = (JLabel) me.getSource();
+				if (!lbl2.getText().equals("00 00 00 00 00 00")) {
+					btnAutoPlus.setEnabled(false);
+					for (int i = 0; i < btnResets.length; i++) {
+						btnResets[i].setEnabled(false);
+					}
+				}
 
 				for (int i = 0; i < 45; i++) {
 					RoundedButton btn = (RoundedButton) buttons.get(i);
@@ -108,6 +115,7 @@ public class BuyFrame extends JFrame {
 					for (Integer set : mouseSet) {
 						RoundedButton btn = (RoundedButton) buttons.get(set - 1);
 						btn.decorate2();
+						buttonZip.add(set);
 					}
 					labelClickindex = index;
 				}
@@ -120,6 +128,8 @@ public class BuyFrame extends JFrame {
 	private JLabel lblMyMoney; // 예치금 표시 프레임
 	private JLabel lblTotal; // 로또 개수에 따르는 지불받는 금액
 
+	private RoundButton btnAutoPlus;
+
 	private void 결제초기화액션리스너추가(ActionListener actionlistener) {
 		for (int i = 0; i < 5; i++) {
 			btnResets[i].addActionListener(actionlistener);
@@ -130,6 +140,7 @@ public class BuyFrame extends JFrame {
 		ActionListener actionlistener = new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+
 				JButton btn1 = (JButton) e.getSource();
 				int j = 0;
 				for (int i = 0; i < 5; i++) {
@@ -378,7 +389,7 @@ public class BuyFrame extends JFrame {
 		panel.setBounds(43, 362, 309, 37);
 		backLabel.add(panel);
 
-		RoundButton btnAutoPlus = new RoundButton("자동버튼");
+		btnAutoPlus = new RoundButton("자동버튼");
 		btnAutoPlus.setBackground(SystemColor.menu);
 		btnAutoPlus.setForeground(Color.PINK);
 		btnAutoPlus.addActionListener(new ActionListener() {
@@ -475,6 +486,12 @@ public class BuyFrame extends JFrame {
 
 		btnPlus.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent click) {
+				btnAutoPlus.setEnabled(true);
+				for (int i = 0; i < autoCount.size(); i++) {
+					btnResets[i].setEnabled(true);
+				}
+
+				System.out.println("클릭 직후 카운트:" + count);
 				if (countList < 5 || isLabelClick) {
 					if (rtm.티켓등록(buttonZip.size())) {
 
@@ -496,6 +513,7 @@ public class BuyFrame extends JFrame {
 
 							lbl.setBuyList(lottoMapList);
 						} else if (isLabelClick) { // 라벨을 클릭했을때
+
 							autoCount.remove(labelClickindex);
 							// 이러한 조건에서 등록되야함.
 							autoCount.add(labelClickindex, 6);
@@ -518,7 +536,7 @@ public class BuyFrame extends JFrame {
 						lbl.setBuyList(lottoMapList);
 
 					} else if (buttonZip.size() < 6) {
-						JOptionPane.showMessageDialog(null, "선택한 번호의 수가 부족합니다.", "선택한 번호 개수 확인",
+						JOptionPane.showMessageDialog(null, "선택한 번호의 개수가 부족합니다.", "선택한 번호 개수 확인",
 								JOptionPane.WARNING_MESSAGE);
 //						buttonZip = new TreeSet();
 //						count = 0;
@@ -556,8 +574,9 @@ public class BuyFrame extends JFrame {
 		btnPayment.setBackground(SystemColor.activeCaption);
 		btnPayment.setBounds(408, 362, 170, 35);
 		btnPayment.addActionListener(new ActionListener() {
+//			PaymentCheckFrame pcf = new PaymentCheckFrame(BuyFrame.this);
 			public void actionPerformed(ActionEvent arg0) {
-				int totalCost = depositFrame.getTotalCost(); // 결제를 위한 토탈코스트 변수
+//				pcf.isVisible();
 				totalCost = depositFrame.getTotalCost(); // 결제를 위한 토탈코스트 변수
 
 //				if()
@@ -565,7 +584,12 @@ public class BuyFrame extends JFrame {
 				if (도박중독방지용 <= 100) {
 					if (totalCost >= countList * 1000) {
 						if (autoCount.size() != 0) {
+
 							new PaymentCheckFrame(BuyFrame.this); // checkFrame에 보내기
+
+						} else {
+							JOptionPane.showMessageDialog(null, "\t 등록 된 게임이 없습니다.", "등록 확인",
+									JOptionPane.WARNING_MESSAGE);
 						}
 					} else {
 						JOptionPane.showMessageDialog(null, "\t예치금을 확인하세요(확인 클릭시 창이 닫힙니다.)", "금액확인",

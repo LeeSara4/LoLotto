@@ -6,17 +6,19 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
-public class PaymentCheckFrame extends JFrame {
+public class PaymentCheckFrame extends JDialog {
 	private JPanel contentPane;
 	private static int count = 0;
 
 	public PaymentCheckFrame(BuyFrame buyFrame) {
+		setModal(true);
 		setBounds(100, 100, 300, 240);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -62,4 +64,5 @@ public class PaymentCheckFrame extends JFrame {
 		setDefaultCloseOperation(HIDE_ON_CLOSE);
 		setVisible(true);
 	}
+	
 }
