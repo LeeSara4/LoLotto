@@ -308,11 +308,16 @@ public class ShootNumImage extends JFrame {
 		btnNewButton_1.setBounds(368, 472, 177, 36);
 		contentPane.add(btnNewButton_1);
 		
+		JLabel lblNewLabel_1 = new JLabel("");
+		lblNewLabel_1.setIcon(new ImageIcon(ShootNumImage.class.getResource("/imagepackage/블리츠크랭크.gif")));
+		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_1.setBounds(791, 313, 197, 195);
+		contentPane.add(lblNewLabel_1);
+		
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon(ShootNumImage.class.getResource("/imagepackage/배경라벨이미지.png")));
 		lblNewLabel.setBounds(0, 0, 1000, 600);
 		contentPane.add(lblNewLabel);
 
 	}
-
 }
