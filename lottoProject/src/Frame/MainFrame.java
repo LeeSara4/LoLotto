@@ -69,7 +69,7 @@ public class MainFrame extends JFrame {
 		modeLabel.setBounds(0, -20, 1000, 600);
 		panel.add(modeLabel);
 
-		JLabel lblNewLabel = new JLabel(new ImageIcon("C:\\Users\\GGG\\Desktop\\img.png"));
+		JLabel lblNewLabel = new JLabel(new ImageIcon("/imagepackage/img.png"));
 		lblNewLabel.setBounds(292, 28, 359, 262);
 		modeLabel.add(lblNewLabel);
 
