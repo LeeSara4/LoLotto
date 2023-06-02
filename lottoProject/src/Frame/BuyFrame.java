@@ -86,11 +86,17 @@ public class BuyFrame extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent me) {
 				JLabel lbl2 = (JLabel) me.getSource();
-				if (!lbl2.getText().equals("00 00 00 00 00 00")) {
+				if (!lbl2.getText().equals("00 00 00 00 00 00")) { // 해당 리스트의 텍스트가 "00~"" 과 일치할때 자동 선택 불가
 					btnAutoPlus.setEnabled(false);
-					for (int i = 0; i < btnResets.length; i++) {
+					for (int i = 0; i < btnResets.length; i++) { // 해당 열의 초기화 길이값에 따라서 부분적 활성화
 						btnResets[i].setEnabled(false);
 					}
+				} else {
+					buttonZip.clear();
+					for (int i = 0; i < autoCount.size(); i++) {
+						btnResets[i].setEnabled(true);
+					}
+					btnAutoPlus.setEnabled(true);
 				}
 
 				for (int i = 0; i < 45; i++) {

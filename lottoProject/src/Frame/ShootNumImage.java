@@ -87,7 +87,7 @@ public class ShootNumImage extends JFrame {
 		contentPane.add(lblNewLabel_2_1);
 		
 		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\GGG\\Desktop\\카드 기본.gif"));
+		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\GGG\\Desktop\\1.gif"));
 		lblNewLabel.setBounds(12, 80, 127, 233);
 		contentPane.add(lblNewLabel);
 		
@@ -97,12 +97,12 @@ public class ShootNumImage extends JFrame {
 		contentPane.add(lblNewLabel_2);
 		
 		JLabel lblNewLabel_1 = new JLabel("New label");
-		lblNewLabel_1.setIcon(new ImageIcon("C:\\Users\\GGG\\Desktop\\iloveimg-resized (2)\\카드 액션.gif"));
+		lblNewLabel_1.setIcon(new ImageIcon("C:\\Users\\GGG\\Desktop\\카드 기본 연출.gif"));
 		lblNewLabel_1.setBounds(151, 80, 127, 233);
 		contentPane.add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_2_3 = new JLabel("New label");
-		lblNewLabel_2_3.setIcon(new ImageIcon("C:\\Users\\GGG\\Desktop\\팀4이미지\\카드 기본 연출.gif"));
+		lblNewLabel_2_3.setIcon(new ImageIcon("C:\\Users\\GGG\\Desktop\\1.gif"));
 		lblNewLabel_2_3.setBounds(706, 80, 127, 233);
 		contentPane.add(lblNewLabel_2_3);
 		
