@@ -37,7 +37,7 @@ public class BuyList extends JFrame {
 
 		tempList = buyList;
 
-		setBounds(100, 100, 400, 600);
+		setBounds(100, 100, 1000, 600);
 		contentPane = new JPanel();
 		contentPane.setBackground(SystemColor.window);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -52,44 +52,44 @@ public class BuyList extends JFrame {
 				main.setVisible(true);
 			}
 		});
-		btnNewButton.setBounds(275, 10, 97, 23);
+		btnNewButton.setBounds(863, 20, 97, 23);
 		contentPane.add(btnNewButton);
 
 		JLabel lblNewLabel_3 = new JLabel("발 행 일 :");
 		lblNewLabel_3.setFont(new Font("맑은 고딕", Font.BOLD, 15));
 		lblNewLabel_3.setForeground(new Color(250, 250, 210));
-		lblNewLabel_3.setBounds(37, 160, 83, 15);
+		lblNewLabel_3.setBounds(327, 153, 83, 15);
 		contentPane.add(lblNewLabel_3);
 
 		JLabel lblNewLabel_3_1 = new JLabel("추 첨 일 :");
 		lblNewLabel_3_1.setFont(new Font("맑은 고딕", Font.BOLD, 15));
 		lblNewLabel_3_1.setForeground(new Color(250, 250, 210));
-		lblNewLabel_3_1.setBounds(37, 185, 74, 15);
+		lblNewLabel_3_1.setBounds(327, 178, 74, 15);
 		contentPane.add(lblNewLabel_3_1);
 
 		JLabel lblNewLabel_3_2 = new JLabel("금액");
 		lblNewLabel_3_2.setForeground(new Color(250, 250, 210));
 		lblNewLabel_3_2.setFont(new Font("맑은 고딕", Font.BOLD, 18));
-		lblNewLabel_3_2.setBounds(51, 416, 83, 37);
+		lblNewLabel_3_2.setBounds(341, 409, 83, 37);
 		contentPane.add(lblNewLabel_3_2);
 
 		JLabel lblNewLabel_3_2_1 = new JLabel();
 		lblNewLabel_3_2_1.setText("\\ " + ",000");
 		lblNewLabel_3_2_1.setFont(new Font("맑은 고딕", Font.BOLD, 18));
-		lblNewLabel_3_2_1.setBounds(277, 416, 83, 37);
+		lblNewLabel_3_2_1.setBounds(567, 409, 83, 37);
 		lblNewLabel_3_2_1.setForeground(new Color(250, 250, 210));
 		contentPane.add(lblNewLabel_3_2_1);
 
 		JLabel lblNewLabel_1_1 = new JLabel("LOTTO");
 		lblNewLabel_1_1.setForeground(Color.LIGHT_GRAY);
 		lblNewLabel_1_1.setFont(new Font("맑은 고딕", Font.BOLD, 30));
-		lblNewLabel_1_1.setBounds(37, 433, 97, 76);
+		lblNewLabel_1_1.setBounds(327, 426, 97, 76);
 		contentPane.add(lblNewLabel_1_1);
 
 		JLabel lblNewLabel_2_1_1 = new JLabel("6 / 45");
 		lblNewLabel_2_1_1.setForeground(Color.LIGHT_GRAY);
 		lblNewLabel_2_1_1.setFont(new Font("맑은 고딕", Font.BOLD, 18));
-		lblNewLabel_2_1_1.setBounds(146, 472, 57, 15);
+		lblNewLabel_2_1_1.setBounds(436, 465, 57, 15);
 		contentPane.add(lblNewLabel_2_1_1);
 
 		lblNewLabel_5 = new JLabel("2023 / 06 / 07 (수)");
@@ -102,32 +102,32 @@ public class BuyList extends JFrame {
 			lblNewLabel_5.setText(date.toString() + " " + formattedTime);
 		}
 		lblNewLabel_5.setFont(new Font("맑은 고딕", Font.PLAIN, 14));
-		lblNewLabel_5.setBounds(114, 162, 160, 15);
+		lblNewLabel_5.setBounds(404, 155, 160, 15);
 		contentPane.add(lblNewLabel_5);
 
 		JLabel lblNewLabel_5_1 = new JLabel("2023-06-10 21:00:00");
 		lblNewLabel_5_1.setForeground(new Color(250, 250, 210));
 		lblNewLabel_5_1.setFont(new Font("맑은 고딕", Font.PLAIN, 14));
-		lblNewLabel_5_1.setBounds(114, 185, 160, 15);
+		lblNewLabel_5_1.setBounds(404, 178, 160, 15);
 		contentPane.add(lblNewLabel_5_1);
 
 		panel = new JPanel();
 		panel.setBackground(SystemColor.window);
-		panel.setBounds(67, 224, 267, 188);
+		panel.setBounds(357, 217, 267, 188);
 		contentPane.add(panel);
 
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(SystemColor.activeCaption);
-		panel_1.setBounds(37, 219, 323, 4);
+		panel_1.setBounds(327, 212, 323, 4);
 		contentPane.add(panel_1);
 
 		JPanel panel_1_1 = new JPanel();
 		panel_1_1.setBackground(SystemColor.activeCaption);
-		panel_1_1.setBounds(37, 413, 323, 4);
+		panel_1_1.setBounds(327, 406, 323, 4);
 		contentPane.add(panel_1_1);
 
 		JButton btnBack = new RoundButton("이전");
-		btnBack.setBounds(88, 519, 62, 23);
+		btnBack.setBounds(378, 512, 62, 23);
 		contentPane.add(btnBack);
 		btnBack.addActionListener(new ActionListener() {
 			@Override
@@ -150,7 +150,7 @@ public class BuyList extends JFrame {
 		});
 
 		JButton btnFront = new RoundButton("다음");
-		btnFront.setBounds(244, 519, 62, 23);
+		btnFront.setBounds(534, 512, 62, 23);
 		contentPane.add(btnFront);
 		btnFront.addActionListener(new ActionListener() {
 			@Override
@@ -174,11 +174,11 @@ public class BuyList extends JFrame {
 
 		lblNewLabel_4 = new JLabel("< " + (currentSelect + 1) + " / " + buyList.size() + " >");
 		lblNewLabel_4.setForeground(new Color(250, 250, 210));
-		lblNewLabel_4.setBounds(183, 523, 40, 15);
+		lblNewLabel_4.setBounds(466, 517, 59, 15);
 		contentPane.add(lblNewLabel_4);
 
 		JLabel logoLabel = new JLabel("");
-		logoLabel.setBounds(37, 43, 297, 107);
+		logoLabel.setBounds(342, 39, 297, 122);
 		contentPane.add(logoLabel);
 		ImageIcon logoIcon = new ImageIcon(BuyList.class.getResource("/imagepackage/리그오브로또.png"));
 		Image img = logoIcon.getImage();
@@ -188,7 +188,7 @@ public class BuyList extends JFrame {
 		
 		JLabel lblNewLabel_7 = new JLabel("New label");
 		lblNewLabel_7.setIcon(new ImageIcon(BuyList.class.getResource("/imagepackage/배경라벨이미지.png")));
-		lblNewLabel_7.setBounds(-5, 0, 389, 561);
+		lblNewLabel_7.setBounds(-5, 0, 989, 561);
 		contentPane.add(lblNewLabel_7);
 
 		System.out.println(tempList.size());
