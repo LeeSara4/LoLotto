@@ -35,9 +35,7 @@ public class BuyList extends JFrame {
 	private JLabel backLabel;
 
 	public BuyList(List<LottoPaper> buyList, MainFrame main) {
-
 		tempList = buyList;
-
 		setBounds(100, 100, 1000, 600);
 		contentPane = new JPanel();
 		contentPane.setBackground(SystemColor.window);
@@ -49,7 +47,7 @@ public class BuyList extends JFrame {
 
 		backLabel = new JLabel();
 		backLabel.setIcon(new ImageIcon(BuyList.class.getResource("/imagepackage/배경라벨이미지.png")));
-		backLabel.setBounds(0, 0, 989, 561);
+		backLabel.setBounds(0, 0, 1000, 600);
 		contentPane.add(backLabel);
 
 		JButton btnNewButton = new RoundButton("메인으로");
@@ -67,7 +65,7 @@ public class BuyList extends JFrame {
 		Image upImg = upIcon.getImage();
 
 		JLabel lblDownLabel = new JLabel("");
-		lblDownLabel.setBounds(320, 405, 330, 15);
+		lblDownLabel.setBounds(320, 403, 330, 15);
 		backLabel.add(lblDownLabel);
 		ImageIcon downIcon = new ImageIcon(BuyList.class.getResource("/imagepackage/아래.png"));
 		Image downImage = downIcon.getImage();
@@ -228,6 +226,7 @@ public class BuyList extends JFrame {
 
 			panel.add(lblNewLabel_1);
 		}
+		
 
 	}
 
@@ -278,8 +277,8 @@ public class BuyList extends JFrame {
 		panel.add(lblNewLabel_1);
 		panel.setVisible(true);
 		lblNewLabel_1.setVisible(true);
+	
 	}
-
 	public String isAuto(int target) {
 		if (target == 0) {
 			return "자동";
