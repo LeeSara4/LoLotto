@@ -28,10 +28,9 @@ import javax.swing.border.LineBorder;
 
 import lottoProject.LottoBuyingList;
 
-//import com.sun.xml.internal.bind.v2.schemagen.xmlschema.List;
-
 import lottoProject.LottoPaper;
 import lottoProject.RegiTiketManager;
+import javax.swing.SwingConstants;
 
 public class BuyFrame extends JFrame {
 	DepositFrame depositFrame = new DepositFrame(this);
@@ -262,7 +261,7 @@ public class BuyFrame extends JFrame {
 		JPanel pnlLottoNum = new JPanel();
 		pnlLottoNum.setOpaque(false);
 		pnlLottoNum.setBackground(Color.WHITE);
-		pnlLottoNum.setBounds(156, 143, 275, 314);
+		pnlLottoNum.setBounds(156, 131, 275, 314);
 		getContentPane().add(pnlLottoNum);
 		pnlLottoNum.setLayout(new GridLayout(9, 5));
 
@@ -322,7 +321,7 @@ public class BuyFrame extends JFrame {
 
 		JPanel pnlChoice = new JPanel();
 		pnlChoice.setOpaque(false);
-		pnlChoice.setBounds(506, 156, 346, 256);
+		pnlChoice.setBounds(506, 145, 346, 241);
 		getContentPane().add(pnlChoice);
 
 		choices = new JPanel[5];
@@ -382,7 +381,7 @@ public class BuyFrame extends JFrame {
 		}
 
 		RoundButton btnMain = new RoundButton("메인으로");
-		btnMain.setBounds(844, 39, 97, 23);
+		btnMain.setBounds(871, 34, 97, 23);
 		btnMain.addActionListener(new ActionListener() {
 
 			@Override
@@ -396,7 +395,7 @@ public class BuyFrame extends JFrame {
 		RoundButton btnPayment = new RoundButton("결제하기");
 		btnPayment.setForeground(Color.WHITE);
 		btnPayment.setBackground(Color.decode("#B6A882"));
-		btnPayment.setBounds(506, 452, 221, 35);
+		btnPayment.setBounds(506, 478, 221, 35);
 		btnPayment.addActionListener(new ActionListener() {
 //			PaymentCheckFrame pcf = new PaymentCheckFrame(BuyFrame.this);
 			public void actionPerformed(ActionEvent arg0) {
@@ -432,38 +431,9 @@ public class BuyFrame extends JFrame {
 		결제초기화액션리스너추가(결제초기화액션리스너());
 		라벨클릭액션리스너추가(라벨클릭액션리스너());
 
-		JPanel panel_1 = new JPanel();
-		panel_1.setBackground(Color.decode("#B6A882"));
-		panel_1.setBounds(122, 82, 275, 35);
-		getContentPane().add(panel_1);
-
-		lblMyMoney = new JLabel("예치금 : " + "원");
-
-		panel_1.add(lblMyMoney);
-		lblMyMoney.setForeground(Color.WHITE);
-		lblMyMoney.setFont(new Font("맑은 고딕", Font.BOLD, 19));
-
 		JPanel panel_2 = new JPanel();
-		panel_2.setBorder(new LineBorder(Color.decode("#B6A882"), 2));
-		panel_2.setOpaque(false);
-		panel_2.setBounds(122, 116, 340, 360);
+		panel_2.setBounds(0, 71, 1000, 2);
 		getContentPane().add(panel_2);
-
-		JPanel panel_5 = new JPanel();
-		panel_5.setBackground(Color.decode("#B6A882"));
-		panel_5.setBounds(474, 82, 404, 35);
-		getContentPane().add(panel_5);
-
-		lblTotal = new JLabel("총 0원");
-		panel_5.add(lblTotal);
-		lblTotal.setForeground(Color.WHITE);
-		lblTotal.setFont(new Font("맑은 고딕", Font.BOLD, 20));
-
-		JPanel panel_4 = new JPanel();
-		contentPane.add(panel_4);
-		panel_4.setBorder(new LineBorder(Color.decode("#B6A882"), 2));
-		panel_4.setOpaque(false);
-		panel_4.setBounds(474, 116, 404, 326);
 
 		RoundButton btnReset = new RoundButton("모두 초기화");
 		contentPane.add(btnReset);
@@ -480,10 +450,11 @@ public class BuyFrame extends JFrame {
 
 		});
 		btnReset.setFont(new Font("맑은 고딕", Font.BOLD, 17));
-		btnReset.setBounds(739, 452, 113, 35);
+		btnReset.setBounds(765, 478, 113, 35);
 
 		RoundButton btnReload = new RoundButton("충전");
-		btnReload.setBounds(403, 82, 59, 27);
+		btnReload.setText("RP 충전");
+		btnReload.setBounds(709, 84, 97, 27);
 		contentPane.add(btnReload);
 		btnReload.setForeground(Color.decode("#B6A882"));
 		btnReload.setBackground(SystemColor.menu);
@@ -507,6 +478,19 @@ public class BuyFrame extends JFrame {
 		contentPane.add(btnPlus);
 		btnPlus.setForeground(SystemColor.window);
 		btnPlus.setBackground(Color.decode("#B6A882"));
+		
+		lblMyMoney = new JLabel("0");
+		lblMyMoney.setBounds(709, 34, 95, 26);
+		contentPane.add(lblMyMoney);
+		lblMyMoney.setForeground(Color.WHITE);
+		lblMyMoney.setFont(new Font("맑은 고딕", Font.BOLD, 19));
+				
+		lblTotal = new JLabel("총 0원");
+		lblTotal.setHorizontalAlignment(SwingConstants.CENTER);
+		lblTotal.setBounds(506, 396, 328, 27);
+		contentPane.add(lblTotal);
+		lblTotal.setForeground(Color.WHITE);
+		lblTotal.setFont(new Font("맑은 고딕", Font.BOLD, 20));
 
 		JLabel lblNewLabel = new JLabel("New label");
 		lblNewLabel.setIcon(new ImageIcon(BuyFrame.class.getResource("/imagepackage/배경라벨이미지.png")));
@@ -595,7 +579,7 @@ public class BuyFrame extends JFrame {
 				// lottoMapList.add(lottopaper);// 로또를 여러장 가지기 위해 추가중 여기서 추가
 				// System.out.println(lottoMapList.indexOf(1)); // 여러장 추가할때 사용예정
 				System.out.println(lottoMap);
-				lblTotal.setText("총" + (countList * 1000) + "원"); // 로또 추가된 수만큼 가격 책정
+				lblTotal.setText("총" + (countList * 1000) + "RP"); // 로또 추가된 수만큼 가격 책정
 
 			}
 		});
@@ -685,7 +669,7 @@ public class BuyFrame extends JFrame {
 	}
 
 	public void setMyMoney(int totalCost) {
-		lblMyMoney.setText("예치금 : " + totalCost + "원");
+		lblMyMoney.setText(totalCost + "원");
 	}
 
 	public void payCheckMentYes() {
@@ -712,13 +696,13 @@ public class BuyFrame extends JFrame {
 		System.out.println("현시점의 예치금: " + totalCost);
 		System.out.println("현시점의 결제금액: " + countList * 1000);
 		System.out.println("현시점의 카운트: " + countList);
-		lblMyMoney.setText("예치금: " + (totalCost - (countList * 1000)) + "원"); // 결제한 만큼 차감된 값이 출력
+		lblMyMoney.setText((totalCost - (countList * 1000)) + "원"); // 결제한 만큼 차감된 값이 출력
 		totalCost -= countList * 1000;
 		depositFrame.setTotalCost(totalCost);
 
 		countList = 0;
 
-		lblTotal.setText("총" + (countList * 1000) + "원"); // 로또 추가된 수만큼 가격 책정
+		lblTotal.setText("총" + (countList * 1000) + "RP"); // 로또 추가된 수만큼 가격 책정
 
 		for (int i = 0; i < 5; i++) {
 			isAutos[i].setText("자동여부");
