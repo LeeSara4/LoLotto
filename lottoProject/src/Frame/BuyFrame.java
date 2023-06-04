@@ -253,6 +253,16 @@ public class BuyFrame extends JFrame {
 		contentPane.setLayout(null);
 		setLocationRelativeTo(null);
 		setUndecorated(true);
+		
+		JLabel RP_2 = new JLabel("New label");
+		RP_2.setIcon(new ImageIcon(BuyFrame.class.getResource("/imagepackage/RpPoints.png")));
+		RP_2.setBounds(591, 385, 36, 44);
+		contentPane.add(RP_2);
+		
+		JLabel RP_1 = new JLabel("New label");
+		RP_1.setIcon(new ImageIcon(BuyFrame.class.getResource("/imagepackage/RpPoints.png")));
+		RP_1.setBounds(661, 24, 36, 44);
+		contentPane.add(RP_1);
 
 //		JLabel backLabel = new JLabel(new ImageIcon("back1.png"));
 //		backLabel.setBounds(0, 0, 1000, 600);
@@ -485,17 +495,16 @@ public class BuyFrame extends JFrame {
 		lblMyMoney.setForeground(Color.WHITE);
 		lblMyMoney.setFont(new Font("맑은 고딕", Font.BOLD, 19));
 				
-		lblTotal = new JLabel("총 0원");
-		lblTotal.setHorizontalAlignment(SwingConstants.CENTER);
-		lblTotal.setBounds(506, 396, 328, 27);
+		lblTotal = new JLabel("총 0RP");
+		lblTotal.setBounds(639, 396, 195, 27);
 		contentPane.add(lblTotal);
 		lblTotal.setForeground(Color.WHITE);
 		lblTotal.setFont(new Font("맑은 고딕", Font.BOLD, 20));
 
-		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setIcon(new ImageIcon(BuyFrame.class.getResource("/imagepackage/배경라벨이미지.png")));
-		lblNewLabel.setBounds(0, 0, 1000, 600);
-		contentPane.add(lblNewLabel);
+		JLabel lblBack = new JLabel("New label");
+		lblBack.setIcon(new ImageIcon(BuyFrame.class.getResource("/imagepackage/배경라벨이미지.png")));
+		lblBack.setBounds(0, 0, 1000, 600);
+		contentPane.add(lblBack);
 
 		btnPlus.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent click) {
@@ -669,7 +678,7 @@ public class BuyFrame extends JFrame {
 	}
 
 	public void setMyMoney(int totalCost) {
-		lblMyMoney.setText(totalCost + "원");
+		lblMyMoney.setText(totalCost + "");
 	}
 
 	public void payCheckMentYes() {
@@ -696,7 +705,7 @@ public class BuyFrame extends JFrame {
 		System.out.println("현시점의 예치금: " + totalCost);
 		System.out.println("현시점의 결제금액: " + countList * 1000);
 		System.out.println("현시점의 카운트: " + countList);
-		lblMyMoney.setText((totalCost - (countList * 1000)) + "원"); // 결제한 만큼 차감된 값이 출력
+		lblMyMoney.setText((totalCost - (countList * 1000))+""); // 결제한 만큼 차감된 값이 출력
 		totalCost -= countList * 1000;
 		depositFrame.setTotalCost(totalCost);
 
