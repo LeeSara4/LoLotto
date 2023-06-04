@@ -36,7 +36,7 @@ public class Receipt extends JDialog implements MouseListener {
 	
 	
 	public Receipt(LottoPaper lottoPaper) {
-
+		setTitle("화면을 클릭하면 바로 내려옵니다.");
 		setModal(true);
 
 		System.out.println(lottoPaper.getCount().size()); // 카운트의 사이즈;

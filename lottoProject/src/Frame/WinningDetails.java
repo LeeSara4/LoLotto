@@ -82,9 +82,16 @@ public class WinningDetails extends JFrame {
 		lblMoney.setFont(new Font("맑은 고딕", Font.BOLD, 26));
 		pnl2.add(lblMoney);
 
+//		JButton btnFront = new JButton(new ImageIcon(getClass().getResource("/imagepackage/NextFrame.png")));
+//		btnFront.setBounds(534, 512, 62, 23);
+//		btnFront.setRolloverIcon(new ImageIcon(getClass().getResource("/imagepackage/NextFrame_1.png")));
+//		btnFront.setBorderPainted(false);
+
 		calcWinningMoney();
-		JButton btnBack = new RoundButton("이전");
+		JButton btnBack = new JButton(new ImageIcon(getClass().getResource("/imagepackage/SecondBeforeFrame.png")));
 		btnBack.setBounds(290, 534, 97, 23);
+		btnBack.setRolloverIcon(new ImageIcon(getClass().getResource("/imagepackage/SecondBeforeFrame_1.png")));
+		btnBack.setBorderPainted(false);
 		contentPane.add(btnBack);
 		btnBack.addActionListener(new ActionListener() {
 			@Override
@@ -98,8 +105,10 @@ public class WinningDetails extends JFrame {
 			}
 		});
 
-		JButton btnFront = new RoundButton("다음");
+		JButton btnFront = new JButton(new ImageIcon(getClass().getResource("/imagepackage/SecondNextFrame.png")));
 		btnFront.setBounds(630, 534, 97, 23);
+		btnFront.setRolloverIcon(new ImageIcon(getClass().getResource("/imagepackage/SecondNextFrame_1.png")));
+		btnFront.setBorderPainted(false);
 		contentPane.add(btnFront);
 		btnFront.addActionListener(new ActionListener() {
 			@Override
@@ -180,12 +189,12 @@ public class WinningDetails extends JFrame {
 		Image updateImg = img.getScaledInstance(logoLabel.getWidth(), logoLabel.getHeight(), Image.SCALE_SMOOTH);
 		ImageIcon updateLogoIcon = new ImageIcon(updateImg);
 		logoLabel.setIcon(updateLogoIcon);
-		
+
 		JLabel lblNewLabel_1 = new JLabel("New label");
 		lblNewLabel_1.setIcon(new ImageIcon(WinningDetails.class.getResource("/imagepackage/kill1.png")));
 		lblNewLabel_1.setBounds(358, 106, 293, 151);
 		contentPane.add(lblNewLabel_1);
-		
+
 		JLabel lblNewLabel_2 = new JLabel("New label");
 		lblNewLabel_2.setIcon(new ImageIcon(WinningDetails.class.getResource("/imagepackage/배경라벨이미지.png")));
 		lblNewLabel_2.setBounds(0, 0, 1000, 600);
@@ -295,7 +304,7 @@ public class WinningDetails extends JFrame {
 						numbers.get(i).get(j).setForeground(Color.RED);
 						isBonus = true;
 					}
-					if(numbers.get(i).get(j).getText().length() == 1) {
+					if (numbers.get(i).get(j).getText().length() == 1) {
 						numbers.get(i).get(j).setText("   " + numbers.get(i).get(j).getText());
 					} else {
 						numbers.get(i).get(j).setText("  " + numbers.get(i).get(j).getText());
