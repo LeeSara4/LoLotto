@@ -128,7 +128,7 @@ public class MainFrame extends JFrame {
 
 		JLabel Main_Logo2 = new JLabel(new ImageIcon(getClass().getResource("/imagepackage/리그오브로또.png")));
 		modeLabel.add(Main_Logo2);
-		Main_Logo2.setBounds(200, 50, 800, 250);
+		Main_Logo2.setBounds(160, 100, 800, 250);
 
 		btnNewButton = new RoundButton("구매하기");
 		modeLabel.add(btnNewButton);
