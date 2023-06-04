@@ -134,8 +134,10 @@ public class BuyList extends JFrame {
 		backLabel.add(panel);
 //		panel.setOpaque(false);
 
-		JButton btnBack = new RoundButton("이전");
+		JButton btnBack = new JButton(new ImageIcon(getClass().getResource("/imagepackage/BeforeFrame.png")));
 		btnBack.setBounds(378, 512, 62, 23);
+		btnBack.setRolloverIcon(new ImageIcon(getClass().getResource("/imagepackage/BeforeFrame_1.png")));
+		btnBack.setBorderPainted(false);
 		backLabel.add(btnBack);
 		btnBack.addActionListener(new ActionListener() {
 			@Override
@@ -157,8 +159,10 @@ public class BuyList extends JFrame {
 			}
 		});
 
-		JButton btnFront = new RoundButton("다음");
+		JButton btnFront = new JButton(new ImageIcon(getClass().getResource("/imagepackage/NextFrame.png")));
 		btnFront.setBounds(534, 512, 62, 23);
+		btnFront.setRolloverIcon(new ImageIcon(getClass().getResource("/imagepackage/NextFrame_1.png")));
+		btnFront.setBorderPainted(false);
 		backLabel.add(btnFront);
 		btnFront.addActionListener(new ActionListener() {
 			@Override
@@ -214,7 +218,6 @@ public class BuyList extends JFrame {
 
 			panel.add(lblNewLabel_1);
 		}
-		
 
 	}
 
@@ -265,8 +268,9 @@ public class BuyList extends JFrame {
 		panel.add(lblNewLabel_1);
 		panel.setVisible(true);
 		lblNewLabel_1.setVisible(true);
-	
+
 	}
+
 	public String isAuto(int target) {
 		if (target == 0) {
 			return "자동";
