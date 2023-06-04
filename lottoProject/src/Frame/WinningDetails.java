@@ -185,6 +185,11 @@ public class WinningDetails extends JFrame {
 		lblNewLabel_1.setIcon(new ImageIcon(WinningDetails.class.getResource("/imagepackage/kill1.png")));
 		lblNewLabel_1.setBounds(358, 106, 293, 151);
 		contentPane.add(lblNewLabel_1);
+		
+		JLabel lblNewLabel_2 = new JLabel("New label");
+		lblNewLabel_2.setIcon(new ImageIcon(WinningDetails.class.getResource("/imagepackage/배경라벨이미지.png")));
+		lblNewLabel_2.setBounds(0, 0, 1000, 600);
+		contentPane.add(lblNewLabel_2);
 
 		System.out.println(tempList.size());
 		if (tempList.size() > 0) {
@@ -207,13 +212,13 @@ public class WinningDetails extends JFrame {
 	public void printWinningNumbers() {
 		if (shootNumImage != null) {
 			for (int i = 0; i < 6; i++) {
-				JLabel number = new JLabel(winning_Numbers.get(i).toString());
+				JLabel number = new JLabel(" " + winning_Numbers.get(i).toString());
 				number.setFont(new Font("맑은 고딕", Font.BOLD, 32));
 				number.setForeground(new Color(250, 250, 210));
 				pnl_Winning.add(number);
 			}
 
-			JLabel lbl_Winning_Plus = new JLabel("+");
+			JLabel lbl_Winning_Plus = new JLabel(" + ");
 			lbl_Winning_Plus.setFont(new Font("맑은 고딕", Font.BOLD, 32));
 			lbl_Winning_Plus.setForeground(new Color(250, 250, 210));
 			pnl_Winning.add(lbl_Winning_Plus);
@@ -255,15 +260,15 @@ public class WinningDetails extends JFrame {
 			}
 
 			for (int i = 0; i < size; i++) {
-				ranks[i].setFont(new Font("맑은 고딕", Font.PLAIN, 18));
+				ranks[i].setFont(new Font("맑은 고딕", Font.PLAIN, 20));
 				ranks[i].setForeground(Color.WHITE);
 				choices[i].add(ranks[i]);
-				isAutos[i].setFont(new Font("맑은 고딕", Font.PLAIN, 18));
+				isAutos[i].setFont(new Font("맑은 고딕", Font.PLAIN, 20));
 				isAutos[i].setForeground(Color.WHITE);
 				choices[i].add(isAutos[i]);
 
 				for (int j = 0; j < 6; j++) {
-					numbers.get(i).get(j).setFont(new Font("맑은 고딕", Font.PLAIN, 18));
+					numbers.get(i).get(j).setFont(new Font("맑은 고딕", Font.PLAIN, 20));
 					numbers.get(i).get(j).setForeground(Color.WHITE);
 					choices[i].add(numbers.get(i).get(j));
 				}
@@ -290,12 +295,17 @@ public class WinningDetails extends JFrame {
 						numbers.get(i).get(j).setForeground(Color.RED);
 						isBonus = true;
 					}
+					if(numbers.get(i).get(j).getText().length() == 1) {
+						numbers.get(i).get(j).setText("   " + numbers.get(i).get(j).getText());
+					} else {
+						numbers.get(i).get(j).setText("  " + numbers.get(i).get(j).getText());
+					}
 				}
 				System.out.println("당첨번호랑 맞는 개수" + count);
 				System.out.println("2등번호가 있는지" + isBonus);
-				ranks[i].setText(isRank(count, isBonus));
+				ranks[i].setText(isRank(count, isBonus) + " ");
 				winMoneyList.add(isInWinningMoney(count, isBonus));
-				isAutos[i].setText(isAuto(tempList.get(index).getCount().get(i)));
+				isAutos[i].setText(isAuto(tempList.get(index).getCount().get(i)) + " ");
 			}
 		}
 		panel.setVisible(true);
@@ -323,7 +333,7 @@ public class WinningDetails extends JFrame {
 		} else if (target == 6) {
 			return "1등";
 		}
-		return "낙첨";
+		return "0등";
 	}
 
 	public boolean isInWinningNumbers(String str) {
