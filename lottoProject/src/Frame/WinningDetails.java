@@ -129,7 +129,7 @@ public class WinningDetails extends JFrame {
 
 		// 당첨번호 출력부분
 		pnl_Winning = new JPanel();
-		pnl_Winning.setBounds(161, 37, 694, 54);
+		pnl_Winning.setBounds(161, 30, 694, 54);
 		pnl_Winning.setOpaque(false);
 		contentPane.add(pnl_Winning);
 

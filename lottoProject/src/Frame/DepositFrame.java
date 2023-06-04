@@ -39,6 +39,7 @@ public class DepositFrame extends JDialog {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		setLocationRelativeTo(null);
 
 		JLabel backLabel = new JLabel(new ImageIcon(getClass().getResource("/imagepackage/back1.png")));
 		backLabel.setBounds(0, 0, 350, 241);
