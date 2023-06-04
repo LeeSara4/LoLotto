@@ -36,13 +36,11 @@ public class Receipt extends JDialog implements MouseListener {
 	
 	
 	public Receipt(LottoPaper lottoPaper) {
-		
-		
 
 		setModal(true);
 
 		System.out.println(lottoPaper.getCount().size()); // 카운트의 사이즈;
-		setBounds(100, 100, 400, 700); //10 이었음
+		setBounds(100, 100, 400, 10); //10 이었음
 		contentPane = new JPanel();
 		contentPane.setBackground(SystemColor.window);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -51,8 +49,8 @@ public class Receipt extends JDialog implements MouseListener {
 		
 		addMouseListener(this);
 		
-		backgroundLabel = new JLabel("");
-		backgroundLabel.setBounds(0, 0, 384, 661);
+		backgroundLabel = new JLabel();
+		//backgroundLabel.setBounds(0, 0, 384, 661);
 		backgroundLabel.setIcon(new ImageIcon(BuyList.class.getResource("/imagepackage/배경라벨이미지.png")));
 		backgroundLabel.setBounds(0, 0, 1000, 600);
 		contentPane.add(backgroundLabel);
@@ -74,14 +72,14 @@ public class Receipt extends JDialog implements MouseListener {
 		JLabel lblNewLabel_3_2 = new JLabel("금액");
 		lblNewLabel_3_2.setFont(new Font("맑은 고딕", Font.BOLD, 18));
 		lblNewLabel_3_2.setForeground(new Color(250, 250, 210));
-		lblNewLabel_3_2.setBounds(51, 416, 83, 37);
+		lblNewLabel_3_2.setBounds(51, 432, 83, 37);
 		backgroundLabel.add(lblNewLabel_3_2);
 
 		JLabel lblNewLabel_3_2_1 = new JLabel("\\ 5,000");
 		lblNewLabel_3_2_1.setText("\\ " + size + ",000");
 		lblNewLabel_3_2_1.setFont(new Font("맑은 고딕", Font.BOLD, 18));
 		lblNewLabel_3_2_1.setForeground(new Color(250, 250, 210));
-		lblNewLabel_3_2_1.setBounds(277, 416, 83, 37);
+		lblNewLabel_3_2_1.setBounds(277, 432, 83, 37);
 		backgroundLabel.add(lblNewLabel_3_2_1);
 
 		JLabel lblNewLabel_5 = new JLabel("2023 / 06 / 07 (수)");
@@ -105,20 +103,23 @@ public class Receipt extends JDialog implements MouseListener {
 
 		JPanel panel = new JPanel();
 		panel.setBackground(SystemColor.window);
-		panel.setBounds(67, 224, 267, 173);
+		panel.setBounds(67, 222, 267, 190);
+		panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		backgroundLabel.add(panel);
 
 		centerLabel = new JLabel();
-		centerLabel.setBounds(42, 478, 237, 173);
+		//centerLabel.setBounds(42, 478, 237, 173);
+		centerLabel.setBounds(42, 478, 237, 177);
 		ImageIcon centerIcon = new ImageIcon(BuyList.class.getResource("/imagepackage/영수증안쪽.png"));
 		Image centerImg = centerIcon.getImage();
-		Image updateCenterImage = centerImg.getScaledInstance(centerLabel.getWidth(), centerLabel.getHeight(),
+		Image updateCenterImage = centerImg.getScaledInstance(panel.getWidth(), panel.getHeight(),
 				Image.SCALE_SMOOTH);
+		System.out.println(panel.getWidth());
 		ImageIcon updateCenterIcon = new ImageIcon(updateCenterImage);
 		centerLabel.setIcon(updateCenterIcon);
 		centerLabel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		panel.add(centerLabel);
-		
+		panel.setOpaque(false);
 		
 		choices = new JPanel[size];
 		isAutos = new JLabel[size];
@@ -149,16 +150,6 @@ public class Receipt extends JDialog implements MouseListener {
 			String text2 = text.replace("[", "").replace("]", "");
 			numbers[i].setText(text2);
 		}
-
-		JPanel panel_1 = new JPanel();
-		panel_1.setBackground(SystemColor.activeCaption);
-		panel_1.setBounds(37, 219, 323, 4);
-		backgroundLabel.add(panel_1);
-
-		JPanel panel_1_1 = new JPanel();
-		panel_1_1.setBackground(SystemColor.activeCaption);
-		panel_1_1.setBounds(37, 413, 323, 4);
-		backgroundLabel.add(panel_1_1);
 		
 		JLabel logoLabel = new JLabel("");
 		logoLabel.setBounds(67, 20, 267, 112);
@@ -168,6 +159,29 @@ public class Receipt extends JDialog implements MouseListener {
 		Image updateImage = img.getScaledInstance(logoLabel.getWidth(), logoLabel.getHeight(), Image.SCALE_SMOOTH);
 		ImageIcon updateLogoIcon = new ImageIcon(updateImage);
 		logoLabel.setIcon(updateLogoIcon);
+		
+		JLabel upLabel = new JLabel();
+		upLabel.setBounds(27, 219, 330, 29);
+		ImageIcon upIcon = new ImageIcon(BuyList.class.getResource("/imagepackage/위.png"));
+		Image upImg = upIcon.getImage();
+		Image updateImage2 = upImg.getScaledInstance(upLabel.getWidth(), upLabel.getHeight(),
+				Image.SCALE_SMOOTH);
+		ImageIcon updateUpIcon = new ImageIcon(updateImage2);
+		upLabel.setIcon(updateUpIcon);
+		backgroundLabel.add(upLabel);
+		
+		
+		
+		JLabel downLabel = new JLabel("New label");
+		downLabel.setBounds(34, 412, 337, 15);
+		ImageIcon downIcon = new ImageIcon(BuyList.class.getResource("/imagepackage/아래.png"));
+		Image downImage = downIcon.getImage();
+		Image updateDownImage = downImage.getScaledInstance(downLabel.getWidth(), downLabel.getHeight(),
+				Image.SCALE_SMOOTH);
+		ImageIcon updateDownIcon = new ImageIcon(updateDownImage);
+		downLabel.setIcon(updateDownIcon);
+		
+		backgroundLabel.add(downLabel);
 		
 		// 아래로 내려가는 애니메이션 속도 설정 (밀리초 단위)
 		animationSpeed = 10;
