@@ -67,37 +67,13 @@ public class WinningDetails extends JFrame {
 		setLocationRelativeTo(null);
 		setUndecorated(true);
 
-		JLabel title_lotto = new JLabel("Lotto");
-		title_lotto.setForeground(Color.WHITE);
-		title_lotto.setFont(new Font("맑은 고딕", Font.BOLD, 30));
-		title_lotto.setBounds(450, 37, 87, 53);
-		contentPane.add(title_lotto);
-
-		JLabel title = new JLabel("6/45");
-		title.setForeground(Color.WHITE);
-		title.setFont(new Font("맑은 고딕", Font.BOLD, 18));
-		title.setBounds(538, 61, 57, 15);
-		contentPane.add(title);
-
-		JLabel title_lotto_1 = new JLabel("Lotto");
-		title_lotto_1.setForeground(Color.decode("#0bc4e2"));
-		title_lotto_1.setFont(new Font("맑은 고딕", Font.BOLD, 28));
-		title_lotto_1.setBounds(430, 10, 71, 46);
-		contentPane.add(title_lotto_1);
-
-		JLabel title_1 = new JLabel("6/45");
-		title_1.setForeground(Color.decode("#0bc4e2"));
-		title_1.setFont(new Font("맑은 고딕", Font.BOLD, 16));
-		title_1.setBounds(515, 31, 57, 15);
-		contentPane.add(title_1);
-
 		panel = new JPanel();
-		panel.setBounds(290, 244, 437, 280);
+		panel.setBounds(290, 267, 437, 241);
 		panel.setOpaque(false);
 		contentPane.add(panel);
 
 		JPanel pnl2 = new JPanel();
-		pnl2.setBounds(161, 180, 694, 54);
+		pnl2.setBounds(161, 148, 694, 54);
 		pnl2.setOpaque(false);
 		contentPane.add(pnl2);
 
@@ -106,9 +82,16 @@ public class WinningDetails extends JFrame {
 		lblMoney.setFont(new Font("맑은 고딕", Font.BOLD, 26));
 		pnl2.add(lblMoney);
 
+//		JButton btnFront = new JButton(new ImageIcon(getClass().getResource("/imagepackage/NextFrame.png")));
+//		btnFront.setBounds(534, 512, 62, 23);
+//		btnFront.setRolloverIcon(new ImageIcon(getClass().getResource("/imagepackage/NextFrame_1.png")));
+//		btnFront.setBorderPainted(false);
+
 		calcWinningMoney();
-		JButton btnBack = new RoundButton("이전");
+		JButton btnBack = new JButton(new ImageIcon(getClass().getResource("/imagepackage/SecondBeforeFrame.png")));
 		btnBack.setBounds(290, 534, 97, 23);
+		btnBack.setRolloverIcon(new ImageIcon(getClass().getResource("/imagepackage/SecondBeforeFrame_1.png")));
+		btnBack.setBorderPainted(false);
 		contentPane.add(btnBack);
 		btnBack.addActionListener(new ActionListener() {
 			@Override
@@ -122,8 +105,10 @@ public class WinningDetails extends JFrame {
 			}
 		});
 
-		JButton btnFront = new RoundButton("다음");
+		JButton btnFront = new JButton(new ImageIcon(getClass().getResource("/imagepackage/SecondNextFrame.png")));
 		btnFront.setBounds(630, 534, 97, 23);
+		btnFront.setRolloverIcon(new ImageIcon(getClass().getResource("/imagepackage/SecondNextFrame_1.png")));
+		btnFront.setBorderPainted(false);
 		contentPane.add(btnFront);
 		btnFront.addActionListener(new ActionListener() {
 			@Override
@@ -144,7 +129,7 @@ public class WinningDetails extends JFrame {
 
 		// 당첨번호 출력부분
 		pnl_Winning = new JPanel();
-		pnl_Winning.setBounds(161, 116, 694, 54);
+		pnl_Winning.setBounds(161, 30, 694, 54);
 		pnl_Winning.setOpaque(false);
 		contentPane.add(pnl_Winning);
 
@@ -162,6 +147,8 @@ public class WinningDetails extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
 				main.setVisible(true);
+				main.getBtnNewButton().setEnabled(false);
+				main.getBtnNewButton_2().setEnabled(false);
 			}
 		});
 		btn.setBounds(861, 37, 97, 23);
@@ -169,7 +156,7 @@ public class WinningDetails extends JFrame {
 
 		JPanel p1 = new JPanel();
 		p1.setBackground(new Color(250, 250, 210));
-		p1.setBounds(225, 167, 568, 3);
+		p1.setBounds(0, 90, 1000, 3);
 		p1.addMouseListener(new MouseListener() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
@@ -194,7 +181,7 @@ public class WinningDetails extends JFrame {
 		});
 
 		JLabel logoLabel = new JLabel("New label");
-		logoLabel.setBounds(43, 31, 157, 69);
+		logoLabel.setBounds(12, 8, 170, 83);
 		contentPane.add(logoLabel);
 		contentPane.add(p1);
 		ImageIcon logoIcon = new ImageIcon(WinningDetails.class.getResource("/imagepackage/리그오브로또.png"));
@@ -202,6 +189,16 @@ public class WinningDetails extends JFrame {
 		Image updateImg = img.getScaledInstance(logoLabel.getWidth(), logoLabel.getHeight(), Image.SCALE_SMOOTH);
 		ImageIcon updateLogoIcon = new ImageIcon(updateImg);
 		logoLabel.setIcon(updateLogoIcon);
+
+		JLabel lblNewLabel_1 = new JLabel("New label");
+		lblNewLabel_1.setIcon(new ImageIcon(WinningDetails.class.getResource("/imagepackage/kill1.png")));
+		lblNewLabel_1.setBounds(358, 106, 293, 151);
+		contentPane.add(lblNewLabel_1);
+
+		JLabel lblNewLabel_2 = new JLabel("New label");
+		lblNewLabel_2.setIcon(new ImageIcon(WinningDetails.class.getResource("/imagepackage/배경라벨이미지.png")));
+		lblNewLabel_2.setBounds(0, 0, 1000, 600);
+		contentPane.add(lblNewLabel_2);
 
 		System.out.println(tempList.size());
 		if (tempList.size() > 0) {
@@ -224,19 +221,19 @@ public class WinningDetails extends JFrame {
 	public void printWinningNumbers() {
 		if (shootNumImage != null) {
 			for (int i = 0; i < 6; i++) {
-				JLabel number = new JLabel(winning_Numbers.get(i).toString());
-				number.setFont(new Font("맑은 고딕", Font.BOLD, 28));
+				JLabel number = new JLabel(" " + winning_Numbers.get(i).toString());
+				number.setFont(new Font("맑은 고딕", Font.BOLD, 32));
 				number.setForeground(new Color(250, 250, 210));
 				pnl_Winning.add(number);
 			}
 
-			JLabel lbl_Winning_Plus = new JLabel("+");
-			lbl_Winning_Plus.setFont(new Font("맑은 고딕", Font.BOLD, 28));
+			JLabel lbl_Winning_Plus = new JLabel(" + ");
+			lbl_Winning_Plus.setFont(new Font("맑은 고딕", Font.BOLD, 32));
 			lbl_Winning_Plus.setForeground(new Color(250, 250, 210));
 			pnl_Winning.add(lbl_Winning_Plus);
 
 			JLabel lbl_Winning_Bonus = new JLabel(String.valueOf(bonusNumber));
-			lbl_Winning_Bonus.setFont(new Font("맑은 고딕", Font.BOLD, 28));
+			lbl_Winning_Bonus.setFont(new Font("맑은 고딕", Font.BOLD, 32));
 			lbl_Winning_Bonus.setForeground(new Color(250, 250, 210));
 			pnl_Winning.add(lbl_Winning_Bonus);
 		}
@@ -272,15 +269,15 @@ public class WinningDetails extends JFrame {
 			}
 
 			for (int i = 0; i < size; i++) {
-				ranks[i].setFont(new Font("맑은 고딕", Font.PLAIN, 18));
-				ranks[i].setForeground(Color.ORANGE);
+				ranks[i].setFont(new Font("맑은 고딕", Font.PLAIN, 20));
+				ranks[i].setForeground(Color.WHITE);
 				choices[i].add(ranks[i]);
-				isAutos[i].setFont(new Font("맑은 고딕", Font.PLAIN, 18));
-				isAutos[i].setForeground(Color.YELLOW);
+				isAutos[i].setFont(new Font("맑은 고딕", Font.PLAIN, 20));
+				isAutos[i].setForeground(Color.WHITE);
 				choices[i].add(isAutos[i]);
 
 				for (int j = 0; j < 6; j++) {
-					numbers.get(i).get(j).setFont(new Font("맑은 고딕", Font.PLAIN, 18));
+					numbers.get(i).get(j).setFont(new Font("맑은 고딕", Font.PLAIN, 20));
 					numbers.get(i).get(j).setForeground(Color.WHITE);
 					choices[i].add(numbers.get(i).get(j));
 				}
@@ -307,12 +304,17 @@ public class WinningDetails extends JFrame {
 						numbers.get(i).get(j).setForeground(Color.RED);
 						isBonus = true;
 					}
+					if (numbers.get(i).get(j).getText().length() == 1) {
+						numbers.get(i).get(j).setText("   " + numbers.get(i).get(j).getText());
+					} else {
+						numbers.get(i).get(j).setText("  " + numbers.get(i).get(j).getText());
+					}
 				}
 				System.out.println("당첨번호랑 맞는 개수" + count);
 				System.out.println("2등번호가 있는지" + isBonus);
-				ranks[i].setText(isRank(count, isBonus));
+				ranks[i].setText(isRank(count, isBonus) + " ");
 				winMoneyList.add(isInWinningMoney(count, isBonus));
-				isAutos[i].setText(isAuto(tempList.get(index).getCount().get(i)));
+				isAutos[i].setText(isAuto(tempList.get(index).getCount().get(i)) + " ");
 			}
 		}
 		panel.setVisible(true);
@@ -340,7 +342,7 @@ public class WinningDetails extends JFrame {
 		} else if (target == 6) {
 			return "1등";
 		}
-		return "낙첨";
+		return "0등";
 	}
 
 	public boolean isInWinningNumbers(String str) {

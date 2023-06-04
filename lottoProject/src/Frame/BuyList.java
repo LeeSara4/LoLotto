@@ -35,20 +35,19 @@ public class BuyList extends JFrame {
 	private JLabel backLabel;
 
 	public BuyList(List<LottoPaper> buyList, MainFrame main) {
-
-
 		tempList = buyList;
-
 		setBounds(100, 100, 1000, 600);
 		contentPane = new JPanel();
 		contentPane.setBackground(SystemColor.window);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		setLocationRelativeTo(null);
+		setUndecorated(true);
 
 		backLabel = new JLabel();
 		backLabel.setIcon(new ImageIcon(BuyList.class.getResource("/imagepackage/배경라벨이미지.png")));
-		backLabel.setBounds(0, 0, 989, 561);
+		backLabel.setBounds(0, 0, 1000, 600);
 		contentPane.add(backLabel);
 
 		JButton btnNewButton = new RoundButton("메인으로");
@@ -66,7 +65,7 @@ public class BuyList extends JFrame {
 		Image upImg = upIcon.getImage();
 
 		JLabel lblDownLabel = new JLabel("");
-		lblDownLabel.setBounds(320, 405, 330, 15);
+		lblDownLabel.setBounds(320, 444, 330, 15);
 		backLabel.add(lblDownLabel);
 		ImageIcon downIcon = new ImageIcon(BuyList.class.getResource("/imagepackage/아래.png"));
 		Image downImage = downIcon.getImage();
@@ -98,27 +97,15 @@ public class BuyList extends JFrame {
 		JLabel lblNewLabel_3_2 = new JLabel("금액");
 		lblNewLabel_3_2.setForeground(new Color(250, 250, 210));
 		lblNewLabel_3_2.setFont(new Font("맑은 고딕", Font.BOLD, 18));
-		lblNewLabel_3_2.setBounds(341, 409, 83, 37);
+		lblNewLabel_3_2.setBounds(341, 450, 83, 37);
 		backLabel.add(lblNewLabel_3_2);
 
 		JLabel lblNewLabel_3_2_1 = new JLabel();
-		lblNewLabel_3_2_1.setText("\\ " + ",000");
+		lblNewLabel_3_2_1.setText(",000원");
 		lblNewLabel_3_2_1.setFont(new Font("맑은 고딕", Font.BOLD, 18));
-		lblNewLabel_3_2_1.setBounds(567, 409, 83, 37);
+		lblNewLabel_3_2_1.setBounds(567, 450, 83, 37);
 		lblNewLabel_3_2_1.setForeground(new Color(250, 250, 210));
 		backLabel.add(lblNewLabel_3_2_1);
-
-		JLabel lblNewLabel_1_1 = new JLabel("LOTTO");
-		lblNewLabel_1_1.setForeground(Color.LIGHT_GRAY);
-		lblNewLabel_1_1.setFont(new Font("맑은 고딕", Font.BOLD, 30));
-		lblNewLabel_1_1.setBounds(327, 426, 97, 76);
-		backLabel.add(lblNewLabel_1_1);
-
-		JLabel lblNewLabel_2_1_1 = new JLabel("6 / 45");
-		lblNewLabel_2_1_1.setForeground(Color.LIGHT_GRAY);
-		lblNewLabel_2_1_1.setFont(new Font("맑은 고딕", Font.BOLD, 18));
-		lblNewLabel_2_1_1.setBounds(436, 465, 57, 15);
-		backLabel.add(lblNewLabel_2_1_1);
 
 		lblNewLabel_5 = new JLabel("2023 / 06 / 07 (수)");
 		lblNewLabel_5.setForeground(new Color(250, 250, 210));
@@ -142,14 +129,15 @@ public class BuyList extends JFrame {
 		// 번호들 출력되는 패널
 		panel = new JPanel();
 		panel.setBackground(SystemColor.window);
-		panel.setBounds(357, 215, 267, 188);
+		panel.setBounds(357, 215, 267, 231);
 		panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		backLabel.add(panel);
 //		panel.setOpaque(false);
 
-
-		JButton btnBack = new RoundButton("이전");
+		JButton btnBack = new JButton(new ImageIcon(getClass().getResource("/imagepackage/BeforeFrame.png")));
 		btnBack.setBounds(378, 512, 62, 23);
+		btnBack.setRolloverIcon(new ImageIcon(getClass().getResource("/imagepackage/BeforeFrame_1.png")));
+		btnBack.setBorderPainted(false);
 		backLabel.add(btnBack);
 		btnBack.addActionListener(new ActionListener() {
 			@Override
@@ -162,7 +150,7 @@ public class BuyList extends JFrame {
 					String formattedTime = time.format(formatter);
 					lblNewLabel_5.setText(date.toString() + " " + formattedTime);
 					lblNewLabel_5.setFont(new Font("맑은 고딕", Font.PLAIN, 14));
-					lblNewLabel_3_2_1.setText("\\ " + tempList.get(currentSelect).getCount().size() + ",000");
+					lblNewLabel_3_2_1.setText(tempList.get(currentSelect).getCount().size() + ",000원");
 					lblNewLabel_4.setText("< " + (currentSelect + 1) + " / " + buyList.size() + " >");
 					lblNewLabel_4.setForeground(new Color(250, 250, 210));
 					resetLottoPaper();
@@ -171,8 +159,10 @@ public class BuyList extends JFrame {
 			}
 		});
 
-		JButton btnFront = new RoundButton("다음");
+		JButton btnFront = new JButton(new ImageIcon(getClass().getResource("/imagepackage/NextFrame.png")));
 		btnFront.setBounds(534, 512, 62, 23);
+		btnFront.setRolloverIcon(new ImageIcon(getClass().getResource("/imagepackage/NextFrame_1.png")));
+		btnFront.setBorderPainted(false);
 		backLabel.add(btnFront);
 		btnFront.addActionListener(new ActionListener() {
 			@Override
@@ -185,7 +175,7 @@ public class BuyList extends JFrame {
 					String formattedTime = time.format(formatter);
 					lblNewLabel_5.setText(date.toString() + " " + formattedTime);
 					lblNewLabel_5.setFont(new Font("맑은 고딕", Font.PLAIN, 14));
-					lblNewLabel_3_2_1.setText("\\ " + tempList.get(currentSelect).getCount().size() + ",000");
+					lblNewLabel_3_2_1.setText(tempList.get(currentSelect).getCount().size() + ",000원");
 					lblNewLabel_4.setText("< " + (currentSelect + 1) + " / " + buyList.size() + " >");
 					lblNewLabel_4.setForeground(new Color(250, 250, 210));
 					resetLottoPaper();
@@ -207,12 +197,27 @@ public class BuyList extends JFrame {
 		Image updateImage = img.getScaledInstance(logoLabel.getWidth(), logoLabel.getHeight(), Image.SCALE_SMOOTH);
 		ImageIcon updateLogoIcon = new ImageIcon(updateImage);
 		logoLabel.setIcon(updateLogoIcon);
-
-
-
+		
+		JLabel lblNewLabel_2 = new JLabel();
+		lblNewLabel_2.setBounds(50, 40, 220, 500);
+		ImageIcon leftIcon = new ImageIcon(BuyList.class.getResource("/imagepackage/터렛(left).png"));
+		Image leftimg = leftIcon.getImage();
+		Image updateleftImage = leftimg.getScaledInstance(lblNewLabel_2.getWidth(), lblNewLabel_2.getHeight(), Image.SCALE_SMOOTH);
+		ImageIcon updateleftIcon = new ImageIcon(updateleftImage);
+		lblNewLabel_2.setIcon(updateleftIcon);
+		backLabel.add(lblNewLabel_2);
+		
+		JLabel lblNewLabel_6 = new JLabel("New label");
+		lblNewLabel_6.setBounds(700, 40, 220, 500);
+		ImageIcon rightIcon = new ImageIcon(BuyList.class.getResource("/imagepackage/터렛(right).png"));
+		Image rightimg = rightIcon.getImage();
+		Image updaterightImage = rightimg.getScaledInstance(lblNewLabel_6.getWidth(), lblNewLabel_6.getHeight(), Image.SCALE_SMOOTH);
+		ImageIcon updaterightIcon = new ImageIcon(updaterightImage);
+		lblNewLabel_6.setIcon(updaterightIcon);	
+		backLabel.add(lblNewLabel_6);
 
 		lblNewLabel_1 = new JLabel();
-		lblNewLabel_1.setBounds(0, 0, 267, 190);
+		lblNewLabel_1.setBounds(0, 0, 267, 230);
 		ImageIcon centerIcon = new ImageIcon(BuyList.class.getResource("/imagepackage/영수증안쪽.png"));
 		Image centerImg = centerIcon.getImage();
 		Image updateCenterImage = centerImg.getScaledInstance(lblNewLabel_1.getWidth(), lblNewLabel_1.getHeight(),
@@ -221,26 +226,13 @@ public class BuyList extends JFrame {
 		lblNewLabel_1.setIcon(updateCenterIcon);
 		lblNewLabel_1.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 
-
 		// panel.add(lblNewLabel_1);
-
 
 		System.out.println(tempList.size());
 		if (tempList.size() > 0) {
 			printLottoPaper(0);
-			lblNewLabel_3_2_1.setText("\\ " + tempList.get(currentSelect).getCount().size() + ",000");
+			lblNewLabel_3_2_1.setText(tempList.get(currentSelect).getCount().size() + ",000원");
 		} else {
-
-			// lbl_temp = new JLabel("저장된 로또용지가 없습니다.");
-			/*
-			 * lbl_temp = new JLabel(); lbl_temp.setBounds(900, 300, 300, 300);
-			 * //panel.add(lbl_temp); ImageIcon centerIcon = new
-			 * ImageIcon(BuyList.class.getResource("/imagepackage/영수증안쪽.png")); Image
-			 * centerImg = centerIcon.getImage(); Image updateCenterImage =
-			 * centerImg.getScaledInstance(lbl_temp.getWidth(), lbl_temp.getHeight(),
-			 * Image.SCALE_SMOOTH); ImageIcon updateCenterIcon = new
-			 * ImageIcon(updateCenterImage); lbl_temp.setIcon(updateCenterIcon);
-			 */
 
 			panel.add(lblNewLabel_1);
 		}
@@ -251,6 +243,10 @@ public class BuyList extends JFrame {
 		panel.removeAll(); // 해도 화면에서는 지워지지 않고 컴포넌트만 사라짐
 		panel.invalidate();
 		panel.setVisible(false);
+		lblNewLabel_1.removeAll();
+		lblNewLabel_1.invalidate();
+		lblNewLabel_1.setVisible(false);
+
 	}
 
 	public void printLottoPaper(int index) {
@@ -271,9 +267,9 @@ public class BuyList extends JFrame {
 			for (int i = 0; i < size; i++) {
 				choices[i].add(isAutos[i]);
 				choices[i].add(numbers[i]);
-				isAutos[i].setFont(new Font("맑은 고딕", Font.BOLD, 17));
+				isAutos[i].setFont(new Font("맑은 고딕", Font.BOLD, 18));
 				isAutos[i].setForeground(new Color(250, 250, 210));
-				numbers[i].setFont(new Font("맑은 고딕", Font.BOLD, 17));
+				numbers[i].setFont(new Font("맑은 고딕", Font.BOLD, 18));
 				numbers[i].setForeground(new Color(250, 250, 210));
 				lblNewLabel_1.add(choices[i]);
 
@@ -289,6 +285,8 @@ public class BuyList extends JFrame {
 		}
 		panel.add(lblNewLabel_1);
 		panel.setVisible(true);
+		lblNewLabel_1.setVisible(true);
+
 	}
 
 	public String isAuto(int target) {

@@ -8,18 +8,16 @@ import java.awt.event.ActionListener;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JComboBox;
-import javax.swing.JFrame;
+import javax.swing.JDialog;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 
-public class DepositFrame extends JFrame {
+public class DepositFrame extends JDialog {
 
 	private JPanel contentPane;
 	int totalCost = 0;
@@ -35,31 +33,33 @@ public class DepositFrame extends JFrame {
 	}
 
 	public DepositFrame(BuyFrame buyFrame) {
-
-		setBackground(new Color(255, 255, 255));
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 350, 241);
+		setModal(true);
+		setBounds(0, 0, 350, 241);
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(255, 255, 255));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		setLocationRelativeTo(null);
+
+		JLabel backLabel = new JLabel(new ImageIcon(getClass().getResource("/imagepackage/back1.png")));
+		backLabel.setBounds(0, 0, 350, 241);
+		contentPane.add(backLabel);
 
 		JPanel panel = new JPanel();
-		panel.setBackground(new Color(255, 255, 255));
-		panel.setBounds(0, 0, 334, 202);
-		contentPane.add(panel);
+		panel.setBounds(0, 0, 350, 241);
+		panel.setOpaque(false);
 		panel.setLayout(null);
+		backLabel.add(panel); // 라벨에 추가 안하면 이미지는 나옴
 
-		JTextArea textArea = new JTextArea();
+		RoundBorderButton textArea = new RoundBorderButton("결제하기");
 		textArea.setFont(new Font("Monospaced", Font.BOLD, 18));
-		textArea.setText("\uCDA9\uC804\uD560 \uAE08\uC561");
-		textArea.setBounds(33, 27, 107, 32);
+		textArea.setText("충전할 금액");
+		textArea.setBounds(120, 20, 107, 32);
 		panel.add(textArea);
 
 		JComboBox<String> comboBox = new JComboBox();
 		String[] price = { "1000 원", "5000 원", "10000 원", "50000 원", "직접 입력" };
+		comboBox.setOpaque(false);
 		comboBox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
@@ -85,26 +85,24 @@ public class DepositFrame extends JFrame {
 				}
 			}
 		});
-
 		comboBox.setModel(new DefaultComboBoxModel<String>(price));
-		comboBox.setBackground(UIManager.getColor("Button.background"));
-		comboBox.setBounds(214, 79, 91, 48);
+		comboBox.setBounds(215, 70, 91, 48);
 		panel.add(comboBox);
+
 // 값을 출력하고 내보내는 텍스트 필드
 		txtT = new JTextField();
+		txtT.setForeground(new Color(250, 250, 0));
 		txtT.setText("1000");
+		txtT.setOpaque(false);
 		txtT.setEnabled(false);
 		txtT.setFont(new Font("굴림", Font.PLAIN, 20));
 		txtT.setHorizontalAlignment(SwingConstants.RIGHT);
-
-		txtT.setBounds(12, 80, 190, 48);
+		txtT.setBounds(15, 70, 190, 48);
 		panel.add(txtT);
 		txtT.setColumns(10);
 
-		setDefaultCloseOperation(HIDE_ON_CLOSE);
-
-// 충전화면에서 결제 버튼 영역		
-		JButton btnNewButton = new JButton("\uACB0 \uC81C");
+// 충전화면에서 결제 버튼 영역
+		RoundButton btnNewButton = new RoundButton("결제");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				buyFrame.setVisible(true);
@@ -116,28 +114,29 @@ public class DepositFrame extends JFrame {
 
 				if (tempMoney < 0) {
 					JOptionPane.showMessageDialog(null, "마이너스 금액은 입금 할 수 없습니다.", "입력 오류", JOptionPane.ERROR_MESSAGE);
-				} else if ( tempMoney > 100000) {
+				} else if (tempMoney > 100000) {
 					JOptionPane.showMessageDialog(null, "10만원 이상의 금액은 추가할 수 없습니다.", "입력 오류", JOptionPane.ERROR_MESSAGE);
 				} else {
 
-				money = tempMoney;
-				// 결제 버튼 누르기
-				totalCost = totalCost + money;
-				buyFrame.setMyMoney(totalCost);
-				setVisible(false);
+					money = tempMoney;
+					// 결제 버튼 누르기
+					totalCost = totalCost + money;
+					buyFrame.setMyMoney(totalCost);
+					setVisible(false);
 				}
 			}
 		});
-		btnNewButton.setBounds(33, 149, 118, 43);
+		btnNewButton.setBounds(40, 140, 118, 43);
 		panel.add(btnNewButton);
+
 // 충전화면에서 취소 버튼 영역
-		JButton btnNewButton_1 = new JButton("\uCDE8 \uC18C");
+		RoundButton btnNewButton_1 = new RoundButton("취소");
 		btnNewButton_1.addActionListener(new ActionListener() { // 충전 화면에서 취소 누를시 창만 닫힘
 			public void actionPerformed(ActionEvent e) {
 				dispose();
 			}
 		});
-		btnNewButton_1.setBounds(187, 149, 118, 43);
+		btnNewButton_1.setBounds(180, 140, 118, 43);
 		panel.add(btnNewButton_1);
 
 	}
