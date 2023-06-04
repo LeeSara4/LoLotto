@@ -193,6 +193,24 @@ public class BuyList extends JFrame {
 		Image updateImage = img.getScaledInstance(logoLabel.getWidth(), logoLabel.getHeight(), Image.SCALE_SMOOTH);
 		ImageIcon updateLogoIcon = new ImageIcon(updateImage);
 		logoLabel.setIcon(updateLogoIcon);
+		
+		JLabel lblNewLabel_2 = new JLabel();
+		lblNewLabel_2.setBounds(50, 40, 220, 500);
+		ImageIcon leftIcon = new ImageIcon(BuyList.class.getResource("/imagepackage/터렛(left).png"));
+		Image leftimg = leftIcon.getImage();
+		Image updateleftImage = leftimg.getScaledInstance(lblNewLabel_2.getWidth(), lblNewLabel_2.getHeight(), Image.SCALE_SMOOTH);
+		ImageIcon updateleftIcon = new ImageIcon(updateleftImage);
+		lblNewLabel_2.setIcon(updateleftIcon);
+		backLabel.add(lblNewLabel_2);
+		
+		JLabel lblNewLabel_6 = new JLabel("New label");
+		lblNewLabel_6.setBounds(700, 40, 220, 500);
+		ImageIcon rightIcon = new ImageIcon(BuyList.class.getResource("/imagepackage/터렛(right).png"));
+		Image rightimg = rightIcon.getImage();
+		Image updaterightImage = rightimg.getScaledInstance(lblNewLabel_6.getWidth(), lblNewLabel_6.getHeight(), Image.SCALE_SMOOTH);
+		ImageIcon updaterightIcon = new ImageIcon(updaterightImage);
+		lblNewLabel_6.setIcon(updaterightIcon);	
+		backLabel.add(lblNewLabel_6);
 
 		lblNewLabel_1 = new JLabel();
 		lblNewLabel_1.setBounds(0, 0, 267, 230);
