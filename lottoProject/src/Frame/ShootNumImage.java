@@ -1,9 +1,7 @@
 package Frame;
 
 import java.awt.Color;
-import java.awt.FlowLayout;
 import java.awt.Font;
-import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -17,9 +15,9 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import javax.swing.SwingConstants;
 import javax.swing.Timer;
+import javax.swing.border.EmptyBorder;
 
 public class ShootNumImage extends JFrame {
 	private Set<Integer> numbers = new TreeSet<>(); // 당첨 번호
@@ -82,6 +80,12 @@ public class ShootNumImage extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
 				main.setVisible(true);
+				//
+				if (numbers.size() > 0) {
+					main.getBtnNewButton().setEnabled(false);
+					main.getBtnNewButton_2().setEnabled(false);
+					main.getBtnNewButton_3().setEnabled(true);
+				}
 			}
 		});
 
@@ -181,44 +185,44 @@ public class ShootNumImage extends JFrame {
 		num_1.setBounds(12, 133, 130, 229);
 		contentPane.add(num_1);
 		num_1.setFont(new Font("Rosewood Std Regular", Font.BOLD, 40));
-		
-				JLabel num2 = new JLabel(nums.get(1).toString());
-				num2.setHorizontalAlignment(SwingConstants.CENTER);
-				num2.setBounds(154, 133, 130, 229);
-				contentPane.add(num2);
-				num2.setFont(new Font("Rosewood Std Regular", Font.BOLD, 40));
-		
-				JLabel num3 = new JLabel(nums.get(2).toString());
-				num3.setHorizontalAlignment(SwingConstants.CENTER);
-				num3.setBounds(296, 133, 130, 229);
-				contentPane.add(num3);
-				num3.setFont(new Font("Rosewood Std Regular", Font.BOLD, 40));
-		
-				JLabel num4 = new JLabel(nums.get(3).toString());
-				num4.setHorizontalAlignment(SwingConstants.CENTER);
-				num4.setBounds(438, 133, 130, 229);
-				contentPane.add(num4);
-				num4.setFont(new Font("Rosewood Std Regular", Font.BOLD, 40));
-		
-				JLabel num5 = new JLabel(nums.get(4).toString());
-				num5.setHorizontalAlignment(SwingConstants.CENTER);
-				num5.setBounds(580, 133, 130, 229);
-				contentPane.add(num5);
-				num5.setFont(new Font("Rosewood Std Regular", Font.BOLD, 40));
-		
-				JLabel num6 = new JLabel(nums.get(5).toString());
-				num6.setHorizontalAlignment(SwingConstants.CENTER);
-				num6.setBounds(722, 133, 130, 229);
-				contentPane.add(num6);
-				num6.setFont(new Font("Rosewood Std Regular", Font.BOLD, 40));
-		
-				JLabel bonus = new JLabel(String.valueOf(bonusNumber));
-				bonus.setForeground(new Color(210, 180, 140));
-				bonus.setHorizontalAlignment(SwingConstants.CENTER);
-				bonus.setBackground(Color.RED);
-				bonus.setBounds(875, 133, 97, 229);
-				contentPane.add(bonus);
-				bonus.setFont(new Font("Rosewood Std Regular", Font.BOLD, 45));
+
+		JLabel num2 = new JLabel(nums.get(1).toString());
+		num2.setHorizontalAlignment(SwingConstants.CENTER);
+		num2.setBounds(154, 133, 130, 229);
+		contentPane.add(num2);
+		num2.setFont(new Font("Rosewood Std Regular", Font.BOLD, 40));
+
+		JLabel num3 = new JLabel(nums.get(2).toString());
+		num3.setHorizontalAlignment(SwingConstants.CENTER);
+		num3.setBounds(296, 133, 130, 229);
+		contentPane.add(num3);
+		num3.setFont(new Font("Rosewood Std Regular", Font.BOLD, 40));
+
+		JLabel num4 = new JLabel(nums.get(3).toString());
+		num4.setHorizontalAlignment(SwingConstants.CENTER);
+		num4.setBounds(438, 133, 130, 229);
+		contentPane.add(num4);
+		num4.setFont(new Font("Rosewood Std Regular", Font.BOLD, 40));
+
+		JLabel num5 = new JLabel(nums.get(4).toString());
+		num5.setHorizontalAlignment(SwingConstants.CENTER);
+		num5.setBounds(580, 133, 130, 229);
+		contentPane.add(num5);
+		num5.setFont(new Font("Rosewood Std Regular", Font.BOLD, 40));
+
+		JLabel num6 = new JLabel(nums.get(5).toString());
+		num6.setHorizontalAlignment(SwingConstants.CENTER);
+		num6.setBounds(722, 133, 130, 229);
+		contentPane.add(num6);
+		num6.setFont(new Font("Rosewood Std Regular", Font.BOLD, 40));
+
+		JLabel bonus = new JLabel(String.valueOf(bonusNumber));
+		bonus.setForeground(new Color(210, 180, 140));
+		bonus.setHorizontalAlignment(SwingConstants.CENTER);
+		bonus.setBackground(Color.RED);
+		bonus.setBounds(875, 133, 97, 229);
+		contentPane.add(bonus);
+		bonus.setFont(new Font("Rosewood Std Regular", Font.BOLD, 45));
 
 		JLabel radomNum0 = new JLabel();
 		radomNum0.setHorizontalAlignment(SwingConstants.CENTER);
@@ -307,13 +311,13 @@ public class ShootNumImage extends JFrame {
 		btnNewButton_1.setIcon(new ImageIcon("C:\\Users\\GGG\\Desktop\\팀4이미지\\KakaoTalk_20230601_214306061.png"));
 		btnNewButton_1.setBounds(368, 472, 177, 36);
 		contentPane.add(btnNewButton_1);
-		
+
 		JLabel lblNewLabel_1 = new JLabel("");
 		lblNewLabel_1.setIcon(new ImageIcon(ShootNumImage.class.getResource("/imagepackage/블리츠크랭크.gif")));
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1.setBounds(791, 313, 197, 195);
 		contentPane.add(lblNewLabel_1);
-		
+
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon(ShootNumImage.class.getResource("/imagepackage/배경라벨이미지.png")));
 		lblNewLabel.setBounds(0, 0, 1000, 600);

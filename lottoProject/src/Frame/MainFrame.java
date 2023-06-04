@@ -26,6 +26,10 @@ public class MainFrame extends JFrame {
 	private JPanel contentPane;
 	BuyFrame buyFrame = new BuyFrame(this);
 	ShootNumImage shootNumImage;
+	private JButton btnNewButton_3;
+	private JButton btnNewButton_2;
+	private JButton btnNewButton_1;
+	private JButton btnNewButton;
 
 	/**
 	 * Launch the application.
@@ -42,6 +46,7 @@ public class MainFrame extends JFrame {
 					JLabel label = new JLabel("그냥 해봤쓤", JLabel.CENTER);
 					frame.getContentPane().add(label, BorderLayout.CENTER);
 					frame.setVisible(true);
+
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -96,28 +101,15 @@ public class MainFrame extends JFrame {
 		modeLabel.setBounds(0, 0, 1000, 600);
 		contentPane.add(modeLabel);
 
-		JButton btnNewButton_2 = new JButton(new ImageIcon(getClass().getResource("/imagepackage/Main_button2.png")));
-		modeLabel.add(btnNewButton_2);
-//		btnNewButton_2.setFont(new Font("맑은 고딕", Font.BOLD, 18));
-		btnNewButton_2.setRolloverIcon(new ImageIcon(getClass().getResource("/imagepackage/Main_button2_1.png")));
-		btnNewButton_2.setBorderPainted(false);
-		btnNewButton_2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				shootNumImage = new ShootNumImage(MainFrame.this);
-				shootNumImage.setVisible(true);
-				setVisible(false);
-			}
-		});
-		btnNewButton_2.setBounds(400, 420, 180, 61);
-
 		// bt_img.setRolloverIcon(img2); // 버튼에 마우스가 올라갈떄 이미지 변환
 		// bt_img.setBorderPainted(false); // 버튼 테두리 설정해제
 
-		JButton btnNewButton_1 = new JButton(new ImageIcon(getClass().getResource("/imagepackage/Main_button1.png")));
+		btnNewButton_1 = new JButton(new ImageIcon(getClass().getResource("/imagepackage/Main_button1.png")));
 		modeLabel.add(btnNewButton_1);
 		btnNewButton_1.setFont(new Font("맑은 고딕", Font.BOLD, 18));
 		btnNewButton_1.setRolloverIcon(new ImageIcon(getClass().getResource("/imagepackage/Main_button1_1.png")));
 		btnNewButton_1.setBorderPainted(false);
+		btnNewButton_1.setEnabled(false);
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				BuyList buyList = new BuyList(buyFrame.returnMapList(), MainFrame.this);
@@ -127,11 +119,27 @@ public class MainFrame extends JFrame {
 		});
 		btnNewButton_1.setBounds(100, 420, 180, 61);
 
-		JButton btnNewButton_3 = new JButton(new ImageIcon(getClass().getResource("/imagepackage/Main_button3.png")));
+		btnNewButton_2 = new JButton(new ImageIcon(getClass().getResource("/imagepackage/Main_button2.png")));
+		modeLabel.add(btnNewButton_2);
+//		btnNewButton_2.setFont(new Font("맑은 고딕", Font.BOLD, 18));
+		btnNewButton_2.setRolloverIcon(new ImageIcon(getClass().getResource("/imagepackage/Main_button2_1.png")));
+		btnNewButton_2.setBorderPainted(false);
+		btnNewButton_2.setEnabled(false);
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				shootNumImage = new ShootNumImage(MainFrame.this);
+				shootNumImage.setVisible(true);
+				setVisible(false);
+			}
+		});
+		btnNewButton_2.setBounds(400, 420, 180, 61);
+
+		btnNewButton_3 = new JButton(new ImageIcon(getClass().getResource("/imagepackage/Main_button3.png")));
 		modeLabel.add(btnNewButton_3);
 		btnNewButton_3.setFont(new Font("맑은 고딕", Font.BOLD, 18));
 		btnNewButton_3.setRolloverIcon(new ImageIcon(getClass().getResource("/imagepackage/Main_button3_1.png")));
 		btnNewButton_3.setBorderPainted(false);
+		btnNewButton_3.setEnabled(false);
 		btnNewButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				WinningDetails winningDetails = new WinningDetails(MainFrame.this, shootNumImage,
@@ -150,7 +158,7 @@ public class MainFrame extends JFrame {
 		modeLabel.add(Main_Logo2);
 		Main_Logo2.setBounds(200, 50, 800, 250);
 
-		JButton btnNewButton = new RoundButton("구매하기");
+		btnNewButton = new RoundButton("구매하기");
 		modeLabel.add(btnNewButton);
 		btnNewButton.setFont(new Font("맑은 고딕", Font.BOLD, 18));
 		btnNewButton.addActionListener(new ActionListener() {
@@ -166,4 +174,21 @@ public class MainFrame extends JFrame {
 		btnNewButton.setBounds(108, 293, 143, 44);
 //		EndCheckFrame
 	}
+
+	public JButton getBtnNewButton_3() {
+		return btnNewButton_3;
+	}
+
+	public JButton getBtnNewButton_2() {
+		return btnNewButton_2;
+	}
+
+	public JButton getBtnNewButton_1() {
+		return btnNewButton_1;
+	}
+
+	public JButton getBtnNewButton() {
+		return btnNewButton;
+	}
+
 }

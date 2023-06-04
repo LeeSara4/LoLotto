@@ -138,6 +138,8 @@ public class WinningDetails extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
 				main.setVisible(true);
+				main.getBtnNewButton().setEnabled(false);
+				main.getBtnNewButton_2().setEnabled(false);
 			}
 		});
 		btn.setBounds(861, 37, 97, 23);

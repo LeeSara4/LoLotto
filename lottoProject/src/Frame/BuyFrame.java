@@ -29,10 +29,8 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
 import lottoProject.LottoBuyingList;
-
 import lottoProject.LottoPaper;
 import lottoProject.RegiTiketManager;
-import javax.swing.SwingConstants;
 
 public class BuyFrame extends JFrame {
 	DepositFrame depositFrame = new DepositFrame(this);
@@ -255,7 +253,7 @@ public class BuyFrame extends JFrame {
 		contentPane.setLayout(null);
 		setLocationRelativeTo(null);
 		setUndecorated(true);
-		
+
 		JLabel logoLabel = new JLabel("New label");
 		logoLabel.setBounds(30, 10, 166, 76);
 		contentPane.add(logoLabel);
@@ -264,12 +262,12 @@ public class BuyFrame extends JFrame {
 		Image updateImg = img.getScaledInstance(logoLabel.getWidth(), logoLabel.getHeight(), Image.SCALE_SMOOTH);
 		ImageIcon updateLogoIcon = new ImageIcon(updateImg);
 		logoLabel.setIcon(updateLogoIcon);
-		
+
 		JLabel RP_2 = new JLabel("New label");
 		RP_2.setIcon(new ImageIcon(BuyFrame.class.getResource("/imagepackage/RpPoints.png")));
 		RP_2.setBounds(591, 385, 36, 44);
 		contentPane.add(RP_2);
-		
+
 		JLabel RP_1 = new JLabel("New label");
 		RP_1.setIcon(new ImageIcon(BuyFrame.class.getResource("/imagepackage/RpPoints.png")));
 		RP_1.setBounds(591, 24, 36, 44);
@@ -410,6 +408,14 @@ public class BuyFrame extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
 				main.setVisible(true);
+
+				// 구매했으면 구매내역과, 추첨하기 활성화
+				if (main.isVisible()) {
+					if (lottoMapList.size() > 0) {
+						main.getBtnNewButton_1().setEnabled(true);
+						main.getBtnNewButton_2().setEnabled(true);
+					}
+				}
 			}
 		});
 		getContentPane().add(btnMain);
@@ -511,13 +517,13 @@ public class BuyFrame extends JFrame {
 		contentPane.add(btnPlus);
 		btnPlus.setForeground(Color.BLACK);
 		btnPlus.setBackground(Color.decode("#D3AF65"));
-		
+
 		lblMyMoney = new JLabel("0");
 		lblMyMoney.setBounds(639, 34, 95, 26);
 		contentPane.add(lblMyMoney);
 		lblMyMoney.setForeground(Color.WHITE);
 		lblMyMoney.setFont(new Font("맑은 고딕", Font.BOLD, 19));
-				
+
 		lblTotal = new JLabel("총 0RP");
 		lblTotal.setBounds(639, 396, 195, 27);
 		contentPane.add(lblTotal);
@@ -698,6 +704,7 @@ public class BuyFrame extends JFrame {
 				depositFrame.setVisible(true);
 			}
 		});
+
 	}
 
 	public void setMyMoney(int totalCost) {
@@ -728,7 +735,7 @@ public class BuyFrame extends JFrame {
 		System.out.println("현시점의 예치금: " + totalCost);
 		System.out.println("현시점의 결제금액: " + countList * 1000);
 		System.out.println("현시점의 카운트: " + countList);
-		lblMyMoney.setText((totalCost - (countList * 1000))+""); // 결제한 만큼 차감된 값이 출력
+		lblMyMoney.setText((totalCost - (countList * 1000)) + ""); // 결제한 만큼 차감된 값이 출력
 		totalCost -= countList * 1000;
 		depositFrame.setTotalCost(totalCost);
 
