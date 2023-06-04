@@ -28,7 +28,9 @@ public class Receipt extends JDialog implements MouseListener {
 	private JPanel[] choices;
 	private JLabel[] isAutos;
 	private JLabel[] numbers;
-
+	private JLabel backLabel;
+	
+	
 	public Receipt(LottoPaper lottoPaper) {
 
 		setModal(true);

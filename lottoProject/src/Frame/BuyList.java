@@ -129,7 +129,7 @@ public class BuyList extends JFrame {
 		// 번호들 출력되는 패널
 		panel = new JPanel();
 		panel.setBackground(SystemColor.window);
-		panel.setBounds(357, 215, 267, 188);
+		panel.setBounds(357, 215, 267, 231);
 		panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		backLabel.add(panel);
 //		panel.setOpaque(false);
@@ -195,7 +195,7 @@ public class BuyList extends JFrame {
 		logoLabel.setIcon(updateLogoIcon);
 
 		lblNewLabel_1 = new JLabel();
-		lblNewLabel_1.setBounds(0, 0, 267, 190);
+		lblNewLabel_1.setBounds(0, 0, 267, 230);
 		ImageIcon centerIcon = new ImageIcon(BuyList.class.getResource("/imagepackage/영수증안쪽.png"));
 		Image centerImg = centerIcon.getImage();
 		Image updateCenterImage = centerImg.getScaledInstance(lblNewLabel_1.getWidth(), lblNewLabel_1.getHeight(),
@@ -246,9 +246,9 @@ public class BuyList extends JFrame {
 			for (int i = 0; i < size; i++) {
 				choices[i].add(isAutos[i]);
 				choices[i].add(numbers[i]);
-				isAutos[i].setFont(new Font("맑은 고딕", Font.BOLD, 17));
+				isAutos[i].setFont(new Font("맑은 고딕", Font.BOLD, 18));
 				isAutos[i].setForeground(new Color(250, 250, 210));
-				numbers[i].setFont(new Font("맑은 고딕", Font.BOLD, 17));
+				numbers[i].setFont(new Font("맑은 고딕", Font.BOLD, 18));
 				numbers[i].setForeground(new Color(250, 250, 210));
 				lblNewLabel_1.add(choices[i]);
 

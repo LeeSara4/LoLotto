@@ -98,7 +98,7 @@ public class MainFrame extends JFrame {
 
 		JButton btnNewButton_2 = new JButton(new ImageIcon(getClass().getResource("/imagepackage/Main_button2.png")));
 		modeLabel.add(btnNewButton_2);
-		btnNewButton_2.setFont(new Font("맑은 고딕", Font.BOLD, 18));
+//		btnNewButton_2.setFont(new Font("맑은 고딕", Font.BOLD, 18));
 		btnNewButton_2.setRolloverIcon(new ImageIcon(getClass().getResource("/imagepackage/Main_button2_1.png")));
 		btnNewButton_2.setBorderPainted(false);
 		btnNewButton_2.addActionListener(new ActionListener() {

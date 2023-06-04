@@ -32,6 +32,7 @@ public class PaymentCheckFrame extends JDialog {
 		panel.setLayout(null);
 
 		JFormattedTextField formattedTextField = new JFormattedTextField();
+		formattedTextField.setEditable(false);
 		formattedTextField.setFont(new Font("굴림", Font.BOLD, 18));
 		formattedTextField.setText("\uACB0\uC81C\uD558\uC2DC\uACA0\uC2B5\uB2C8\uAE4C");
 		formattedTextField.setHorizontalAlignment(SwingConstants.CENTER);

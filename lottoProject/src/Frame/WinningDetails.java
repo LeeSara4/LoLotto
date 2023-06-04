@@ -67,30 +67,6 @@ public class WinningDetails extends JFrame {
 		setLocationRelativeTo(null);
 		setUndecorated(true);
 
-		JLabel title_lotto = new JLabel("Lotto");
-		title_lotto.setForeground(Color.WHITE);
-		title_lotto.setFont(new Font("맑은 고딕", Font.BOLD, 30));
-		title_lotto.setBounds(450, 37, 87, 53);
-		contentPane.add(title_lotto);
-
-		JLabel title = new JLabel("6/45");
-		title.setForeground(Color.WHITE);
-		title.setFont(new Font("맑은 고딕", Font.BOLD, 18));
-		title.setBounds(538, 61, 57, 15);
-		contentPane.add(title);
-
-		JLabel title_lotto_1 = new JLabel("Lotto");
-		title_lotto_1.setForeground(Color.decode("#0bc4e2"));
-		title_lotto_1.setFont(new Font("맑은 고딕", Font.BOLD, 28));
-		title_lotto_1.setBounds(430, 10, 71, 46);
-		contentPane.add(title_lotto_1);
-
-		JLabel title_1 = new JLabel("6/45");
-		title_1.setForeground(Color.decode("#0bc4e2"));
-		title_1.setFont(new Font("맑은 고딕", Font.BOLD, 16));
-		title_1.setBounds(515, 31, 57, 15);
-		contentPane.add(title_1);
-
 		panel = new JPanel();
 		panel.setBounds(290, 244, 437, 280);
 		panel.setOpaque(false);
@@ -194,7 +170,7 @@ public class WinningDetails extends JFrame {
 		});
 
 		JLabel logoLabel = new JLabel("New label");
-		logoLabel.setBounds(43, 31, 157, 69);
+		logoLabel.setBounds(401, 15, 196, 91);
 		contentPane.add(logoLabel);
 		contentPane.add(p1);
 		ImageIcon logoIcon = new ImageIcon(WinningDetails.class.getResource("/imagepackage/리그오브로또.png"));
