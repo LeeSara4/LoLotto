@@ -175,7 +175,7 @@ class RoundBorderButton extends JButton {
 		setFont(new Font("맑은 고딕", Font.BOLD, 13));
 		setForeground(new Color(250, 250, 210));
 		borderColor = new Color(250, 250, 210); // 보더 색상 설정
-		hoverColor = Color.decode("#fdffb5");
+		hoverColor = Color.decode("#D3AF65");
 		addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {

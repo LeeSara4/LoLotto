@@ -403,8 +403,7 @@ public class BuyFrame extends JFrame {
 		getContentPane().add(btnMain);
 
 		RoundButton btnPayment = new RoundButton("결제하기");
-		btnPayment.setForeground(Color.WHITE);
-		btnPayment.setBackground(Color.decode("#B6A882"));
+		btnPayment.setBackground(Color.decode("#D3AF65"));
 		btnPayment.setBounds(506, 478, 221, 35);
 		btnPayment.addActionListener(new ActionListener() {
 //			PaymentCheckFrame pcf = new PaymentCheckFrame(BuyFrame.this);
@@ -447,7 +446,7 @@ public class BuyFrame extends JFrame {
 
 		RoundButton btnReset = new RoundButton("모두 초기화");
 		contentPane.add(btnReset);
-		btnReset.setForeground(Color.decode("#B6A882"));
+//		btnReset.setForeground(Color.decode("#D3AF65"));
 		btnReset.setBackground(SystemColor.menu);
 		btnReset.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -466,28 +465,28 @@ public class BuyFrame extends JFrame {
 		btnReload.setText("RP 충전");
 		btnReload.setBounds(709, 84, 97, 27);
 		contentPane.add(btnReload);
-		btnReload.setForeground(Color.decode("#B6A882"));
+//		btnReload.setForeground(Color.decode("#D3AF65"));
 		btnReload.setBackground(SystemColor.menu);
 
 		btnAutoPlus = new RoundButton("자동버튼");
 		btnAutoPlus.setBounds(156, 486, 85, 27);
 		contentPane.add(btnAutoPlus);
 		btnAutoPlus.setBackground(SystemColor.menu);
-		btnAutoPlus.setForeground(Color.decode("#B6A882"));
+//		btnAutoPlus.setForeground(Color.decode("#D3AF65"));
 
 		// 선택 및 등록화면에서 초기화 하는 용입니다. 선택화면 전체 리셋
 		RoundButton btnResetList = new RoundButton("선택 초기화");
 		btnResetList.setBounds(253, 486, 103, 27);
 		contentPane.add(btnResetList);
 		btnResetList.setBackground(SystemColor.menu);
-		btnResetList.setForeground(Color.decode("#B6A882"));
+//		btnResetList.setForeground(Color.decode("#D3AF65"));
 
 		// 선택한 하나의 로또 를 전달하기 위한 메소드
 		RoundButton btnPlus = new RoundButton("등록");
 		btnPlus.setBounds(368, 486, 63, 27);
 		contentPane.add(btnPlus);
-		btnPlus.setForeground(SystemColor.window);
-		btnPlus.setBackground(Color.decode("#B6A882"));
+		btnPlus.setForeground(Color.BLACK);
+		btnPlus.setBackground(Color.decode("#D3AF65"));
 		
 		lblMyMoney = new JLabel("0");
 		lblMyMoney.setBounds(709, 34, 95, 26);
