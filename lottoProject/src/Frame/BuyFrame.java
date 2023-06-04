@@ -3,6 +3,7 @@ package Frame;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.Image;
 import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -254,6 +255,15 @@ public class BuyFrame extends JFrame {
 		setLocationRelativeTo(null);
 		setUndecorated(true);
 		
+		JLabel logoLabel = new JLabel("New label");
+		logoLabel.setBounds(30, 10, 166, 76);
+		contentPane.add(logoLabel);
+		ImageIcon logoIcon = new ImageIcon(WinningDetails.class.getResource("/imagepackage/리그오브로또.png"));
+		Image img = logoIcon.getImage();
+		Image updateImg = img.getScaledInstance(logoLabel.getWidth(), logoLabel.getHeight(), Image.SCALE_SMOOTH);
+		ImageIcon updateLogoIcon = new ImageIcon(updateImg);
+		logoLabel.setIcon(updateLogoIcon);
+		
 		JLabel RP_2 = new JLabel("New label");
 		RP_2.setIcon(new ImageIcon(BuyFrame.class.getResource("/imagepackage/RpPoints.png")));
 		RP_2.setBounds(591, 385, 36, 44);
@@ -261,7 +271,7 @@ public class BuyFrame extends JFrame {
 		
 		JLabel RP_1 = new JLabel("New label");
 		RP_1.setIcon(new ImageIcon(BuyFrame.class.getResource("/imagepackage/RpPoints.png")));
-		RP_1.setBounds(661, 24, 36, 44);
+		RP_1.setBounds(591, 24, 36, 44);
 		contentPane.add(RP_1);
 
 //		JLabel backLabel = new JLabel(new ImageIcon("back1.png"));
@@ -391,7 +401,7 @@ public class BuyFrame extends JFrame {
 		}
 
 		RoundButton btnMain = new RoundButton("메인으로");
-		btnMain.setBounds(871, 34, 97, 23);
+		btnMain.setBounds(870, 36, 97, 23);
 		btnMain.addActionListener(new ActionListener() {
 
 			@Override
@@ -441,7 +451,7 @@ public class BuyFrame extends JFrame {
 		라벨클릭액션리스너추가(라벨클릭액션리스너());
 
 		JPanel panel_2 = new JPanel();
-		panel_2.setBounds(0, 71, 1000, 2);
+		panel_2.setBounds(0, 93, 1000, 2);
 		getContentPane().add(panel_2);
 
 		RoundButton btnReset = new RoundButton("모두 초기화");
@@ -463,7 +473,7 @@ public class BuyFrame extends JFrame {
 
 		RoundButton btnReload = new RoundButton("충전");
 		btnReload.setText("RP 충전");
-		btnReload.setBounds(709, 84, 97, 27);
+		btnReload.setBounds(746, 36, 97, 23);
 		contentPane.add(btnReload);
 //		btnReload.setForeground(Color.decode("#D3AF65"));
 		btnReload.setBackground(SystemColor.menu);
@@ -489,7 +499,7 @@ public class BuyFrame extends JFrame {
 		btnPlus.setBackground(Color.decode("#D3AF65"));
 		
 		lblMyMoney = new JLabel("0");
-		lblMyMoney.setBounds(709, 34, 95, 26);
+		lblMyMoney.setBounds(639, 34, 95, 26);
 		contentPane.add(lblMyMoney);
 		lblMyMoney.setForeground(Color.WHITE);
 		lblMyMoney.setFont(new Font("맑은 고딕", Font.BOLD, 19));
