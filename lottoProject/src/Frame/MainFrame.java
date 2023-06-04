@@ -49,28 +49,28 @@ public class MainFrame extends JFrame {
 		});
 	}
 
-	 public void abc() {
-         File bgm;
-         AudioInputStream stream;
-         AudioFormat format;
-         DataLine.Info info;
-
-         bgm = new File("C:\\롤큐잡히는소리.wav"); // 사용시에는 개별 폴더로 변경할 것
-         
-         Clip clip;
-         
-         try {
-                stream = AudioSystem.getAudioInputStream(bgm);
-                format = stream.getFormat();
-                info = new DataLine.Info(Clip.class, format);
-                clip = (Clip)AudioSystem.getLine(info);
-                clip.open(stream);
-                clip.start();
-                
-         } catch (Exception e) {
-                System.out.println("err : " + e);
-                }
-  }
+//	 public void abc() {
+//         File bgm;
+//         AudioInputStream stream;
+//         AudioFormat format;
+//         DataLine.Info info;
+//
+//         bgm = new File("C:\\롤큐잡히는소리.wav"); // 사용시에는 개별 폴더로 변경할 것
+//         
+//         Clip clip;
+//         
+//         try {
+//                stream = AudioSystem.getAudioInputStream(bgm);
+//                format = stream.getFormat();
+//                info = new DataLine.Info(Clip.class, format);
+//                clip = (Clip)AudioSystem.getLine(info);
+//                clip.open(stream);
+//                clip.start();
+//                
+//         } catch (Exception e) {
+//                System.out.println("err : " + e);
+//                }
+//  }
 	
 	public MainFrame() {
 		//Play("/imagepackage/롤큐잡히는소리.mp3");
@@ -155,7 +155,7 @@ public class MainFrame extends JFrame {
 		btnNewButton.setFont(new Font("맑은 고딕", Font.BOLD, 18));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				abc();
+				//abc();
 				buyFrame.setVisible(true);
 				setVisible(false);
 			}

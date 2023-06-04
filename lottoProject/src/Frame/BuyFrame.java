@@ -2,6 +2,7 @@ package Frame;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.GradientPaint;
 import java.awt.GridLayout;
 import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
@@ -442,7 +443,7 @@ public class BuyFrame extends JFrame {
 		panel_1.add(lblMyMoney);
 		lblMyMoney.setForeground(Color.WHITE);
 		lblMyMoney.setFont(new Font("맑은 고딕", Font.BOLD, 19));
-
+		
 		JPanel panel_2 = new JPanel();
 		panel_2.setBorder(new LineBorder(Color.decode("#B6A882"), 2));
 		panel_2.setOpaque(false);

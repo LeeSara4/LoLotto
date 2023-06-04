@@ -65,7 +65,7 @@ public class BuyList extends JFrame {
 		Image upImg = upIcon.getImage();
 
 		JLabel lblDownLabel = new JLabel("");
-		lblDownLabel.setBounds(320, 403, 330, 15);
+		lblDownLabel.setBounds(320, 444, 330, 15);
 		backLabel.add(lblDownLabel);
 		ImageIcon downIcon = new ImageIcon(BuyList.class.getResource("/imagepackage/아래.png"));
 		Image downImage = downIcon.getImage();
@@ -97,27 +97,15 @@ public class BuyList extends JFrame {
 		JLabel lblNewLabel_3_2 = new JLabel("금액");
 		lblNewLabel_3_2.setForeground(new Color(250, 250, 210));
 		lblNewLabel_3_2.setFont(new Font("맑은 고딕", Font.BOLD, 18));
-		lblNewLabel_3_2.setBounds(341, 409, 83, 37);
+		lblNewLabel_3_2.setBounds(341, 450, 83, 37);
 		backLabel.add(lblNewLabel_3_2);
 
 		JLabel lblNewLabel_3_2_1 = new JLabel();
 		lblNewLabel_3_2_1.setText(",000원");
 		lblNewLabel_3_2_1.setFont(new Font("맑은 고딕", Font.BOLD, 18));
-		lblNewLabel_3_2_1.setBounds(567, 409, 83, 37);
+		lblNewLabel_3_2_1.setBounds(567, 450, 83, 37);
 		lblNewLabel_3_2_1.setForeground(new Color(250, 250, 210));
 		backLabel.add(lblNewLabel_3_2_1);
-
-		JLabel lblNewLabel_1_1 = new JLabel("LOTTO");
-		lblNewLabel_1_1.setForeground(Color.LIGHT_GRAY);
-		lblNewLabel_1_1.setFont(new Font("맑은 고딕", Font.BOLD, 30));
-		lblNewLabel_1_1.setBounds(327, 426, 97, 76);
-		backLabel.add(lblNewLabel_1_1);
-
-		JLabel lblNewLabel_2_1_1 = new JLabel("6 / 45");
-		lblNewLabel_2_1_1.setForeground(Color.LIGHT_GRAY);
-		lblNewLabel_2_1_1.setFont(new Font("맑은 고딕", Font.BOLD, 18));
-		lblNewLabel_2_1_1.setBounds(436, 465, 57, 15);
-		backLabel.add(lblNewLabel_2_1_1);
 
 		lblNewLabel_5 = new JLabel("2023 / 06 / 07 (수)");
 		lblNewLabel_5.setForeground(new Color(250, 250, 210));
