@@ -366,8 +366,9 @@ public class BuyFrame extends JFrame {
 			isAutos[i].setForeground(Color.WHITE);
 			numbers[i].setForeground(Color.WHITE);
 			btnResets[i] = new RoundBorderButton("초기화");
+			btnResets[i].setBorderColor(new Color(250, 250, 210));
+			btnResets[i].setHoverColor(Color.decode("#D3AF65"));
 			choices[i].add(btnResets[i]);
-			btnResets[i].setEnabled(false);
 		}
 		for (int i = 0; i < 5; i++) { // 라벨 포커스 마우스리스너 정의
 			numbers[i].addMouseListener(new MouseListener() {
@@ -400,7 +401,7 @@ public class BuyFrame extends JFrame {
 			});
 		}
 
-		RoundButton btnMain = new RoundButton("메인으로");
+		RoundBorderButton btnMain = new RoundBorderButton("메인으로");
 		btnMain.setBounds(870, 36, 97, 23);
 		btnMain.addActionListener(new ActionListener() {
 
