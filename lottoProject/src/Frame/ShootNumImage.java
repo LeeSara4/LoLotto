@@ -200,45 +200,45 @@ public class ShootNumImage extends JFrame {
 		num_1.setForeground(Color.BLACK);
 		num_1.setBounds(12, 133, 130, 229);
 		contentPane.add(num_1);
-		num_1.setFont(new Font("Rosewood Std Regular", Font.BOLD, 40));
+		num_1.setFont(new Font("Nirmala UI", Font.BOLD, 40));
 
 		JLabel num2 = new JLabel(nums.get(1).toString());
 		num2.setHorizontalAlignment(SwingConstants.CENTER);
 		num2.setBounds(154, 133, 130, 229);
 		contentPane.add(num2);
-		num2.setFont(new Font("Rosewood Std Regular", Font.BOLD, 40));
+		num2.setFont(new Font("Nirmala UI", Font.BOLD, 40));
 
 		JLabel num3 = new JLabel(nums.get(2).toString());
 		num3.setHorizontalAlignment(SwingConstants.CENTER);
 		num3.setBounds(296, 133, 130, 229);
 		contentPane.add(num3);
-		num3.setFont(new Font("Rosewood Std Regular", Font.BOLD, 40));
+		num3.setFont(new Font("Nirmala UI", Font.BOLD, 40));
 
 		JLabel num4 = new JLabel(nums.get(3).toString());
 		num4.setHorizontalAlignment(SwingConstants.CENTER);
 		num4.setBounds(438, 133, 130, 229);
 		contentPane.add(num4);
-		num4.setFont(new Font("Rosewood Std Regular", Font.BOLD, 40));
+		num4.setFont(new Font("Nirmala UI", Font.BOLD, 40));
 
 		JLabel num5 = new JLabel(nums.get(4).toString());
 		num5.setHorizontalAlignment(SwingConstants.CENTER);
 		num5.setBounds(580, 133, 130, 229);
 		contentPane.add(num5);
-		num5.setFont(new Font("Rosewood Std Regular", Font.BOLD, 40));
+		num5.setFont(new Font("Nirmala UI", Font.BOLD, 40));
 
 		JLabel num6 = new JLabel(nums.get(5).toString());
 		num6.setHorizontalAlignment(SwingConstants.CENTER);
 		num6.setBounds(722, 133, 130, 229);
 		contentPane.add(num6);
-		num6.setFont(new Font("Rosewood Std Regular", Font.BOLD, 40));
+		num6.setFont(new Font("Nirmala UI", Font.BOLD, 40));
 
 		final JLabel bonus = new JLabel(String.valueOf(bonusNumber));
-		bonus.setForeground(new Color(210, 180, 140));
+		bonus.setForeground(new Color(255, 0, 51));
 		bonus.setHorizontalAlignment(SwingConstants.CENTER);
 		bonus.setBackground(Color.RED);
 		bonus.setBounds(875, 133, 97, 229);
 		contentPane.add(bonus);
-		bonus.setFont(new Font("Rosewood Std Regular", Font.BOLD, 45));
+		bonus.setFont(new Font("Nirmala UI", Font.BOLD, 45));
 		bonus.setVisible(false);
 
 		final JLabel randomNum0 = new JLabel();
