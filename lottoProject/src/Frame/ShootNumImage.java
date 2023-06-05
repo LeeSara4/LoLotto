@@ -86,6 +86,13 @@ public class ShootNumImage extends JFrame {
 				main.setVisible(true);
 			}
 		});
+		
+		JLabel redJewel = new JLabel("");
+		redJewel.setIcon(new ImageIcon(ShootNumImage.class.getResource("/imagepackage/1.png")));
+		redJewel.setHorizontalAlignment(SwingConstants.CENTER);
+		redJewel.setBounds(895, 133, 52, 50);
+		contentPane.add(redJewel);
+		redJewel.setVisible(false);
 		btnNewButton.setBounds(645, 10, 97, 23);
 		contentPane.add(btnNewButton);
 
@@ -277,6 +284,7 @@ public class ShootNumImage extends JFrame {
 		randomNum6.setBounds(858, 133, 130, 229);
 		contentPane.add(randomNum6);
 		randomNum6.setVisible(false);
+		
 
 		// 당첨 번호 6개 보여주기
 		final Timer cardOpen = new Timer(2300, new ActionListener() {
@@ -303,6 +311,7 @@ public class ShootNumImage extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if (count == 0) {
 					defaultCard6.setVisible(true);
+					redJewel.setVisible(true);
 				}
 				count++;
 			}
@@ -312,7 +321,9 @@ public class ShootNumImage extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				if (count == 1) {
 					defaultCard6.setVisible(false);
+					
 					actionCard6.setVisible(true);
+					
 				}
 				count++;
 			}
@@ -609,7 +620,7 @@ public class ShootNumImage extends JFrame {
 				countBlitz++;
 			}
 		});
-
+		
 		// 카드 오픈
 		final JButton btnNewButton_1 = new JButton("");
 		btnNewButton_1.addActionListener(new ActionListener() {
