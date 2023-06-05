@@ -74,6 +74,48 @@ public class WinningDetails extends JFrame {
 		setLocationRelativeTo(null);
 		setUndecorated(true);
 
+		JButton btnNewButton = new JButton("");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				winImageGif.setVisible(true);
+				winwin.start();
+			}
+		});
+		btnNewButton.setBounds(959, 103, 41, 36);
+		btnNewButton.setIcon(new ImageIcon(WinningDetails.class.getResource("/imagepackage/back1.png")));
+		btnNewButton.setBorderPainted(false);
+		contentPane.add(btnNewButton);
+
+		JLabel lblNewLabel_4_4 = new JLabel("TRIPLEKILL : 5등");
+		lblNewLabel_4_4.setFont(new Font("맑은 고딕", Font.BOLD, 14));
+		lblNewLabel_4_4.setBounds(75, 449, 139, 36);
+		lblNewLabel_4_4.setForeground(new Color(250, 250, 210));
+		contentPane.add(lblNewLabel_4_4);
+
+		JLabel lblNewLabel_4_1 = new JLabel("HEXAKILL : 2등");
+		lblNewLabel_4_1.setFont(new Font("맑은 고딕", Font.BOLD, 14));
+		lblNewLabel_4_1.setBounds(75, 311, 139, 36);
+		lblNewLabel_4_1.setForeground(new Color(250, 250, 210));
+		contentPane.add(lblNewLabel_4_1);
+
+		JLabel lblNewLabel_4_2 = new JLabel("PENTAKILL : 3등");
+		lblNewLabel_4_2.setFont(new Font("맑은 고딕", Font.BOLD, 14));
+		lblNewLabel_4_2.setBounds(75, 357, 139, 36);
+		lblNewLabel_4_2.setForeground(new Color(250, 250, 210));
+		contentPane.add(lblNewLabel_4_2);
+
+		JLabel lblNewLabel_4 = new JLabel("VICTORY : 1등");
+		lblNewLabel_4.setFont(new Font("맑은 고딕", Font.BOLD, 14));
+		lblNewLabel_4.setBounds(75, 267, 139, 36);
+		lblNewLabel_4.setForeground(new Color(250, 250, 210));
+		contentPane.add(lblNewLabel_4);
+
+		JLabel lblNewLabel_4_3 = new JLabel("QUADRAKILL : 4등");
+		lblNewLabel_4_3.setFont(new Font("맑은 고딕", Font.BOLD, 14));
+		lblNewLabel_4_3.setBounds(75, 403, 139, 36);
+		lblNewLabel_4_3.setForeground(new Color(250, 250, 210));
+		contentPane.add(lblNewLabel_4_3);
+
 		winImageGif = new JLabel("");
 		winImageGif.setIcon(new ImageIcon(WinningDetails.class.getResource("/imagepackage/승리화면.gif")));
 		winImageGif.setHorizontalAlignment(SwingConstants.CENTER);
@@ -463,5 +505,4 @@ public class WinningDetails extends JFrame {
 			pnl2.add(winningImage);
 		}
 	}
-
 }
