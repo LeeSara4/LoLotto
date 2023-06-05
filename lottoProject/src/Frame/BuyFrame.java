@@ -296,7 +296,6 @@ public class BuyFrame extends JFrame {
 							// 버튼 정보 보내줄 예정
 							int bts = Integer.parseInt(btn.getText());
 							buttonZip.add(bts);
-							System.out.println(buttonZip);
 							btn.decorate2();
 							cnt++;
 						}
