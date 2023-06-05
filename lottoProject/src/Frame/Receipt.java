@@ -45,8 +45,7 @@ public class Receipt extends JDialog implements MouseListener {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		setLocationRelativeTo(null);
-
+		setLocation(765, 250);
 		addMouseListener(this);
 
 		backgroundLabel = new JLabel();

@@ -89,7 +89,7 @@ public class WinningDetails extends JFrame {
 
 		calcWinningMoney();
 		JButton btnBack = new JButton(new ImageIcon(getClass().getResource("/imagepackage/SecondBeforeFrame.png")));
-		btnBack.setBounds(290, 534, 97, 23);
+		btnBack.setBounds(350, 534, 95, 35);
 		btnBack.setRolloverIcon(new ImageIcon(getClass().getResource("/imagepackage/SecondBeforeFrame_1.png")));
 		btnBack.setBorderPainted(false);
 		contentPane.add(btnBack);
@@ -106,7 +106,7 @@ public class WinningDetails extends JFrame {
 		});
 
 		JButton btnFront = new JButton(new ImageIcon(getClass().getResource("/imagepackage/SecondNextFrame.png")));
-		btnFront.setBounds(630, 534, 97, 23);
+		btnFront.setBounds(570, 534, 95, 35);
 		btnFront.setRolloverIcon(new ImageIcon(getClass().getResource("/imagepackage/SecondNextFrame_1.png")));
 		btnFront.setBorderPainted(false);
 		contentPane.add(btnFront);
@@ -124,7 +124,7 @@ public class WinningDetails extends JFrame {
 
 		lblNewLabel = new JLabel("< " + (currentSelect + 1) + " / " + buyList.size() + " >");
 		lblNewLabel.setForeground(Color.WHITE);
-		lblNewLabel.setBounds(487, 539, 50, 15);
+		lblNewLabel.setBounds(487, 542, 50, 15);
 		contentPane.add(lblNewLabel);
 
 		// 당첨번호 출력부분

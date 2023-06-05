@@ -2,7 +2,6 @@ package Frame;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.GradientPaint;
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.SystemColor;
@@ -480,11 +479,14 @@ public class BuyFrame extends JFrame {
 		btnReset.setBackground(SystemColor.menu);
 		btnReset.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				for (int i = 0; i < 5; i++) {
+				if (autoCount.size() > 0) {
+					for (int i = 0; i < 5; i++) {
 
-					btnResets[0].doClick();
+						btnResets[0].doClick();
+					}
+					lblTotal.setText("총" + (countList * 1000) + "원"); // 로또 추가된 수만큼 가격 책정
 				}
-				lblTotal.setText("총" + (countList * 1000) + "원"); // 로또 추가된 수만큼 가격 책정
+
 			}
 
 		});
