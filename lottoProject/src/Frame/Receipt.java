@@ -49,7 +49,6 @@ public class Receipt extends JDialog implements MouseListener {
 		addMouseListener(this);
 
 		backgroundLabel = new JLabel();
-		// backgroundLabel.setBounds(0, 0, 384, 661);
 		backgroundLabel.setIcon(new ImageIcon(BuyList.class.getResource("/imagepackage/배경라벨이미지.png")));
 		backgroundLabel.setBounds(0, 0, 1000, 600);
 		contentPane.add(backgroundLabel);
@@ -107,7 +106,6 @@ public class Receipt extends JDialog implements MouseListener {
 		backgroundLabel.add(panel);
 
 		centerLabel = new JLabel();
-		// centerLabel.setBounds(42, 478, 237, 173);
 		centerLabel.setBounds(42, 478, 237, 177);
 		ImageIcon centerIcon = new ImageIcon(BuyList.class.getResource("/imagepackage/영수증안쪽.png"));
 		Image centerImg = centerIcon.getImage();
@@ -128,7 +126,6 @@ public class Receipt extends JDialog implements MouseListener {
 			isAutos[i] = new JLabel("");
 			numbers[i] = new JLabel("");
 			choices[i].setOpaque(false);
-			// choices[i].setBackground(Color.WHITE);
 		}
 
 		for (int i = 0; i < size; i++) {
