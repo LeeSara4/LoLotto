@@ -111,7 +111,7 @@ public class BuyFrame extends JFrame {
 					}
 				}
 				// 선택한 라벨 숫자값 버튼올리기
-				Set<Integer> mouseSet = lottopaper.getLotto().get(index);
+				Set<Integer> mouseSet = lottoMap.get(index);
 //				System.out.println(mouseSet);
 				if (!(mouseSet == null)) {
 					for (Integer set : mouseSet) {
@@ -444,7 +444,7 @@ public class BuyFrame extends JFrame {
 
 						btnResets[0].doClick();
 					}
-					lblTotal.setText("총" + (countList * 1000) + "원"); // 로또 추가된 수만큼 가격 책정
+					lblTotal.setText("총" + (countList * 1000) + "RP"); // 로또 추가된 수만큼 가격 책정
 				}
 
 			}
@@ -656,6 +656,10 @@ public class BuyFrame extends JFrame {
 		lottopaper = new LottoPaper(); // 초기화
 		lottoMap = new HashMap<>();
 		autoCount = new ArrayList<>();
+		buttonZip = new TreeSet<>();
+		labelClickindex = 0; // 추가해봄
+	
+		
 		count = 0;
 
 		// get 필요한 부분
