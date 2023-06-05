@@ -145,7 +145,7 @@ public class MainFrame extends JFrame {
 
 		JLabel Main_Logo = new JLabel(new ImageIcon(getClass().getResource("/imagepackage/img.png")));
 		backLabel.add(Main_Logo);
-		Main_Logo.setBounds(30, 30, 300, 250);
+		Main_Logo.setBounds(30, 50, 300, 250);
 
 		JLabel Main_Logo2 = new JLabel(new ImageIcon(getClass().getResource("/imagepackage/리그오브로또.png")));
 		backLabel.add(Main_Logo2);
@@ -162,7 +162,7 @@ public class MainFrame extends JFrame {
 			}
 		});
 
-		btnNewButton.setBounds(108, 293, 143, 44);
+		btnNewButton.setBounds(108, 310, 143, 44);
 //		EndCheckFrame
 	}
 
