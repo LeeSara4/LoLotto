@@ -7,13 +7,7 @@ import java.awt.Font;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
 
-import javax.sound.sampled.AudioFormat;
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
-import javax.sound.sampled.DataLine;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -101,7 +95,7 @@ public class MainFrame extends JFrame {
 		});
 		btnNewButton_4.setIcon(new ImageIcon(MainFrame.class.getResource("/imagepackage/게임시작1.png")));
 		btnNewButton_4.setRolloverIcon(new ImageIcon(MainFrame.class.getResource("/imagepackage/게임시작2.png")));
-		btnNewButton_4.setBounds(94, 280, 164, 41);
+		btnNewButton_4.setBounds(95, 302, 164, 41);
 		btnNewButton_4.setBorderPainted(false);
 		contentPane.add(btnNewButton_4);
 
@@ -167,11 +161,11 @@ public class MainFrame extends JFrame {
 
 		JLabel Main_Logo = new JLabel(new ImageIcon(getClass().getResource("/imagepackage/img.png")));
 		backLabel.add(Main_Logo);
-		Main_Logo.setBounds(30, 30, 300, 250);
+		Main_Logo.setBounds(30, 50, 300, 250);
 
 		JLabel Main_Logo2 = new JLabel(new ImageIcon(getClass().getResource("/imagepackage/리그오브로또.png")));
 		backLabel.add(Main_Logo2);
-		Main_Logo2.setBounds(160, 100, 800, 250);
+		Main_Logo2.setBounds(160, 100, 800, 280);
 
 	}
 
