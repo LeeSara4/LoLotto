@@ -7,13 +7,7 @@ import java.awt.Font;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
 
-import javax.sound.sampled.AudioFormat;
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
-import javax.sound.sampled.DataLine;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -76,11 +70,10 @@ public class MainFrame extends JFrame {
 //                System.out.println("err : " + e);
 //                }
 //  }
-	
+
 	public MainFrame() {
-		//Play("/imagepackage/롤큐잡히는소리.mp3");
-		
-		
+		// Play("/imagepackage/롤큐잡히는소리.mp3");
+
 		setTitle("4조 대박당첨");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1000, 600);
@@ -156,21 +149,19 @@ public class MainFrame extends JFrame {
 
 		JLabel Main_Logo2 = new JLabel(new ImageIcon(getClass().getResource("/imagepackage/리그오브로또.png")));
 		backLabel.add(Main_Logo2);
-		Main_Logo2.setBounds(160, 100, 800, 250);
+		Main_Logo2.setBounds(160, 100, 800, 280);
 
 		btnNewButton = new RoundButton("구매하기");
 		backLabel.add(btnNewButton);
 		btnNewButton.setFont(new Font("맑은 고딕", Font.BOLD, 18));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//abc();
+				// abc();
 				buyFrame.setVisible(true);
 				setVisible(false);
 			}
 		});
-		
-		
-		
+
 		btnNewButton.setBounds(108, 293, 143, 44);
 //		EndCheckFrame
 	}
