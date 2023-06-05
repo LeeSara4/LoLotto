@@ -91,6 +91,7 @@ public class ShootNumImage extends JFrame {
 		JPanel panel = new JPanel();
 		panel.setBounds(0, 93, 1000, 2);
 		contentPane.add(panel);
+		panel.setBackground(new Color(250,250,210));
 		btnNewButton.setBounds(870, 36, 97, 23);
 		contentPane.add(btnNewButton);
 		btnNewButton.setEnabled(false);

@@ -432,6 +432,7 @@ public class BuyFrame extends JFrame {
 
 		JPanel panel_2 = new JPanel();
 		panel_2.setBounds(0, 93, 1000, 2);
+		panel_2.setBackground(new Color(250,250,210));
 		getContentPane().add(panel_2);
 
 		RoundButton btnReset = new RoundButton("모두 초기화");

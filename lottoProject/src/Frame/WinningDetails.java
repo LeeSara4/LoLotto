@@ -210,7 +210,6 @@ public class WinningDetails extends JFrame {
 		lblNewLabel_2.setBounds(0, 0, 1000, 600);
 		contentPane.add(lblNewLabel_2);
 
-		System.out.println(tempList.size());
 		if (tempList.size() > 0) {
 			resetLottoPaper();
 			printLottoPaper(0);
@@ -291,8 +290,6 @@ public class WinningDetails extends JFrame {
 					numbers.get(i).get(j).setForeground(Color.WHITE);
 					choices[i].add(numbers.get(i).get(j));
 				}
-				System.out.println("뭐가문제니");
-				System.out.println(choices[i].getComponentCount());
 				panel.add(choices[i]);
 			}
 
@@ -320,8 +317,6 @@ public class WinningDetails extends JFrame {
 						numbers.get(i).get(j).setText("  " + numbers.get(i).get(j).getText());
 					}
 				}
-				System.out.println("당첨번호랑 맞는 개수" + count);
-				System.out.println("2등번호가 있는지" + isBonus);
 				ranks[i].setText(isRank(count, isBonus) + " ");
 				winMoneyList.add(isInWinningMoney(count, isBonus));
 				isAutos[i].setText(isAuto(tempList.get(index).getCount().get(i)) + " ");
@@ -397,7 +392,7 @@ public class WinningDetails extends JFrame {
 		for (int i = 0; i < winMoneyList.size(); i++) {
 			winMoney += winMoneyList.get(i);
 		}
-		lblMoney.setText("총 " + winMoney + " 원");
+		lblMoney.setText("총 " + winMoney + " RP");
 		// 총 금액 계산후 setText
 	}
 }

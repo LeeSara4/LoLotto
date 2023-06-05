@@ -228,10 +228,9 @@ public class BuyList extends JFrame {
 
 		// panel.add(lblNewLabel_1);
 
-		System.out.println(tempList.size());
 		if (tempList.size() > 0) {
 			printLottoPaper(0);
-			lblNewLabel_3_2_1.setText(tempList.get(currentSelect).getCount().size() + ",000원");
+			lblNewLabel_3_2_1.setText(tempList.get(currentSelect).getCount().size() + ",000RP");
 		} else {
 
 			panel.add(lblNewLabel_1);

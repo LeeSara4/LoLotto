@@ -52,7 +52,7 @@ public class DepositFrame extends JDialog {
 		backLabel.add(panel);
 
 		JComboBox<String> comboBox = new JComboBox();
-		String[] price = { "1000 원", "5000 원", "10000 원", "50000 원", "직접 입력" };
+		String[] price = { "1000RP", "5000RP", "10000RP", "50000RP", "직접 입력" };
 		comboBox.setOpaque(false);
 		comboBox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -60,17 +60,17 @@ public class DepositFrame extends JDialog {
 // 콤보박스 선택		
 				String str = comboBox.getSelectedItem().toString();
 				txtT.setEnabled(false);
-				if (str == "1000 원") {
+				if (str == "1000RP") {
 					money = 1000;
 					txtT.setText("1000");
 
-				} else if (str == "5000 원") {
+				} else if (str == "5000RP") {
 					money = 5000;
 					txtT.setText("5000");
-				} else if (str == "10000 원") {
+				} else if (str == "10000RP") {
 					money = 10000;
 					txtT.setText("10000");
-				} else if (str == "50000 원") {
+				} else if (str == "50000RP") {
 					money = 50000;
 					txtT.setText("50000");
 				} else if (str == "직접 입력") {
@@ -136,7 +136,7 @@ public class DepositFrame extends JDialog {
 		btnNewButton_1.setBounds(180, 140, 118, 43);
 		panel.add(btnNewButton_1);
 
-		JLabel lblNewLabel = new JLabel("충전할 금액");
+		JLabel lblNewLabel = new JLabel("충전할 RP");
 		lblNewLabel.setFont(new Font("맑은 고딕", Font.BOLD, 20));
 		lblNewLabel.setForeground(new Color(250, 250, 210));
 		lblNewLabel.setBounds(40, 23, 190, 34);

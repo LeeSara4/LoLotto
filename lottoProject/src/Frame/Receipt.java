@@ -38,7 +38,6 @@ public class Receipt extends JDialog implements MouseListener {
 		setTitle("화면을 클릭하면 바로 내려옵니다.");
 		setModal(true);
 
-		System.out.println(lottoPaper.getCount().size()); // 카운트의 사이즈;
 		setBounds(100, 100, 400, 10); // 10 이었음
 		contentPane = new JPanel();
 		contentPane.setBackground(SystemColor.window);
@@ -74,7 +73,7 @@ public class Receipt extends JDialog implements MouseListener {
 		backgroundLabel.add(lblNewLabel_3_2);
 
 		JLabel lblNewLabel_3_2_1 = new JLabel("\\ 5,000");
-		lblNewLabel_3_2_1.setText("\\ " + size + ",000");
+		lblNewLabel_3_2_1.setText(size + ",000RP");
 		lblNewLabel_3_2_1.setFont(new Font("맑은 고딕", Font.BOLD, 18));
 		lblNewLabel_3_2_1.setForeground(new Color(250, 250, 210));
 		lblNewLabel_3_2_1.setBounds(277, 432, 83, 37);
@@ -110,7 +109,6 @@ public class Receipt extends JDialog implements MouseListener {
 		ImageIcon centerIcon = new ImageIcon(BuyList.class.getResource("/imagepackage/영수증안쪽.png"));
 		Image centerImg = centerIcon.getImage();
 		Image updateCenterImage = centerImg.getScaledInstance(panel.getWidth(), panel.getHeight(), Image.SCALE_SMOOTH);
-		System.out.println(panel.getWidth());
 		ImageIcon updateCenterIcon = new ImageIcon(updateCenterImage);
 		centerLabel.setIcon(updateCenterIcon);
 		centerLabel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
