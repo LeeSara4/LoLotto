@@ -51,6 +51,13 @@ public class WinningDetails extends JFrame {
 	private JPanel pnl2;
 	private JLabel winImageGif;
 	private Timer winwin;
+	private JLabel winningImage;
+	private JLabel winningImage2;
+	private JLabel winningImage3;
+	private JLabel winningImage4;
+	private JLabel winningImage5;
+	private JLabel winningImage6;
+	private int hiddenCount = 0;
 
 	/**
 	 * Create the frame.
@@ -74,17 +81,70 @@ public class WinningDetails extends JFrame {
 		setLocationRelativeTo(null);
 		setUndecorated(true);
 
-		JButton btnNewButton = new JButton("");
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton hidden1 = new JButton("");
+		hidden1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				winImageGif.setVisible(true);
 				winwin.start();
 			}
 		});
-		btnNewButton.setBounds(959, 103, 41, 36);
-		btnNewButton.setIcon(new ImageIcon(WinningDetails.class.getResource("/imagepackage/back1.png")));
-		btnNewButton.setBorderPainted(false);
-		contentPane.add(btnNewButton);
+		hidden1.setBounds(959, 10, 41, 36);
+		hidden1.setIcon(new ImageIcon(WinningDetails.class.getResource("/imagepackage/back1.png")));
+		hidden1.setBorderPainted(false);
+		contentPane.add(hidden1);
+
+		JButton hidden2 = new JButton("");
+		hidden2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if (hiddenCount == 0) {
+					winningImage.setVisible(false);
+					winningImage = new JLabel(
+							new ImageIcon(WinningDetails.class.getResource("/imagepackage/kill0.png")));
+					winningImage.setSize(155, 34);
+					pnl2.add(winningImage);
+					hiddenCount++;
+				} else if (hiddenCount == 1) {
+					winningImage.setVisible(false);
+					winningImage = new JLabel(
+							new ImageIcon(WinningDetails.class.getResource("/imagepackage/kill3.png")));
+					winningImage.setSize(155, 34);
+					pnl2.add(winningImage);
+					hiddenCount++;
+				} else if (hiddenCount == 2) {
+					winningImage.setVisible(false);
+					winningImage = new JLabel(
+							new ImageIcon(WinningDetails.class.getResource("/imagepackage/kill4.png")));
+					winningImage.setSize(155, 34);
+					pnl2.add(winningImage);
+					hiddenCount++;
+				} else if (hiddenCount == 3) {
+					winningImage.setVisible(false);
+					winningImage = new JLabel(
+							new ImageIcon(WinningDetails.class.getResource("/imagepackage/kill5.png")));
+					winningImage.setSize(155, 34);
+					pnl2.add(winningImage);
+					hiddenCount++;
+				} else if (hiddenCount == 4) {
+					winningImage.setVisible(false);
+					winningImage = new JLabel(
+							new ImageIcon(WinningDetails.class.getResource("/imagepackage/kill5+1.png")));
+					winningImage.setSize(155, 34);
+					pnl2.add(winningImage);
+					hiddenCount++;
+				} else if (hiddenCount == 5) {
+					winningImage.setVisible(false);
+					winningImage = new JLabel(
+							new ImageIcon(WinningDetails.class.getResource("/imagepackage/kill6.png")));
+					winningImage.setSize(155, 34);
+					pnl2.add(winningImage);
+					hiddenCount = 0;
+				}
+			}
+		});
+		hidden2.setIcon(new ImageIcon(WinningDetails.class.getResource("/imagepackage/배경라벨이미지.png")));
+		hidden2.setBorderPainted(false);
+		hidden2.setBounds(959, 103, 41, 36);
+		contentPane.add(hidden2);
 
 		JLabel lblNewLabel_4_4 = new JLabel("TRIPLEKILL : 5등");
 		lblNewLabel_4_4.setFont(new Font("맑은 고딕", Font.BOLD, 14));
@@ -471,34 +531,28 @@ public class WinningDetails extends JFrame {
 
 	public void setRankImage() {
 		if (maxIsInWinningMoney == 0) { // 낙첨
-			JLabel winningImage = new JLabel(
-					new ImageIcon(WinningDetails.class.getResource("/imagepackage/kill0.png")));
+			winningImage = new JLabel(new ImageIcon(WinningDetails.class.getResource("/imagepackage/kill0.png")));
 			winningImage.setSize(155, 34);
 			pnl2.add(winningImage);
 		} else if (maxIsInWinningMoney == 5000) { // 5등
-			JLabel winningImage = new JLabel(
-					new ImageIcon(WinningDetails.class.getResource("/imagepackage/kill3.png")));
+			winningImage = new JLabel(new ImageIcon(WinningDetails.class.getResource("/imagepackage/kill3.png")));
 
 			winningImage.setSize(155, 34);
 			pnl2.add(winningImage);
 		} else if (maxIsInWinningMoney == 50000) { // 4등
-			JLabel winningImage = new JLabel(
-					new ImageIcon(WinningDetails.class.getResource("/imagepackage/kill4.png")));
+			winningImage = new JLabel(new ImageIcon(WinningDetails.class.getResource("/imagepackage/kill4.png")));
 			winningImage.setSize(155, 34);
 			pnl2.add(winningImage);
 		} else if (maxIsInWinningMoney == 1446277) { // 3등
-			JLabel winningImage = new JLabel(
-					new ImageIcon(WinningDetails.class.getResource("/imagepackage/kill5.png")));
+			winningImage = new JLabel(new ImageIcon(WinningDetails.class.getResource("/imagepackage/kill5.png")));
 			winningImage.setSize(155, 34);
 			pnl2.add(winningImage);
 		} else if (maxIsInWinningMoney == 55031743) { // 2등
-			JLabel winningImage = new JLabel(
-					new ImageIcon(WinningDetails.class.getResource("/imagepackage/kill5+1.png")));
+			winningImage = new JLabel(new ImageIcon(WinningDetails.class.getResource("/imagepackage/kill5+1.png")));
 			winningImage.setSize(155, 34);
 			pnl2.add(winningImage);
 		} else if (maxIsInWinningMoney == 1863217554) { // 1등
-			JLabel winningImage = new JLabel(
-					new ImageIcon(WinningDetails.class.getResource("/imagepackage/kill6.png")));
+			winningImage = new JLabel(new ImageIcon(WinningDetails.class.getResource("/imagepackage/kill6.png")));
 			winningImage.setSize(155, 34);
 			winImageGif.setVisible(true);
 			winwin.start();
