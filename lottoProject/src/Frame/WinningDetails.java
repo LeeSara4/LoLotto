@@ -15,10 +15,12 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.Timer;
 import javax.swing.border.EmptyBorder;
 
 import lottoProject.LottoPaper;
 import java.awt.TextField;
+import javax.swing.SwingConstants;
 
 /**
  * 당첨화면 초안입니다!!
@@ -45,6 +47,7 @@ public class WinningDetails extends JFrame {
 	private JLabel lblMoney;
 	private int winMoney = 0;
 	private List<Integer> winMoneyList = new ArrayList<>();
+	int winCount = 0;
 
 	/**
 	 * Create the frame.
@@ -67,6 +70,12 @@ public class WinningDetails extends JFrame {
 		contentPane.setLayout(null);
 		setLocationRelativeTo(null);
 		setUndecorated(true);
+		
+				lblMoney = new JLabel("당첨여부");
+				lblMoney.setBounds(635, 103, 92, 36);
+				contentPane.add(lblMoney);
+				lblMoney.setForeground(Color.WHITE);
+				lblMoney.setFont(new Font("맑은 고딕", Font.BOLD, 26));
 		
 		JLabel lblNewLabel_3_1 = new JLabel("보너스 번호 일치");
 		lblNewLabel_3_1.setFont(new Font("맑은 고딕", Font.BOLD, 14));
@@ -92,11 +101,6 @@ public class WinningDetails extends JFrame {
 		pnl2.setOpaque(false);
 		contentPane.add(pnl2);
 
-		lblMoney = new JLabel("당첨여부");
-		lblMoney.setForeground(Color.WHITE);
-		lblMoney.setFont(new Font("맑은 고딕", Font.BOLD, 26));
-		pnl2.add(lblMoney);
-
 		calcWinningMoney();
 		JButton btnBack = new JButton(new ImageIcon(getClass().getResource("/imagepackage/SecondBeforeFrame.png")));
 		btnBack.setBounds(350, 534, 95, 35);
@@ -114,7 +118,39 @@ public class WinningDetails extends JFrame {
 				}
 			}
 		});
-
+		
+		
+		
+		
+		
+		
+		Timer winwin = new Timer(1000,new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				if(winCount == 0) {
+				} else if ( winCount == 1) {
+					
+				} else if ( winCount == 1) {
+					
+				} else if ( winCount == 1) {
+					
+				} else if ( winCount == 5) {
+					
+				}
+//				new ImageIcon(getClass().getResource("/imagepackage/승리화면1.png"))
+//				new ImageIcon(getClass().getResource("/imagepackage/승리화면2.png"))
+//				new ImageIcon(getClass().getResource("/imagepackage/승리화면3.png"))
+//				new ImageIcon(getClass().getResource("/imagepackage/승리화면4.png"))
+//				new ImageIcon(getClass().getResource("/imagepackage/승리화면5.png"))
+				winCount++;
+			}
+		}); 
+			
+		
+		
+		
+		
 		JButton btnFront = new JButton(new ImageIcon(getClass().getResource("/imagepackage/SecondNextFrame.png")));
 		btnFront.setBounds(570, 534, 95, 35);
 		btnFront.setRolloverIcon(new ImageIcon(getClass().getResource("/imagepackage/SecondNextFrame_1.png")));
@@ -147,6 +183,10 @@ public class WinningDetails extends JFrame {
 		lbl_Winning.setForeground(new Color(250, 250, 210));
 		lbl_Winning.setFont(new Font("맑은 고딕", Font.BOLD, 28));
 		pnl_Winning.add(lbl_Winning);
+		
+		JLabel winImage1_1 = new JLabel("");
+		pnl_Winning.add(winImage1_1);
+		winImage1_1.setHorizontalAlignment(SwingConstants.CENTER);
 
 		// 당첨번호 출력메소드
 		printWinningNumbers();
@@ -209,6 +249,12 @@ public class WinningDetails extends JFrame {
 		lblNewLabel_2.setIcon(new ImageIcon(WinningDetails.class.getResource("/imagepackage/배경라벨이미지.png")));
 		lblNewLabel_2.setBounds(0, 0, 1000, 600);
 		contentPane.add(lblNewLabel_2);
+		
+		JLabel winImage1 = new JLabel("");
+		winImage1.setIcon(new ImageIcon(WinningDetails.class.getResource("/imagepackage/승리화면.gif")));
+		winImage1.setHorizontalAlignment(SwingConstants.CENTER);
+		winImage1.setBounds(195, 8, 616, 516);
+		contentPane.add(winImage1);
 
 		if (tempList.size() > 0) {
 			resetLottoPaper();
