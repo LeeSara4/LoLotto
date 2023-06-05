@@ -52,7 +52,7 @@ public class DepositFrame extends JDialog {
 		backLabel.add(panel);
 
 		JComboBox<String> comboBox = new JComboBox();
-		String[] price = { "1000RP", "5000RP", "10000RP", "50000RP", "직접 입력" };
+		String[] price = { "1000RP", "5000RP", "10000RP", "50000RP", "직접입력" };
 		comboBox.setOpaque(false);
 		comboBox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -73,7 +73,7 @@ public class DepositFrame extends JDialog {
 				} else if (str == "50000RP") {
 					money = 50000;
 					txtT.setText("50000");
-				} else if (str == "직접 입력") {
+				} else if (str == "직접입력") {
 					txtT.setEnabled(true);
 					txtT.setText("");
 				}

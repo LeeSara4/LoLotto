@@ -15,6 +15,8 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
+import javax.swing.Timer;
 import javax.swing.border.EmptyBorder;
 
 import lottoProject.LottoPaper;
@@ -46,6 +48,8 @@ public class WinningDetails extends JFrame {
 	private int winMoney = 0;
 	private List<Integer> winMoneyList = new ArrayList<>();
 	private JPanel pnl2;
+	private JLabel winImageGif;
+	private Timer winwin;
 
 	/**
 	 * Create the frame.
@@ -68,7 +72,56 @@ public class WinningDetails extends JFrame {
 		contentPane.setLayout(null);
 		setLocationRelativeTo(null);
 		setUndecorated(true);
-		
+
+		JButton btnNewButton = new JButton("");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				winImageGif.setVisible(true);
+				winwin.start();
+			}
+		});
+		btnNewButton.setBounds(959, 103, 41, 36);
+		btnNewButton.setIcon(new ImageIcon(WinningDetails.class.getResource("/imagepackage/back1.png")));
+		btnNewButton.setBorderPainted(false);
+		contentPane.add(btnNewButton);
+
+		JLabel lblNewLabel_4_4 = new JLabel("TRIPLEKILL : 5등");
+		lblNewLabel_4_4.setFont(new Font("맑은 고딕", Font.BOLD, 14));
+		lblNewLabel_4_4.setBounds(75, 449, 139, 36);
+		lblNewLabel_4_4.setForeground(new Color(250, 250, 210));
+		contentPane.add(lblNewLabel_4_4);
+
+		JLabel lblNewLabel_4_1 = new JLabel("HEXAKILL : 2등");
+		lblNewLabel_4_1.setFont(new Font("맑은 고딕", Font.BOLD, 14));
+		lblNewLabel_4_1.setBounds(75, 311, 139, 36);
+		lblNewLabel_4_1.setForeground(new Color(250, 250, 210));
+		contentPane.add(lblNewLabel_4_1);
+
+		JLabel lblNewLabel_4_2 = new JLabel("PENTAKILL : 3등");
+		lblNewLabel_4_2.setFont(new Font("맑은 고딕", Font.BOLD, 14));
+		lblNewLabel_4_2.setBounds(75, 357, 139, 36);
+		lblNewLabel_4_2.setForeground(new Color(250, 250, 210));
+		contentPane.add(lblNewLabel_4_2);
+
+		JLabel lblNewLabel_4 = new JLabel("VICTORY : 1등");
+		lblNewLabel_4.setFont(new Font("맑은 고딕", Font.BOLD, 14));
+		lblNewLabel_4.setBounds(75, 267, 139, 36);
+		lblNewLabel_4.setForeground(new Color(250, 250, 210));
+		contentPane.add(lblNewLabel_4);
+
+		JLabel lblNewLabel_4_3 = new JLabel("QUADRAKILL : 4등");
+		lblNewLabel_4_3.setFont(new Font("맑은 고딕", Font.BOLD, 14));
+		lblNewLabel_4_3.setBounds(75, 403, 139, 36);
+		lblNewLabel_4_3.setForeground(new Color(250, 250, 210));
+		contentPane.add(lblNewLabel_4_3);
+
+		winImageGif = new JLabel("");
+		winImageGif.setIcon(new ImageIcon(WinningDetails.class.getResource("/imagepackage/승리화면.gif")));
+		winImageGif.setHorizontalAlignment(SwingConstants.CENTER);
+		winImageGif.setBounds(194, 10, 616, 547);
+		contentPane.add(winImageGif);
+		winImageGif.setVisible(false);
+
 		lblMoney = new JLabel("당첨여부");
 		lblMoney.setBounds(605, 103, 383, 36);
 		contentPane.add(lblMoney);
@@ -81,7 +134,7 @@ public class WinningDetails extends JFrame {
 		lblNewLabel_3_1.setIcon(new ImageIcon(WinningDetails.class.getResource("/imagepackage/Red27.png")));
 		lblNewLabel_3_1.setBounds(736, 304, 139, 27);
 		contentPane.add(lblNewLabel_3_1);
-		
+
 		JLabel lblNewLabel_3 = new JLabel("당첨 번호 일치");
 		lblNewLabel_3.setFont(new Font("맑은 고딕", Font.BOLD, 14));
 		lblNewLabel_3.setForeground(new Color(51, 204, 0));
@@ -117,6 +170,13 @@ public class WinningDetails extends JFrame {
 			}
 		});
 
+		winwin = new Timer(2150, new ActionListener() { // 승리 축하 이미지 // 종료 타이머
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				winImageGif.setVisible(false);
+			}
+		});
+
 		JButton btnFront = new JButton(new ImageIcon(getClass().getResource("/imagepackage/SecondNextFrame.png")));
 		btnFront.setBounds(570, 534, 95, 35);
 		btnFront.setRolloverIcon(new ImageIcon(getClass().getResource("/imagepackage/SecondNextFrame_1.png")));
@@ -149,6 +209,10 @@ public class WinningDetails extends JFrame {
 		lbl_Winning.setForeground(new Color(250, 250, 210));
 		lbl_Winning.setFont(new Font("맑은 고딕", Font.BOLD, 28));
 		pnl_Winning.add(lbl_Winning);
+
+		JLabel winImage1_1 = new JLabel("");
+		pnl_Winning.add(winImage1_1);
+		winImage1_1.setHorizontalAlignment(SwingConstants.CENTER);
 
 		// 당첨번호 출력메소드
 		printWinningNumbers();
@@ -413,6 +477,7 @@ public class WinningDetails extends JFrame {
 		} else if (maxIsInWinningMoney == 5000) { // 5등
 			JLabel winningImage = new JLabel(
 					new ImageIcon(WinningDetails.class.getResource("/imagepackage/kill3.png")));
+
 			winningImage.setSize(155, 34);
 			pnl2.add(winningImage);
 		} else if (maxIsInWinningMoney == 50000) { // 4등
@@ -434,8 +499,9 @@ public class WinningDetails extends JFrame {
 			JLabel winningImage = new JLabel(
 					new ImageIcon(WinningDetails.class.getResource("/imagepackage/kill6.png")));
 			winningImage.setSize(155, 34);
+			winImageGif.setVisible(true);
+			winwin.start();
 			pnl2.add(winningImage);
 		}
 	}
-
 }
