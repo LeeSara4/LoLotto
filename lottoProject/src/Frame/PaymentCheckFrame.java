@@ -58,7 +58,7 @@ public class PaymentCheckFrame extends JDialog {
 		
 		JLabel paymentYesOrNo = new JLabel("");
 		paymentYesOrNo.setIcon(new ImageIcon(PaymentCheckFrame.class.getResource("/imagepackage/결제 확인 프레임.jpg")));
-		paymentYesOrNo.setBounds(40, 31, 232, 76);
+		paymentYesOrNo.setBounds(32, 30, 232, 76);
 		panel.add(paymentYesOrNo);
 		
 		JLabel paymentFrameBackImage = new JLabel("");
