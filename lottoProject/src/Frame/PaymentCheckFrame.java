@@ -11,6 +11,8 @@ import javax.swing.JFormattedTextField;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import javax.swing.ImageIcon;
 
 public class PaymentCheckFrame extends JDialog {
 	private JPanel contentPane;
@@ -30,14 +32,6 @@ public class PaymentCheckFrame extends JDialog {
 		panel.setBounds(0, 0, 284, 201);
 		contentPane.add(panel);
 		panel.setLayout(null);
-
-		JFormattedTextField formattedTextField = new JFormattedTextField();
-		formattedTextField.setEditable(false);
-		formattedTextField.setFont(new Font("굴림", Font.BOLD, 18));
-		formattedTextField.setText("\uACB0\uC81C\uD558\uC2DC\uACA0\uC2B5\uB2C8\uAE4C");
-		formattedTextField.setHorizontalAlignment(SwingConstants.CENTER);
-		formattedTextField.setBounds(40, 31, 204, 76);
-		panel.add(formattedTextField);
 
 		JButton btnNewButton = new RoundButton("예");
 		btnNewButton.addActionListener(new ActionListener() {
@@ -61,9 +55,18 @@ public class PaymentCheckFrame extends JDialog {
 		});
 		btnNewButton_1.setBounds(157, 136, 97, 44);
 		panel.add(btnNewButton_1);
+		
+		JLabel paymentYesOrNo = new JLabel("");
+		paymentYesOrNo.setIcon(new ImageIcon(PaymentCheckFrame.class.getResource("/imagepackage/결제 확인 프레임.jpg")));
+		paymentYesOrNo.setBounds(40, 31, 232, 76);
+		panel.add(paymentYesOrNo);
+		
+		JLabel paymentFrameBackImage = new JLabel("");
+		paymentFrameBackImage.setIcon(new ImageIcon(PaymentCheckFrame.class.getResource("/imagepackage/배경2.png")));
+		paymentFrameBackImage.setBounds(0, 0, 284, 201);
+		panel.add(paymentFrameBackImage);
 
 		setDefaultCloseOperation(HIDE_ON_CLOSE);
 		setVisible(true);
 	}
-
 }
