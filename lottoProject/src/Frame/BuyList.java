@@ -101,7 +101,7 @@ public class BuyList extends JFrame {
 		backLabel.add(lblNewLabel_3_2);
 
 		JLabel lblNewLabel_3_2_1 = new JLabel();
-		lblNewLabel_3_2_1.setText(",000원");
+		lblNewLabel_3_2_1.setText(",000RP");
 		lblNewLabel_3_2_1.setFont(new Font("맑은 고딕", Font.BOLD, 18));
 		lblNewLabel_3_2_1.setBounds(567, 450, 83, 37);
 		lblNewLabel_3_2_1.setForeground(new Color(250, 250, 210));
@@ -150,7 +150,7 @@ public class BuyList extends JFrame {
 					String formattedTime = time.format(formatter);
 					lblNewLabel_5.setText(date.toString() + " " + formattedTime);
 					lblNewLabel_5.setFont(new Font("맑은 고딕", Font.PLAIN, 14));
-					lblNewLabel_3_2_1.setText(tempList.get(currentSelect).getCount().size() + ",000원");
+					lblNewLabel_3_2_1.setText(tempList.get(currentSelect).getCount().size() + ",000RP");
 					lblNewLabel_4.setText("< " + (currentSelect + 1) + " / " + buyList.size() + " >");
 					lblNewLabel_4.setForeground(new Color(250, 250, 210));
 					resetLottoPaper();
@@ -175,7 +175,7 @@ public class BuyList extends JFrame {
 					String formattedTime = time.format(formatter);
 					lblNewLabel_5.setText(date.toString() + " " + formattedTime);
 					lblNewLabel_5.setFont(new Font("맑은 고딕", Font.PLAIN, 14));
-					lblNewLabel_3_2_1.setText(tempList.get(currentSelect).getCount().size() + ",000원");
+					lblNewLabel_3_2_1.setText(tempList.get(currentSelect).getCount().size() + ",000RP");
 					lblNewLabel_4.setText("< " + (currentSelect + 1) + " / " + buyList.size() + " >");
 					lblNewLabel_4.setForeground(new Color(250, 250, 210));
 					resetLottoPaper();
