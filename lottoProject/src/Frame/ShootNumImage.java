@@ -83,6 +83,8 @@ public class ShootNumImage extends JFrame {
 				dispose();
 				main.setVisible(true);
 				main.getBtnNewButton_3().setEnabled(true);
+				main.getBtnNewButton_4().setEnabled(false);
+				main.getBtnNewButton_2().setEnabled(false);
 			}
 		});
 
