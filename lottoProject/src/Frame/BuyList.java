@@ -218,7 +218,7 @@ public class BuyList extends JFrame {
 
 		lblNewLabel_1 = new JLabel();
 		lblNewLabel_1.setBounds(0, 0, 267, 230);
-		ImageIcon centerIcon = new ImageIcon(BuyList.class.getResource("/imagepackage/영수증안쪽.png"));
+		ImageIcon centerIcon = new ImageIcon(BuyList.class.getResource("/imagepackage/영수증안쪽.PNG"));
 		Image centerImg = centerIcon.getImage();
 		Image updateCenterImage = centerImg.getScaledInstance(lblNewLabel_1.getWidth(), lblNewLabel_1.getHeight(),
 				Image.SCALE_SMOOTH);

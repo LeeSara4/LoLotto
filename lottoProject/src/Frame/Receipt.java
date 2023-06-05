@@ -106,7 +106,7 @@ public class Receipt extends JDialog implements MouseListener {
 
 		centerLabel = new JLabel();
 		centerLabel.setBounds(42, 478, 237, 177);
-		ImageIcon centerIcon = new ImageIcon(BuyList.class.getResource("/imagepackage/영수증안쪽.png"));
+		ImageIcon centerIcon = new ImageIcon(BuyList.class.getResource("/imagepackage/영수증안쪽.PNG"));
 		Image centerImg = centerIcon.getImage();
 		Image updateCenterImage = centerImg.getScaledInstance(panel.getWidth(), panel.getHeight(), Image.SCALE_SMOOTH);
 		ImageIcon updateCenterIcon = new ImageIcon(updateCenterImage);

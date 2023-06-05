@@ -115,11 +115,11 @@ public class MainFrame extends JFrame {
 		// bt_img.setRolloverIcon(img2); // 버튼에 마우스가 올라갈떄 이미지 변환
 		// bt_img.setBorderPainted(false); // 버튼 테두리 설정해제
 
-		btnNewButton_1 = new JButton(new ImageIcon(getClass().getResource("/imagepackage/Main_button1.png")));
+		btnNewButton_1 = new JButton(new ImageIcon(getClass().getResource("/imagepackage/Main_Button1.png")));
 		backLabel.add(btnNewButton_1);
 		btnNewButton_1.setFont(new Font("맑은 고딕", Font.BOLD, 18));
 		btnNewButton_1.setRolloverIcon(new ImageIcon(getClass().getResource("/imagepackage/Main_button1_1.png")));
-		btnNewButton_1.setDisabledIcon(new ImageIcon(MainFrame.class.getResource("/imagepackage/Main_Button1_2.png")));
+		btnNewButton_1.setDisabledIcon(new ImageIcon(MainFrame.class.getResource("/imagepackage/Main_button1_2.png")));
 		btnNewButton_1.setBorderPainted(false);
 		btnNewButton_1.setEnabled(false);
 		btnNewButton_1.addActionListener(new ActionListener() {
@@ -131,11 +131,11 @@ public class MainFrame extends JFrame {
 		});
 		btnNewButton_1.setBounds(100, 420, 180, 61);
 
-		btnNewButton_2 = new JButton(new ImageIcon(getClass().getResource("/imagepackage/Main_button2.png")));
+		btnNewButton_2 = new JButton(new ImageIcon(getClass().getResource("/imagepackage/Main_Button2.png")));
 		backLabel.add(btnNewButton_2);
 //		btnNewButton_2.setFont(new Font("맑은 고딕", Font.BOLD, 18));
 		btnNewButton_2.setRolloverIcon(new ImageIcon(getClass().getResource("/imagepackage/Main_button2_1.png")));
-		btnNewButton_2.setDisabledIcon(new ImageIcon(MainFrame.class.getResource("/imagepackage/Main_Button2_2.png")));
+		btnNewButton_2.setDisabledIcon(new ImageIcon(MainFrame.class.getResource("/imagepackage/Main_button2_2.png")));
 		btnNewButton_2.setBorderPainted(false);
 		btnNewButton_2.setEnabled(false);
 		btnNewButton_2.addActionListener(new ActionListener() {
@@ -147,11 +147,11 @@ public class MainFrame extends JFrame {
 		});
 		btnNewButton_2.setBounds(400, 420, 180, 61);
 
-		btnNewButton_3 = new JButton(new ImageIcon(getClass().getResource("/imagepackage/Main_button3.png")));
+		btnNewButton_3 = new JButton(new ImageIcon(getClass().getResource("/imagepackage/Main_Button3.png")));
 		backLabel.add(btnNewButton_3);
 		btnNewButton_3.setFont(new Font("맑은 고딕", Font.BOLD, 18));
 		btnNewButton_3.setRolloverIcon(new ImageIcon(getClass().getResource("/imagepackage/Main_button3_1.png")));
-		btnNewButton_3.setDisabledIcon(new ImageIcon(MainFrame.class.getResource("/imagepackage/Main_Button3_2.png")));
+		btnNewButton_3.setDisabledIcon(new ImageIcon(MainFrame.class.getResource("/imagepackage/Main_button3_2.png")));
 		btnNewButton_3.setBorderPainted(false);
 		btnNewButton_3.setEnabled(false);
 		btnNewButton_3.addActionListener(new ActionListener() {
