@@ -98,6 +98,7 @@ public class MainFrame extends JFrame {
 		btnNewButton_4.setRolloverIcon(new ImageIcon(MainFrame.class.getResource("/imagepackage/게임시작2.png")));
 		btnNewButton_4.setBounds(95, 302, 164, 41);
 		btnNewButton_4.setBorderPainted(false);
+		btnNewButton_4.setDisabledIcon(new ImageIcon(MainFrame.class.getResource("/imagepackage/게임시작3.png")));
 		contentPane.add(btnNewButton_4);
 
 //		ImageIcon image = new ImageIcon("img.png");
@@ -118,6 +119,7 @@ public class MainFrame extends JFrame {
 		backLabel.add(btnNewButton_1);
 		btnNewButton_1.setFont(new Font("맑은 고딕", Font.BOLD, 18));
 		btnNewButton_1.setRolloverIcon(new ImageIcon(getClass().getResource("/imagepackage/Main_button1_1.png")));
+		btnNewButton_1.setDisabledIcon(new ImageIcon(MainFrame.class.getResource("/imagepackage/Main_Button1_2.png")));
 		btnNewButton_1.setBorderPainted(false);
 		btnNewButton_1.setEnabled(false);
 		btnNewButton_1.addActionListener(new ActionListener() {
@@ -133,6 +135,7 @@ public class MainFrame extends JFrame {
 		backLabel.add(btnNewButton_2);
 //		btnNewButton_2.setFont(new Font("맑은 고딕", Font.BOLD, 18));
 		btnNewButton_2.setRolloverIcon(new ImageIcon(getClass().getResource("/imagepackage/Main_button2_1.png")));
+		btnNewButton_2.setDisabledIcon(new ImageIcon(MainFrame.class.getResource("/imagepackage/Main_Button2_2.png")));
 		btnNewButton_2.setBorderPainted(false);
 		btnNewButton_2.setEnabled(false);
 		btnNewButton_2.addActionListener(new ActionListener() {
@@ -148,6 +151,7 @@ public class MainFrame extends JFrame {
 		backLabel.add(btnNewButton_3);
 		btnNewButton_3.setFont(new Font("맑은 고딕", Font.BOLD, 18));
 		btnNewButton_3.setRolloverIcon(new ImageIcon(getClass().getResource("/imagepackage/Main_button3_1.png")));
+		btnNewButton_3.setDisabledIcon(new ImageIcon(MainFrame.class.getResource("/imagepackage/Main_Button3_2.png")));
 		btnNewButton_3.setBorderPainted(false);
 		btnNewButton_3.setEnabled(false);
 		btnNewButton_3.addActionListener(new ActionListener() {

@@ -87,6 +87,9 @@ public class ShootNumImage extends JFrame {
 				main.getBtnNewButton_2().setEnabled(false);
 			}
 		});
+		btnNewButton.setBounds(870, 36, 97, 23);
+		contentPane.add(btnNewButton);
+		btnNewButton.setEnabled(false);
 
 		JLabel redJewel = new JLabel("");
 		redJewel.setIcon(new ImageIcon(ShootNumImage.class.getResource("/imagepackage/1.png")));
@@ -94,8 +97,6 @@ public class ShootNumImage extends JFrame {
 		redJewel.setBounds(897, 134, 52, 50);
 		contentPane.add(redJewel);
 		redJewel.setVisible(false);
-		btnNewButton.setBounds(870, 36, 97, 23);
-		contentPane.add(btnNewButton);
 
 		final JLabel blitzStillHandsUp = new JLabel("");
 		blitzStillHandsUp.setIcon(new ImageIcon(
@@ -332,6 +333,7 @@ public class ShootNumImage extends JFrame {
 					actionCard6.setVisible(false);
 					bonus.setVisible(true);
 					randomNum6.setVisible(true);
+					btnNewButton.setEnabled(true);
 				}
 				count++;
 			}
