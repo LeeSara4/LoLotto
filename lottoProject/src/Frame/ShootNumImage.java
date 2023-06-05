@@ -82,16 +82,17 @@ public class ShootNumImage extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
 				main.setVisible(true);
+				main.getBtnNewButton_3().setEnabled(true);
 			}
 		});
 
 		JLabel redJewel = new JLabel("");
 		redJewel.setIcon(new ImageIcon(ShootNumImage.class.getResource("/imagepackage/1.png")));
 		redJewel.setHorizontalAlignment(SwingConstants.CENTER);
-		redJewel.setBounds(895, 133, 52, 50);
+		redJewel.setBounds(897, 134, 52, 50);
 		contentPane.add(redJewel);
 		redJewel.setVisible(false);
-		btnNewButton.setBounds(645, 10, 97, 23);
+		btnNewButton.setBounds(891, 10, 97, 23);
 		contentPane.add(btnNewButton);
 
 		btnNewButton.setBounds(875, 10, 97, 23);
@@ -653,17 +654,17 @@ public class ShootNumImage extends JFrame {
 
 		JLabel jandi1 = new JLabel("");
 		jandi1.setIcon(new ImageIcon(ShootNumImage.class.getResource("/imagepackage/\uD4801.png")));
-		jandi1.setBounds(-194, 372, 748, 189);
+		jandi1.setBounds(-194, 411, 748, 189);
 		contentPane.add(jandi1);
 
 		JLabel Jandi2 = new JLabel("");
 		Jandi2.setIcon(new ImageIcon(ShootNumImage.class.getResource("/imagepackage/\uD4802.png")));
-		Jandi2.setBounds(427, 372, 561, 189);
+		Jandi2.setBounds(444, 411, 561, 189);
 		contentPane.add(Jandi2);
 
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon(ShootNumImage.class.getResource("/imagepackage/배경라벨이미지.png")));
-		lblNewLabel.setBounds(0, 0, 984, 561);
+		lblNewLabel.setBounds(0, 0, 1000, 600);
 		contentPane.add(lblNewLabel);
 
 		JLabel logoLabel = new JLabel("");
