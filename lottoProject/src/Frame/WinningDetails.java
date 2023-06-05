@@ -18,6 +18,8 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import lottoProject.LottoPaper;
+import java.awt.TextField;
+import javax.swing.SwingConstants;
 
 /**
  * 당첨화면 초안입니다!!
