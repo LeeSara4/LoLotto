@@ -58,7 +58,7 @@ public class BuyList extends JFrame {
 				main.setVisible(true);
 			}
 		});
-		btnNewButton.setBounds(863, 20, 97, 23);
+		btnNewButton.setBounds(870, 36, 97, 23);
 		backLabel.add(btnNewButton);
 
 		ImageIcon upIcon = new ImageIcon(BuyList.class.getResource("/imagepackage/위.png"));
