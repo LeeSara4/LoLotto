@@ -399,7 +399,7 @@ public class BuyFrame extends JFrame {
 			});
 		}
 
-		RoundBorderButton btnMain = new RoundBorderButton("메인으로");
+		RoundButton btnMain = new RoundButton("메인으로");
 		btnMain.setBounds(870, 36, 97, 23);
 		btnMain.addActionListener(new ActionListener() {
 
@@ -468,7 +468,7 @@ public class BuyFrame extends JFrame {
 //		panel_1.add(lblMyMoney);
 //		lblMyMoney.setForeground(Color.WHITE);
 //		lblMyMoney.setFont(new Font("맑은 고딕", Font.BOLD, 19));
-		
+
 		JPanel panel_2 = new JPanel();
 		panel_2.setBounds(0, 93, 1000, 2);
 		getContentPane().add(panel_2);
