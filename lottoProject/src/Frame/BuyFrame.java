@@ -471,7 +471,7 @@ public class BuyFrame extends JFrame {
 		contentPane.add(btnResetList);
 		btnResetList.setBackground(SystemColor.menu);
 
-		// 선택한 하나의 로또 를 전달하기 위한 메소드
+		// 선택한 하나의 로또 를 전달하기 위한 메소드 
 		RoundButton btnPlus = new RoundButton("등록");
 		btnPlus.setBounds(368, 486, 63, 27);
 		contentPane.add(btnPlus);

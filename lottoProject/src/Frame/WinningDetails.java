@@ -18,7 +18,6 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import lottoProject.LottoPaper;
-import java.awt.TextField;
 
 /**
  * 당첨화면 초안입니다!!
@@ -38,6 +37,7 @@ public class WinningDetails extends JFrame {
 	private JLabel[] isAutos;
 	private List<List<JLabel>> numbers; // 로또번호 라벨들 저장할 곳
 	private JLabel[] ranks;
+	private int maxIsInWinningMoney = 0;
 
 	private JPanel pnl_Winning;
 	private JPanel panel;
@@ -45,6 +45,7 @@ public class WinningDetails extends JFrame {
 	private JLabel lblMoney;
 	private int winMoney = 0;
 	private List<Integer> winMoneyList = new ArrayList<>();
+	private JPanel pnl2;
 
 	/**
 	 * Create the frame.
@@ -68,6 +69,12 @@ public class WinningDetails extends JFrame {
 		setLocationRelativeTo(null);
 		setUndecorated(true);
 		
+		lblMoney = new JLabel("당첨여부");
+		lblMoney.setBounds(605, 103, 383, 36);
+		contentPane.add(lblMoney);
+		lblMoney.setForeground(Color.WHITE);
+		lblMoney.setFont(new Font("맑은 고딕", Font.BOLD, 26));
+
 		JLabel lblNewLabel_3_1 = new JLabel("보너스 번호 일치");
 		lblNewLabel_3_1.setFont(new Font("맑은 고딕", Font.BOLD, 14));
 		lblNewLabel_3_1.setForeground(new Color(255, 51, 0));
@@ -87,15 +94,10 @@ public class WinningDetails extends JFrame {
 		panel.setOpaque(false);
 		contentPane.add(panel);
 
-		JPanel pnl2 = new JPanel();
+		pnl2 = new JPanel();
 		pnl2.setBounds(161, 148, 694, 54);
 		pnl2.setOpaque(false);
 		contentPane.add(pnl2);
-
-		lblMoney = new JLabel("당첨여부");
-		lblMoney.setForeground(Color.WHITE);
-		lblMoney.setFont(new Font("맑은 고딕", Font.BOLD, 26));
-		pnl2.add(lblMoney);
 
 		calcWinningMoney();
 		JButton btnBack = new JButton(new ImageIcon(getClass().getResource("/imagepackage/SecondBeforeFrame.png")));
@@ -219,6 +221,8 @@ public class WinningDetails extends JFrame {
 			panel.add(lbl_temp);
 		}
 
+		setRankImage();
+
 	}
 
 	public void resetLottoPaper() {
@@ -318,6 +322,9 @@ public class WinningDetails extends JFrame {
 					}
 				}
 				ranks[i].setText(isRank(count, isBonus) + " ");
+				if (isInWinningMoney(count, isBonus) > maxIsInWinningMoney) {
+					maxIsInWinningMoney = isInWinningMoney(count, isBonus);
+				}
 				winMoneyList.add(isInWinningMoney(count, isBonus));
 				isAutos[i].setText(isAuto(tempList.get(index).getCount().get(i)) + " ");
 			}
@@ -384,6 +391,7 @@ public class WinningDetails extends JFrame {
 	}
 
 	public void calcWinningMoney() {
+
 		// 로또 리스트랑 비교해서 당첨확인.
 		for (int i = 0; i < tempList.size(); i++) {
 			printLottoPaper(i);
@@ -395,4 +403,39 @@ public class WinningDetails extends JFrame {
 		lblMoney.setText("총 " + winMoney + " RP");
 		// 총 금액 계산후 setText
 	}
+
+	public void setRankImage() {
+		if (maxIsInWinningMoney == 0) { // 낙첨
+			JLabel winningImage = new JLabel(
+					new ImageIcon(WinningDetails.class.getResource("/imagepackage/kill0.png")));
+			winningImage.setSize(155, 34);
+			pnl2.add(winningImage);
+		} else if (maxIsInWinningMoney == 5000) { // 5등
+			JLabel winningImage = new JLabel(
+					new ImageIcon(WinningDetails.class.getResource("/imagepackage/kill3.png")));
+			winningImage.setSize(155, 34);
+			pnl2.add(winningImage);
+		} else if (maxIsInWinningMoney == 50000) { // 4등
+			JLabel winningImage = new JLabel(
+					new ImageIcon(WinningDetails.class.getResource("/imagepackage/kill4.png")));
+			winningImage.setSize(155, 34);
+			pnl2.add(winningImage);
+		} else if (maxIsInWinningMoney == 1446277) { // 3등
+			JLabel winningImage = new JLabel(
+					new ImageIcon(WinningDetails.class.getResource("/imagepackage/kill5.png")));
+			winningImage.setSize(155, 34);
+			pnl2.add(winningImage);
+		} else if (maxIsInWinningMoney == 55031743) { // 2등
+			JLabel winningImage = new JLabel(
+					new ImageIcon(WinningDetails.class.getResource("/imagepackage/kill5+1.png")));
+			winningImage.setSize(155, 34);
+			pnl2.add(winningImage);
+		} else if (maxIsInWinningMoney == 1863217554) { // 1등
+			JLabel winningImage = new JLabel(
+					new ImageIcon(WinningDetails.class.getResource("/imagepackage/kill6.png")));
+			winningImage.setSize(155, 34);
+			pnl2.add(winningImage);
+		}
+	}
+
 }
