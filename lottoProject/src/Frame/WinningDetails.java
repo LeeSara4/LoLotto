@@ -82,11 +82,6 @@ public class WinningDetails extends JFrame {
 		lblMoney.setFont(new Font("맑은 고딕", Font.BOLD, 26));
 		pnl2.add(lblMoney);
 
-//		JButton btnFront = new JButton(new ImageIcon(getClass().getResource("/imagepackage/NextFrame.png")));
-//		btnFront.setBounds(534, 512, 62, 23);
-//		btnFront.setRolloverIcon(new ImageIcon(getClass().getResource("/imagepackage/NextFrame_1.png")));
-//		btnFront.setBorderPainted(false);
-
 		calcWinningMoney();
 		JButton btnBack = new JButton(new ImageIcon(getClass().getResource("/imagepackage/SecondBeforeFrame.png")));
 		btnBack.setBounds(350, 534, 95, 35);
