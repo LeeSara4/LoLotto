@@ -80,7 +80,7 @@ public class DepositFrame extends JDialog {
 			}
 		});
 		comboBox.setModel(new DefaultComboBoxModel<String>(price));
-		comboBox.setBounds(215, 70, 91, 48);
+		comboBox.setBounds(215, 70, 78, 48);
 		comboBox.setForeground(new Color(250, 250, 210));
 		comboBox.setBackground(new Color(70, 70, 70));
 
@@ -94,7 +94,7 @@ public class DepositFrame extends JDialog {
 		txtT.setEnabled(false);
 		txtT.setFont(new Font("굴림", Font.PLAIN, 20));
 		txtT.setHorizontalAlignment(SwingConstants.RIGHT);
-		txtT.setBounds(15, 70, 190, 48);
+		txtT.setBounds(40, 70, 165, 48);
 		panel.add(txtT);
 		txtT.setColumns(10);
 
@@ -139,7 +139,7 @@ public class DepositFrame extends JDialog {
 		JLabel lblNewLabel = new JLabel("충전할 금액");
 		lblNewLabel.setFont(new Font("맑은 고딕", Font.BOLD, 20));
 		lblNewLabel.setForeground(new Color(250, 250, 210));
-		lblNewLabel.setBounds(40, 26, 112, 34);
+		lblNewLabel.setBounds(40, 23, 190, 34);
 		panel.add(lblNewLabel);
 
 	}
