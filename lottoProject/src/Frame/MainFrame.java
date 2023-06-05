@@ -20,6 +20,9 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.SwingConstants;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class MainFrame extends JFrame {
 
@@ -76,11 +79,10 @@ public class MainFrame extends JFrame {
 //                System.out.println("err : " + e);
 //                }
 //  }
-	
+
 	public MainFrame() {
-		//Play("/imagepackage/롤큐잡히는소리.mp3");
-		
-		
+		// Play("/imagepackage/롤큐잡히는소리.mp3");
+
 		setTitle("4조 대박당첨");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1000, 600);
@@ -89,6 +91,19 @@ public class MainFrame extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		setLocationRelativeTo(null);
+
+		JButton btnNewButton_4 = new JButton("");
+		btnNewButton_4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				buyFrame.setVisible(true);
+				setVisible(false);
+			}
+		});
+		btnNewButton_4.setIcon(new ImageIcon(MainFrame.class.getResource("/imagepackage/게임시작1.png")));
+		btnNewButton_4.setRolloverIcon(new ImageIcon(MainFrame.class.getResource("/imagepackage/게임시작2.png")));
+		btnNewButton_4.setBounds(94, 280, 164, 41);
+		btnNewButton_4.setBorderPainted(false);
+		contentPane.add(btnNewButton_4);
 
 //		ImageIcon image = new ImageIcon("img.png");
 //		JPanel panel = new JPanel();
@@ -158,21 +173,6 @@ public class MainFrame extends JFrame {
 		backLabel.add(Main_Logo2);
 		Main_Logo2.setBounds(160, 100, 800, 250);
 
-		btnNewButton = new RoundButton("구매하기");
-		backLabel.add(btnNewButton);
-		btnNewButton.setFont(new Font("맑은 고딕", Font.BOLD, 18));
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				//abc();
-				buyFrame.setVisible(true);
-				setVisible(false);
-			}
-		});
-		
-		
-		
-		btnNewButton.setBounds(108, 293, 143, 44);
-//		EndCheckFrame
 	}
 
 	public JButton getBtnNewButton_3() {
@@ -190,5 +190,4 @@ public class MainFrame extends JFrame {
 	public JButton getBtnNewButton() {
 		return btnNewButton;
 	}
-
 }
