@@ -92,10 +92,7 @@ public class ShootNumImage extends JFrame {
 		redJewel.setBounds(897, 134, 52, 50);
 		contentPane.add(redJewel);
 		redJewel.setVisible(false);
-		btnNewButton.setBounds(891, 10, 97, 23);
-		contentPane.add(btnNewButton);
-
-		btnNewButton.setBounds(875, 10, 97, 23);
+		btnNewButton.setBounds(870, 36, 97, 23);
 		contentPane.add(btnNewButton);
 
 		final JLabel blitzStillHandsUp = new JLabel("");

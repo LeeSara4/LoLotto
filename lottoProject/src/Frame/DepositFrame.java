@@ -54,7 +54,8 @@ public class DepositFrame extends JDialog {
 		RoundBorderButton textArea = new RoundBorderButton("결제하기");
 		textArea.setFont(new Font("Monospaced", Font.BOLD, 18));
 		textArea.setText("충전할 금액");
-		textArea.setBounds(120, 20, 107, 32);
+		
+		textArea.setBounds(15, 20, 107, 32);
 		panel.add(textArea);
 
 		JComboBox<String> comboBox = new JComboBox();
@@ -87,6 +88,10 @@ public class DepositFrame extends JDialog {
 		});
 		comboBox.setModel(new DefaultComboBoxModel<String>(price));
 		comboBox.setBounds(215, 70, 91, 48);
+		comboBox.setForeground(new Color(250, 250, 210));
+		comboBox.setBackground(new Color(70,70,70));
+		
+		
 		panel.add(comboBox);
 
 // 값을 출력하고 내보내는 텍스트 필드
