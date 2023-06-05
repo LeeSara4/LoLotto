@@ -1,7 +1,6 @@
 package Frame;
 
 import java.awt.Color;
-import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
@@ -16,13 +15,10 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
 import javax.swing.Timer;
-import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
 
 public class ShootNumImage extends JFrame {
 	private Set<Integer> numbers = new TreeSet<>(); // 당첨 번호
@@ -77,6 +73,8 @@ public class ShootNumImage extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		setLocationRelativeTo(null);
+		setUndecorated(true);
 
 		JButton btnNewButton = new RoundButton("메인으로");
 		btnNewButton.addActionListener(new ActionListener() {
@@ -86,7 +84,7 @@ public class ShootNumImage extends JFrame {
 				main.setVisible(true);
 			}
 		});
-		
+
 		JLabel redJewel = new JLabel("");
 		redJewel.setIcon(new ImageIcon(ShootNumImage.class.getResource("/imagepackage/1.png")));
 		redJewel.setHorizontalAlignment(SwingConstants.CENTER);
@@ -284,7 +282,6 @@ public class ShootNumImage extends JFrame {
 		randomNum6.setBounds(858, 133, 130, 229);
 		contentPane.add(randomNum6);
 		randomNum6.setVisible(false);
-		
 
 		// 당첨 번호 6개 보여주기
 		final Timer cardOpen = new Timer(2300, new ActionListener() {
@@ -321,9 +318,9 @@ public class ShootNumImage extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				if (count == 1) {
 					defaultCard6.setVisible(false);
-					
+
 					actionCard6.setVisible(true);
-					
+
 				}
 				count++;
 			}
@@ -620,7 +617,7 @@ public class ShootNumImage extends JFrame {
 				countBlitz++;
 			}
 		});
-		
+
 		// 카드 오픈
 		final JButton btnNewButton_1 = new JButton("");
 		btnNewButton_1.addActionListener(new ActionListener() {
