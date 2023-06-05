@@ -18,6 +18,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import lottoProject.LottoPaper;
+import java.awt.TextField;
 
 /**
  * 당첨화면 초안입니다!!
@@ -66,6 +67,20 @@ public class WinningDetails extends JFrame {
 		contentPane.setLayout(null);
 		setLocationRelativeTo(null);
 		setUndecorated(true);
+		
+		JLabel lblNewLabel_3_1 = new JLabel("보너스 번호 일치");
+		lblNewLabel_3_1.setFont(new Font("맑은 고딕", Font.BOLD, 14));
+		lblNewLabel_3_1.setForeground(new Color(255, 51, 0));
+		lblNewLabel_3_1.setIcon(new ImageIcon(WinningDetails.class.getResource("/imagepackage/Red27.png")));
+		lblNewLabel_3_1.setBounds(736, 304, 139, 27);
+		contentPane.add(lblNewLabel_3_1);
+		
+		JLabel lblNewLabel_3 = new JLabel("당첨 번호 일치");
+		lblNewLabel_3.setFont(new Font("맑은 고딕", Font.BOLD, 14));
+		lblNewLabel_3.setForeground(new Color(51, 204, 0));
+		lblNewLabel_3.setIcon(new ImageIcon(WinningDetails.class.getResource("/imagepackage/Green27.png")));
+		lblNewLabel_3.setBounds(736, 267, 147, 27);
+		contentPane.add(lblNewLabel_3);
 
 		panel = new JPanel();
 		panel.setBounds(290, 267, 437, 241);
