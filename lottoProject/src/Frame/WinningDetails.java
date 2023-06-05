@@ -49,6 +49,8 @@ public class WinningDetails extends JFrame {
 	private int winMoney = 0;
 	private List<Integer> winMoneyList = new ArrayList<>();
 	private JPanel pnl2;
+	private JLabel winImageGif;
+	private Timer winwin;
 
 	/**
 	 * Create the frame.
@@ -72,12 +74,12 @@ public class WinningDetails extends JFrame {
 		setLocationRelativeTo(null);
 		setUndecorated(true);
 
-		JLabel winImage1 = new JLabel("");
-		winImage1.setIcon(new ImageIcon(WinningDetails.class.getResource("/imagepackage/승리화면.gif")));
-		winImage1.setHorizontalAlignment(SwingConstants.CENTER);
-		winImage1.setBounds(195, 8, 616, 516);
-		contentPane.add(winImage1);
-		winImage1.setVisible(false);
+		winImageGif = new JLabel("");
+		winImageGif.setIcon(new ImageIcon(WinningDetails.class.getResource("/imagepackage/승리화면.gif")));
+		winImageGif.setHorizontalAlignment(SwingConstants.CENTER);
+		winImageGif.setBounds(194, 10, 616, 547);
+		contentPane.add(winImageGif);
+		winImageGif.setVisible(false);
 
 		lblMoney = new JLabel("당첨여부");
 		lblMoney.setBounds(605, 103, 383, 36);
@@ -127,10 +129,10 @@ public class WinningDetails extends JFrame {
 			}
 		});
 
-		Timer winwin = new Timer(2500, new ActionListener() { // 승리 축하 이미지 // 종료 타이머
+		winwin = new Timer(2150, new ActionListener() { // 승리 축하 이미지 // 종료 타이머
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				winImage1.setVisible(false);
+				winImageGif.setVisible(false);
 			}
 		});
 
@@ -434,6 +436,7 @@ public class WinningDetails extends JFrame {
 		} else if (maxIsInWinningMoney == 5000) { // 5등
 			JLabel winningImage = new JLabel(
 					new ImageIcon(WinningDetails.class.getResource("/imagepackage/kill3.png")));
+
 			winningImage.setSize(155, 34);
 			pnl2.add(winningImage);
 		} else if (maxIsInWinningMoney == 50000) { // 4등
@@ -455,6 +458,8 @@ public class WinningDetails extends JFrame {
 			JLabel winningImage = new JLabel(
 					new ImageIcon(WinningDetails.class.getResource("/imagepackage/kill6.png")));
 			winningImage.setSize(155, 34);
+			winImageGif.setVisible(true);
+			winwin.start();
 			pnl2.add(winningImage);
 		}
 	}
