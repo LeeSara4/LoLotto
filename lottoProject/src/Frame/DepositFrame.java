@@ -49,14 +49,7 @@ public class DepositFrame extends JDialog {
 		panel.setBounds(0, 0, 350, 241);
 		panel.setOpaque(false);
 		panel.setLayout(null);
-		backLabel.add(panel); // 라벨에 추가 안하면 이미지는 나옴
-
-		RoundBorderButton textArea = new RoundBorderButton("결제하기");
-		textArea.setFont(new Font("Monospaced", Font.BOLD, 18));
-		textArea.setText("충전할 금액");
-		
-		textArea.setBounds(15, 20, 107, 32);
-		panel.add(textArea);
+		backLabel.add(panel);
 
 		JComboBox<String> comboBox = new JComboBox();
 		String[] price = { "1000 원", "5000 원", "10000 원", "50000 원", "직접 입력" };
@@ -89,9 +82,8 @@ public class DepositFrame extends JDialog {
 		comboBox.setModel(new DefaultComboBoxModel<String>(price));
 		comboBox.setBounds(215, 70, 91, 48);
 		comboBox.setForeground(new Color(250, 250, 210));
-		comboBox.setBackground(new Color(70,70,70));
-		
-		
+		comboBox.setBackground(new Color(70, 70, 70));
+
 		panel.add(comboBox);
 
 // 값을 출력하고 내보내는 텍스트 필드
@@ -143,6 +135,12 @@ public class DepositFrame extends JDialog {
 		});
 		btnNewButton_1.setBounds(180, 140, 118, 43);
 		panel.add(btnNewButton_1);
+
+		JLabel lblNewLabel = new JLabel("충전할 금액");
+		lblNewLabel.setFont(new Font("맑은 고딕", Font.BOLD, 20));
+		lblNewLabel.setForeground(new Color(250, 250, 210));
+		lblNewLabel.setBounds(40, 26, 112, 34);
+		panel.add(lblNewLabel);
 
 	}
 }
