@@ -147,7 +147,7 @@ public class WinningDetails extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
 				main.setVisible(true);
-				main.getBtnNewButton().setEnabled(false);
+				main.getBtnNewButton_4().setEnabled(false);
 				main.getBtnNewButton_2().setEnabled(false);
 			}
 		});

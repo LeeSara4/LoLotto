@@ -27,6 +27,7 @@ public class MainFrame extends JFrame {
 	private JButton btnNewButton_2;
 	private JButton btnNewButton_1;
 	private JButton btnNewButton;
+	private JButton btnNewButton_4;
 
 	/**
 	 * Launch the application.
@@ -86,7 +87,7 @@ public class MainFrame extends JFrame {
 		contentPane.setLayout(null);
 		setLocationRelativeTo(null);
 
-		JButton btnNewButton_4 = new JButton("");
+		btnNewButton_4 = new JButton("");
 		btnNewButton_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				buyFrame.setVisible(true);
@@ -181,7 +182,7 @@ public class MainFrame extends JFrame {
 		return btnNewButton_1;
 	}
 
-	public JButton getBtnNewButton() {
-		return btnNewButton;
+	public JButton getBtnNewButton_4() {
+		return btnNewButton_4;
 	}
 }
