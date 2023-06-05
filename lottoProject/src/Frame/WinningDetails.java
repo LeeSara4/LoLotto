@@ -15,12 +15,11 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
+import javax.swing.Timer;
 import javax.swing.border.EmptyBorder;
 
 import lottoProject.LottoPaper;
-import java.awt.TextField;
-import javax.swing.SwingConstants;
-import javax.swing.Timer;
 
 /**
  * 당첨화면 초안입니다!!
